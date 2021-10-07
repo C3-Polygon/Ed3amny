@@ -1,3 +1,4 @@
+const connection = require('../../db/db')
 const createNewFundraiser = (req, res) => {
     const {title , country,type,target,img,description } = req.body;
   
@@ -20,4 +21,6 @@ const createNewFundraiser = (req, res) => {
         });
       }
     });
-  };
+};
+
+module.exports = createNewFundraiser
