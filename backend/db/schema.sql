@@ -14,11 +14,13 @@ CREATE TABLE users(
 );
 
 -- Categories
+
 CREATE TABLE Categories(
 id INT AUTO_INCREMENT NOT NULL,
 name VARCHAR(255) NOT NULL,
 Primary key ( id)
 );
+
 -- FundraiserPost
 
 
@@ -28,6 +30,15 @@ Primary key ( id)
 
 
 -- BloodPost
+CREATE TABLE BloodPost(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT,
+    title VARCHAR(255),
+    description VARCHAR(255),
+    FOREIGN KEY (user_id ) REFERENCES Users(id),
+    PRIMARY KEY (id)
+);
+
 
 
 
