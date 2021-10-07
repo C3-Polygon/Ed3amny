@@ -3,12 +3,13 @@ const connection = require("../../db/db");
 //// Get All users
 
 const GetAllUser = () => {
-    const query = `SELECT * FROM users`;
+    const query = `SELECT * FROM users`;                                             //undefined
     connection.query = (query, (err, result) => {
         if (err) {
             const error = {
                 success: false,
-                message: "Somthing Error Try Again"
+                message: "Somthing Error Try Again",
+                err:err
             }
             res.json(error);
             res.status(500);
