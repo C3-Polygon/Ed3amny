@@ -3,7 +3,7 @@ const connection = require("../../db/db");
 //// Get All users
 
 const GetAllUser = () => {
-    const query = `SELECT * FROM users`;                                             //undefined
+    const query = `SELECT * FROM users`;                                   
     connection.query = (query, (err, result) => {
         if (err) {
             const error = {
