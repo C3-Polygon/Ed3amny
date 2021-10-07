@@ -15,8 +15,11 @@ CREATE TABLE users(
 
 -- Categories
 
-
-
+CREATE TABLE Categories(
+id INT AUTO_INCREMENT NOT NULL,
+name VARCHAR(255) NOT NULL,
+Primary key ( id)
+);
 
 -- FundraiserPost
 
