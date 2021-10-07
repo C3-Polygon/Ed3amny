@@ -17,6 +17,7 @@ CREATE TABLE users(
 
 
 
+
 -- FundraiserPost
 
 
@@ -26,6 +27,15 @@ CREATE TABLE users(
 
 
 -- BloodPost
+CREATE TABLE BloodPost(
+    id INT AUTO_INCREMENT NOT NULL,
+    user_id INT,
+    title VARCHAR(255),
+    description VARCHAR(255),
+    FOREIGN KEY (user_id ) REFERENCES Users(id),
+    PRIMARY KEY (id)
+);
+
 
 
 
