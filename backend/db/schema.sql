@@ -1,8 +1,8 @@
-USE MERAKI_Academy_Project_5;
+USE sql11442892 ;
 
 -- User
 
-CREATE TABLE users(
+CREATE TABLE IF NOT EXISTS users(
     id INT AUTO_INCREMENT NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
@@ -27,12 +27,12 @@ CREATE TABLE users(
 
 
 -- BloodPost
-CREATE TABLE BloodPost(
+CREATE TABLE IF NOT EXISTS bloodpost(
     id INT AUTO_INCREMENT NOT NULL,
     user_id INT,
     title VARCHAR(255),
     description VARCHAR(255),
-    FOREIGN KEY (user_id ) REFERENCES Users(id),
+    FOREIGN KEY (user_id ) REFERENCES users(id),
     PRIMARY KEY (id)
 );
 
