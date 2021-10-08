@@ -16,7 +16,10 @@ const createNewContribution = (req, res) => {
             }
             res.json(error);
             res.status(500);
-        }
+        }                                                        /// Think about stripe, msg return from bank true or flase
+                                                                 /// Amount donated is saved and locked, awaiting bank confirmation
+                                                                 /// if true then current target = current target + amount donated
+                                                                 /// else bank returns error msg either incorrect visa credentials or no money in card
         if (result) {
             const success = {
                 success: true,
