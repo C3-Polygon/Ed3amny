@@ -56,29 +56,28 @@ const GetAllFundraiser = (req, res) => {
     }
     /// get all Fundraisers pending
 const GetAllPendingPost = (req, res) => {
-    const query = `SELECT * FROM campaigns where is_deleted = 0`;
-    connection.query(query, (err, result) => {
-        if (err) {
-            const error = {
-                success: false,
-                message: "There's no Fundraiser is pending"
+        const query = `SELECT * FROM campaigns where is_deleted = 0`;
+        connection.query(query, (err, result) => {
+            if (err) {
+                const error = {
+                    success: false,
+                    message: "There's no Fundraiser is pending"
+                }
+                res.json(error);
+                res.status(500);
             }
-            res.json(error);
-            res.status(500);
-        }
-        if (result) {
-            const success = {
-                success: true,
-                message: "All Fundraiser is pending",
-                Fundraiser: result
+            if (result) {
+                const success = {
+                    success: true,
+                    message: "All Fundraiser is pending",
+                    Fundraiser: result
+                }
+                res.json(success);
+                res.status(200);
             }
-            res.json(success);
-            res.status(200);
-        }
-    })
-}
-
-/// Delete Fundraisers
+        })
+    }
+    /// Delete Fundraisers
 
 const deleteFundraisers = (req, res) => {
     id = req.params.id;
