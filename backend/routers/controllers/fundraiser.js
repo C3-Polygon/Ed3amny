@@ -78,8 +78,24 @@ const updateFundRaiserById = (req, res) => {
   });
 };
 
+const getAllFundRaiserByUser = (req, res) => {
+  const userid = req.params.userid;
+  const query = `SELECT * FROM articles WHERE userid = ${userid} AND is_deleted=0`;
+  connection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        error: error,
+      });
+    }
+    res.status(200).json({  success: true , message: "All FundRaiser By User", result: result });
+  });
+};
+
 module.exports = {
   createNewFundraiser,
   getAllFundraiser,
   updateFundRaiserById,
+  getAllFundRaiserByUser,
 };
