@@ -79,8 +79,8 @@ const updateFundRaiserById = (req, res) => {
 };
 
 const getAllFundRaiserByUser = (req, res) => {
-  const userid = req.params.userid;
-  const query = `SELECT * FROM articles WHERE userid = ${userid} AND is_deleted=0`;
+  let userid = req.params.userid;
+  const query = `SELECT * FROM campaigns WHERE userid = ${userid} AND is_deleted=1`;
   connection.query(query, (error, result) => {
     if (error) {
       res.status(500).json({
@@ -97,5 +97,5 @@ module.exports = {
   createNewFundraiser,
   getAllFundraiser,
   updateFundRaiserById,
-  getAllFundRaiserByUser,
+  getAllFundRaiserByUser
 };
