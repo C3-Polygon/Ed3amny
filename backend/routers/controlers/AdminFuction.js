@@ -1,5 +1,11 @@
+
+const res = require("express/lib/response");
+const { re } = require("nodemon/node_modules/semver");
+const connection = require("../../db/db");
+
 // const res = require("express/lib/response");
 // const connection = require("../../db/db");
+
 
 // //// Get All users
 
@@ -30,8 +36,6 @@
 
 
 // // get all Fundraiser
-
-
 
 // const GetAllFundraiser = (req, res) => {
 //     const query = `SELECT * FROM campaigns`;
@@ -150,5 +154,32 @@ const deleteFundraisers = (req, res) => {
         }
     })
 
+}
+
+
+
+//Accept The Fundraiser 0 - 1
+
+const AcceptFundraisers = (req, res) => {
+    const id = req.params.id;
+    const updateRow = `UPDATE campaigns SET id = 1  WHERE id = ${id}`;
+    connection.query(updateRow, (err, result) => {
+        if (err) {
+            const error = {
+                success: false,
+                message: `Your id ===> ${id} is not Found`
+            }
+            res.json(error)
+            res.status(500);
+        }
+        if (result) {
+            const success = {
+                success: true,
+                message: "success change the post from pending to accept"
+            }
+            res.json(success);
+            res.status(200);
+        }
+    })
 }
 
