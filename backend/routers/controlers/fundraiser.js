@@ -1,26 +1,26 @@
-const connection = require('../../db/db')
-const createNewFundraiser = (req, res) => {
-    const {title , country,type,target,img,description } = req.body;
+// const connection = require('../../db/db')
+// const createNewFundraiser = (req, res) => {
+//     const {title , country,type,target,img,description } = req.body;
   
-    const queryString = `INSERT INTO articles (title , country,type,target,img,description) VALUES (?,?,?,?,?,?)`;
-    const data = [title , country,type,target,img,description];
+//     const queryString = `INSERT INTO articles (title , country,type,target,img,description) VALUES (?,?,?,?,?,?)`;
+//     const data = [title , country,type,target,img,description];
   
-    connection.query(queryString, data, (err, result) => {
-      if (result) {
-        res.status(201).json({
-          success: true,
-          message: ` Success fundraiser created`,
-          article: result,
-        });
-      }
-      if (err) {
-        res.status(500).json({
-          success: false,
-          message: `Server Error`,
-          // err: err,
-        });
-      }
-    });
-};
+//     connection.query(queryString, data, (err, result) => {
+//       if (result) {
+//         res.status(201).json({
+//           success: true,
+//           message: ` Success fundraiser created`,
+//           article: result,
+//         });
+//       }
+//       if (err) {
+//         res.status(500).json({
+//           success: false,
+//           message: `Server Error`,
+//           // err: err,n
+//         });
+//       }
+//     });
+// };
 
-module.exports = createNewFundraiser
+// module.exports = createNewFundraiser
