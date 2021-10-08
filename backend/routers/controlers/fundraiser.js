@@ -2,7 +2,7 @@
 // const createNewFundraiser = (req, res) => {
 //     const {title , country,type,target,img,description } = req.body;
   
-//     const queryString = `INSERT INTO articles (title , country,type,target,img,description) VALUES (?,?,?,?,?,?)`;
+//     const queryString = `INSERT INTO campaigns (title , country,type,target,img,description) VALUES (?,?,?,?,?,?)`;
 //     const data = [title , country,type,target,img,description];
   
 //     connection.query(queryString, data, (err, result) => {
