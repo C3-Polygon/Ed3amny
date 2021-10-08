@@ -1,5 +1,5 @@
 const express = require("express");
-const createNewFundraiser = require("../controllers/fundraiser");
+const {createNewFundraiser} = require("../controllers/fundraiser");
 
 // define router
 const fundraiserRouter = express.Router();
