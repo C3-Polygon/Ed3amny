@@ -93,9 +93,38 @@ const getAllFundRaiserByUser = (req, res) => {
   });
 };
 
+const deleteFundraiserByUser = (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT * FROM campaigns WHERE id = ${id}`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(404).json({
+        success: false,
+        message: `The campaign with id ==> ${id} not found`,
+      });
+    }
+    if (result.length) {
+      const query1 = `DELETE FROM campaigns WHERE id = ${id}`;
+      connection.query(query1, (err, result) => {
+        res.status(200).json({
+          success: true,
+          message: `Success Delete campaign with id => ${id}`,
+          result: result
+        });
+      });
+    }else{
+      res.status(404).json({
+        success: false,
+        message: `The campaign with id ==> ${id} not found`
+      })
+    }
+  });
+};
+
 module.exports = {
   createNewFundraiser,
   getAllFundraiser,
   updateFundRaiserById,
-  getAllFundRaiserByUser
+  getAllFundRaiserByUser,
+  deleteFundraiserByUser
 };
