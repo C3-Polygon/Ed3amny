@@ -59,51 +59,7 @@ const GetAllFundraiser = (req, res) => {
     })
 }
 
-const GetAllPendingPost = (req, res) => {
-    const query = `SELECT * FROM campaigns where is_deleted = 0`;
-    connection.query(query, (err, result) => {
-        if (err) {
-            const error = {
-                success: false,
-                message: "There's no Fundraiser is pending"
-            }
-            res.json(error);
-            res.status(500);
-        }
-        if (result) {
-            const success = {
-                success: true,
-                message: "All Fundraiser is pending",
-                Fundraiser: result
-            }
-            res.json(success);
-            res.status(200);
-        }
-    })
-}
 
-const GetAllFundraiser = (req, res) => {
-    const query = `SELECT * FROM campaigns`;
-    connection.query = (query, (err, result) => {
-        if (err) {
-            const error = {
-                success: false,
-                message: err
-            }
-            res.json(error);
-            res.status(500);
-        }
-        if (result) {
-            const success = {
-                success: true,
-                message: "All Fundraiser",
-                Fundraisers: result
-            }
-            res.json(success);
-            res.status(200);
-        }
-    })
-}
 
 /// get all Fundraisers pending
 const GetAllPendingPost = (req, res) => {
@@ -204,3 +160,4 @@ const rejectedTheFunders = (req, res) => {
         }
     })
 }
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders }
