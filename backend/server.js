@@ -13,6 +13,7 @@ const fundraiserRouter = require("./routers/routes/fundraiser")
 const loginRouter = require("./routers/routes/auth/login")
 const adminRouter = require("./routers/routes/AdminFuction")
 const bloodpostRouter = require('./routers/routes/bloodPost')
+const searchRouter = require('./routers/routes/Services/search')
 
 //app Routers
 app.use("/signup", signupRouter);
@@ -20,6 +21,7 @@ app.use("/fundraiser", fundraiserRouter)
 app.use("/login", loginRouter)
 app.use('/admin', adminRouter);
 app.use('/bloodpost', bloodpostRouter);
+app.use('/search', searchRouter);
 
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
