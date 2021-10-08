@@ -6,7 +6,7 @@ const connection = require("../../db/db");
 
 const GetAllUser = (req, res) => {
     const query = `SELECT * FROM users`;
-    connection.query = (query, (err, result) => {
+    connection.query(query, (err, result) => {
         if (err) {
             const error = {
                 success: false,
@@ -34,7 +34,8 @@ const GetAllUser = (req, res) => {
 
 const GetAllFundraiser = (req, res) => {
     const query = `SELECT * FROM campaigns`;
-    connection.query = (query, (err, result) => {
+    connection.query(query, (err, result) => {
+
         if (err) {
             const error = {
                 success: false,
@@ -85,8 +86,8 @@ const GetAllPendingPost = (req, res) => {
 
 const deleteFundraisers = (req, res) => {
     id = req.params.id;
-    const deleteid = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
-    connection.query(deleteid, (err, res) => {
+    const select = `SELECT * FROM campaigns where id = ${id}`;
+    connection.query(select, (err, result) => {
         if (err) {
             const error = {
                 success: false,
@@ -95,13 +96,24 @@ const deleteFundraisers = (req, res) => {
             res.json(error);
             res.status(500);
         }
-        if (res) {
-            const success = {
-                success: true,
-                message: "success Delete Your Fundraiser"
-            }
-            res.json(success);
-            res.status(200);
+        if (result.length) {
+            const deleteid = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
+            connection.query(deleteid, (err, response) => {
+                if (err) {
+                    res.status(500);
+                    res.json(err);
+                }
+                if (response) {
+                    const success = {
+                        success: true,
+                        message: "success updated post to is deleted"
+                    }
+                    res.json(success);
+                    res.status(200);
+                }
+            })
+        } else {
+            res.json(`Your ${id} is not Found`);
         }
     })
 
@@ -112,8 +124,8 @@ const deleteFundraisers = (req, res) => {
 // Accept The Fundraiser 0 - 1
 const AcceptFundraisers = (req, res) => {
     const id = req.params.id;
-    const updateRow = `UPDATE campaigns SET is_deleted = 1  WHERE id = ${id}`;
-    connection.query(updateRow, (err, result) => {
+    const select = `SELECT * FROM campaigns where id = ${id}`;
+    connection.query(select, (err, result) => {
         if (err) {
             const error = {
                 success: false,
@@ -122,13 +134,27 @@ const AcceptFundraisers = (req, res) => {
             res.json(error)
             res.status(500);
         }
-        if (result) {
-            const success = {
-                success: true,
-                message: "success change the post from pending to accept"
-            }
-            res.json(success);
-            res.status(200);
+        if (result.length) {
+            const updateRow = `UPDATE campaigns SET is_deleted = 1  WHERE id = ${id}`;
+            connection.query(updateRow, (err, response) => {
+
+                if (err) {
+                    res.json({
+                        success: false,
+                        message: "Server Error"
+                    })
+                    res.status(500);
+                }
+                if (response) {
+                    res.json({
+                        success: true,
+                        message: "success change the post from pending to accept"
+                    })
+                    res.status(200);
+                }
+            })
+        } else {
+            res.json(`Your ${id} is not Found`);
         }
     })
 }
@@ -136,8 +162,9 @@ const AcceptFundraisers = (req, res) => {
 ///reject the fundraiser 
 const rejectedTheFunders = (req, res) => {
     const id = req.params.id;
-    const reject = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
-    connection.query(reject, (err, response) => {
+    const select = `SELECT * FROM campaigns where id = ${id}`;
+    connection.query(select, (err, response) => {
+        console.log("GOGOGOGOGOGOOG", response);
         if (err) {
             const error = {
                 success: false,
@@ -146,14 +173,29 @@ const rejectedTheFunders = (req, res) => {
             res.json(error);
             res.status(500);
         }
-        if (response) {
-            const success = {
-                success: true,
-                message: "success updated fundraiser to rejected"
-            }
-            res.json(success);
-            res.status(200);
+        if (response.length) {
+            const reject = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
+            connection.query(reject, (err, response) => {
+
+                if (err) {
+                    res.json({
+                        success: false,
+                        message: "Server Error"
+                    })
+                    res.status(500);
+                }
+                if (response) {
+                    res.json({
+                        success: true,
+                        message: "success updated fundraiser to rejected"
+
+                    })
+                    res.status(200);
+                }
+            })
+        } else {
+            res.json(`your ${id} is not found`);
         }
     })
 }
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders }
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders };
