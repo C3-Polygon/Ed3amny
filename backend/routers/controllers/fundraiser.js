@@ -26,11 +26,12 @@ const getAllFundraiser = (req, res) => {
   connection.query(query, (error, result) => {
     if (error) {
       res.status(500).json({
+        success: false,
         message: `Server Error`,
         error: error,
       });
     }
-    res.status(200).json({ message: `All Fundraiser`, result: result });
+    res.status(200).json({ success: true , message: `All Fundraiser`, result: result });
   });
 };
 

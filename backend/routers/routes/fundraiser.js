@@ -1,5 +1,5 @@
 const express = require("express");
-const {createNewFundraiser} = require("../controllers/fundraiser");
+const {createNewFundraiser , getAllFundraiser } = require("../controllers/fundraiser");
 
 // define router
 const fundraiserRouter = express.Router();
@@ -10,5 +10,10 @@ const fundraiserRouter = express.Router();
 fundraiserRouter.post("/", createNewFundraiser);
 //  [post]  [http://localhost:5000/fundraiser]
 /* -----------------------------------------  */ 
+
+/* -----------------------------------------  */ 
+fundraiserRouter.get("/", getAllFundraiser);
+//  [get]  [http://localhost:5000/fundraiser]
+/* -----------------------------------------  */
 
 module.exports = fundraiserRouter;
