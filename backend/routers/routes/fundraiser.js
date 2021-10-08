@@ -1,6 +1,6 @@
 const express = require("express");
 
-const {createNewFundraiser , getAllFundraiser, updateFundRaiserById , getAllFundRaiserByUser } = require("../controllers/fundraiser");
+const {createNewFundraiser , getAllFundraiser, updateFundRaiserById , getAllFundRaiserByUser,deleteFundraiserByUser } = require("../controllers/fundraiser");
 
 
 // define router
@@ -27,6 +27,12 @@ fundraiserRouter.put("/", updateFundRaiserById);
 /* -----------------------------------------  */ 
 fundraiserRouter.get("/:userid", getAllFundRaiserByUser);
 //  [get]  [http://localhost:5000/fundraiser/:userid]
+/* -----------------------------------------  */
+
+
+/* -----------------------------------------  */ 
+fundraiserRouter.delete("/:id", deleteFundraiserByUser);
+//  [delete]  [http://localhost:5000/fundraiser/:id]
 /* -----------------------------------------  */
 
 module.exports = fundraiserRouter;
