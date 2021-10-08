@@ -1,12 +1,12 @@
 const express = require("express");
-const  register  = require("../../controllers/auth/signup");
+const register = require("../../controllers/auth/signup");
 
 // define router
-const authRouter = express.Router();
+const signupRouter = express.Router();
 
 // 			routes
-//post  http://localhost:5000/auth/signup
+//post  http://localhost:5000/signup
 
-authRouter.post("/signup", register);
+signupRouter.post("/", register);
 
-module.exports = authRouter;
+module.exports = signupRouter;

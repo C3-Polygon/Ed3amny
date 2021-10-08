@@ -9,13 +9,14 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 // import Routers
-const authRouter = require("./routers/routes/auth/signup")
+const signupRouter = require("./routers/routes/auth/signup")
 const fundraiserRouter = require("./routers/routes/fundraiser")
-
+const loginRouter =require("./routers/routes/auth/login")
 
 //app Routers
-app.use("/auth", authRouter);
+app.use("/signup", signupRouter);
 app.use("/fundraiser",fundraiserRouter)
+app.use("/login",loginRouter)
 
 
 

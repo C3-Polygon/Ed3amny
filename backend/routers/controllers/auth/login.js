@@ -1,4 +1,4 @@
-const connection = require("../../../db");
+const connection = require("../../../db/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -7,8 +7,8 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   const query = `SELECT * FROM users WHERE email = ?`;
   const data = [email, password];
-  if (result) {
-    connection.query(query, data, async (error, result) => {
+  connection.query(query, data, async (error, result) => {
+    if (result.length) {
       const valid = await bcrypt.compare(password, result[0].password);
       if (valid) {
         const payload = {
@@ -39,15 +39,13 @@ const login = async (req, res) => {
           message: `Server Error`,
         });
       }
-    });
-  } else {
-    res.status(404).json({
-      success: false,
-      message: `The email doesn't exist`,
-    });
-  }
+    } else {
+      res.status(404).json({
+        success: false,
+        message: `The email doesn't exist`,
+      });
+    }
+  });
 };
 
-module.exports = {
-  login,
-};
+module.exports = login;
