@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
     age INT(3) NOT NULL,
     img VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    country VARCHAR(255) UNIQUE NOT NULL, -- add this to the live server
+    country VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
