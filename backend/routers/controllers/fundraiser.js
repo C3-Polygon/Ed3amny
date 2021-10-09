@@ -1,5 +1,6 @@
 const connection = require("../../db/db");
 
+//create new fundraiser
 const createNewFundraiser = (req, res) => {
   const { title, country, type, target, img, description } = req.body;
   const queryString = `INSERT INTO  campaigns (title , country, type, target, img, description) VALUES (?,?,?,?,?,?)`;
@@ -22,6 +23,7 @@ const createNewFundraiser = (req, res) => {
   });
 };
 
+// Get all fundraiser
 const getAllFundraiser = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE is_deleted=1`;
   connection.query(query, (error, result) => {
@@ -38,6 +40,7 @@ const getAllFundraiser = (req, res) => {
   });
 };
 
+//update fundraiser by its id
 const updateFundRaiserById = (req, res) => {
   const id = req.params.id; // fundraiser id
   const { title, description, img, country } = req.body;
@@ -78,6 +81,7 @@ const updateFundRaiserById = (req, res) => {
   });
 };
 
+//get all fundraiser for specific user ( fundraisers he created )
 const getAllFundRaiserByUser = (req, res) => {
   let userid = req.params.userid;
   const query = `SELECT * FROM campaigns WHERE userid = ${userid} AND is_deleted=1`;
@@ -93,6 +97,7 @@ const getAllFundRaiserByUser = (req, res) => {
   });
 };
 
+// delete fundraiser for specific user ( hard delete )
 const deleteFundraiserByUser = (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM campaigns WHERE id = ${id}`;
@@ -121,10 +126,26 @@ const deleteFundraiserByUser = (req, res) => {
   });
 };
 
+const getAllFundraiserByType = (req,res) => {                   //need testing
+  let type = req.params.type
+  const query = `SELECT * FROM campaigns WHERE type = ${type}`;
+  connection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        error: error,
+      });
+    }
+    res.status(200).json({  success: true , message: `All the fund raisers of type: ${type}`, result: result });
+  });
+}
+
 module.exports = {
   createNewFundraiser,
   getAllFundraiser,
   updateFundRaiserById,
   getAllFundRaiserByUser,
-  deleteFundraiserByUser
+  deleteFundraiserByUser,
+  getAllFundraiserByType
 };
