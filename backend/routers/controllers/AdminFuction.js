@@ -228,6 +228,29 @@ const createNewStory = (req, res) => {
 
 }
 
+//Get All Stroy 
+
+const getAllStroy = (req, res) => {
+    const allStory = `SELECT * FROM stroy where is_deleted = 1`;
+    connection.query(allStory, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "SERVER ERROR"
+            })
+            res.sstatus(500);
+        }
+        if (response) {
+            res.json({
+                success: true,
+                message: "All Data",
+                allData: response
+            })
+            res.status(200);
+        }
+    })
+}
+
 /// update the stroy 
 
 const updateStroy = (req, res) => {
@@ -277,7 +300,7 @@ const deleteStroy = (req, res) => {
             res.status(500);
         }
         if (response.length) {
-            const softDelete = `UPDATE stroy SET id = 0 where id = ${id}`;
+            const softDelete = `UPDATE stroy SET is_deleted = 0 where id = ${id}`;
             connection.query(softDelete, (err, response) => {
                 res.json({
                     success: true,
@@ -295,4 +318,4 @@ const deleteStroy = (req, res) => {
     })
 }
 
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy };
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy };

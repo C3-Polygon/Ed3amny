@@ -1,5 +1,5 @@
 const express = require("express");
-const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy } = require("../controllers/AdminFuction");
+const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy } = require("../controllers/AdminFuction");
 
 ///Define router
 const adminRouter = express.Router();
@@ -26,10 +26,16 @@ adminRouter.put('/accept/:id', AcceptFundraisers);
 ///  [put]  [http://localhost:5000/admin/rejected/:id]
 adminRouter.put('/rejected/:id', rejectedTheFunders);
 
-adminRouter.post('/', createNewStory);
+///  [post]  [http://localhost:5000/admin/story]
+adminRouter.post('/story', createNewStory);
 
-adminRouter.put('/stroy/:id', updateStroy)
+///  [get]  [http://localhost:5000/admin/story]
+adminRouter.get('/story', getAllStroy);
 
-adminRouter.delete('/stroy/delete/:id', deleteStroy);
+///  [put]  [http://localhost:5000/admin/story/:id]
+adminRouter.put('/story/:id', updateStroy)
+
+///  [delete]  [http://localhost:5000/admin/story/delete/:id]
+adminRouter.delete('/story/delete/:id', deleteStroy);
 
 module.exports = adminRouter;
