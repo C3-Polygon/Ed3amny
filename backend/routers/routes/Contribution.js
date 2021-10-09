@@ -6,6 +6,9 @@ const { createNewContribution,getOwnUserContributionsById } = require("../contro
 // define router
 const ContributionRouter = express.Router();
 
+// middlewares
+const authentication = require("../middlewares/authentication")
+
 // //Routes
 ContributionRouter.post('/', createNewContribution);
 ContributionRouter.get('/:id', getOwnUserContributionsById)
