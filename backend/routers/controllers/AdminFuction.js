@@ -261,6 +261,38 @@ const updateStroy = (req, res) => {
             res.status(500);
         }
     })
-
 }
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy };
+
+/// Delete a stroy
+
+const deleteStroy = (req, res) => {
+    const id = req.params.id;
+    const deleteRow = `SELECT * From stroy where id = ${id}`;
+    connection.query(deleteRow, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: `Server Error`
+            })
+            res.status(500);
+        }
+        if (response.length) {
+            const softDelete = `UPDATE stroy SET id = 0 where id = ${id}`;
+            connection.query(softDelete, (err, response) => {
+                res.json({
+                    success: true,
+                    message: "success convert this stroy to archives ",
+                })
+                res.status(200);
+            })
+        } else {
+            res.json({
+                success: false,
+                message: `id ${id} is not Found`
+            })
+            res.status(500);
+        }
+    })
+}
+
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy };
