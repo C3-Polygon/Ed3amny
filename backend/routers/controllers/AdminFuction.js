@@ -227,4 +227,40 @@ const createNewStory = (req, res) => {
     })
 
 }
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory };
+
+/// update the stroy 
+
+const updateStroy = (req, res) => {
+    const id = req.params.id;
+    const { title, descriptionn, img } = req.body;
+    const selectQuery = `SELECT * from stroy WHERE id = ${id}`;
+    connection.query(selectQuery, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "Server Error"
+            });
+        }
+        if (response.length) {
+            const update = `UPDATE stroy SET title="${title}", descriptionn="${descriptionn}" , img="${img}" WHERE id = ${id}`;
+            connection.query(update, (err, response) => {
+                const success = {
+                    success: true,
+                    message: "One row updated ",
+                    result: response
+                }
+                res.json(success);
+                res.status(200);
+            })
+        } else {
+            const error = {
+                success: false,
+                message: `the id ${id} is not Found`,
+            }
+            res.json(error);
+            res.status(500);
+        }
+    })
+
+}
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy };
