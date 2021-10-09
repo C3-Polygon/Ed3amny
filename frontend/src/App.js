@@ -26,7 +26,7 @@ function App() {
   <Card.Header>
     {!login &&
       <FacebookLogin
-        appId="921201001964201"
+        appId="1259903211090202"
         autoLoad={true}
         fields="name,email,picture"
         scope="public_profile,user_friends"
