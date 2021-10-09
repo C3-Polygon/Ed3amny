@@ -1,4 +1,5 @@
 ///const
+const { re } = require("nodemon/node_modules/semver");
 const connection = require("../../db/db");
 
 
@@ -198,4 +199,123 @@ const rejectedTheFunders = (req, res) => {
         }
     })
 }
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders };
+
+//Create New story
+
+const createNewStory = (req, res) => {
+    const { title, descriptionn, img } = req.body;
+    const addNewRow = `INSERT INTO stroy (title , descriptionn , img) VALUES (?,?,?)`;
+    const data = [title, descriptionn, img];
+    connection.query(addNewRow, data, (err, response) => {
+        if (err) {
+            const error = {
+                success: false,
+                message: "something error",
+                erorr: err
+            }
+            res.json(error);
+            res.status(500);
+        }
+        if (response) {
+            const success = {
+                success: true,
+                message: "One row effect "
+            }
+            res.json(success);
+            res.status(200);
+        }
+    })
+
+}
+
+//Get All Stroy 
+
+const getAllStroy = (req, res) => {
+    const allStory = `SELECT * FROM stroy where is_deleted = 1`;
+    connection.query(allStory, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "SERVER ERROR"
+            })
+            res.sstatus(500);
+        }
+        if (response) {
+            res.json({
+                success: true,
+                message: "All Data",
+                allData: response
+            })
+            res.status(200);
+        }
+    })
+}
+
+/// update the stroy 
+
+const updateStroy = (req, res) => {
+    const id = req.params.id;
+    const { title, descriptionn, img } = req.body;
+    const selectQuery = `SELECT * from stroy WHERE id = ${id}`;
+    connection.query(selectQuery, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "Server Error"
+            });
+        }
+        if (response.length) {
+            const update = `UPDATE stroy SET title="${title}", descriptionn="${descriptionn}" , img="${img}" WHERE id = ${id}`;
+            connection.query(update, (err, response) => {
+                const success = {
+                    success: true,
+                    message: "One row updated ",
+                    result: response
+                }
+                res.json(success);
+                res.status(200);
+            })
+        } else {
+            const error = {
+                success: false,
+                message: `the id ${id} is not Found`,
+            }
+            res.json(error);
+            res.status(500);
+        }
+    })
+}
+
+/// Delete a stroy
+
+const deleteStroy = (req, res) => {
+    const id = req.params.id;
+    const deleteRow = `SELECT * From stroy where id = ${id}`;
+    connection.query(deleteRow, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: `Server Error`
+            })
+            res.status(500);
+        }
+        if (response.length) {
+            const softDelete = `UPDATE stroy SET is_deleted = 0 where id = ${id}`;
+            connection.query(softDelete, (err, response) => {
+                res.json({
+                    success: true,
+                    message: "success convert this stroy to archives ",
+                })
+                res.status(200);
+            })
+        } else {
+            res.json({
+                success: false,
+                message: `id ${id} is not Found`
+            })
+            res.status(500);
+        }
+    })
+}
+
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy };
