@@ -141,6 +141,7 @@ const getAllFundraiserByType = (req,res) => {                   //need testing
   });
 }
 
+
 module.exports = {
   createNewFundraiser,
   getAllFundraiser,
