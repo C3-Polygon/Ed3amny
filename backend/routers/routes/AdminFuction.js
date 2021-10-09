@@ -1,5 +1,5 @@
 const express = require("express");
-const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders } = require("../controllers/AdminFuction");
+const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory } = require("../controllers/AdminFuction");
 
 ///Define router
 const adminRouter = express.Router();
@@ -26,5 +26,7 @@ adminRouter.put('/accept/:id', AcceptFundraisers);
 ///  [put]  [http://localhost:5000/admin/rejected/:id]
 adminRouter.put('/rejected/:id', rejectedTheFunders);
 
+adminRouter.post('/', createNewStory);
 
-module.exports = adminRouter; 
+
+module.exports = adminRouter;

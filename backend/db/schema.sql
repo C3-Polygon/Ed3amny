@@ -71,4 +71,3 @@ CREATE TABLE IF NOT EXISTS HospitalTable(
     FOREIGN KEY (user_id ) REFERENCES users(id),
     PRIMARY KEY (id)
 );
-

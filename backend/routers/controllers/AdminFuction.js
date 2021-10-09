@@ -1,4 +1,5 @@
 ///const
+const { re } = require("nodemon/node_modules/semver");
 const connection = require("../../db/db");
 
 
@@ -198,4 +199,32 @@ const rejectedTheFunders = (req, res) => {
         }
     })
 }
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders };
+
+//Create New story
+
+const createNewStory = (req, res) => {
+    const { title, descriptionn, img } = req.body;
+    const addNewRow = `INSERT INTO stroy (title , descriptionn , img) VALUES (?,?,?)`;
+    const data = [title, descriptionn, img];
+    connection.query(addNewRow, data, (err, response) => {
+        if (err) {
+            const error = {
+                success: false,
+                message: "something error",
+                erorr: err
+            }
+            res.json(error);
+            res.status(500);
+        }
+        if (response) {
+            const success = {
+                success: true,
+                message: "One row effect "
+            }
+            res.json(success);
+            res.status(200);
+        }
+    })
+
+}
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory };
