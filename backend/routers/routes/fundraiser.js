@@ -6,6 +6,10 @@ const {createNewFundraiser , getAllFundraiser, updateFundRaiserById , getAllFund
 // define router
 const fundraiserRouter = express.Router();
 
+
+// middlewares
+const authentication = require("../middlewares/authentication")
+
 // //Routes
 
 /* -----------------------------------------  */

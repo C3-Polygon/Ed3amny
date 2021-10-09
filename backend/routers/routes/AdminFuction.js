@@ -1,9 +1,13 @@
 const express = require("express");
 const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders } = require("../controllers/AdminFuction");
 
-///const 
+///Define router
 const adminRouter = express.Router();
 
+// middlewares
+const authentication = require("../middlewares/authentication")
+
+//Routes
 ///  [get]  [http://localhost:5000/admin]
 adminRouter.get('/', GetAllUser);
 
