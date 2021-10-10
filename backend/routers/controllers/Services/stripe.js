@@ -22,8 +22,7 @@ const stripePayment = async (req,res)=>{
 		res.json({
 			message: "Payment failed",
 			success: false
-		})
-        
+		})        
     }
 }
 module.exports = {stripePayment}
