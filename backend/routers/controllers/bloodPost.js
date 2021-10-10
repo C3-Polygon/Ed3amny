@@ -1,3 +1,5 @@
+const e = require("express");
+const { re } = require("nodemon/node_modules/semver");
 const connection = require("../../db/db");
 
 const createNewBloodPost = (req, res) => {
@@ -46,4 +48,48 @@ const getallBloodPost = (req, res) => {
         }
     })
 }
-module.exports = { createNewBloodPost, getallBloodPost }
+
+/// delete the bloodpost 
+
+const deleteTheBloodPost = (req, res) => {
+    const id = req.params.id;
+    const selectPost = `SELECT * FROM bloodpost WHERE id =${id}`;
+    connection.query(selectPost, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "something error",
+                error: err
+            })
+            res.status(500);
+        }
+        if (response.length) {
+            const deletePost = `UPDATE bloodpost SET is_deleted = 2 where id = ${id}`;
+            connection.query(deletePost, (err, response) => {
+                if (response) {
+                    res.json({
+                        success: true,
+                        message: "success updated row"
+                    });
+                    res.status(200);
+                }
+                if (err) {
+                    res.json({
+                        success: false,
+                        message: "ERRROR",
+                        error: err
+                    })
+                    res.status(500);
+                }
+            })
+
+        } else {
+            res.json({
+                success: false,
+                message: `The id you was enterd ${id} is not Found`,
+            })
+            res.status(500);
+        }
+    })
+}
+module.exports = { createNewBloodPost, getallBloodPost, deleteTheBloodPost };
