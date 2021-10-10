@@ -6,6 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
+const bodyParser = require("body-parser")
+
+app.use(bodyParser.urlencoded({ extended: true }))
+
 
 // import Routers
 const signupRouter = require("./routers/routes/auth/signup")
@@ -15,6 +19,8 @@ const adminRouter = require("./routers/routes/AdminFuction")
 const bloodpostRouter = require('./routers/routes/bloodPost')
 const searchRouter = require('./routers/routes/Services/search')
 const contributionRouter = require('./routers/routes/Contribution')
+const stripeRouter = require('./routers/routes/Services/stripe')
+
 
 //app Routers
 app.use("/signup", signupRouter);
@@ -24,6 +30,7 @@ app.use('/admin', adminRouter);
 app.use('/bloodpost', bloodpostRouter);
 app.use('/search', searchRouter);
 app.use("/Contribution", contributionRouter);
+app.use('/payment',stripeRouter)
 
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
