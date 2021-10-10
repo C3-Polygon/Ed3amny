@@ -14,3 +14,5 @@ const getAllHospitals = (req, res) => {
       .json({ success: true, message: `All Hospitals`, result: result });
   });
 };
+
+module.exports = {getAllHospitals};
