@@ -71,7 +71,8 @@ function App() {
         <Container>
           <Segment>
             <FacebookShareButton
-              url="https://www.facebook.com/AhmadMuraish"
+              // url="https://www.facebook.com/AhmadMuraish"
+              url='https://www.linkedin.com/in/maamoum-alkiswani-ba24031b2/'
               quote={"Easy Peasy Lemon Squeezy"}
               hashtag="#facebookshare"
             >
