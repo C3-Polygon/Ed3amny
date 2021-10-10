@@ -96,7 +96,8 @@ const deleteTheBloodPost = (req, res) => {
 
 const updateBloodPost = (req, res) => {
     const { title , description   } = req.body;
-    const queryString = `INSERT INTO  bloodpost ( title , description ) VALUES (?,?)`;
+    const id = req.params.id;
+    const queryString = `UPDATE bloodpost SET title = ${title} , description = ${description} where id = ${id}`;
     const data = [ title , description ];
     connection.query(queryString, data, (err, result) => {
         if (result) {
