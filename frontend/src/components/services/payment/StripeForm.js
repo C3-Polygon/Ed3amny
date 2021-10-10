@@ -26,6 +26,34 @@ export const StripeForm = () => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
+    });
+    
+    if (!error) {
+      try {
+        const { id } = paymentMethod;
+        const response = await axios.post("http://localhost:5000/payment", {
+          id,
+          amount: 5000,
+        });
+
+        if (response.data.success) {
+          console.log("response.data.success",response.data)
+          console.log("Successful payment");
+          setSuccess(true);
+        }
+      } catch (error) {
+        console.log("Error", error);
+      }
+    } else {
+      console.log("outer error", error);
+    }
+  };
 
   
 
