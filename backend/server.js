@@ -20,7 +20,7 @@ const bloodpostRouter = require('./routers/routes/bloodPost')
 const searchRouter = require('./routers/routes/Services/search')
 const contributionRouter = require('./routers/routes/Contribution')
 const stripeRouter = require('./routers/routes/Services/stripe')
-
+const helpSpecificRouter = require('./routers/routes/helpSpecific')
 
 //app Routers
 app.use("/signup", signupRouter);
@@ -31,6 +31,7 @@ app.use('/bloodpost', bloodpostRouter);
 app.use('/search', searchRouter);
 app.use("/Contribution", contributionRouter);
 app.use('/payment',stripeRouter)
+app.use('helpSpecific',helpSpecificRouter)
 
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
