@@ -40,7 +40,7 @@ function App() {
   return (
 
     <>
-<div class="container">
+<div className="container">
 <Card style={{ width: '600px' }}>
   <Card.Header>
     {!login &&
@@ -75,7 +75,7 @@ function App() {
               quote={"Easy Peasy Lemon Squeezy"}
               hashtag="#facebookshare"
             >
-              <FacebookIcon LogoFillColor="white" round={true}></FacebookIcon>
+              <FacebookIcon logofillcolor="white" round={true}></FacebookIcon>
             </FacebookShareButton>
           </Segment>
         </Container>
