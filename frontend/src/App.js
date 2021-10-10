@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import { Card, Image } from "react-bootstrap";
+import Stripe from './components/services/payment/Stripe';
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -80,6 +81,7 @@ function App() {
           </Segment>
         </Container>
       </>
+      <Stripe/>
     </>
   );
 }
