@@ -1,5 +1,5 @@
 const express = require("express");
-const { createNewBloodPost, getallBloodPost, deleteTheBloodPost } = require("../controllers/bloodPost");
+const { createNewBloodPost, getAllBloodPost, deleteTheBloodPost , updateBloodPost } = require("../controllers/bloodPost");
 
 //Define Router
 const bloodpostRouter = express.Router();
@@ -9,8 +9,9 @@ const authentication = require("../middlewares/authentication")
 
 //Routes
 bloodpostRouter.post('/', createNewBloodPost);
-bloodpostRouter.get('/', getallBloodPost);
+bloodpostRouter.get('/', getAllBloodPost);
 bloodpostRouter.put('/:id', deleteTheBloodPost);
+bloodpostRouter.put("/update/:id" , updateBloodPost)
 //update
 //delete
 
