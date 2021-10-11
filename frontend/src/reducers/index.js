@@ -1,4 +1,4 @@
-import { ProcessReducer } from "./chat/reducers";
+import { ProcessReducer } from "./chat/chatReducer";
 import { createStore,combineReducers } from "redux";
 
 const reducers = combineReducers({ ProcessReducer: ProcessReducer});

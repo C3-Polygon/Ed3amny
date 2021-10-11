@@ -1,6 +1,6 @@
 // 7ushki.com
-import { to_Decrypt, to_Encrypt } from "../../aes";
-import { process } from "../../reducers/chat/reducers";
+import { to_Decrypt, to_Encrypt } from "../../../aes";
+import { process } from "../../../reducers/chat/chatReducer";
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -27,7 +27,7 @@ function Chat({ username, roomname, socket }) {
     });
   }, [socket]);
   const sendData = () => {
-    if (text !== '') {
+    if (text !== "") {
       //encrypt the message here
       const ans = to_Encrypt(text);
       socket.emit("chat", ans);
