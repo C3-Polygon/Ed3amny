@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS bloodpost(
 );
 
 
-
+ 
 CREATE TABLE IF NOT EXISTS HospitalTable(
     id INT AUTO_INCREMENT NOT NULL,
     namee VARCHAR(255) NOT NULL,  
