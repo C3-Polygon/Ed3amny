@@ -1,0 +1,33 @@
+.search-bar {
+    position: relative;
+}
+
+.search-bar .search {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    outline: none;
+}
+
+.btn-login {
+    margin-right: 15px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.small-media {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .small-media {
+        display: block;
+    }
+    .search-bar,
+    .btn-login {
+        display: none;
+    }
+}

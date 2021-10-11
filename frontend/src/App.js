@@ -7,7 +7,7 @@ import Process from "./components/services/Chat/process";
 import Home from "./components/services/Chat/home";
 import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import Navbar from "./components/Navbar/Navbar";
 
 const socket = io.connect('http://localhost:5000')
 function Appmain(props){
@@ -30,6 +30,7 @@ function Appmain(props){
 function App() {
   return (
     <>
+    <Navbar/>
     <Router>
       <div className="App">
         <Switch>
