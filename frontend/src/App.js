@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import { Card, Image } from "react-bootstrap";
+import Navbar from "./Navbar/Navbar";
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -40,7 +41,8 @@ function App() {
   return (
 
     <>
-<div className="container">
+    <Navbar/>
+{/* <div className="container">
 <Card style={{ width: '600px' }}>
   <Card.Header>
     {!login &&
@@ -65,7 +67,7 @@ function App() {
     </Card.Body>
   }
 </Card>
-</div>
+</div> */}
 
       <>
         <Container>
