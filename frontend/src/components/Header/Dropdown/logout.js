@@ -1,0 +1,1 @@
+//localstorage.clear bla bla
