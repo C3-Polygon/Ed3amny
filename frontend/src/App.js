@@ -9,38 +9,41 @@ import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 
-const socket = io.connect('http://localhost:5000')
-function Appmain(props){
+const socket = io.connect("http://localhost:5000");
+function Appmain(props) {
   return (
     <>
       <div>
-        <Chat 
-        username={props.match.params.username} 
-        roomname={props.match.params.roomname} 
-        socket={socket}/>
+        <Chat
+          username={props.match.params.username}
+          roomname={props.match.params.roomname}
+          socket={socket}
+        />
       </div>
       <div>
-        <Process/>
+        <Process />
       </div>
     </>
-  )
-  
+  );
 }
 
 function App() {
   return (
     <>
-    <Navbar/>
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/" exact><Home socket={socket} /></Route>
-          <Route path="/chat/:roomname/:username" component={Appmain} />
-          <Login/>
-          <Stripe />
-        </Switch>
-      </div>
-    </Router>
+        <Navbar />
+        <div className="App">
+          <Switch>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/">
+              <Home socket={socket} />
+            </Route>
+            <Route path="/chat/:roomname/:username" component={Appmain} />
+            <Stripe />
+          </Switch>
+        </div>
+      
     </>
   );
 }
