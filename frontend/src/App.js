@@ -9,7 +9,7 @@ import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/signup/signup";
-
+import CreatefundRaiser from "./components/Header/Dropdown/Fundraiser/fundRaiser"
 
 const socket = io.connect("http://localhost:5000");
 function Appmain(props) {
@@ -45,6 +45,7 @@ function App() {
               <Home socket={socket} />
             </Route>
             <Route path="/chat/:roomname/:username" component={Appmain} />
+            <Route path="/fundraiser"  component={CreatefundRaiser} />
             <Stripe />
           </Switch>
         </div>
