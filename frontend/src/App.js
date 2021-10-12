@@ -8,6 +8,8 @@ import Home from "./components/services/Chat/home";
 import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+import Signup from "./components/Auth/signup/signup";
+
 
 const socket = io.connect("http://localhost:5000");
 function Appmain(props) {
@@ -35,6 +37,9 @@ function App() {
           <Switch>
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
             </Route>
             <Route exact path="/">
               <Home socket={socket} />

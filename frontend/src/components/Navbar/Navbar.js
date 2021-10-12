@@ -8,6 +8,7 @@ import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
 import { useHistory } from "react-router-dom";
 import { setUserId } from "../../reducers/login/userId";
 // import token from "../../reducers/login/token";
+// import Signup from '../Auth/signup/signup';
 
 const Navbar = () => {
   const history = useHistory();
@@ -29,6 +30,10 @@ const Navbar = () => {
 
   const a = localStorage.getItem("token");
 
+  const pushsign =()=>{
+    history.push("/signup");
+  }
+
   return (
     <>
          <div className="container">
@@ -43,6 +48,7 @@ const Navbar = () => {
                 <BsGrid3X3GapFill className="small-media" />
                 <button onClick={loginsender}>lelelele</button>
                 {/* <Link to="/login">Login</Link> */}
+                <button onClick={pushsign}>sgin up</button>
               </div>
             </div>
           </div>
