@@ -17,6 +17,13 @@ const stripePayment = async (req,res)=>{
             amount:amount,
             //date:
 		})
+        /**
+         if (currentTarget == target){
+             we invoke postInformationSender function
+         }
+         function postInformationSender(postId,target){return postId,target}
+         
+         */
     } catch (error) {
         console.log("Error", error)
 		res.json({
@@ -26,3 +33,4 @@ const stripePayment = async (req,res)=>{
     }
 }
 module.exports = {stripePayment}
+// module.exports = {postInformationSender}
