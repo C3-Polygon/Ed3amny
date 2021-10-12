@@ -21,8 +21,10 @@ const searchRouter = require('./routers/routes/Services/search')
 const contributionRouter = require('./routers/routes/Contribution')
 const stripeRouter = require('./routers/routes/Services/stripe')
 const helpSpecificRouter = require('./routers/routes/helpSpecific')
-const {join_User,get_Current_User,user_Disconnect,} = require('./routers/controllers/Services/chat')
+const {join_User,get_Current_User,user_Disconnect,} = require('./routers/controllers/Services/chat');
+const { isTypedArray } = require("util/types");
 
+// const {postInformationSender} = requrire bla bla //
 //app Routers
 app.use("/signup", signupRouter);
 app.use("/fundraiser", fundraiserRouter)
@@ -90,4 +92,21 @@ io.on("connection", (socket) => {
         });
       }
     });
-  });
+
+// notification 
+    // socket.on("reachtarget",() => {
+    //   const notification = postInformationSender(socket.userid? or postid)
+
+    //   if(notification){
+    //     io.to(notifcation_area or to user?).emit("notification", {
+    //       postId: p_post.id,
+    //       text:`${p_post.id} has reached it's target`
+    //     })
+    //   }
+    // })
+
+
+
+
+  });//end socket
+  

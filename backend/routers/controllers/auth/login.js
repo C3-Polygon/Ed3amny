@@ -4,19 +4,19 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, passwordd } = req.body;
   const query = `SELECT * FROM users WHERE email = ?`;
-  const data = [email, password];
+  const data = [email, passwordd];
   connection.query(query, data, async (error, result) => {
     if (result.length) {
-      const valid = await bcrypt.compare(password, result[0].password);
+      const valid = await bcrypt.compare(passwordd, result[0].passwordd);
       if (valid) {
         const payload = {
           userId: result[0].id,
           firstName: result[0].firstName,
           lastName: result[0].lastName,
           country: result[0].country,
-          role_id: result[0].role_id,
+          // role_id: result[0].role_id,
         };
         const options = {
           expiresIn: "10day",
