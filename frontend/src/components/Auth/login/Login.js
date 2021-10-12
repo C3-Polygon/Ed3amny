@@ -3,27 +3,22 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
-import { setUserId } from "../../../reducers/login/userId";
-import jwt from "jsonwebtoken";
 import axios from "axios";
 
-//facebookstuff
-import FacebookLogin from "react-facebook-login";
-import { Card, Image } from "react-bootstrap";
-
 export const Login = () => {
-
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [passwordd, setPasswordd] = useState("");
-
+  const [logoutChecker , setLogoutChecker] = useState(false)
   //facebookstuff
   const [login1, setLogin1] = useState(false);
   const [data, setData] = useState({});
   const [picture, setPicture] = useState("");
-
   const dispatch = useDispatch();
+
+
+
   const state = useSelector((state) => {
     return { isLoggedIn: state.isLoggedIn.isLoggedIn };
   });
@@ -31,23 +26,9 @@ export const Login = () => {
   const state1 = useSelector((state) => {
     return { token: state.token_1.token };
   });
-
-  const saveToken = async () => {
-    console.log("outside");
-    console.log("rrrrrrrrrrrrrrrrrrr",state1.token)
-    const user = await jwt.decode(state1.token);
-    console.log("user", user);
-    // if (user) {}
-      console.log("inside");
-      dispatch(setIsLoggedIn(true));
-      dispatch(setUserId(user.userId));
-      localStorage.setItem("token", state1.token);
-    
-  };
-
-  const login = async (e) => {
+  
+  const loginSender = async (e) => {
     e.preventDefault();
-
     try {
       const res = await axios.post("http://localhost:5000/login", {
         email,
@@ -57,7 +38,9 @@ export const Login = () => {
         setMessage("");
         dispatch(setIsLoggedIn(true));
         dispatch(setToken(res.data.token));
-        saveToken();
+        setLogoutChecker(true)
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("logoutChecker" , logoutChecker)
       } else throw Error;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -65,13 +48,7 @@ export const Login = () => {
       }
     }
   };
-
-  useEffect(() => {
-    if (state.isLoggedIn) {
-      history.push("/home");
-    }
-  });
-
+  
   //facebookstuff
   const responseFacebook = (response) => {
     if (response.status == "unknown") {
@@ -90,13 +67,13 @@ export const Login = () => {
     }
   }; //end facebookstuff
 
+
   return (
     <>
       {!state.isLoggedIn ? (
         <>
-          <form onSubmit={login}>
+          <form onSubmit={loginSender}>
             <br />
-
             <input
               type="email"
               placeholder="email here"
@@ -116,9 +93,11 @@ export const Login = () => {
       ) : (
         history.push("/home")
       )}
-
-      
-      <>
+    </>
+  );
+};
+/*
+<>
       <div className="container">
         <Card style={{ width: "600px" }}>
           <Card.Header>
@@ -143,10 +122,4 @@ export const Login = () => {
         </Card>
       </div>
       </>
-    </>
-
-
-
-
-  );
-};
+*/
