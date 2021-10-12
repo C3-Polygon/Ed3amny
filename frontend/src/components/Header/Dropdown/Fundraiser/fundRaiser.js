@@ -9,19 +9,7 @@ import jwt from "jsonwebtoken";
 import axios, { Axios } from "axios";
 import "./fundRaiser.css";
 
-/*  
-    country VARCHAR(255) NOT NULL,
-    typee INT NOT NULL,
-    targett INT NOT NULL,
-    img BLOB(5120),
-    title VARCHAR(255) NOT NULL,
-    descriptionn VARCHAR(255) NOT NULL,
-      */
 
-const state1 = useSelector((state) => {
-  return { token: state.token_1.token };
-});
-console.log(state1.token , "whooooooooooooooooooooooooo");
 
 const CreatefundRaiser = (e) => {
   const [country, setCountry] = useState("");
@@ -30,6 +18,13 @@ const CreatefundRaiser = (e) => {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [descriptionn, setDescription] = useState("");
+
+  const state1 = useSelector((state) => {
+    return { token: state.token_1.token };
+  });
+  console.log(state1.token , "whooooooooooooooooooooooooo");
+  
+
 
   const insertfundRaiser = (e) => {
     console.log("mmmmmmmmmmmmmmmmmmmmmmmmmm");
