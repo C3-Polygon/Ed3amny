@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { setUserId } from "../../reducers/login/userId";
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
+import "../Header/Dropdown/Fundraiser/fundRaiser"
 
 const Navbar = () => {
   const history = useHistory();
@@ -16,6 +17,10 @@ const Navbar = () => {
   const test = useSelector((test) => {
     return { isLoggedIn: test.isLoggedIn.isLoggedIn };
   });
+
+ const pushFundRaiser= () => {
+  history.push("/fundraiser");
+ } 
 
   const logout = () => {
     dispatch(setIsLoggedIn(false));
@@ -49,6 +54,7 @@ const Navbar = () => {
                 <button onClick={loginsender}>lelelele</button>
                 {/* <Link to="/login">Login</Link> */}
                 <button onClick={pushsign}>sgin up</button>
+                <button onClick={pushFundRaiser}> Start Fund Raiser</button>
               </div>
             </div>
           </div>

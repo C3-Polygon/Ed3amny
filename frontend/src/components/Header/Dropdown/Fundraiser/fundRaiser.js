@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
 import jwt from "jsonwebtoken";
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 import './fundRaiser.css'
 
  /*  
@@ -19,17 +19,38 @@ import './fundRaiser.css'
       */
  
 
-const CreatefundRaiser = () => {
-    const [country , setCountry] = useState('');
-    const [typee , setType] = useState('');
-    const [targett , setTarget] = useState('');
-    const [img , setImg] = useState('');
-    const [title , setTitle] = useState('');
-    const [descriptionn , setDescription] = useState('');
-    
+
+
+const CreatefundRaiser = (e) => {
+
+const [country , setCountry] = useState('');
+const [typee , setType] = useState('');
+const [targett , setTarget] = useState('');
+const [img , setImg] = useState('');
+const [title , setTitle] = useState('');
+const [descriptionn , setDescription] = useState('');
+
+const insertfundRaiser =(e)=>{
+    console.log("mmmmmmmmmmmmmmmmmmmmmmmmmm");
+    e.preventDefault();
+    const theFundRaiserCreated = {
+        userId:1,
+        country,
+        typee,
+        targett,
+        img,
+        title,
+        descriptionn
+    }
+    axios.post(`http://localhost:5000/fundraiser` , theFundRaiserCreated).then((result)=>{
+        console.log("result" , result);
+    }).catch((err)=>{
+        console.log(err);
+    })
+}
     return (
         <>
-    <Form>
+    <Form onSubmit={insertfundRaiser}>
     <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label> Country </Form.Label>
         <Form.Control type="text" placeholder="Enter country"  onChange={(e)=>{setCountry(e.target.value)}}/>
@@ -48,19 +69,19 @@ const CreatefundRaiser = () => {
     
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Image</Form.Label>
-        <Form.Control type="file" placeholder="img" onChange={(e)=>{setImg(e.target.value)}} />
+        <Form.Control type="file" placeholder="Image" onChange={(e)=>{setImg(e.target.value)}} />
     </Form.Group>
     
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Title</Form.Label>
-        <Form.Control type="text" placeholder="title" onChange={(e)=>{setTitle(e.target.value)}}/>
+        <Form.Control type="text" placeholder="Title" onChange={(e)=>{setTitle(e.target.value)}}/>
     </Form.Group>
     
     <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label> Description </Form.Label>
         <Form.Control type="text" placeholder="Description" onChange={(e)=>{setDescription(e.target.value)}}/>
     </Form.Group>
-    <button variant="primary" type="submit">    Start a Campaign    </button>
+    <button variant="primary" type="submit" >    Start a Campaign    </button>
     </Form>
         </>
     )
