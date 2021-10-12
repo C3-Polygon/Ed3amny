@@ -2,14 +2,14 @@
 
 import React, { useContext, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import jwt from "jsonwebtoken";
-import axios, { Axios } from 'axios';
-import './fundRaiser.css'
+import axios, { Axios } from "axios";
+import "./fundRaiser.css";
 
- /*  
+/*  
     country VARCHAR(255) NOT NULL,
     typee INT NOT NULL,
     targett INT NOT NULL,
@@ -17,79 +17,121 @@ import './fundRaiser.css'
     title VARCHAR(255) NOT NULL,
     descriptionn VARCHAR(255) NOT NULL,
       */
- 
 
-
+const state1 = useSelector((state) => {
+  return { token: state.token_1.token };
+});
+console.log(state1.token , "whooooooooooooooooooooooooo");
 
 const CreatefundRaiser = (e) => {
+  const [country, setCountry] = useState("");
+  const [typee, setType] = useState("");
+  const [targett, setTarget] = useState("");
+  const [img, setImg] = useState("");
+  const [title, setTitle] = useState("");
+  const [descriptionn, setDescription] = useState("");
 
-const [country , setCountry] = useState('');
-const [typee , setType] = useState('');
-const [targett , setTarget] = useState('');
-const [img , setImg] = useState('');
-const [title , setTitle] = useState('');
-const [descriptionn , setDescription] = useState('');
-
-const insertfundRaiser =(e)=>{
+  const insertfundRaiser = (e) => {
     console.log("mmmmmmmmmmmmmmmmmmmmmmmmmm");
     e.preventDefault();
     const theFundRaiserCreated = {
-        userId:1,
-        country,
-        typee,
-        targett,
-        img,
-        title,
-        descriptionn
-    }
-    axios.post(`http://localhost:5000/fundraiser` , theFundRaiserCreated).then((result)=>{
-        console.log("result" , result);
-    }).catch((err)=>{
+      userId: 1,
+      country,
+      typee,
+      targett,
+      img,
+      title,
+      descriptionn,
+    };
+    axios
+      .post(`http://localhost:5000/fundraiser`, theFundRaiserCreated, {
+        headers: { Authorization: `Bearer ${state1.token}` },
+      })
+      .then((result) => {
+        console.log("result", result);
+      })
+      .catch((err) => {
         console.log(err);
-    })
-}
-    return (
-        <>
-    <Form onSubmit={insertfundRaiser}>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label> Country </Form.Label>
-        <Form.Control type="text" placeholder="Enter country"  onChange={(e)=>{setCountry(e.target.value)}}/>
-    </Form.Group>
-    
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label> Type </Form.Label>
-        <Form.Control type="text" placeholder="Type" onChange={(e)=>{setType(e.target.value)}} />
-    </Form.Group>
-    
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Target</Form.Label>
-        <Form.Control type="number" placeholder="Target" onChange={(e)=>{setTarget(e.target.value)}}/>
-    </Form.Group>
-    
-    
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Image</Form.Label>
-        <Form.Control type="file" placeholder="Image" onChange={(e)=>{setImg(e.target.value)}} />
-    </Form.Group>
-    
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Title</Form.Label>
-        <Form.Control type="text" placeholder="Title" onChange={(e)=>{setTitle(e.target.value)}}/>
-    </Form.Group>
-    
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label> Description </Form.Label>
-        <Form.Control type="text" placeholder="Description" onChange={(e)=>{setDescription(e.target.value)}}/>
-    </Form.Group>
-    <button variant="primary" type="submit" >    Start a Campaign    </button>
-    </Form>
-        </>
-    )
-}
+      });
+  };
+  return (
+    <>
+      <Form onSubmit={insertfundRaiser}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label> Country </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter country"
+            onChange={(e) => {
+              setCountry(e.target.value);
+            }}
+          />
+        </Form.Group>
 
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label> Type </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Type"
+            onChange={(e) => {
+              setType(e.target.value);
+            }}
+          />
+        </Form.Group>
 
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Target</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Target"
+            onChange={(e) => {
+              setTarget(e.target.value);
+            }}
+          />
+        </Form.Group>
 
-export default CreatefundRaiser ;
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Image</Form.Label>
+          <Form.Control
+            type="file"
+            placeholder="Image"
+            onChange={(e) => {
+              setImg(e.target.value);
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Title"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label> Description </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Description"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <button variant="primary" type="submit">
+          {" "}
+          Start a Campaign{" "}
+        </button>
+      </Form>
+    </>
+  );
+};
+
+export default CreatefundRaiser;
 //delete
 //update
 
@@ -179,11 +221,10 @@ const NewArticle = () => {
 
 */
 
-
 /**
- *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  ***  *   *  *** 
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  ***  *   *  ***
  *   Fundraiser Title           ProgressBAR 1000/2000          *
- *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  ** *  *  *** 
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  ** *  *  ***
  *                          *                                  *
  *                          *                                  *
  *                          *                                  *
@@ -195,7 +236,7 @@ const NewArticle = () => {
  *                          *                                  *
  *                          *                                  *          // update, delete will be done from drop down
  *                          *  Donate                          *          // share will have its own link to share component button
- *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  ** *  *  *  *** 
+ *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  ** *  *  *  ***
  */
 
 // we might add more stuff, we will see

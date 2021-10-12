@@ -13,7 +13,7 @@ const authentication = require("../middlewares/authentication")
 // //Routes
 
 /* -----------------------------------------  */
-fundraiserRouter.post("/", createNewFundraiser);
+fundraiserRouter.post("/", authentication , createNewFundraiser);
 //  [post]  [http://localhost:5000/fundraiser]
 /* -----------------------------------------  */
 
@@ -23,19 +23,19 @@ fundraiserRouter.get("/", getAllFundraiser);
 /* -----------------------------------------  */
 
 /* -----------------------------------------  */
-fundraiserRouter.put("/", updateFundRaiserById);
+fundraiserRouter.put("/",  authentication , updateFundRaiserById);
 //  [put]  [http://localhost:5000/fundraiser]
 /* -----------------------------------------  */
 
 
 /* -----------------------------------------  */ 
-fundraiserRouter.get("/:userid", getAllFundRaiserByUser);
+fundraiserRouter.get("/:userid", authentication ,  getAllFundRaiserByUser);
 //  [get]  [http://localhost:5000/fundraiser/:userid]
 /* -----------------------------------------  */
 
 
 /* -----------------------------------------  */ 
-fundraiserRouter.delete("/:id", deleteFundraiserByUser);
+fundraiserRouter.delete("/:id", authentication ,  deleteFundraiserByUser);
 //  [delete]  [http://localhost:5000/fundraiser/:id]
 /* -----------------------------------------  */
 
