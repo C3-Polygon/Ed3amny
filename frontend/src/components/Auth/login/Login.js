@@ -1,41 +1,128 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "../../../reducers/login/token";
+import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
+import { setUserId } from "../../../reducers/login/userId";
+import jwt from "jsonwebtoken";
+import axios from "axios";
+
+//facebookstuff
 import FacebookLogin from "react-facebook-login";
 import { Card, Image } from "react-bootstrap";
 
 export const Login = () => {
-  const [login, setLogin] = useState(false);
+
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [passwordd, setPasswordd] = useState("");
+
+  //facebookstuff
+  const [login1, setLogin1] = useState(false);
   const [data, setData] = useState({});
   const [picture, setPicture] = useState("");
 
+  const dispatch = useDispatch();
+  const state = useSelector((state) => {
+    return { isLoggedIn: state.isLoggedIn.isLoggedIn };
+  });
 
+  const state1 = useSelector((state) => {
+    return { token: state.token_1.token };
+  });
+
+  const saveToken = async () => {
+    console.log("outside");
+    console.log("rrrrrrrrrrrrrrrrrrr",state1.token)
+    const user = await jwt.decode(state1.token);
+    console.log("user", user);
+    // if (user) {}
+      console.log("inside");
+      dispatch(setIsLoggedIn(true));
+      dispatch(setUserId(user.userId));
+      localStorage.setItem("token", state1.token);
+    
+  };
+
+  const login = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post("http://localhost:5000/login", {
+        email,
+        passwordd,
+      });
+      if (res.data.success) {
+        setMessage("");
+        dispatch(setIsLoggedIn(true));
+        dispatch(setToken(res.data.token));
+        saveToken();
+      } else throw Error;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        return setMessage(error.response.data.message);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (state.isLoggedIn) {
+      history.push("/home");
+    }
+  });
+
+  //facebookstuff
   const responseFacebook = (response) => {
-    console.log("hushki 1", response);
     if (response.status == "unknown") {
-      console.log("hushki 2", response);
       return;
     }
     setData(response);
     if (!response.picture.data.url) {
-      console.log("hushki 3", response);
       return;
     } else {
       setPicture(response.picture.data.url);
     }
-
     if (response.accessToken) {
-      console.log("hushki 4", response);
-      setLogin(true);
+      setLogin1(true);
     } else {
-      console.log("hushki 5", response);
-      setLogin(false);
+      setLogin1(false);
     }
-  };
+  }; //end facebookstuff
+
   return (
     <>
+      {!state.isLoggedIn ? (
+        <>
+          <form onSubmit={login}>
+            <br />
+
+            <input
+              type="email"
+              placeholder="email here"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              type="password"
+              placeholder="password here"
+              onChange={(e) => setPasswordd(e.target.value)}
+            />
+            <br />
+            <button>Login</button>
+          </form>
+          {message && <div>{message}</div>}
+        </>
+      ) : (
+        history.push("/home")
+      )}
+
+      
+      <>
       <div className="container">
         <Card style={{ width: "600px" }}>
           <Card.Header>
-            {!login && (
+            {!login1 && (
               <FacebookLogin
                 appId="1259903211090202"
                 autoLoad={false}
@@ -45,9 +132,9 @@ export const Login = () => {
                 icon="fa-facebook"
               />
             )}
-            {login && <Image src={picture} roundedCircle />}
+            {login1 && <Image src={picture} roundedCircle />}
           </Card.Header>
-          {login && (
+          {login1 && (
             <Card.Body>
               <Card.Title>{data.name}</Card.Title>
               <Card.Text>{data.email}</Card.Text>
@@ -55,6 +142,11 @@ export const Login = () => {
           )}
         </Card>
       </div>
+      </>
     </>
+
+
+
+
   );
 };
