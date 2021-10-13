@@ -1,8 +1,10 @@
 import React , {useState , useHistory} from 'react';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useDispatch , useSelector } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css"; 
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import {setIsLoggedIn} from '../../../reducers/login/isLoggedIn';
 const Signup = () => {
     const [firstName , setFirstName] = useState('');
     const [lastName , setLastName] = useState('');
@@ -11,6 +13,11 @@ const Signup = () => {
     const [email , setEmail] = useState('');
     const [country , setCountry] = useState('');
     const [passwordd , setPasswordd] = useState('');
+
+    const dispatch = useDispatch();  
+    const state_1 = useSelector((state)=>{
+        return {isLoggedIn: state.isLoggedIn.isLoggedIn};
+    });
     //Messgae error 
 
     
@@ -36,6 +43,8 @@ const Signup = () => {
         axios.post('http://localhost:5000/signup' , theUsers).then((result)=>{
             console.log("result" , result);
 
+            dispatch(setIsLoggedIn(true));
+            localStorage.setItem("isLoggedIn", state_1.isLoggedIn);
         }).catch((err)=>{
             console.log(err);
         })
