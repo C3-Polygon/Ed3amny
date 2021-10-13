@@ -1,0 +1,27 @@
+.Main-section {
+    margin: 50px 0px;
+}
+
+.Main-section img {
+    max-width: 100%;
+}
+
+.Main-section .row div {
+    align-items: center;
+}
+
+.container .text-header {
+    font-weight: bold;
+}
+
+.video-show {
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 35px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}

@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/signup/signup";
 import CreateFundRaiser from "./components/Header/Dropdown/Fundraiser/CreatefundRaiser";
 import { useEffect } from "react";
+import Section from "./components/section/section";
 
 const socket = io.connect("http://localhost:5000");
 function Appmain(props) {
@@ -43,7 +44,8 @@ function App() {
               <Signup />
             </Route>
             <Route exact path="/">
-              <Home socket={socket} />
+              {/* <Home socket={socket} /> */}
+              <Section/>
             </Route>
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route path="/fundraiser"  component={CreateFundRaiser} />

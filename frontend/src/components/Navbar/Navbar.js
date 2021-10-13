@@ -34,7 +34,7 @@ const Navbar =   () => {
   }
 
   return (
-    <>
+    <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
           <h5>LogoName</h5>
@@ -71,7 +71,7 @@ const Navbar =   () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
