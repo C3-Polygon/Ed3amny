@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import axios from "axios";
-import {setUserId} from "../../../reducers/login/isLoggedIn";
+import { setUserId } from "../../../reducers/login/userId";
 
 
 export const Login = () => {
@@ -42,9 +42,12 @@ export const Login = () => {
         setMessage("");
         dispatch(setIsLoggedIn(true));
         dispatch(setToken(res.data.token));
+        dispatch(setUserId(res.data.payload.userId))
         setLogoutChecker(true)
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("logoutChecker" , logoutChecker)
+        localStorage.setItem("CurrentUserId",res.data.payload.userId)
+        
       } else throw Error;
     } catch (error) {
       if (error.response && error.response.data) {
