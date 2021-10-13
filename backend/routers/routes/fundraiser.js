@@ -39,7 +39,7 @@ fundraiserRouter.delete("/:id", authentication ,  deleteFundraiserByUser);
 //  [delete]  [http://localhost:5000/fundraiser/:id]
 /* -----------------------------------------  */
 
-fundraiserRouter.get("/:type", getAllFundraiserByType);
+fundraiserRouter.get("type/:type", getAllFundraiserByType);
 
 module.exports = fundraiserRouter;
 
