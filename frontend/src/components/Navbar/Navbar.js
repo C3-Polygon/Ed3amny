@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setToken } from "../../reducers/login/token";
 import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
+import { setUserId } from "../../reducers/login/userId";
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
 
-import "../Header/Dropdown/Fundraiser/fundRaiser";
+import "../Header/Dropdown/Fundraiser/CreatefundRaiser"
 
 const Navbar =   () => {
   const history = useHistory();
@@ -20,6 +21,9 @@ const Navbar =   () => {
   });
   const state1 = useSelector((state1) => {
     return { token: state1.token_1.token };
+  });
+  const state2 = useSelector((state2) => {
+    return { userId: state2.userId.userId };
   });
   
   const logout = () =>{
