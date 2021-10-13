@@ -2,12 +2,12 @@ USE sql11442892 ;
 
 CREATE TABLE IF NOT EXISTS users(
     id INT AUTO_INCREMENT NOT NULL,
-    firstName VARCHAR(255) NOT NULL,
-    lastName VARCHAR(255) NOT NULL,
-    age INT(3) NOT NULL,
-    img BLOB(5120) NOT NULL,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    age INT(3),
+    img BLOB(5120),
     email VARCHAR(255) UNIQUE NOT NULL,
-    country VARCHAR(255) UNIQUE NOT NULL,
+    country VARCHAR(255),
     passwordd VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS campaigns (
     typee INT NOT NULL,
     targett INT NOT NULL,
     current_target INT DEFAULT 0,
-    img BLOB(5120),
+    img BLOB(5120) NOT NULL,
     title VARCHAR(255) NOT NULL,
     descriptionn VARCHAR(255) NOT NULL,
     is_deleted TINYINT DEFAULT 0,
@@ -56,8 +56,8 @@ CREATE TABLE IF NOT EXISTS contributions(
 CREATE TABLE IF NOT EXISTS bloodpost(
     id INT AUTO_INCREMENT NOT NULL,
     userId INT,
-    title VARCHAR(255),
-    descriptionn VARCHAR(255),
+    title VARCHAR(255) NOT NULL,
+    descriptionn VARCHAR(255) NOT NULL,
     created_at DATE,
     FOREIGN KEY (userId ) REFERENCES users(id),
     PRIMARY KEY (id)
