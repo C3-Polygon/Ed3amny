@@ -1,22 +1,22 @@
 const initialState = {
-    userId: "",
-  };
-  
-  export const setUserId = (userId) => {
+    userId: 0,
+};
+
+export const setUserId = (userId) => {
     return {
-      type: "SET_USERID",
-      payload: userId,
+        type: "SET_USERID",
+        payload: userId,
     };
-  };
-  
-  const userId = (state = initialState, { type, payload }) => {
+};
+
+const userId = (state = initialState, { type, payload }) => {
     switch (type) {
-      case "SET_USERID":
-        return { userId: payload };
-  
-      default:
-        return state;
+        case "SET_USERID":
+            return { userId: payload };
+
+        default:
+            return state;
     }
-  };
-  
-  export default userId;
+};
+
+export default userId;

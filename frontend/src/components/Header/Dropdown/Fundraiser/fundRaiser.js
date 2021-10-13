@@ -1,6 +1,5 @@
 //create
 
-
 import React, { useContext, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,6 +12,10 @@ import "./fundRaiser.css";
 
 
 const CreatefundRaiser = (e) => {
+    let tokenSave = localStorage.getItem("token");
+  const state1 = useSelector((state) => {
+    return { token: state.token_1.token };
+  });
 
   const [country, setCountry] = useState("");
   const [typee, setType] = useState("");
@@ -20,15 +23,12 @@ const CreatefundRaiser = (e) => {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [descriptionn, setDescription] = useState("");
-
-  const state1 = useSelector((state) => {
-    return { token: state.token_1.token };
-  });
-
   
-const insertfundRaiser = (e) => {
+
+
+  const insertfundRaiser = (e) => {
     e.preventDefault();
- const theFundRaiserCreated = {
+    const theFundRaiserCreated = {
       userId: 1,
       country,
       typee,
@@ -39,7 +39,7 @@ const insertfundRaiser = (e) => {
     };
     axios
       .post(`http://localhost:5000/fundraiser`, theFundRaiserCreated, {
-        headers: { Authorization: `Bearer ${state1.token}` },
+        headers: { Authorization: `Bearer ${tokenSave}` },
       })
       .then((result) => {
         console.log("result", result);
