@@ -2,9 +2,9 @@ const connection = require("../../db/db");
 
 //create new fundraiser
 const createNewFundraiser = (req, res) => {
-  const { title, country, typee, targett, img, descriptionn } = req.body;
-  const queryString = `INSERT INTO  campaigns (title , country, typee, targett, img, descriptionn) VALUES (?,?,?,?,?,?)`;
-  const data = [title, country, typee, targett, img, descriptionn];
+  const { userId, title, country, typee, targett, img, descriptionn } = req.body;
+  const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn) VALUES (?,?,?,?,?,?,?)`;
+  const data = [userId, title, country, typee, targett, img, descriptionn];
   connection.query(queryString, data, (err, result) => {
     console.log(data , "dataaaaaaaaa");
     console.log("Erroe" , err);
@@ -45,13 +45,13 @@ const getAllFundraiser = (req, res) => {
 //update fundraiser by its id
 const updateFundRaiserById = (req, res) => {
   const id = req.params.id; // fundraiser id
-  const { title, description, img, country } = req.body;
+  const { title, descriptionn, img, country } = req.body;
   const query = `SELECT * FROM campaigns Where id=${id}`;
 
   connection.query(query, (error, result) => {
     if (result) {
-      const data = [title, description, img, country];
-      const query1 = `UPDATE campaigns SET title=? , description=? , img=?  , country=? WHERE id = ${id}`;
+      const data = [title, descriptionn, img, country];
+      const query1 = `UPDATE campaigns SET title=? , descriptionn=? , img=?  , country=? WHERE id = ${id}`;
       if (error) {
         res.status(200).json({
           success: false,
