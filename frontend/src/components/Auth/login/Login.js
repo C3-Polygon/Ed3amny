@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import axios from "axios";
+import {setUserId} from "../../../reducers/login/isLoggedIn";
+
 
 export const Login = () => {
   const history = useHistory();
@@ -34,6 +36,8 @@ export const Login = () => {
         email,
         passwordd,
       });
+      console.log(res.data);
+      console.log(res.data.payload.userId);
       if (res.data.success) {
         setMessage("");
         dispatch(setIsLoggedIn(true));
