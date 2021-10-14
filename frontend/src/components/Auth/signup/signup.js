@@ -91,6 +91,8 @@ const Signup = () => {
         <button variant="primary" type="submit">
             Submit
         </button>
+        <button onClick={()=> history.push("/login")}>login</button>
+        <button onClick={()=> history.push("/")}>back to main page</button>
         </Form>
         
         </>

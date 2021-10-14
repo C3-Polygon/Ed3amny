@@ -38,7 +38,7 @@ const Navbar =   () => {
     <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
-          <h5>LogoName</h5>
+          <h5  onClick={()=> history.push("/")}>LogoName</h5>
           <div className="search-bar">
             <input type="search" placeholder="Search Here ..." />
             <BsSearch className="search" />
@@ -46,36 +46,32 @@ const Navbar =   () => {
           <div>
             
             <div className="navbar">
-              { state1.token  ?  (
-                <div>
-                  <Link to="/fundraiser" className="navFundRaiser">
+              {state1.token  ? (
+                <div className='navLinkOption'>
+                <Link to="/fundraiser" className="navFundRaiser">
                     Start Fund Raiser
                   </Link>
-                  <button onClick={logout}>
-                    log out
-                  </button>
-                </div>
-              ) : (
-                <div className='navLinkOption'>
-            <BsBellFill />
-                <Link to="/login"  className="navLogin">
-                  Login
-                </Link>  
-                  <Link to="/signup" className="navSignup">
-                    sgin up
-                  </Link>
+                 <BsBellFill />
+                
                   <Dropdown>
                   <Dropdown.Toggle id="dropdown-basic">
                   <BsGrid3X3GapFill />
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    <Dropdown.Item href="#/action-1">Account Settings</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Donations You've Made</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Your Fundraisers</Dropdown.Item>
+                    <Dropdown.Item href="#/action-4">Start a Fundraiser</Dropdown.Item>
+                    <Dropdown.Item href="#/action-4">Specific Donation</Dropdown.Item>
+                    <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
                   </Dropdown.Menu>
               </Dropdown>
                 </div>
+              ) : (
+                <Link to="/login"  className="navLogin">
+                  Login
+                </Link>
               )}
             </div>
           </div>
@@ -131,5 +127,7 @@ return (
   );
 
 
-
+ <button onClick={logout}>
+                    log out
+                  </button>
 */
