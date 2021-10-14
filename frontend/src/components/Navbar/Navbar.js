@@ -73,7 +73,9 @@ const Navbar = () => {
     <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
+
           <h5 onClick={() => history.push("/")}>LogoName</h5>
+
           <div className="search-bar">
             <input
               type="search"
