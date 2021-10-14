@@ -203,9 +203,9 @@ const rejectedTheFunders = (req, res) => {
 //Create New story
 
 const createNewStory = (req, res) => {
-    const { title, descriptionn, img } = req.body;
-    const addNewRow = `INSERT INTO stroy (title , descriptionn , img) VALUES (?,?,?)`;
-    const data = [title, descriptionn, img];
+    const { namee, descriptionn, img } = req.body;
+    const addNewRow = `INSERT INTO story (namee , descriptionn , img) VALUES (?,?,?)`;
+    const data = [namee, descriptionn, img];
     connection.query(addNewRow, data, (err, response) => {
         if (err) {
             const error = {
@@ -231,7 +231,7 @@ const createNewStory = (req, res) => {
 //Get All Stroy 
 
 const getAllStroy = (req, res) => {
-    const allStory = `SELECT * FROM stroy where is_deleted = 1`;
+    const allStory = `SELECT * FROM story`;
     connection.query(allStory, (err, response) => {
         if (err) {
             res.json({
@@ -255,8 +255,8 @@ const getAllStroy = (req, res) => {
 
 const updateStroy = (req, res) => {
     const id = req.params.id;
-    const { title, descriptionn, img } = req.body;
-    const selectQuery = `SELECT * from stroy WHERE id = ${id}`;
+    const { namee, descriptionn, img } = req.body;
+    const selectQuery = `SELECT * from story WHERE id = ${id}`;
     connection.query(selectQuery, (err, response) => {
         if (err) {
             res.json({
@@ -265,7 +265,7 @@ const updateStroy = (req, res) => {
             });
         }
         if (response.length) {
-            const update = `UPDATE stroy SET title="${title}", descriptionn="${descriptionn}" , img="${img}" WHERE id = ${id}`;
+            const update = `UPDATE story SET namee="${namee}", descriptionn="${descriptionn}" , img="${img}" WHERE id = ${id}`;
             connection.query(update, (err, response) => {
                 const success = {
                     success: true,
@@ -290,7 +290,7 @@ const updateStroy = (req, res) => {
 
 const deleteStroy = (req, res) => {
     const id = req.params.id;
-    const deleteRow = `SELECT * From stroy where id = ${id}`;
+    const deleteRow = `SELECT * From story where id = ${id}`;
     connection.query(deleteRow, (err, response) => {
         if (err) {
             res.json({
@@ -300,7 +300,7 @@ const deleteStroy = (req, res) => {
             res.status(500);
         }
         if (response.length) {
-            const softDelete = `UPDATE stroy SET is_deleted = 0 where id = ${id}`;
+            const softDelete = `UPDATE story SET is_deleted = 0 where id = ${id}`;
             connection.query(softDelete, (err, response) => {
                 res.json({
                     success: true,

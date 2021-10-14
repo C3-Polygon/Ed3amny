@@ -1,24 +1,43 @@
+
 import React , { useState , useEffect }from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Carousel from 'react-bootstrap/Carousel'
+import axios from 'axios'
+import Carousel from 'react-bootstrap/Carousel';
+import './Stories.css';
+
 
 function Stories() {
+  const [story, setStory] = useState();
+  useEffect(() => {
+    axios.get(`http://localhost:5000/admin/story`).then((result) => {
+     setStory(result.data.allData)
+    }).catch((err) => {
+        console.log(err);
+    },)
+  },[]);
     return (
         <div className="Main-Stories">
             <div className='container'>
             <Carousel fade>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="http://cssslider.com/sliders/demo-17/data1/images/picjumbo.com_hanv9909.jpg"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
+            {story&&story.map((data)=>{
+              return(
+               
+
+                  <Carousel.Item className="">
+                    <div className='Slider-Show'>
+                    <div><h3>{data.namee}</h3>
+                    <p>{data.descriptionn}</p></div>
+                  <img
+                    className="d-block w-100"
+                    src={data.img}
+                    alt="First slide"
+                  />
+                  </div>
+                </Carousel.Item>
+
+              )
+            })}
+            </Carousel>
             </div>
            
         </div>

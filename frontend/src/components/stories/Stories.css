@@ -1,0 +1,35 @@
+.Main-Stories {
+    width: 100%;
+}
+
+.Slider-Show {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Slider-Show img {
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: #02a95c;
+    font-size: 15px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: absolute;
+}
+
+.carousel-control-next-icon {
+    right: 0;
+}
+
+.carousel-control-prev-icon {
+    left: 0;
+}
