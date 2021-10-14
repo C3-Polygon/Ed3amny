@@ -3,9 +3,12 @@ import React , { useState , useEffect }from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import './Random.css';
 
+
 function Random() {
+const history = useHistory()
 const [random, setRandom] = useState();
 useEffect(() => {
     axios.get(`http://localhost:5000/fundraiser/get/getTopFundraiserByCurrentTarget`).then((res) => {
@@ -15,15 +18,19 @@ useEffect(() => {
     },)
   },[]);
 
+  const ViewFundRaiser = (data) => {
+    console.log("data" , data);
+    history.push(`/fundraiserView/${data.id}`);
+}
     return (
       <>
        <div className="Main-Topfundraiser">
-            <div className="container">
+            <div className="container" >
                 <h2>Find a GoFundMe Randomly</h2>
                 <div className="row">
             {random &&
                 random.map((data) => {
-                return <div key = {data.id} className="col-lg-4 col-md-12">
+                return <div key = {data.id} className="col-lg-4 col-md-12" onClick={()=>{ViewFundRaiser(data)} }  style={{border:"2px solid  green"}}>
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">
