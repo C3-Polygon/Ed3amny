@@ -8,13 +8,17 @@ import { useHistory } from "react-router-dom";
 import { setToken } from "../../reducers/login/token";
 import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
 import { setUserId } from "../../reducers/login/userId";
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from "react-bootstrap/Dropdown";
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
 
-import "../Header/Dropdown/Fundraiser/CreatefundRaiser"
+import "../Header/Dropdown/Fundraiser/CreatefundRaiser";
 
-const Navbar =   () => {
+const Navbar = () => {
+  const [title, setTitle] = useState([]);
+  const [text, setText] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const tokenSave = localStorage.getItem("token");
   const history = useHistory();
   const dispatch = useDispatch();
   const state = useSelector((state) => {
@@ -26,50 +30,109 @@ const Navbar =   () => {
   const state2 = useSelector((state2) => {
     return { userId: state2.userId.userId };
   });
-  
-  const logout = () =>{
-    localStorage.clear()
-    history.push("/")
+
+  const logout = () => {
+    localStorage.clear();
+    history.push("/");
     dispatch(setToken(""));
-    dispatch(setIsLoggedIn(false))
-  }
+    dispatch(setIsLoggedIn(false));
+  };
+
+  useEffect(() => {
+    const loadTitle = async () => {
+      const response = await axios.get(
+        `http://localhost:5000/search?name=${text}`
+      );
+      console.log("response.data.search", response.data.search);
+      setTitle(response.data.search);
+    };
+    loadTitle();
+  }, []);
+
+  const onSuggestHandler = (text) => {
+    setText(text);
+    setSuggestions([]);
+  };
+
+  const onChangeHandler = (text) => {
+    console.log(text);
+    let matches = [];
+    if (text.length > 0) {
+      matches = title.filter((elm) => {
+        const regex = new RegExp(`${text}`, "gi");
+        return elm.title.match(regex);
+      });
+    }
+    console.log(matches, "matches");
+    setSuggestions(matches);
+    setText(text);
+  };
 
   return (
     <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
-          <h5  onClick={()=> history.push("/")}>LogoName</h5>
+          <h5 onClick={() => history.push("/")}>LogoName</h5>
           <div className="search-bar">
-            <input type="search" placeholder="Search Here ..." />
+            <input
+              type="search"
+              placeholder="Search Here ..."
+              onChange={(e) => {
+                onChangeHandler(e.target.value);
+              }}
+              value={text}
+              onBlur={() => {
+                setTimeout(() => {
+                  setSuggestions([]);
+                }, 100);
+              }}
+            />
+            {suggestions &&
+              suggestions.map((elm, i) => {
+                return (
+                  <div key={i} onClick={() => onSuggestHandler(elm.title)}>
+                    {elm.title}
+                  </div>
+                );
+              })}
             <BsSearch className="search" />
           </div>
           <div>
-            
             <div className="navbar">
-              {state1.token  ? (
-                <div className='navLinkOption'>
-                <Link to="/fundraiser" className="navFundRaiser">
+              {state1.token || tokenSave || state.isLoggedIn ? (
+                <div className="navLinkOption">
+                  <Link to="/fundraiser" className="navFundRaiser">
                     Start Fund Raiser
                   </Link>
-                 <BsBellFill />
-                
-                  <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic">
-                  <BsGrid3X3GapFill />
-                  </Dropdown.Toggle>
+                  <BsBellFill />
 
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Account Settings</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Donations You've Made</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Your Fundraisers</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">Start a Fundraiser</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">Specific Donation</Dropdown.Item>
-                    <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
-                  </Dropdown.Menu>
-              </Dropdown>
+                  <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                      <BsGrid3X3GapFill />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item href="#/action-1">
+                        Account Settings
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-2">
+                        Donations You've Made
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-3">
+                        Your Fundraisers
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-4">
+                        Start a Fundraiser
+                      </Dropdown.Item>
+                      <Dropdown.Item href="#/action-4">
+                        Specific Donation
+                      </Dropdown.Item>
+                      <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
               ) : (
-                <Link to="/login"  className="navLogin">
+                <Link to="/login" className="navLogin">
                   Login
                 </Link>
               )}
