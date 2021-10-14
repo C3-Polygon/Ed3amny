@@ -17,10 +17,12 @@ import Stories from "./components/stories/Stories";
 import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
+
+
 const socket = io.connect("http://localhost:5000");
 function Appmain(props) {
   return (
-    <>
+    <> 
       <div>
         <Chat
           username={props.match.params.username}
