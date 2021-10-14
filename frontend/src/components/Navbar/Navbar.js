@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BsBellFill, BsSearch, BsGrid3X3GapFill } from "react-icons/bs";
@@ -9,6 +9,7 @@ import { setToken } from "../../reducers/login/token";
 import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
 import { setUserId } from "../../reducers/login/userId";
 import Dropdown from "react-bootstrap/Dropdown";
+import axios from "axios";
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
 
