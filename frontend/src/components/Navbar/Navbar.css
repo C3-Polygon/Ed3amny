@@ -6,6 +6,11 @@
     position: relative;
 }
 
+.navLinkOption {
+    display: flex;
+    justify-content: space-between;
+}
+
 .search-bar .search {
     position: absolute;
     right: 5px;

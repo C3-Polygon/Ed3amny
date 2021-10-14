@@ -44,18 +44,6 @@ const Navbar =   () => {
             <BsSearch className="search" />
           </div>
           <div>
-            <BsBellFill />
-              <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic">
-                  <BsGrid3X3GapFill />
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                  </Dropdown.Menu>
-              </Dropdown>
             
             <div className="navbar">
               { state1.token  ?  (
@@ -68,15 +56,25 @@ const Navbar =   () => {
                   </button>
                 </div>
               ) : (
-                <div>
+                <div className='navLinkOption'>
+            <BsBellFill />
                 <Link to="/login"  className="navLogin">
                   Login
                 </Link>  
-                  <br />
                   <Link to="/signup" className="navSignup">
                     sgin up
                   </Link>
-                  <br />
+                  <Dropdown>
+                  <Dropdown.Toggle id="dropdown-basic">
+                  <BsGrid3X3GapFill />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  </Dropdown.Menu>
+              </Dropdown>
                 </div>
               )}
             </div>
