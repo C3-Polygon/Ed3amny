@@ -47,7 +47,7 @@ export const Login = () => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("logoutChecker" , logoutChecker)
         localStorage.setItem("CurrentUserId",res.data.payload.userId)
-        
+        history.push("/")
       } else throw Error;
     } catch (error) {
       if (error.response && error.response.data) {
