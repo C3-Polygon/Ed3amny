@@ -103,7 +103,7 @@ const CreatefundRaiser = (e) => {
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Image</Form.Label>
           <Form.Control
-            type="file"
+            type="text"
             placeholder="Image"
             onChange={(e) => {
               setImg(e.target.value);

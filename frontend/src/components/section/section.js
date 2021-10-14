@@ -15,10 +15,11 @@ function Section() {
                     <h5 className="text-secondary">Get help. Give kindness. Start in just 5 minutes.</h5>
                     <div className='row'>
                         <div className='col-md-6'>
-                            <button className='btn-success p-2 '>Start GoFundMe</button>
+                            <button className='btn-success p-2 btn-Start'>Start GoFundMe</button>
                         </div>
-                        <div className='col-md-6'>
+                        <div className='col-md-6 video-section'>
                             <AiFillVideoCamera className='video-show'/>
+                            <p>See how GoFundMe is work</p>
                         </div>
                     </div>
                     

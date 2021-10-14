@@ -44,7 +44,7 @@ const Navbar =   () => {
           </div>
           <div>
             <BsBellFill />
-            <BsGrid3X3GapFill className="small-media" />
+            <BsGrid3X3GapFill />
             <div className="navbar">
               { state1.token  ?  (
                 <div>
