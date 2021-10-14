@@ -23,7 +23,8 @@ import { AiFillCaretRight} from "react-icons/ai";
                 <div className="row">
             {result &&
                 result.map((data) => {
-                return <div className="col-lg-4 col-md-12">
+                    
+                return <div key = {data.id} className="col-lg-4 col-md-12">
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">
@@ -31,9 +32,9 @@ import { AiFillCaretRight} from "react-icons/ai";
                             <p>{data.descriptionn}</p>
                             {/* bdha await ?? */}
                             <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
-                             {console.log("D.T",data.targett)}
-                             {console.log("D.CT",data.current_target)}
-                             {console.log("percentage",(data.current_target*100)/data.targett)}
+                             {console.log("D.T",data)}
+                             {/* {console.log("D.CT",data.current_target)}
+                             {console.log("percentage",(data.current_target*100)/data.targett)} */}
                             
                             <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
                         </div>
