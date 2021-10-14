@@ -1,5 +1,9 @@
 .Main-Stories {
-    width: 100%;
+    background-color: #e3e3e3;
+}
+
+.Main-Stories .container {
+    padding: 35px 0px;
 }
 
 .Slider-Show {
@@ -32,4 +36,22 @@
 
 .carousel-control-prev-icon {
     left: 0;
+}
+
+.Slider-Show .fundmeText {
+    max-width: 600px;
+}
+
+.Slider-Show .fundmeText h5 {
+    color: #666;
+}
+
+@media only screen and (max-width: 772px) {
+    .Slider-Show {
+        flex-direction: column;
+    }
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        display: none;
+    }
 }

@@ -25,8 +25,11 @@ function Stories() {
 
                   <Carousel.Item className="">
                     <div className='Slider-Show'>
-                    <div><h3>{data.namee}</h3>
-                    <p>{data.descriptionn}</p></div>
+                    <div className='fundmeText'>
+                      <h5>GOFUNDME FUNDRAISING STORIES</h5>
+                      <h2>{data.namee}</h2>
+                    <p>{data.descriptionn}</p>
+                    </div>
                   <img
                     className="d-block w-100"
                     src={data.img}
