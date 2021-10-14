@@ -144,11 +144,40 @@ const getAllFundraiserByType = (req,res) => {                   //need testing
 }
 
 
+const getTopFundraiserByCurrentTarget = (req,res) => {
+
+  //   SELECT * FROM campaigns ORDER BY current_target DESC LIMIT 3;
+
+  const query = `SELECT * FROM campaigns ORDER BY current_target DESC LIMIT 3`;
+  connection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        error: error,
+      });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: `All Fundraiser`, result: result });
+  });
+
+  }
+  
+  const getThreeRandomFundraisers = (req,res) => {
+  // SELECT * FROM campaigns
+  // ORDER BY RAND()
+  // LIMIT 3
+  }
+
+
+
 module.exports = {
   createNewFundraiser,
   getAllFundraiser,
   updateFundRaiserById,
   getAllFundRaiserByUser,
   deleteFundraiserByUser,
-  getAllFundraiserByType
+  getAllFundraiserByType,
+  getTopFundraiserByCurrentTarget
 };
