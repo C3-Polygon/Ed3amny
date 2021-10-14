@@ -38,7 +38,9 @@ const Navbar =   () => {
     <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
-          <h5  onClick={()=> history.push("/")}>LogoName</h5>
+          <h5  onClick={()=> history.push("/")}>
+            {/* <img src='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2020%2F12%2F08%2Fgofundme.jpg&q=85' alt="!"/> */}
+          LogoName</h5>
           <div className="search-bar">
             <input type="search" placeholder="Search Here ..." />
             <BsSearch className="search" />
