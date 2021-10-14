@@ -5,6 +5,7 @@ import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import axios from "axios";
 import { setUserId } from "../../../reducers/login/userId";
+// import {Signup} from "./../signup/signup"
 
 
 export const Login = () => {
@@ -77,7 +78,6 @@ export const Login = () => {
 
   return (
     <>
-      {!state.isLoggedIn ? (
         <>
           <form onSubmit={loginSender}>
             <br />
@@ -96,10 +96,10 @@ export const Login = () => {
             <button>Login</button>
           </form>
           {message && <div>{message}</div>}
+          <br/>
+          <button onClick={()=> history.push("/signup")}>Sign up</button>
+          <button onClick={()=> history.push("/")}>back to main page</button>
         </>
-      ) : (
-        history.push("/home")
-      )}
     </>
   );
 };
