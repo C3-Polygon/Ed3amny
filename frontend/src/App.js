@@ -16,7 +16,7 @@ import Topfundraiser from "./components/TopFundraiser/Topfundraiser";
 import Stories from "./components/stories/Stories";
 import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
-
+import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 const socket = io.connect("http://localhost:5000");
 function Appmain(props) {
   return (
@@ -57,6 +57,7 @@ function App() {
             </Route>
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route path="/fundraiser"  component={CreateFundRaiser} />
+            <Route path="/fundraiserView/:id"  component={FundRaiserView} />
             {/* <Stripe /> */}
           </Switch>
         </div>

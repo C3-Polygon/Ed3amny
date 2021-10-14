@@ -238,7 +238,7 @@ const getAllStroy = (req, res) => {
                 success: false,
                 message: "SERVER ERROR"
             })
-            res.sstatus(500);
+            res.status(500);
         }
         if (response) {
             res.json({

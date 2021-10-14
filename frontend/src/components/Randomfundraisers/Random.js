@@ -3,11 +3,13 @@ import React , { useState , useEffect }from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import './Random.css';
 
-const viewFundRaiser = (id) => {
-    console.log("id" , id);
-    
+const ViewFundRaiser = (data) => {
+    const history = useHistory()
+    console.log("data" , data);
+    history.push(`product/${data.id}`);
 }
 function Random() {
 const [random, setRandom] = useState();
@@ -27,7 +29,7 @@ useEffect(() => {
                 <div className="row">
             {random &&
                 random.map((data) => {
-                return <div key = {data.id} className="col-lg-4 col-md-12" onClick={()=>{viewFundRaiser(data.id)} }  style={{border:"2px solid  green"}}>
+                return <div key = {data.id} className="col-lg-4 col-md-12" onClick={()=>{ViewFundRaiser(data)} }  style={{border:"2px solid  green"}}>
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">
