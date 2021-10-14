@@ -29,8 +29,13 @@ import { AiFillCaretRight} from "react-icons/ai";
                         <div className="mainViewfundraiserText">
                             <h5>{data.title}</h5>
                             <p>{data.descriptionn}</p>
-                            <ProgressBar variant="success" now={50}/>
-                            <span className="raised">${data.current_target} raised</span> <span>${data.targett}</span>
+                            {/* bdha await ?? */}
+                            <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
+                             {console.log("D.T",data.targett)}
+                             {console.log("D.CT",data.current_target)}
+                             {console.log("percentage",(data.current_target*100)/data.targett)}
+                            
+                            <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
                         </div>
                     </div>
                      </div>;
