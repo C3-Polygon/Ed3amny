@@ -6,12 +6,9 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 import './Random.css';
 
-const ViewFundRaiser = (data) => {
-    const history = useHistory()
-    console.log("data" , data);
-    history.push(`product/${data.id}`);
-}
+
 function Random() {
+const history = useHistory()
 const [random, setRandom] = useState();
 useEffect(() => {
     axios.get(`http://localhost:5000/fundraiser/get/getTopFundraiserByCurrentTarget`).then((res) => {
@@ -21,6 +18,10 @@ useEffect(() => {
     },)
   },[]);
 
+  const ViewFundRaiser = (data) => {
+    console.log("data" , data);
+    history.push(`/fundraiserView/${data.id}`);
+}
     return (
       <>
        <div className="Main-Topfundraiser">
