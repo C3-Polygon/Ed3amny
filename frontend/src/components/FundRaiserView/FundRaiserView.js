@@ -26,9 +26,9 @@ const FundRaiserView = () => {
         <div className="MainSectionFundRaiserView">
           <div className="Contect-Main-Section">
             {fundRaiserView &&
-              fundRaiserView.map((elem) => {
+              fundRaiserView.map((elem,index) => {
                   return (
-                      <div className="fundRaiserView">                        
+                      <div key={index}className="fundRaiserView">                        
                       <h1> {elem.country} </h1>
                       <h1> {elem.targett}  </h1>
                       <h1> {elem.current_target} </h1>
