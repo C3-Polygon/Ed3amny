@@ -8,7 +8,7 @@ import { AiFillCaretRight} from "react-icons/ai";
  const Topfundraiser = () => {
      const [result, setResult] = useState();
     useEffect(() => {
-        axios.get(`http://localhost:5000/fundraiser`).then((result) => {
+        axios.get(`http://localhost:5000/fundraiser/getTopFundraiserByCurrentTarget`).then((result) => {
             setResult(result.data.result);
         }).catch((err) => {
             console.log(err);
