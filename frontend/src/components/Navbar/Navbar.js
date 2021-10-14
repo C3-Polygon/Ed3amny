@@ -34,7 +34,7 @@ const Navbar =   () => {
   }
 
   return (
-    <>
+    <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
           <h5>LogoName</h5>
@@ -44,7 +44,7 @@ const Navbar =   () => {
           </div>
           <div>
             <BsBellFill />
-            <BsGrid3X3GapFill className="small-media" />
+            <BsGrid3X3GapFill />
             <div className="navbar">
               { state1.token  ?  (
                 <div>
@@ -71,7 +71,7 @@ const Navbar =   () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
