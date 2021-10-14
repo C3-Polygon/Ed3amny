@@ -196,6 +196,27 @@ const getThreeRandomFundraisers = (req, res) => {
     });
 
 }
+const getAllCategories = (req, res) => {
+    const allStory = `SELECT * FROM categories`;
+    connection.query(allStory, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "SERVER ERROR"
+            })
+            res.status(500);
+        }
+        if (response) {
+            res.json({
+                success: true,
+                message: "All Data",
+                allData: response
+            })
+            res.status(200);
+        }
+    })
+}
+
 
 
 
@@ -208,5 +229,6 @@ module.exports = {
     deleteFundraiserByUser,
     getAllFundraiserByType,
     getTopFundraiserByCurrentTarget,
-    getThreeRandomFundraisers
+    getThreeRandomFundraisers,
+    getAllCategories
 };
