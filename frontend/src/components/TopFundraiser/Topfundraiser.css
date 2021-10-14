@@ -16,6 +16,7 @@
 
 .mainViewfundraiser {
     overflow: hidden;
+    height: 700px;
 }
 
 .mainViewfundraiser h5 {
