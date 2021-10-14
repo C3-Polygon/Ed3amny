@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { setToken } from "../../reducers/login/token";
 import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
 import { setUserId } from "../../reducers/login/userId";
+import Dropdown from 'react-bootstrap/Dropdown';
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
 
@@ -44,7 +45,18 @@ const Navbar =   () => {
           </div>
           <div>
             <BsBellFill />
-            <BsGrid3X3GapFill />
+              <Dropdown>
+                  <Dropdown.Toggle id="dropdown-basic">
+                  <BsGrid3X3GapFill />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  </Dropdown.Menu>
+              </Dropdown>
+            
             <div className="navbar">
               { state1.token  ?  (
                 <div>
