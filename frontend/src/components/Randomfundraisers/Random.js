@@ -5,6 +5,10 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
 import './Random.css';
 
+const viewFundRaiser = (id) => {
+    console.log("id" , id);
+    
+}
 function Random() {
 const [random, setRandom] = useState();
 useEffect(() => {
@@ -18,12 +22,12 @@ useEffect(() => {
     return (
       <>
        <div className="Main-Topfundraiser">
-            <div className="container">
+            <div className="container" >
                 <h2>Find a GoFundMe Randomly</h2>
                 <div className="row">
             {random &&
                 random.map((data) => {
-                return <div key = {data.id} className="col-lg-4 col-md-12">
+                return <div key = {data.id} className="col-lg-4 col-md-12" onClick={()=>{viewFundRaiser(data.id)} }  style={{border:"2px solid  green"}}>
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">
