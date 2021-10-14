@@ -5,6 +5,10 @@ import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import axios from "axios";
 import { setUserId } from "../../../reducers/login/userId";
+import FacebookLogin from 'react-facebook-login';
+import { Card, Image } from 'react-bootstrap';
+// @ OBADA OBADA OBADA   DONT DELETE FACEBOOK IMPORTS AGAIN    -- Thank you
+
 // import {Signup} from "./../signup/signup"
 
 
@@ -100,11 +104,8 @@ export const Login = () => {
           <button onClick={()=> history.push("/signup")}>Sign up</button>
           <button onClick={()=> history.push("/")}>back to main page</button>
         </>
-    </>
-  );
-};
-/*
-<>
+
+        <>
       <div className="container">
         <Card style={{ width: "600px" }}>
           <Card.Header>
@@ -129,4 +130,10 @@ export const Login = () => {
         </Card>
       </div>
       </>
+
+    </>
+  );
+};
+/*
+
 */
