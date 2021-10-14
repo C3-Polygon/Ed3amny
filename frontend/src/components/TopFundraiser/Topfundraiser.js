@@ -3,6 +3,8 @@ import axios from 'axios';
 import './Topfundraiser.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import  ProgressBar  from 'react-bootstrap/ProgressBar';
+
+import { AiFillCaretRight} from "react-icons/ai";
  const Topfundraiser = () => {
      const [result, setResult] = useState();
     useEffect(() => {
@@ -21,19 +23,20 @@ import  ProgressBar  from 'react-bootstrap/ProgressBar';
                 <div className="row">
             {result &&
                 result.map((data) => {
-                return <div className="col-md-4">
+                return <div className="col-lg-4 col-md-12">
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">
                             <h5>{data.title}</h5>
                             <p>{data.descriptionn}</p>
                             <ProgressBar variant="success" now={50}/>
-                            <p>${data.current_target} <bold>raised</bold> ${data.targett}</p>
+                            <span className="raised">${data.current_target} raised</span> <span>${data.targett}</span>
                         </div>
                     </div>
                      </div>;
                 })}
                 </div>
+                <p className='see-more-fundraiser'>See More  <AiFillCaretRight/> </p>
             </div>
         </div>
             
