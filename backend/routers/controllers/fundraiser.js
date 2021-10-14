@@ -159,15 +159,26 @@ const getTopFundraiserByCurrentTarget = (req,res) => {
     }
     res
       .status(200)
-      .json({ success: true, message: `All Fundraiser`, result: result });
+      .json({ success: true, message: `Top three Fundraisers`, result: result });
   });
 
   }
   
   const getThreeRandomFundraisers = (req,res) => {
-  // SELECT * FROM campaigns
-  // ORDER BY RAND()
-  // LIMIT 3
+  const query = `SELECT * FROM campaigns ORDER BY RAND() LIMIT 3` ;
+  connection.query(query, (error, result) => {
+    if (error) {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        error: error,
+      });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: `Random three Fundraisers`, result: result });
+  });
+
   }
 
 
@@ -179,5 +190,6 @@ module.exports = {
   getAllFundRaiserByUser,
   deleteFundraiserByUser,
   getAllFundraiserByType,
-  getTopFundraiserByCurrentTarget
+  getTopFundraiserByCurrentTarget,
+  getThreeRandomFundraisers
 };
