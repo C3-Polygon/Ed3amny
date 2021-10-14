@@ -99,6 +99,22 @@ const getAllFundRaiserByUser = (req, res) => {
     });
 };
 
+//get  fundraiser for specific id for it 
+const getFundRaiserById = (req, res) => {
+    let id = req.params.id;
+    const query = `SELECT * FROM campaigns WHERE userid = ${id} AND is_deleted=1`;
+    connection.query(query, (error, result) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: `Server Error`,
+                error: error,
+            });
+        }
+        res.status(200).json({ success: true, message: "FundRaiser By Id", result: result });
+    });
+};
+
 // delete fundraiser for specific user ( hard delete )
 const deleteFundraiserByUser = (req, res) => {
     const id = req.params.id;
@@ -187,6 +203,7 @@ module.exports = {
     createNewFundraiser,
     getAllFundraiser,
     updateFundRaiserById,
+    getFundRaiserById,
     getAllFundRaiserByUser,
     deleteFundraiserByUser,
     getAllFundraiserByType,
