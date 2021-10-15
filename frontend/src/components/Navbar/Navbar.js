@@ -120,7 +120,7 @@ const Navbar = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1">
+                      <Dropdown.Item onClick={()=> history.push("/AccountSettings")}>
                         Account Settings
                       </Dropdown.Item>
                       <Dropdown.Item href="#/action-2">
