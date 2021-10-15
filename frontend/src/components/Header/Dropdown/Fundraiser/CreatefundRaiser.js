@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 
-import axios, { Axios } from "axios";
+import axios from "axios";
 // import "./CreatefundRaiser.css;
 import userId from "../../../../reducers/login/userId";
 
