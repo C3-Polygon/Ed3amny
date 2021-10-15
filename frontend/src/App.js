@@ -21,7 +21,7 @@ import CategoryByType from "./components/CategoryByType/CategoryByType";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
 import DonateForSpecific from "./components/Header/Dropdown/DonateForSpecific/DonateForSpecific";
-
+import Footer from "./components/Footer/Footer";
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
@@ -61,6 +61,7 @@ function App() {
               <Stories/>
               <Leader/>
               <Random/>
+              <Footer/>
             </Route>
             <AccountSettings exact path ="/AccountSettings"/>
             <YourFundraisers exact path ="/YourFundraisers"/>
@@ -71,6 +72,7 @@ function App() {
             <Route path="/fundraiserView/:id"  component={FundRaiserView} />
             {/* <Stripe /> */}
           </Switch>
+          
         </div>
       
     </>
