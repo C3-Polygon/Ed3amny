@@ -76,7 +76,7 @@ const Navbar = () => {
         <div className="navbar">
           
             
-          {/* <h5 onClick={() => history.push("/")}>LogoName</h5> */}
+          <h5 onClick={() => history.push("/")}>LogoName</h5>
             {/* <img src='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2020%2F12%2F08%2Fgofundme.jpg&q=85' alt="!"/> */}
             <Categories/>
            
@@ -126,7 +126,7 @@ const Navbar = () => {
                       <Dropdown.Item href="#/action-2">
                         Donations You've Made
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">
+                      <Dropdown.Item onClick={()=> history.push("/YourFundraisers")}>
                         Your Fundraisers
                       </Dropdown.Item>
                       <Dropdown.Item href="#/action-4">

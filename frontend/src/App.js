@@ -19,6 +19,7 @@ import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers"
     // mshan allah
 const socket = io.connect("http://localhost:5000");
 function Appmain(props) {
@@ -59,6 +60,7 @@ function App() {
               <Random/>
             </Route>
             <AccountSettings exact path ="/AccountSettings"/>
+            <YourFundraisers exact path ="/YourFundraisers"/>
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route path="/fundraiser"  component={CreateFundRaiser} />
