@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+
+
 function CategoryByType() {
     const { id } = useParams();
-
     const [cate, setCate] = useState();
     useEffect(() => {
         axios.get(`http://localhost:5000/fundraiser/typee/${id}`)
@@ -15,11 +16,11 @@ function CategoryByType() {
           .catch((err) => {
             console.log(err);
           });
-      }, []);
+      }, [id]);
     return (
         <div className="Main-Topfundraiser">
         <div className="container">
-            <h2>Top fundraiser</h2>
+            <h2>Categories</h2>
             <div className="row">
         {cate &&
             cate.map((data) => {
@@ -30,11 +31,7 @@ function CategoryByType() {
                     <div className="mainViewfundraiserText">
                         <h5>{data.title}</h5>
                         <p>{data.descriptionn}</p>
-                        {/* bdha await ?? */}
                         <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
-                         {/* {console.log("D.CT",data.current_target)}
-                         {console.log("percentage",(data.current_target*100)/data.targett)} */}
-                        
                         <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
                     </div>
                 </div>

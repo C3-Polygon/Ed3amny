@@ -19,7 +19,6 @@ useEffect(() => {
   },[]);
 
   const ViewFundRaiser = (data) => {
-    console.log("data" , data);
     history.push(`/fundraiserView/${data.id}`);
 }
     return (
