@@ -47,38 +47,38 @@ const Signup = () => {
             <Form onSubmit={insertNewUser}>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Frsit Name </Form.Label>
-            <Form.Control type="text" placeholder="Enter email"  onChange={(e)=>{setFirstName(e.target.value)}}/>
+            <Form.Label>First Name </Form.Label>
+            <Form.Control type="text" placeholder="First Name"  onChange={(e)=>{setFirstName(e.target.value)}}/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>lastName</Form.Label>
-            <Form.Control type="text" placeholder="lastName" onChange={(e)=>{setLastName(e.target.value)}} />
+            <Form.Label>last Name</Form.Label>
+            <Form.Control type="text" placeholder="Last Name" onChange={(e)=>{setLastName(e.target.value)}} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>age</Form.Label>
-            <Form.Control type="number" placeholder="age" onChange={(e)=>{setAge(e.target.value)}}/>
+            <Form.Label>Age</Form.Label>
+            <Form.Control type="number" placeholder="Age" onChange={(e)=>{setAge(e.target.value)}}/>
         </Form.Group>
 
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>img</Form.Label>
-            <Form.Control type="file" placeholder="img" onChange={(e)=>{setImg(e.target.value)}} />
+            <Form.Label>Image</Form.Label>
+            <Form.Control type="file" placeholder="Image" onChange={(e)=>{setImg(e.target.value)}} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>email</Form.Label>
-            <Form.Control type="text" placeholder="email" onChange={(e)=>{setEmail(e.target.value)}}/>
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control type="text" placeholder="E-mail" onChange={(e)=>{setEmail(e.target.value)}}/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>country</Form.Label>
-            <Form.Control type="text" placeholder="country" onChange={(e)=>{setCountry(e.target.value)}}/>
+            <Form.Label>Country</Form.Label>
+            <Form.Control type="text" placeholder="Country" onChange={(e)=>{setCountry(e.target.value)}}/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>password</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control type="text" placeholder="Password" onChange={(e)=>{setPasswordd(e.target.value)}}/>
         </Form.Group>
 
@@ -92,7 +92,7 @@ const Signup = () => {
             Submit
         </button>
         <button onClick={()=> history.push("/login")}>login</button>
-        <button onClick={()=> history.push("/")}>back to main page</button>
+        <button onClick={()=> history.push("/")}>Home</button>
         </Form>
         
         </>
