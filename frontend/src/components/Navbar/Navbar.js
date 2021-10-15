@@ -132,7 +132,7 @@ const Navbar = () => {
                       <Dropdown.Item onClick={()=> history.push("/fundraiser")}>
                         Start a Fundraiser
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/action-4">
+                      <Dropdown.Item onClick={()=> history.push("/DonateForSpecific")}>
                         Specific Donation
                       </Dropdown.Item>
                       <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>

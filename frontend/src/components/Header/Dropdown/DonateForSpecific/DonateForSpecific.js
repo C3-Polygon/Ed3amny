@@ -11,37 +11,38 @@ function DonateForSpecific() {
     const history = useHistory();
     const [cate, setCate] = useState();
     useEffect(() => {
-        axios.get(`http://localhost:5000/fundraiser/categories/categories`).then((res)=>{
-            setCate(res.data.allData); 
+        axios.get(`http://localhost:5000/helpSpecific`).then((res)=>{
+            console.log("hospital result",res)
+
+             setCate(res.data.result); 
         }).catch((error)=>{
             console.log(error);
         })
         
       }, []);
-      const categoriesPush = (id)=>{
-          history.push(`/category/${id}`);
-      }
+      
+
     return (
         <div>
-        {[DropdownButton].map((DropdownType, idx) => (
+        {[DropdownButton].map((DropdownType, index) => (
       <DropdownType
         as={ButtonGroup}
-        key={idx}
-        id={`dropdown-button-drop-${idx}`}
+        key={index}
+        id={`dropdown-button-drop-${index}`}
         size="sm"
         variant="none"
-        title="fundraise for "
+        title="Hospitals to donate for "
       >
         {cate&&cate.map((ele)=>{
             return(
                  <div>
-                     <Dropdown.Item onClick={()=>{categoriesPush(ele.id)}}>{ele.namee}</Dropdown.Item>
+                     <Dropdown.Item>{ele.namee}</Dropdown.Item>
 
                  </div>
             )
         })}
         <Dropdown.Divider />
-        <Dropdown.Item eventKey="4" className='see-all-categories'>See all</Dropdown.Item>
+        <Dropdown.Item eventKey="4" className='see-all-hospitals'>See All hospitals</Dropdown.Item>
       </DropdownType>
     ))}
         </div>
