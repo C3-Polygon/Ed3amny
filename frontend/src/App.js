@@ -19,9 +19,11 @@ import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
-import DonateForSpecific from "./components/Header/Dropdown/DonateForSpecific/DonateForSpecific";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/yourFundraisers";
+import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
+import ReadyToStart from "./components/ReadyStart/ReadyToStart";
+
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
@@ -61,7 +63,7 @@ function App() {
               <Stories/>
               <Leader/>
               <Random/>
-              <Footer/>
+            <ReadyToStart/>
             </Route>
             <AccountSettings exact path ="/AccountSettings"/>
             <YourFundraisers exact path ="/YourFundraisers"/>
@@ -74,7 +76,7 @@ function App() {
           </Switch>
           
         </div>
-      
+        <Footer/>
     </>
   );
 }
