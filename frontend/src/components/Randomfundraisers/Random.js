@@ -5,6 +5,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import './Random.css';
+import { AiFillCaretRight} from "react-icons/ai";
 
 
 function Random() {
@@ -42,6 +43,7 @@ useEffect(() => {
                      </div>;
                 })}
                 </div>
+                <p className='see-more-fundraiser'>See More  <AiFillCaretRight/> </p>
             </div>
         </div>
             

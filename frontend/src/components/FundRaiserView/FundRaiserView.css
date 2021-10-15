@@ -1,0 +1,62 @@
+.MainSectionFundRaiserView {
+    padding-top: 50px;
+}
+
+.MainSectionFundRaiserView img {
+    width: 100%;
+}
+
+.title-fundRaiserView {
+    margin-bottom: 25px;
+}
+
+.create-fundRaiserView {
+    font-weight: bold;
+}
+
+.context-text-funRaiserView {
+    background-color: #fbf8f6;
+    padding: 35px;
+}
+
+.donation-fundRaiserView {
+    margin-top: 75px;
+    padding: 25px;
+    /* box-shadow: 5px 11px 18px 0px #ccc; */
+    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.donation-fundRaiserView span {
+    color: #767676;
+}
+
+.target {
+    color: #000000 !important;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.share-fundRaiserView {
+    margin-top: 15px;
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+    background-color: #f58131;
+    position: relative;
+}
+
+.share-fundRaiserView .share-facebook {
+    position: absolute;
+    left: 6px;
+    background-color: #000;
+    color: #fff;
+    font-size: 22px;
+    top: 11px;
+}
+
+
+/* 
+.share-fundRaiserView .share-donation {
+    background-color: #ffc14d;
+} */
