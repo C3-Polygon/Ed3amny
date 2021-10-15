@@ -4,7 +4,7 @@ import './Topfundraiser.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import  ProgressBar  from 'react-bootstrap/ProgressBar';
 
-import { AiFillCaretRight} from "react-icons/ai";
+
  const Topfundraiser = () => {
      const [result, setResult] = useState();
     useEffect(() => {
@@ -42,7 +42,7 @@ import { AiFillCaretRight} from "react-icons/ai";
                      </div>;
                 })}
                 </div>
-                <p className='see-more-fundraiser'>See More  <AiFillCaretRight/> </p>
+                
             </div>
         </div>
             
