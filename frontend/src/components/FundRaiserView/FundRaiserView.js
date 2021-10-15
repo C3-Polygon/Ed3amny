@@ -23,6 +23,7 @@ const FundRaiserView = () => {
   return (
       <> 
       <div className="container">
+        {id}
         <div className="MainSectionFundRaiserView">
           <div className="Contect-Main-Section">
             {fundRaiserView &&

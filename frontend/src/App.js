@@ -17,6 +17,7 @@ import Stories from "./components/stories/Stories";
 import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
+import CategoryByType from "./components/CategoryByType/CategoryByType";
 
 
 const socket = io.connect("http://localhost:5000");
@@ -57,6 +58,7 @@ function App() {
               <Leader/>
               <Random/>
             </Route>
+            <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route path="/fundraiser"  component={CreateFundRaiser} />
             <Route path="/fundraiserView/:id"  component={FundRaiserView} />

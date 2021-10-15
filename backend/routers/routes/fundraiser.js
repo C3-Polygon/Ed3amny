@@ -55,6 +55,6 @@ fundraiserRouter.delete("/:id", authentication, deleteFundraiserByUser);
 /* -----------------------------------------  */
 fundraiserRouter.get("/categories/categories", getAllCategories)
 
-fundraiserRouter.get("type/:type", getAllFundraiserByType);
+fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
 module.exports = fundraiserRouter;
