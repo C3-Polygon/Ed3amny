@@ -9,12 +9,13 @@ const FundRaiserView = () => {
   const { id } = useParams();
   const history = useHistory();
   const [fundRaiserView, setFundRaiserView] = useState();
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((res) => {
-        console.log("res", res.data.result);
         setFundRaiserView(res.data.result);
+        console.log("lololo", res.data.result);
       })
       .catch((err) => {
         console.log(err);
@@ -23,6 +24,7 @@ const FundRaiserView = () => {
   return (
       <> 
       <div className="container">
+        {id}
         <div className="MainSectionFundRaiserView">
           <div className="Contect-Main-Section">
             {fundRaiserView &&

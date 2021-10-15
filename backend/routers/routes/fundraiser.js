@@ -1,6 +1,6 @@
 const express = require("express");
 
-const {createNewFundraiser , getAllFundraiser, getFundRaiserById ,updateFundRaiserById , getAllFundRaiserByUser,deleteFundraiserByUser,getAllFundraiserByType,getTopFundraiserByCurrentTarget,getThreeRandomFundraisers } = require("../controllers/fundraiser");
+const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories } = require("../controllers/fundraiser");
 
 
 // define router
@@ -13,7 +13,7 @@ const authentication = require("../middlewares/authentication")
 // //Routes
 
 /* -----------------------------------------  */
-fundraiserRouter.post("/", authentication , createNewFundraiser);
+fundraiserRouter.post("/", authentication, createNewFundraiser);
 //  [post]  [http://localhost:5000/fundraiser]
 /* -----------------------------------------  */
 
@@ -33,28 +33,28 @@ fundraiserRouter.get("/get/getTopFundraiserByCurrentTarget", getThreeRandomFundr
 /* -----------------------------------------  */
 
 /* -----------------------------------------  */
-fundraiserRouter.put("/",  authentication , updateFundRaiserById);
+fundraiserRouter.put("/", authentication, updateFundRaiserById);
 //  [put]  [http://localhost:5000/fundraiser]
 /* -----------------------------------------  */
 
 
-/* -----------------------------------------  */ 
-fundraiserRouter.get("/:userid", authentication ,  getAllFundRaiserByUser);
+/* -----------------------------------------  */
+fundraiserRouter.get("/:userid", authentication, getAllFundRaiserByUser);
 //  [get]  [http://localhost:5000/fundraiser/:userid]
 /* -----------------------------------------  */
 
-/* -----------------------------------------  */ 
+/* -----------------------------------------  */
 fundraiserRouter.get("/id/:id", getFundRaiserById);
 //  [get]  [http://localhost:5000/fundraiser/id/:id]
 /* -----------------------------------------  */
 
 
-/* -----------------------------------------  */ 
-fundraiserRouter.delete("/:id", authentication ,  deleteFundraiserByUser);
+/* -----------------------------------------  */
+fundraiserRouter.delete("/:id", authentication, deleteFundraiserByUser);
 //  [delete]  [http://localhost:5000/fundraiser/:id]
 /* -----------------------------------------  */
+fundraiserRouter.get("/categories/categories", getAllCategories)
 
-fundraiserRouter.get("type/:type", getAllFundraiserByType);
+fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
 module.exports = fundraiserRouter;
-

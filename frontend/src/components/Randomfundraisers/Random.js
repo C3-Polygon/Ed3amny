@@ -19,7 +19,6 @@ useEffect(() => {
   },[]);
 
   const ViewFundRaiser = (data) => {
-    console.log("data" , data);
     history.push(`/fundraiserView/${data.id}`);
 }
     return (
@@ -30,7 +29,7 @@ useEffect(() => {
                 <div className="row">
             {random &&
                 random.map((data) => {
-                return <div key = {data.id} className="col-lg-4 col-md-12" onClick={()=>{ViewFundRaiser(data)} }  style={{border:"2px solid  green"}}>
+                return <div key = {data.id} className="col-lg-4 col-md-12" onClick={()=>{ViewFundRaiser(data)}}>
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">

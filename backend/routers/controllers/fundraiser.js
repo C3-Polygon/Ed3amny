@@ -145,8 +145,8 @@ const deleteFundraiserByUser = (req, res) => {
 };
 
 const getAllFundraiserByType = (req, res) => { //need testing
-    let type = req.params.type
-    const query = `SELECT * FROM campaigns WHERE type = ${type}`;
+    let typee = req.params.typee
+    const query = `SELECT * FROM campaigns WHERE typee = ${typee}`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
@@ -155,7 +155,11 @@ const getAllFundraiserByType = (req, res) => { //need testing
                 error: error,
             });
         }
-        res.status(200).json({ success: true, message: `All the fund raisers of type: ${type}`, result: result });
+        res.status(200).json({
+            success: true,
+            message: `All the fund raisers of type: ${typee}`,
+            result: result
+        });
     });
 }
 
@@ -196,6 +200,27 @@ const getThreeRandomFundraisers = (req, res) => {
     });
 
 }
+const getAllCategories = (req, res) => {
+    const allStory = `SELECT * FROM categories LIMIT 3`;
+    connection.query(allStory, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "SERVER ERROR"
+            })
+            res.status(500);
+        }
+        if (response) {
+            res.json({
+                success: true,
+                message: "All Data",
+                allData: response
+            })
+            res.status(200);
+        }
+    })
+}
+
 
 
 
@@ -208,5 +233,6 @@ module.exports = {
     deleteFundraiserByUser,
     getAllFundraiserByType,
     getTopFundraiserByCurrentTarget,
-    getThreeRandomFundraisers
+    getThreeRandomFundraisers,
+    getAllCategories
 };
