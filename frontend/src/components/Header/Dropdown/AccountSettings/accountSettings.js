@@ -1,5 +1,5 @@
 import React,{useState ,useEffect} from "react";
-import './AccountSettings.css';
+import './accountSettings.css';
 
 import axios from "axios";
 
