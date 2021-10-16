@@ -16,8 +16,6 @@ const FundRaiserView = () => {
   const history = useHistory();
   const [fundRaiserView, setFundRaiserView] = useState();
 
-  const [showpop, setShowpop] = useState(false);
-
   useEffect(() => {
     axios
       .get(`http://localhost:5000/fundraiser/id/${id}`)

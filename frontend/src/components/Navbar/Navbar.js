@@ -11,6 +11,7 @@ import { setUserId } from "../../reducers/login/userId";
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import Categories from '../categories/Categories';
+import AllCategory from "../AllCategory/AllCategory";
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
 
@@ -77,10 +78,7 @@ const Navbar = () => {
           
             
           <h5 onClick={() => history.push("/")}>LogoName</h5>
-            {/* <img src='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2020%2F12%2F08%2Fgofundme.jpg&q=85' alt="!"/> */}
             <Categories/>
-           
-
           <div className="search-bar">
             <input
               type="search"
