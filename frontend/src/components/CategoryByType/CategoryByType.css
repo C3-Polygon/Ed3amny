@@ -1,0 +1,29 @@
+.category-name-section {
+    padding: 35px 0px;
+    align-items: center;
+}
+
+.category-name-section button {
+    margin-top: 20px;
+    background-color: #02a95c;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.category-name-section h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 25px 0px;
+}
+
+.category-name-section img {
+    max-width: 100%;
+    max-height: 400px;
+}
