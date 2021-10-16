@@ -266,6 +266,27 @@ const getCategorybyId = (req, res) => {
 
 }
 
+const getTotalsFundreiser = (req, res) => {
+    const allStory = `SELECT * FROM campaigns`;
+    connection.query(allStory, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "SERVER ERROR"
+            })
+            res.status(500);
+        }
+        if (response) {
+            res.json({
+                success: true,
+                message: "All Data",
+                allData: response
+            })
+            res.status(200);
+        }
+    })
+}
+
 
 
 
@@ -282,5 +303,6 @@ module.exports = {
     getThreeRandomFundraisers,
     getAllCategories,
     getTotalsCategories,
-    getCategorybyId
+    getCategorybyId,
+    getTotalsFundreiser
 };

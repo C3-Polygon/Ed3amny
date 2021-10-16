@@ -18,3 +18,39 @@
     margin: 20px 0px;
     text-transform: uppercase;
 }
+
+.Main-view-users .pending {
+    background-color: #44c2fd;
+    padding: 8px;
+    color: #ffff;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.Main-view-users .approved {
+    background-color: #36b336;
+    padding: 5px;
+    color: #ffff;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.Main-view-users .deleted {
+    background-color: red;
+    padding: 5px;
+    color: #ffff;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
