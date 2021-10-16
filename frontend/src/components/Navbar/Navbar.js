@@ -118,24 +118,26 @@ const Navbar = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=> history.push("/AccountSettings")}>
+                      <Dropdown.Item onClick={()=> history.push("/Drop/AccountSettings")}>
                         Account Settings
                       </Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">
+
+                      {/* <Dropdown.Item href="#/action-2">
                         Donations You've Made
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={()=> history.push("/YourFundraisers")}>
+                      </Dropdown.Item> */}
+
+                      <Dropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>
                         Your Fundraisers
                       </Dropdown.Item>
                       <Dropdown.Item onClick={()=> history.push("/fundraiser")}>
                         Start a Fundraiser
                       </Dropdown.Item>
 
-                      <Dropdown.Item onClick={()=> history.push("/DonateForSpecific")}>
+                      <Dropdown.Item onClick={()=> history.push("/Drop/DonateForSpecific")}>
                         Specific Donation
                       </Dropdown.Item>
 
-                      <Dropdown.Item onClick={()=> history.push("/CreateBloodPost/RRR/RRR/RRR")}>
+                      <Dropdown.Item onClick={()=> history.push("/Drop/CreateBloodPost")}>
                         Ask For a blood donation
                       </Dropdown.Item>
                       
