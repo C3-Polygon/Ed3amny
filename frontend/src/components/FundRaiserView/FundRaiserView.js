@@ -17,7 +17,7 @@ import {
 
 const FundRaiserView = () => {
   const [sharePopup, setSharePopup] = useState(true);
-  const [donationPopup, setDonationPopup] = useState(false);
+  
   const { id } = useParams();
   const history = useHistory();
   const [fundRaiserView, setFundRaiserView] = useState();
@@ -115,7 +115,9 @@ const FundRaiserView = () => {
                           />{" "}
                           Share
                         </button>
-                        <button className="share-fundRaiserView">
+                        <button className="share-fundRaiserView" onClick= {()=>{
+                           history.push('/donation')
+                        }}>
                           {" "}
                           <AiOutlineMoneyCollect className="share-facebook" />{" "}
                           donation now

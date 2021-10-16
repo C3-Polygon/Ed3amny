@@ -26,6 +26,7 @@ import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
 import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 import MainPage from "./components/DashboradAdmin/MainPage";
+import Donation from './components/services/payment/Donation'
 
     // mshan allah
     // mshan allah
@@ -78,6 +79,7 @@ function App() {
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             <Route exact path="/adminPage" component={MainPage} />
+            <Route exact path='/donation' component={Donation} />
             {/* <Stripe /> */}
           </Switch>
           
