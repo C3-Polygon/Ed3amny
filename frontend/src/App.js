@@ -18,10 +18,14 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import AccountSettings from "./components/Header/Dropdown/AccountSettings/accountSettings";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/yourFundraisers";
-import DonateForSpecific from "./components/Header/Dropdown/DonateForSpecific/DonateForSpecific";
+import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
+import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
+import ReadyToStart from "./components/ReadyStart/ReadyToStart";
+import AllCategory from "./components/AllCategory/AllCategory";
+import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
+
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
@@ -61,20 +65,22 @@ function App() {
               <Stories/>
               <Leader/>
               <Random/>
-              <Footer/>
+            <ReadyToStart/>
             </Route>
             <AccountSettings exact path ="/AccountSettings"/>
             <YourFundraisers exact path ="/YourFundraisers"/>
             <DonateForSpecific exact path ="/DonateForSpecific"/>
+            {/* <CreateBloodPost exact Path = "/CreateBloodPost/RRR/RRR/RRR"/>                    Its breaking the site !! WTH */}
             <Route exact path="/category/:id"  component={CategoryByType}/> 
+            <Route exact path="/category/allCategory/Category" component={AllCategory}/>
             <Route path="/chat/:roomname/:username" component={Appmain} />
-            <Route path="/fundraiser"  component={CreateFundRaiser} />
-            <Route path="/fundraiserView/:id"  component={FundRaiserView} />
+            <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
+            <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             {/* <Stripe /> */}
           </Switch>
           
         </div>
-      
+        {/* <Footer/> */}
     </>
   );
 }

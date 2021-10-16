@@ -8,7 +8,7 @@ const bloodpostRouter = express.Router();
 const authentication = require("../middlewares/authentication")
 
 //Routes
-bloodpostRouter.post('/', createNewBloodPost);
+bloodpostRouter.post('/createBloodPost/createBloodPost', createNewBloodPost);
 bloodpostRouter.get('/', getAllBloodPost);
 bloodpostRouter.put('/:id', deleteTheBloodPost);
 bloodpostRouter.put("/update/:id" , updateBloodPost)
