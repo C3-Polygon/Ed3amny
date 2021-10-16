@@ -36,12 +36,11 @@ function Categories() {
             return(
                  <div>
                      <Dropdown.Item onClick={()=>{categoriesPush(ele.id)}}>{ele.namee}</Dropdown.Item>
-
                  </div>
             )
         })}
         <Dropdown.Divider />
-        <Dropdown.Item eventKey="4" className='see-all-categories'>See all</Dropdown.Item>
+        <Dropdown.Item eventKey="4" className='see-all-categories' onClick={()=>{history.push('/category/allCategory/Category')}} >See all</Dropdown.Item>
       </DropdownType>
     ))}
         </div>

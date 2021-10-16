@@ -221,6 +221,52 @@ const getAllCategories = (req, res) => {
     })
 }
 
+const getTotalsCategories = (req, res) => {
+    const allStory = `SELECT * FROM categories`;
+    connection.query(allStory, (err, response) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "SERVER ERROR"
+            })
+            res.status(500);
+        }
+        if (response) {
+            res.json({
+                success: true,
+                message: "All Data",
+                allData: response
+            })
+            res.status(200);
+        }
+    })
+}
+
+const getCategorybyId = (req, res) => {
+    const id = req.params.id;
+    const category = `SELECT * FROM categories where id = ${id}`;
+    connection.query(category, (err, result) => {
+        if (err) {
+            res.json({
+                success: false,
+                message: "Server Error",
+                error: err
+            })
+            res.status(500);
+        }
+        if (result) {
+            res.json({
+                success: true,
+                message: "all Data",
+                Data: result
+            })
+            res.status(200);
+        }
+    })
+
+}
+
+
 
 
 
@@ -234,5 +280,7 @@ module.exports = {
     getAllFundraiserByType,
     getTopFundraiserByCurrentTarget,
     getThreeRandomFundraisers,
-    getAllCategories
+    getAllCategories,
+    getTotalsCategories,
+    getCategorybyId
 };

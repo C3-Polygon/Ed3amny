@@ -23,6 +23,7 @@ import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/yourFu
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
+import AllCategory from "./components/AllCategory/AllCategory";
 
     // mshan allah
     // mshan allah
@@ -69,6 +70,7 @@ function App() {
             <YourFundraisers exact path ="/YourFundraisers"/>
             <DonateForSpecific exact path ="/DonateForSpecific"/>
             <Route exact path="/category/:id"  component={CategoryByType}/> 
+            <Route exact path="/category/allCategory/Category" component={AllCategory}/>
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route path="/fundraiser"  component={CreateFundRaiser} />
             <Route path="/fundraiserView/:id"  component={FundRaiserView} />

@@ -4,10 +4,12 @@ import { Route, useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 import axios from "axios";
 import './FundRaiserView.css';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import Stripe from "../services/payment/Stripe";
 import Share from "../services/Share/shareViaFacebook";
 import  ProgressBar  from 'react-bootstrap/ProgressBar';
-import { AiOutlineDownload ,AiOutlineMoneyCollect} from "react-icons/ai";
+import { AiOutlineDownload ,AiOutlineMoneyCollect ,AiOutlineCloseSquare} from "react-icons/ai";
 
 const FundRaiserView = () => {
   const { id } = useParams();
@@ -19,7 +21,7 @@ const FundRaiserView = () => {
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((res) => {
         setFundRaiserView(res.data.result);
-        console.log("lololo", res.data.result);
+        console.log("lololo", res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -29,6 +31,30 @@ const FundRaiserView = () => {
       <> 
       <div className="container">
         <div className="MainSectionFundRaiserView">
+          {/* <div className='pop-fundraiser'>
+            <div className='pop-fundraiser-child'>
+              <AiOutlineCloseSquare className='close-pop' onClick={() =>{
+                history.push("/fundraiserView/10");
+              }}/>
+              <h1>Help by sharing</h1>
+              <p>Fundraisers shared on social networks raise up to 5x more (SOON)</p>
+              <hr></hr>
+              <Share />
+              <p>Facebook</p>
+             
+              <InputGroup className="mb-3">
+    <FormControl
+      placeholder="Copy URL"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+    />
+    <InputGroup.Text  id="basic-addon2" onClick={() => {navigator.clipboard.writeText(this.state.textToCopy)}}
+>Copy</InputGroup.Text>
+  </InputGroup>
+
+
+            </div>
+          </div> */}
           <div className="row">
             {fundRaiserView &&
               fundRaiserView.map((elem,index) => {
@@ -44,7 +70,6 @@ const FundRaiserView = () => {
                   </div>
                  
                   <div className="content"> 
-                      <Share />
                       <Stripe />
                     </div>
                   </div>
@@ -56,8 +81,6 @@ const FundRaiserView = () => {
                  <ProgressBar variant="success" now={Math.round((elem.current_target / elem.targett) * 100)}/>
 
                  <button className="share-fundRaiserView"> <AiOutlineDownload className='share-facebook'/> Share</button>
-
-                 
                  <button className="share-fundRaiserView"> <AiOutlineMoneyCollect className='share-facebook'/> donation now</button>
                  
                  </div>

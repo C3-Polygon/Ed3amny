@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories } = require("../controllers/fundraiser");
+const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories, getTotalsCategories, getCategorybyId } = require("../controllers/fundraiser");
 
 
 // define router
@@ -54,6 +54,10 @@ fundraiserRouter.delete("/:id", authentication, deleteFundraiserByUser);
 //  [delete]  [http://localhost:5000/fundraiser/:id]
 /* -----------------------------------------  */
 fundraiserRouter.get("/categories/categories", getAllCategories)
+
+fundraiserRouter.get('/categorys/categorys/categorys', getTotalsCategories)
+
+fundraiserRouter.get('/category/categorys/categorys/:id', getCategorybyId)
 
 fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
