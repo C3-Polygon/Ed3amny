@@ -1,4 +1,8 @@
 
 .btn-success{
-    position: fixed !important;
+    position: fixed;
+}
+
+.card{
+    margin-bottom: 25px;
 }
