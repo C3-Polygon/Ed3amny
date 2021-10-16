@@ -19,11 +19,12 @@ import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/yourFundraisers";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
+import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 
     // mshan allah
     // mshan allah
@@ -67,6 +68,7 @@ function App() {
             <ReadyToStart/>
             </Route>
             <AccountSettings exact path ="/AccountSettings"/>
+            <CreateBloodPost exact Path = "/CreateBloodPost"/>
             <YourFundraisers exact path ="/YourFundraisers"/>
             <DonateForSpecific exact path ="/DonateForSpecific"/>
             <Route exact path="/category/:id"  component={CategoryByType}/> 
