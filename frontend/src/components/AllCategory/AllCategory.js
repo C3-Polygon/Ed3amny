@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { AiFillCaretLeft} from "react-icons/ai";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import Card from 'react-bootstrap/Card';
 
 const AllCategory = ()=>{
     const history = useHistory();
@@ -43,10 +44,19 @@ const AllCategory = ()=>{
 
                                     <div className="col-lg-4">
 
-                                        <img src={element.img}/>
+                                        {/* <img src={element.img}/>
                                         <div>
                                         <h6>{element.namee}</h6>
-                                        </div>
+                                        </div> */}
+                                            <Card>
+                                    <Card.Img variant="top" src={element.img} />
+                                    <Card.Body>
+                                      <Card.Text>
+                                       {element.namee}
+                                      </Card.Text>
+                                      
+                                    </Card.Body>
+                                  </Card>
                                     </div>
 
                             )

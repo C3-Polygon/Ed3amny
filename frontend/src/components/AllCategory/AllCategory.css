@@ -28,34 +28,6 @@
     margin: 35px 0px;
 }
 
-.Fundraising-categories {
+.Fundraising-categories h3 {
     padding: 50px 0px;
-}
-
-.viewCategory {
-    margin: 35px 0px;
-    width: 100%;
-}
-
-.Fundraising-categories img {
-    max-width: 100%;
-    height: 250px;
-}
-
-.viewCategory .col-lg-4 {
-    transition: 1s ease;
-    -webkit-transition: 1s ease;
-    -moz-transition: 1s ease;
-    -ms-transition: 1s ease;
-    -o-transition: 1s ease;
-}
-
-.viewCategory .col-lg-4 div {
-    background-color: #ffff;
-    padding: 25px;
-    text-transform: uppercase;
-}
-
-.viewCategory .col-lg-4:hover {
-    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
 }
