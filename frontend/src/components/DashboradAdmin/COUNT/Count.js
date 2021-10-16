@@ -9,8 +9,8 @@ const Count = ()=> {
     
     
     useEffect(() => {
-        axios.get(`http://localhost:5000/fundraiser`).then((result) => {
-            setFundraiser(result.data.result.length);
+        axios.get(`http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`).then((result) => {
+            setFundraiser(result.data.allData.length);
         }).catch((err) => {
             console.log(err);
         },)
