@@ -3,10 +3,18 @@ import './ShowAllfundreiser.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from 'react-bootstrap/Table';
 import User from '../getAllUsers/Users';
+import axios from 'axios';
 
 const ShowAllfundreiser = () =>{
-    const [getusers, setGetusers] = useState();
-
+    const [getfundraiser, setGetfundraiser] = useState();
+    
+    useEffect(() => {
+        axios.get(`http://localhost:5000/fundraiser`).then((result) => {
+            setGetfundraiser(result.data.result);
+        }).catch((err) => {
+            console.log(err);
+        },)
+      },[]);
     return (
         <>
         
@@ -25,13 +33,19 @@ const ShowAllfundreiser = () =>{
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                        
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            </tr>
+                            
+                            {getfundraiser&&getfundraiser.map((post)=>{
+                                return(
+                                    <>
+                                    <tr>
+                                    <td>{post.id}</td>
+                                    <td>{post.title}</td>
+                                    <td>{post.email}</td>
+                                    <td>{post.is_deleted}</td>
+                                    </tr>
+                                    </>
+                                )
+                            })}
                         </tbody>
                     </Table>
                     </div>
