@@ -18,15 +18,15 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import AccountSettings from "./components/Header/Dropdown/AccountSettings/accountSettings";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/yourFundraisers";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
 import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 import MainPage from "./components/DashboradAdmin/MainPage";
-
+import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings"
+import BloodPostView from "./components/BloodPost/BloodPostView"
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
@@ -62,16 +62,18 @@ function App() {
             <Route exact path="/">
               {/* <Home socket={socket} /> */}
               <Section/>
+            <BloodPostView/>
               <Topfundraiser/>
               <Stories/>
               <Leader/>
               <Random/>
             <ReadyToStart/>
             </Route>
-            <AccountSettings exact path ="/AccountSettings"/>
-            <YourFundraisers exact path ="/YourFundraisers"/>
-            <DonateForSpecific exact path ="/DonateForSpecific"/>
-            {/* <CreateBloodPost exact Path = "/CreateBloodPost/RRR/RRR/RRR"/>                    Its breaking the site !! WTH */}
+            <AccountSettings exact path ="/Drop/AccountSettings"/>
+            <YourFundraisers exact path ="/Drop/YourFundraisers"/>
+            <DonateForSpecific exact path ="/Drop/DonateForSpecific"/>
+            <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
+            <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                   
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route exact path="/category/allCategory/Category" component={AllCategory}/>
             <Route path="/chat/:roomname/:username" component={Appmain} />
