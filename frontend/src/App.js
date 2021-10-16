@@ -68,14 +68,14 @@ function App() {
             <ReadyToStart/>
             </Route>
             <AccountSettings exact path ="/AccountSettings"/>
-            <CreateBloodPost exact Path = "/CreateBloodPost"/>
             <YourFundraisers exact path ="/YourFundraisers"/>
             <DonateForSpecific exact path ="/DonateForSpecific"/>
+            {/* <CreateBloodPost exact Path = "/CreateBloodPost/RRR/RRR/RRR"/>                    Its breaking the site !! WTH */}
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route exact path="/category/allCategory/Category" component={AllCategory}/>
             <Route path="/chat/:roomname/:username" component={Appmain} />
-            <Route path="/fundraiser"  component={CreateFundRaiser} />
-            <Route path="/fundraiserView/:id"  component={FundRaiserView} />
+            <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
+            <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             {/* <Stripe /> */}
           </Switch>
           
