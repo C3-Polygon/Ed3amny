@@ -61,4 +61,6 @@ fundraiserRouter.get('/category/categorys/categorys/:id', getCategorybyId)
 
 fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
+fundraiserRouter.get('/pending')
+
 module.exports = fundraiserRouter;

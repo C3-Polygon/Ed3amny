@@ -25,6 +25,7 @@ import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
 import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
+import MainPage from "./components/DashboradAdmin/MainPage";
 
     // mshan allah
     // mshan allah
@@ -76,6 +77,7 @@ function App() {
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
+            <Route exact path="/adminPage" component={MainPage} />
             {/* <Stripe /> */}
           </Switch>
           

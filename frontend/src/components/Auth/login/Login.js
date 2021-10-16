@@ -44,19 +44,23 @@ export const Login = () => {
         email,
         passwordd,
       });
-      console.log(res.data);
-      console.log(res.data.payload.userId);
-      if (res.data.success) {
-        setMessage("");
-        dispatch(setIsLoggedIn(true));
-        dispatch(setToken(res.data.token));
-        dispatch(setUserId(res.data.payload.userId))
-        setLogoutChecker(true)
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("logoutChecker" , logoutChecker)
-        localStorage.setItem("CurrentUserId",res.data.payload.userId)
-        history.push("/")
-      } else throw Error;
+      console.log("lololo",res.data);
+      if(res.data.payload.email === "15@15.com"){
+        history.push('/adminPage');
+        
+      }else{
+        if (res.data.success) {
+          setMessage("");
+          dispatch(setIsLoggedIn(true));
+          dispatch(setToken(res.data.token));
+          dispatch(setUserId(res.data.payload.userId))
+          setLogoutChecker(true)
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("logoutChecker" , logoutChecker)
+          localStorage.setItem("CurrentUserId",res.data.payload.userId)
+          history.push("/")
+        } else throw Error;
+      }
     } catch (error) {
       if (error.response && error.response.data) {
         return setMessage(error.response.data.message);

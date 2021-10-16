@@ -9,7 +9,7 @@ const authentication = require("../middlewares/authentication")
 
 //Routes
 ///  [get]  [http://localhost:5000/admin]
-adminRouter.get('/', GetAllUser);
+adminRouter.get('/users', GetAllUser);
 
 ///  [get]  [http://localhost:5000/admin/fundraiser]
 adminRouter.get('/fundraiser', GetAllFundraiser);
