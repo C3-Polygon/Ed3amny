@@ -5,6 +5,12 @@
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
+    padding: 25px;
+    margin-bottom: 10px;
+}
+
+.show-items h2 {
+    color: #fdb72f;
 }
 
 .child-item {
