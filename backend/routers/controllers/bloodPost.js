@@ -1,11 +1,9 @@
-const e = require("express");
-const { re } = require("nodemon/node_modules/semver");
 const connection = require("../../db/db");
 
 const createNewBloodPost = (req, res) => {
-    const { title, description } = req.body;
-    const queryString = `INSERT INTO  bloodpost (title , description) VALUES (?,?)`;
-    const data = [title, description];
+    const { title, descriptionn,img,userId } = req.body;
+    const queryString = `INSERT INTO  bloodpost (title , descriptionn, img, userId ) VALUES (?,?,?,?)`;
+    const data = [title, descriptionn,img,userId ];
     connection.query(queryString, data, (err, result) => {
         if (result) {
             res.status(201).json({
