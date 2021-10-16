@@ -7,39 +7,12 @@ import Button from 'react-bootstrap/Button';
 
 import axios from "axios";
 
-// import "./" the css
-
-// const GetAllFundraiserByUser = async () => {
-//   let tokenSave = localStorage.getItem("token");
-//   let userIdSave = localStorage.getItem("CurrentUserId");
-//   console.log("userIdSave", userIdSave);
-//   // const state2 = useSelector((state2) => {
-//   //   let userId = state2.userId;
-//   //   return { userId: state2.userId.userId };
-//   // });
-
-//  await axios
-//     .get(`http://localhost:5000/fundraiser/${userIdSave}`, {
-//       headers: { Authorization: `Bearer ${tokenSave}` },
-//     })
-//     .then((result) => {
-//       console.log(result);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
 
 const GetAllFundraiserByUser = () => {
   let tokenSave = localStorage.getItem("token");
   let userIdSave = localStorage.getItem("CurrentUserId");
   const [usersFundraisers,setUsersFundraisers] = useState([])
-  // const [current_target, setCurrent_target] = useState("");
-  // const [target, setTarget] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [type, setType] = useState("");
-  // const [descriptionn, setDescriptionn] = useState("");
-  // const [img, setImage] = useState("");
-
+  
   useEffect(() => {
     axios
       .get(`http://localhost:5000/fundraiser/${userIdSave}`, {
@@ -50,14 +23,6 @@ const GetAllFundraiserByUser = () => {
       .then((result) => {
         console.log("result here", result);
         setUsersFundraisers(result.data.result)
-        // console.log("result.data here",result.data)
-        // console.log("result.data here",result.data.result[0].firstName)
-        // setCurrent_target(result.data.result[0].current_target)
-        // setTarget(result.data.result[0].target)
-        // setTitle(result.data.result[0].title)
-        // setType(result.data.result[0].type)
-        // setDescriptionn(result.data.result[0].descriptionn)
-        // setImage(result.data.result[0].img)
       })
       .catch((err) => console.log(err));
   }, []);

@@ -16,8 +16,8 @@ import {
 } from "react-icons/ai";
 
 const FundRaiserView = () => {
-  const [sharePopup, setSharePopup] = useState(true);
-  
+  const [sharePopup, setSharePopup] = useState(false);
+  const [donationPopup, setDonationPopup] = useState(false);
   const { id } = useParams();
   const history = useHistory();
   const [fundRaiserView, setFundRaiserView] = useState();
