@@ -5,12 +5,12 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 import { MdBloodtype } from 'react-icons/md';
+import "./BloodPostView.css"
 
 function BloodPostView() {
   const [show, setShow] = useState(false);
   const [bloodPosts, setBloodPosts] = useState([]);
   let tokenSave = localStorage.getItem("token");
-  let userIdSave = localStorage.getItem("CurrentUserId");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -26,7 +26,7 @@ function BloodPostView() {
         setBloodPosts(result.data.Data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [bloodPosts]);
 
   return (
     <div>
@@ -38,7 +38,7 @@ function BloodPostView() {
 
         <Offcanvas show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+            <Offcanvas.Title>Blood Post Section</Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             {bloodPosts &&
