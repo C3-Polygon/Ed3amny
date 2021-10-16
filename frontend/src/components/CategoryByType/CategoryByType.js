@@ -19,7 +19,9 @@ function CategoryByType() {
       }, [id]);
     return (
         <div className="Main-Topfundraiser">
+            
         <div className="container">
+        {id}
             <h2>Categories</h2>
             <div className="row">
         {cate &&

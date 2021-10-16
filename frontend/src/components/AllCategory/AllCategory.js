@@ -9,7 +9,7 @@ const AllCategory = ()=>{
     const history = useHistory();
     const [category, setCategory] = useState();
     useEffect(() => {
-        axios.get(`http://localhost:5000/fundraiser/categories/categories`)
+        axios.get(`http://localhost:5000/fundraiser/categorys/categorys/categorys`)
           .then((res) => {
             setCategory(res.data.allData);
           })
