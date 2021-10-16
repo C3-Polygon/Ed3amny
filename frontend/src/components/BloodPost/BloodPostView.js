@@ -32,8 +32,8 @@ function BloodPostView() {
     <div>
       <>
      
-        <Button variant="success"className="ViewButton" onClick={handleShow}>
-        < MdBloodtype className="BloodButton"/>
+        <Button variant="success" onClick={handleShow}>
+        < MdBloodtype/>
         </Button>
 
         <Offcanvas show={show} onHide={handleClose}>
