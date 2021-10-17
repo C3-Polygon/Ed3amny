@@ -1,5 +1,9 @@
 import { ProcessReducer } from "./chat/chatReducer";
 import { createStore, combineReducers } from "redux";
+
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
 import token from "./login/token";
 import isLoggedIn from "./login/isLoggedIn";
 import userId from "./login/userId";
@@ -17,6 +21,24 @@ const reducers = combineReducers({
   amount:amount
 });
 
-export const store = createStore(reducers);
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: [
+    "title",
+    "img",
+    "token_1",
+    "isLoggedIn",
+    "userId",
+    "ProcessReducer",
+    "amount",
+  ],
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, reducers);
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+
+
+export {store, persistor}
+
