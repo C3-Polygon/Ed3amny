@@ -318,4 +318,45 @@ const deleteStroy = (req, res) => {
     })
 }
 
-module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy };
+
+/*** */
+
+
+const ConvertToPending = (req, res) => {
+    const id = req.params.id;
+    const select = `SELECT * FROM campaigns where id = ${id}`;
+    connection.query(select, (err, result) => {
+        if (err) {
+            const error = {
+                success: false,
+                message: `Your id ===> ${id} is not Found`
+            }
+            res.json(error)
+            res.status(500);
+        }
+        if (result.length) {
+            const updateRow = `UPDATE campaigns SET is_deleted = 0  WHERE id = ${id}`;
+            connection.query(updateRow, (err, response) => {
+
+                if (err) {
+                    res.json({
+                        success: false,
+                        message: "Server Error"
+                    })
+                    res.status(500);
+                }
+                if (response) {
+                    res.json({
+                        success: true,
+                        message: "success change the post from pending to accept"
+                    })
+                    res.status(200);
+                }
+            })
+        } else {
+            res.json(`Your ${id} is not Found`);
+        }
+    })
+}
+
+module.exports = { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy, ConvertToPending };

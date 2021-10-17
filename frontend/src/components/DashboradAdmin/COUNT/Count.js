@@ -6,8 +6,8 @@ import { AiFillEye  ,AiTwotoneSchedule ,AiOutlineUsergroupAdd} from 'react-icons
 const Count = ()=> {
     const [fundraiser, setFundraiser] = useState();
     const [user, setUser] = useState();
-    
-    
+    const [pendingpost, setPendingpost] = useState();
+
     useEffect(() => {
         axios.get(`http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`).then((result) => {
             setFundraiser(result.data.allData.length);
@@ -23,9 +23,18 @@ const Count = ()=> {
 
 
 
+           axios.get(`http://localhost:5000/admin/pending`).then((result) => {
+            setPendingpost(result.data.Fundraiser.length);
+           }).catch((err) => {
+               console.log(err);
+           },)
+
+
+
+
       },[]);
     return (
-        <div className="container">
+       
             <div className="show-items text-center">
                 <div className="row">
                     
@@ -56,8 +65,8 @@ const Count = ()=> {
                     <div className="col-lg-4">
                     <div className='child-item'>
                              <div>
-                             <h2>{user}</h2>
-                             <p>Daily</p>
+                             <h2>{pendingpost !== 0 ? pendingpost : <h6>There's No Fundraiser is Pending</h6> }</h2>
+                             <p>Fundraisers Pending</p>
                              </div>
                              <AiFillEye className='icon-show'/> 
                           </div>
@@ -66,7 +75,7 @@ const Count = ()=> {
                        </div>
 
             </div>
-        </div>
+
     )
 }
 

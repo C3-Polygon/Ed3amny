@@ -54,3 +54,10 @@
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
 }
+
+.update-fundraiser {
+    background-color: #1ac0c6;
+    color: #fff;
+    border: none;
+    padding: 5px;
+}

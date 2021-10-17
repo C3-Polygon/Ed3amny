@@ -44,7 +44,6 @@ export const Login = () => {
         email,
         passwordd,
       });
-      console.log("lololo",res.data);
       if(res.data.payload.email === "15@15.com"){
         history.push('/adminPage');
         
