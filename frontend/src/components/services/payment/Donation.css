@@ -42,3 +42,23 @@ align-items: center;
     font-size: 30px;
     color: #000;
 }
+.amount-donation{
+    margin-top: 25px;
+    box-shadow: 0px 10px 5px 5px #ccc;
+    padding: 25px;
+}
+.amount-donation p:first-child {
+font-weight: bolder;
+
+}
+.amount-donation-right{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+.total-donation{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+}

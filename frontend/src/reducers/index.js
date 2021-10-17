@@ -5,6 +5,7 @@ import isLoggedIn from "./login/isLoggedIn";
 import userId from "./login/userId";
 import img from "./Donation/ImageReducer";
 import title from "./Donation/TitleReducer";
+import amount from "./Donation/AmountReducer"
 
 const reducers = combineReducers({
   token_1: token,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   userId: userId,
   ProcessReducer: ProcessReducer,
   img: img,
-  title:title
+  title:title,
+  amount:amount
 });
 
 export const store = createStore(reducers);
