@@ -3,10 +3,12 @@ import axios from 'axios';
 import './Topfundraiser.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import  ProgressBar  from 'react-bootstrap/ProgressBar';
+import { useHistory } from "react-router-dom";
 
 
  const Topfundraiser = () => {
      const [result, setResult] = useState();
+     const history = useHistory();
     useEffect(() => {
         axios.get(`http://localhost:5000/fundraiser/getTopFundraiserByCurrentTarget`).then((result) => {
             setResult(result.data.result);
@@ -14,7 +16,10 @@ import  ProgressBar  from 'react-bootstrap/ProgressBar';
             console.log(err);
         },)
       },[]);
-
+      const ViewFundRaiser = (data) => {
+        history.push(`/fundraiserView/${data.id}`);
+    }
+   
     return (
         <>
         <div className="Main-Topfundraiser">
@@ -24,7 +29,7 @@ import  ProgressBar  from 'react-bootstrap/ProgressBar';
             {result &&
                 result.map((data) => {
                     
-                return <div key = {data.id} className="col-lg-4 col-md-12">
+                return <div key = {data.id} onClick={()=>{ViewFundRaiser(data)}} className="col-lg-4 col-md-12">
                     <div className="mainViewfundraiser">
                         <img src={data.img} alt='not found photo'/>
                         <div className="mainViewfundraiserText">
