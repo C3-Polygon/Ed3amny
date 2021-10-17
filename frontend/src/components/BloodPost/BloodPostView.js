@@ -22,7 +22,7 @@ function BloodPostView() {
         },
       })
       .then((result) => {
-        console.log("result here", result.data.Data);
+        
         setBloodPosts(result.data.Data);
       })
       .catch((err) => console.log(err));

@@ -25,14 +25,10 @@ import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
 import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 import MainPage from "./components/DashboradAdmin/MainPage";
-<<<<<<< HEAD
-import Donation from './components/services/payment/Donation'
-
-=======
 import BloodPostView from "./components/BloodPost/BloodPostView"
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
+import Donation from "./components/services/payment/Donation";
     // mshan allah
->>>>>>> 464f659e9853de382f00abe09e61cd9f8724cbe5
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
@@ -79,7 +75,6 @@ function App() {
             <YourFundraisers exact path ="/Drop/YourFundraisers"/>
             <DonateForSpecific exact path ="/Drop/DonateForSpecific"/>
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
-            <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                   
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route exact path="/category/allCategory/Category" component={AllCategory}/>
             <Route path="/chat/:roomname/:username" component={Appmain} />
@@ -87,6 +82,7 @@ function App() {
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             <Route exact path="/adminPage" component={MainPage} />
             <Route exact path='/donation' component={Donation} />
+            <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                   
             {/* <Stripe /> */}
           </Switch>
           

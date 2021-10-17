@@ -9,6 +9,9 @@ import FormControl from "react-bootstrap/FormControl";
 import Stripe from "../services/payment/Stripe";
 import Share from "../services/Share/shareViaFacebook";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { useDispatch, useSelector } from "react-redux";
+import { setImage } from "../../reducers/Donation/ImageReducer";
+import { setTitle } from "../../reducers/Donation/TitleReducer";
 import {
   AiOutlineDownload,
   AiOutlineMoneyCollect,
@@ -17,10 +20,12 @@ import {
 
 const FundRaiserView = () => {
   const [sharePopup, setSharePopup] = useState(false);
-  const [donationPopup, setDonationPopup] = useState(false);
+
   const { id } = useParams();
   const history = useHistory();
-  const [fundRaiserView, setFundRaiserView] = useState();
+  const dispatch = useDispatch()
+  const [fundRaiserView, setFundRaiserView] = useState([]);
+  
   // const openSharePopup = () => {
   //   setSharePopup(true);
   // };
@@ -33,12 +38,17 @@ const FundRaiserView = () => {
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((res) => {
         setFundRaiserView(res.data.result);
-        console.log("lololo", res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [fundRaiserView]);
+
+  const senderr =async(title , img)=>{
+    await dispatch(setTitle(title))
+    await dispatch(setImage(img))
+    history.push('/donation')
+  }
   return (
     <>
       <div className="container">
@@ -115,9 +125,7 @@ const FundRaiserView = () => {
                           />{" "}
                           Share
                         </button>
-                        <button className="share-fundRaiserView" onClick= {()=>{
-                           history.push('/donation')
-                        }}>
+                        <button className="share-fundRaiserView" onClick= {()=>senderr(elem.title , elem.img)}>
                           {" "}
                           <AiOutlineMoneyCollect className="share-facebook" />{" "}
                           donation now
