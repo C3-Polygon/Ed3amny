@@ -10,13 +10,29 @@ const stripePayment = async (req,res)=>{
             payment_method:id,
             confirm:true
         })
-        console.log("Payment", payment)
+        console.log("Payment", payment.status)
+        
+
+        if(payment.status=="succeeded"){
+            // post 3ala contribution table ( insert new contribution [ userid, postid, amount ])
+       console.log("Hushki loves bataa")
+
+            // update/put 3ala 2l post ( via its id) current_target = amount + current_target
+
+
+            // notification checker  target == current_target
+        }
 		res.json({
 			message: "Payment successful",
 			success: true,
             amount:amount,
             //date:
 		})
+       
+        
+        // if(res.json.message=="Payment successful"){
+        //     console.log("batata")
+        // }
         /**
          if (currentTarget == target){
              we invoke postInformationSender function

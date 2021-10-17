@@ -23,7 +23,6 @@ const Donation = () => {
     return { amount: state.amount.amount };
   });
   
-
   return (
     <div className="main-donation">
       <div className="container">
@@ -40,6 +39,7 @@ const Donation = () => {
             <h4>Enter your donation</h4>
             <div className="dollar-right">
               <input
+                type="number"
                 dir="rtl"
                 onChange={(e) => {
                   dispatch(setAmount(e.target.value ));
