@@ -103,7 +103,7 @@ const FundRaiserView = () => {
                       </div>
 
                       <div className="content">
-                        <Stripe />
+                        {/* <Stripe /> */}
                       </div>
                     </div>
 

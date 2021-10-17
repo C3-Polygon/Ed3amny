@@ -39,7 +39,7 @@ export const StripeForm = () => {
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:5000/payment", {
           id,
-          amount: 5000,
+          amount:9999
         });
 
         if (response.data.success) {
