@@ -10,6 +10,7 @@ import userId from "./login/userId";
 import img from "./Donation/ImageReducer";
 import title from "./Donation/TitleReducer";
 import amount from "./Donation/AmountReducer"
+import postId from "./Donation/PostId";
 
 
 const reducers = combineReducers({
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   img: img,
   title:title,
   amount:amount,
+  postId:postId
 });
 
 const persistConfig = {
@@ -33,6 +35,7 @@ const persistConfig = {
     "userId",
     "ProcessReducer",
     "amount",
+    "postId"
   ],
 };
 
