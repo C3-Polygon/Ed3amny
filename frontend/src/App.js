@@ -27,6 +27,7 @@ import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 import MainPage from "./components/DashboradAdmin/MainPage";
 import BloodPostView from "./components/BloodPost/BloodPostView"
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
+import Donation from "./components/services/payment/Donation";
     // mshan allah
     // mshan allah
     // mshan allah
@@ -74,13 +75,14 @@ function App() {
             <YourFundraisers exact path ="/Drop/YourFundraisers"/>
             <DonateForSpecific exact path ="/Drop/DonateForSpecific"/>
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
-            <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                   
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route exact path="/category/allCategory/Category" component={AllCategory}/>
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             <Route exact path="/adminPage" component={MainPage} />
+            <Route exact path='/donation' component={Donation} />
+            <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                   
             {/* <Stripe /> */}
           </Switch>
           
