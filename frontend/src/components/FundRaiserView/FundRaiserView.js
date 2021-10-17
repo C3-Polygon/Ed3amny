@@ -38,6 +38,7 @@ const FundRaiserView = () => {
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((res) => {
         setFundRaiserView(res.data.result);
+        console.log("frv",fundRaiserView)
       })
       .catch((err) => {
         console.log(err);
@@ -47,6 +48,7 @@ const FundRaiserView = () => {
   const senderr =async(title , img)=>{
     await dispatch(setTitle(title))
     await dispatch(setImage(img))
+    console.log("batata",id )
     history.push('/donation')
   }
   return (
@@ -93,7 +95,7 @@ const FundRaiserView = () => {
                   <>
                     {/* left section*/}
                     <div key={index} className="col-lg-8">
-                      <h2 class="title-fundRaiserView">{elem.title}</h2>
+                      <h2 className="title-fundRaiserView">{elem.title}</h2>
                       <img src={elem.img} />
                       <div className="context-text-funRaiserView">
                         <p className="create-fundRaiserView">

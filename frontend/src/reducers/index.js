@@ -11,6 +11,7 @@ import img from "./Donation/ImageReducer";
 import title from "./Donation/TitleReducer";
 import amount from "./Donation/AmountReducer"
 
+
 const reducers = combineReducers({
   token_1: token,
   isLoggedIn: isLoggedIn,
@@ -18,7 +19,7 @@ const reducers = combineReducers({
   ProcessReducer: ProcessReducer,
   img: img,
   title:title,
-  amount:amount
+  amount:amount,
 });
 
 const persistConfig = {

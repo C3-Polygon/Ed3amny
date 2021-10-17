@@ -32,7 +32,7 @@ function BloodPostView() {
     <div>
       <>
      
-        <Button variant="success" onClick={handleShow}>
+        <Button className = "Flafelbtn"variant="success" onClick={handleShow}>
         < MdBloodtype/>
         </Button>
 
