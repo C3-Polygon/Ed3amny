@@ -44,7 +44,7 @@ const FundRaiserView = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [fundRaiserView]);
+  }, []);
 
   const senderr =(title , img)=>{
     dispatch(setTitle(title))

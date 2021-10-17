@@ -58,18 +58,18 @@ const Donation = () => {
           </div>
           <div className="col-lg-3">
               <div className='amount-donation'>
-                  <p>Your donation</p>
+                  <p className='title-donation'>Your donation</p>
                   <div className='amount-donation-right'>
                       
                        <p>Your donation</p>
-                       <p>{state2.amount} $</p>
+                       <p>${state2.amount}</p>
                       
 
                   </div>
                   <hr></hr>
                   <div className='total-donation'>
                        <p>total donation</p>
-                       <p>{state2.amount} $</p>
+                       <p> ${state2.amount} </p>
                   </div>
 
               </div>
