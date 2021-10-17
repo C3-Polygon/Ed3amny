@@ -109,3 +109,4 @@ io.on("connection", (socket) => {
 
 
 }); //end socket
+module.exports = {io}
