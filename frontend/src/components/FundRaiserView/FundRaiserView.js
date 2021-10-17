@@ -12,6 +12,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { useDispatch, useSelector } from "react-redux";
 import { setImage } from "../../reducers/Donation/ImageReducer";
 import { setTitle } from "../../reducers/Donation/TitleReducer";
+import { setPostId } from "../../reducers/Donation/PostId"
 import {
   AiOutlineDownload,
   AiOutlineMoneyCollect,
@@ -38,16 +39,17 @@ const FundRaiserView = () => {
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((res) => {
         setFundRaiserView(res.data.result);
-        console.log("frv",fundRaiserView)
+        
       })
       .catch((err) => {
         console.log(err);
       });
   }, [fundRaiserView]);
 
-  const senderr =async(title , img)=>{
-    await dispatch(setTitle(title))
-    await dispatch(setImage(img))
+  const senderr =(title , img)=>{
+    dispatch(setTitle(title))
+    dispatch(setImage(img))
+    dispatch(setPostId(id))
     console.log("batata",id )
     history.push('/donation')
   }

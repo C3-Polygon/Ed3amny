@@ -28,11 +28,19 @@ export const StripeForm = () => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const user_id = localStorage.getItem("CurrentUserId")
   
 const state2 = useSelector((state) => {
     
   return { amount: state.amount.amount };
 });
+const state3 = useSelector((state) => {
+    console.log("state",state)
+  return { postId: state.postId.postId };
+});
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -46,6 +54,8 @@ const state2 = useSelector((state) => {
         const response = await axios.post("http://localhost:5000/payment", {
           id,
           amount:state2.amount*100, 
+          campaign_id : state3.postId,
+          userId:user_id
         });
         console.log("Mraish test",state2.amount)
         if (response.data.success) {
