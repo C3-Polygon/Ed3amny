@@ -1,6 +1,4 @@
 import "./App.css";
-
-import Stripe from "./components/services/payment/Stripe";
 import { Login } from "./components/Auth/login/Login";
 import Chat from "./components/services/Chat/chat";
 import Process from "./components/services/Chat/process";
@@ -28,10 +26,13 @@ import MainPage from "./components/DashboradAdmin/MainPage";
 import BloodPostView from "./components/BloodPost/BloodPostView"
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import Donation from "./components/services/payment/Donation";
+import { BsFillChatRightTextFill } from "react-icons/bs";
     // mshan allah
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
+
+
 function Appmain(props) {
   return (
     <> 
@@ -41,9 +42,6 @@ function Appmain(props) {
           roomname={props.match.params.roomname}
           socket={socket}
         />
-      </div>
-      <div>
-        <Process />
       </div>
     </>
   );
@@ -62,7 +60,7 @@ function App() {
               <Signup />
             </Route>
             <Route exact path="/">
-              {/* <Home socket={socket} /> */}
+              <Home socket={socket} />
               <Section/>
             <BloodPostView/>
               <Topfundraiser/>
@@ -77,13 +75,12 @@ function App() {
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route exact path="/category/allCategory/Category" component={AllCategory}/>
-            <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
+            <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             <Route exact path="/adminPage" component={MainPage} />
             <Route exact path='/donation' component={Donation} />
-            <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                   
-            {/* <Stripe /> */}
+            {/* <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                    */}
           </Switch>
           
         </div>

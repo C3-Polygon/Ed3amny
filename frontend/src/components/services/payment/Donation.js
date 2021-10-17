@@ -3,11 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Donation.css";
 import { AiFillCaretLeft, AiFillDollarCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { Label } from "semantic-ui-react";
 import Stripe from "../../services/payment/Stripe";
 import {setAmount } from "../../../reducers/Donation/AmountReducer"
 
 const Donation = () => {
+  const history = useHistory()
     const dispatch = useDispatch()
   
   const state = useSelector((state) => {
@@ -22,13 +24,16 @@ const Donation = () => {
     
     return { amount: state.amount.amount };
   });
+  const back = () =>{
+    history.goBack();
+  }
   
   return (
     <div className="main-donation">
       <div className="container">
         <div className="row">
           <div className="col-lg-9 info-donation">
-            <button className="button-go-back">
+            <button className="button-go-back" onClick={back}>
               <AiFillCaretLeft /> Return to fundraiser
             </button>
             <hr></hr>

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { BsFillChatRightTextFill } from "react-icons/bs";
 
 
 function Home ({socket}){
-    const [username, setUsername] = useState("");
-    const [roomname, setRoomname] = useState("");
+
+    let username = localStorage.getItem('CurrentUserId')
+    let roomname = localStorage.getItem('CurrentUserId')
     const sendData = () => {
         if(username !== "" && roomname !== "" ){
             socket.emit('joinRoom',{username, roomname })
@@ -15,19 +17,8 @@ function Home ({socket}){
     }
 
     return (<>
-    <h1>Welcome to ChatApp</h1>
-      <input
-        placeholder="Input your user name"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      ></input>
-      <input
-        placeholder="Input the room name"
-        value={roomname}
-        onChange={(e) => setRoomname(e.target.value)}
-      ></input>
       <Link to={`/chat/${roomname}/${username}`}>
-        <button onClick={sendData}>Join</button>
+        <BsFillChatRightTextFill onClick={sendData} className='chat-icon'/> 
       </Link>
     </>)
 }

@@ -1,12 +1,16 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
-const connection = require('../../../db/db')
+const connection = require("../../../db/db");
+const socket = require('socket.io')
+const io = require('../../../server')
+
+
 
 const stripePayment = async (req, res) => {
   const { amount, id, campaign_id, userId } = req.body;
-//   const created_at = Date.now();
+  //   const created_at = Date.now();
   try {
     const payment = await stripe.paymentIntents.create({
-      amount:amount,
+      amount: amount,
       currency: "USD",
       description: "Fundraiser",
       payment_method: id,
@@ -17,39 +21,37 @@ const stripePayment = async (req, res) => {
     if (payment.status == "succeeded") {
       // post 3ala contribution table ( insert new contribution [ userid, postid, amount ])
       const queryString = `INSERT INTO  contributions (userId , campaign_id, amount  ) VALUES (?,?,?)`;
-      const data = [userId , campaign_id, amount ];
+      const data = [userId, campaign_id, amount];
       connection.query(queryString, data, (err, result) => {
-          
         if (result) {
-            const query = `SELECT current_target FROM campaigns WHERE id=${campaign_id}`;
-            connection.query(query, (err, result1)=>{
-                let updatedAmount = result1[0].current_target+amount/100
-                const query = `UPDATE campaigns SET current_target = ${updatedAmount}  WHERE id = ${campaign_id}`;
-                connection.query(query, (err, response) => {
-                    if (err) {
-                        res.status(500);
-                        res.json(err);
-                    }
-                    if (response) {
-                        const success = {
-                            success: true,
-                            message: "success amount post to is updated and payment successfully",
-                            result:response
-                        }
-                        res.json(success);
-                        res.status(200);
-                    }
-                })
-                
-            })
-
-
-        //     res.json({
-        //     message: "Payment successful",
-        //     success: true,
-        //     result: result,
-        //     //date:
-        //   });
+          const query = `SELECT current_target,targett FROM campaigns WHERE id=${campaign_id}`;
+          connection.query(query, (err, result1) => {
+            let updatedAmount = result1[0].current_target + amount / 100;
+            const query = `UPDATE campaigns SET current_target = ${updatedAmount}  WHERE id = ${campaign_id}`;
+            connection.query(query, (err, response) => {
+              if (err) {
+                res.status(500);
+                res.json(err);
+              }
+              if (response) {
+                const success = {
+                  success: true,
+                  message:
+                    "success amount post to is updated and payment successfully",
+                  result: response,
+                };
+                res.json(success);
+                res.status(200);
+              }
+              if(result1[0].current_target >= result1[0].targett ){
+                 console.log('batates mohammara')
+                 socket.emit("message", {
+                    userId: userId,
+                    text: `Congratulations, your target has been achieved`,
+                });
+              }
+            });
+          });
         }
         if (err) {
           console.log("Error", err);
@@ -58,21 +60,8 @@ const stripePayment = async (req, res) => {
             success: false,
           });
         }
-      }); // update/put 3ala 2l post ( via its id) current_target = amount + current_target
-
-      // notification checker  target == current_target
+      });
     }
-
-    // if(res.json.message=="Payment successful"){
-    //     console.log("batata")
-    // }
-    /**
-         if (currentTarget == target){
-             we invoke postInformationSender function
-         }
-         function postInformationSender(postId,target){return postId,target}
-         
-         */
   } catch (error) {
     console.log("Error", error);
     res.json({
