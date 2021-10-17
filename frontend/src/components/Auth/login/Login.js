@@ -68,18 +68,27 @@ export const Login = () => {
   };
   
   //facebookstuff
-  const responseFacebook = (response) => {
+  const responseFacebook = async(response) => {
     if (response.status == "unknown") {
       return;
     }
+    console.log("fb response",response)
+    console.log("fb response",response.accessToken)
     setData(response);
     if (!response.picture.data.url) {
       return;
     } else {
-      setPicture(response.picture.data.url);
+    await  dispatch(setIsLoggedIn(true));
+    await  dispatch(setToken(response.accessToken));
+    await  dispatch(setUserId(response.userID))
+    await  localStorage.setItem("token", response.accessToken);
+    await  localStorage.setItem("CurrentUserId",response.userID)
+    await  setPicture(response.picture.data.url);
+      
     }
     if (response.accessToken) {
       setLogin1(true);
+      history.push("/")
     } else {
       setLogin1(false);
     }

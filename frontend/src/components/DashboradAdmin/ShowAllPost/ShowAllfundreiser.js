@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import User from '../getAllUsers/Users';
 import axios from 'axios';
 import { Button } from 'bootstrap';
-import { reject } from 'bcrypt/promises';
+// import { reject } from 'bcrypt/promises';
 
 const ShowAllfundreiser = () =>{
     const [getfundraiser, setGetfundraiser] = useState([]);
