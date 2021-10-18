@@ -1,5 +1,5 @@
 const express = require("express");
-const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy } = require("../controllers/AdminFuction");
+const { GetAllUser, GetAllFundraiser, GetAllPendingPost, deleteFundraisers, AcceptFundraisers, rejectedTheFunders, createNewStory, updateStroy, deleteStroy, getAllStroy, ConvertToPending } = require("../controllers/AdminFuction");
 
 ///Define router
 const adminRouter = express.Router();
@@ -9,7 +9,7 @@ const authentication = require("../middlewares/authentication")
 
 //Routes
 ///  [get]  [http://localhost:5000/admin]
-adminRouter.get('/', GetAllUser);
+adminRouter.get('/users', GetAllUser);
 
 ///  [get]  [http://localhost:5000/admin/fundraiser]
 adminRouter.get('/fundraiser', GetAllFundraiser);
@@ -37,5 +37,7 @@ adminRouter.put('/story/:id', updateStroy)
 
 ///  [delete]  [http://localhost:5000/admin/story/delete/:id]
 adminRouter.delete('/story/delete/:id', deleteStroy);
+
+adminRouter.put('/batataa/batata/pending/:id', ConvertToPending)
 
 module.exports = adminRouter;

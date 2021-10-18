@@ -1,0 +1,28 @@
+.Main-Edit-Profile {
+    margin-top: 50px;
+}
+
+.Main-Edit-Profile h6 {
+    border-bottom: 3px solid #02a95c;
+    color: #666;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.change_info {
+    text-align: center;
+    padding: 7px 50px;
+    background-color: #02a95c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.success-update {
+    color: #02a95c;
+    font-size: 25px;
+}

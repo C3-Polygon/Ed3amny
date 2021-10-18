@@ -1,7 +1,12 @@
 import React,{useState ,useEffect} from "react";
-import './accountSettings.css';
-
+import './AccountSettings.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col"
+import Row from "react-bootstrap/Row"
 import axios from "axios";
+// import { AiFillCheckCircle } from "react-icons/ai";
+
 
 const AccountSettings=()=>{
     console.log("we entered account settings page")
@@ -13,6 +18,7 @@ const AccountSettings=()=>{
     const [age, setAge] = useState('');
     const [img, setImage] = useState('');
     const [country, setCountry] = useState('');
+    const [successUpdate, setSuccesssUpdate] = useState("");
     // const [gender, setGender] = useState('');
 
     useEffect(()=>{
@@ -33,9 +39,13 @@ const AccountSettings=()=>{
         .catch(err=>console.log(err))
     },[])
 
-    const onUpdate=async ()=>{
-      
+    const myFunction=()=> {
+      setTimeout(function(){ setSuccesssUpdate(" ") }, 3000);
+    }
+    const onUpdate=async (e)=>{
+      e.preventDefault();
         try {
+
           await axios.put(`http://localhost:5000/search/AccountSettings/update/${userIdSave}`,{
             firstName:firstName,  
             lastName:lastName,
@@ -46,34 +56,60 @@ const AccountSettings=()=>{
             headers: {
               Authorization: `Bearer ${tokenSave}`,
             }}
-          ).then(result=>{console.log("after update",result.data)})
+          ).then(result=>{
+            setSuccesssUpdate(`Your account was successfully saved.`);
+            myFunction();        
+          })
         } catch (error) {
           console.log(error);
         }
       }
       return (
-          <>
-          <h1>account settings</h1>
+        <div className="Main-Edit-Profile">
+          
+          <div className="container">
+          <h1>Settings</h1>
+          <hr></hr>
+          <h6>Account</h6>
+          
         <div>
-        <span>FirstName</span>
-        <input type="text" placeholder={firstName} className="new_name"  onChange={(e)=>setFirstName(e.target.value)}  /><br/><br/>
+        <p className="success-update"> {successUpdate}</p>
+        <Form onSubmit={onUpdate}>
+  <Row className="mb-3">
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>FirstName</Form.Label>
+      <Form.Control type="text" placeholder={firstName} onChange={(e)=>setFirstName(e.target.value)} />
+    </Form.Group>
 
-        <span>LastName</span>
-        <input type="text" placeholder={lastName} className="new_name"  onChange={(e)=>setLastName(e.target.value)}  /><br/><br/>
+    <Form.Group as={Col} controlId="formGridPassword">
+      <Form.Label>lastName</Form.Label>
+      <Form.Control type="text" placeholder={lastName} onChange={(e)=>setLastName(e.target.value)} />
+    </Form.Group>
+  </Row>
 
-        <span>Age</span>
-        <input type="text" placeholder={age} className="new_pass" onChange={(e)=>setAge(e.target.value)} /><br/><br/>
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Age</Form.Label>
+    <Form.Control placeholder={age} type='text' onChange={(e)=>setAge(e.target.value)}/>
+  </Form.Group>
 
-        <span>Image</span>
-        <input type="text" placeholder={img} className="new_pass" onChange={(e)=>setImage(e.target.value)} /><br/><br/>
+  <Form.Group className="mb-3" controlId="formGridAddress2">
+    <Form.Label>Image</Form.Label>
+    <Form.Control placeholder={img} type='text' onChange={(e)=>setImage(e.target.value)} />
+  </Form.Group>
 
-        <span>Country</span>
-        <input type="text" placeholder={country} className="new_pass" onChange={(e)=>setCountry(e.target.value)} /><br/><br/>
-        
-        <button onClick={()=>{onUpdate()}} className="change_info">Update</button>
+
+  <Form.Group className="mb-3" controlId="formGridAddress2">
+    <Form.Label>country</Form.Label>
+    <Form.Control placeholder={country} type="text" onChange={(e)=>setCountry(e.target.value)} />
+  </Form.Group>
+
+  <button className="change_info" type='submit'>Save Change</button> 
+ 
+</Form>
         
         </div>
-        </>
+        </div>
+        </div>
     )
 }  
 

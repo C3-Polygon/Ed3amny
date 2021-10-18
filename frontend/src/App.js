@@ -1,6 +1,4 @@
 import "./App.css";
-
-import Stripe from "./components/services/payment/Stripe";
 import { Login } from "./components/Auth/login/Login";
 import Chat from "./components/services/Chat/chat";
 import Process from "./components/services/Chat/process";
@@ -18,17 +16,23 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import AccountSettings from "./components/Header/Dropdown/AccountSettings/accountSettings";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/yourFundraisers";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
 import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
-
+import MainPage from "./components/DashboradAdmin/MainPage";
+import BloodPostView from "./components/BloodPost/BloodPostView"
+import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
+import Donation from "./components/services/payment/Donation";
+import { BsFillChatRightTextFill } from "react-icons/bs";
+    // mshan allah
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
+
+
 function Appmain(props) {
   return (
     <> 
@@ -38,9 +42,6 @@ function Appmain(props) {
           roomname={props.match.params.roomname}
           socket={socket}
         />
-      </div>
-      <div>
-        <Process />
       </div>
     </>
   );
@@ -59,24 +60,27 @@ function App() {
               <Signup />
             </Route>
             <Route exact path="/">
-              {/* <Home socket={socket} /> */}
+              <Home socket={socket} />
               <Section/>
+            <BloodPostView/>
               <Topfundraiser/>
               <Stories/>
               <Leader/>
               <Random/>
             <ReadyToStart/>
             </Route>
-            <AccountSettings exact path ="/AccountSettings"/>
-            <YourFundraisers exact path ="/YourFundraisers"/>
-            <DonateForSpecific exact path ="/DonateForSpecific"/>
-            {/* <CreateBloodPost exact Path = "/CreateBloodPost/RRR/RRR/RRR"/>                    Its breaking the site !! WTH */}
+            <AccountSettings exact path ="/Drop/AccountSettings"/>
+            <YourFundraisers exact path ="/Drop/YourFundraisers"/>
+            <DonateForSpecific exact path ="/Drop/DonateForSpecific"/>
+            <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
             <Route exact path="/category/:id"  component={CategoryByType}/> 
             <Route exact path="/category/allCategory/Category" component={AllCategory}/>
-            <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route  exact path="/fundraiser"  component={CreateFundRaiser} />
+            <Route path="/chat/:roomname/:username" component={Appmain} />
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
-            {/* <Stripe /> */}
+            <Route exact path="/adminPage" component={MainPage} />
+            <Route exact path='/donation' component={Donation} />
+            {/* <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                    */}
           </Switch>
           
         </div>

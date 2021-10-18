@@ -9,7 +9,7 @@ import FacebookLogin from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import './login.css';
 // @ OBADA OBADA OBADA   DONT DELETE FACEBOOK IMPORTS AGAIN    -- Thank you
 
 // import {Signup} from "./../signup/signup"
@@ -44,19 +44,22 @@ export const Login = () => {
         email,
         passwordd,
       });
-      console.log(res.data);
-      console.log(res.data.payload.userId);
-      if (res.data.success) {
-        setMessage("");
-        dispatch(setIsLoggedIn(true));
-        dispatch(setToken(res.data.token));
-        dispatch(setUserId(res.data.payload.userId))
-        setLogoutChecker(true)
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("logoutChecker" , logoutChecker)
-        localStorage.setItem("CurrentUserId",res.data.payload.userId)
-        history.push("/")
-      } else throw Error;
+      if(res.data.payload.email === "15@15.com"){
+        history.push('/adminPage');
+        
+      }else{
+        if (res.data.success) {
+          setMessage("");
+          dispatch(setIsLoggedIn(true));
+          dispatch(setToken(res.data.token));
+          dispatch(setUserId(res.data.payload.userId))
+          setLogoutChecker(true)
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("logoutChecker" , logoutChecker)
+          localStorage.setItem("CurrentUserId",res.data.payload.userId)
+          history.push("/")
+        } else throw Error;
+      }
     } catch (error) {
       if (error.response && error.response.data) {
         return setMessage(error.response.data.message);
@@ -65,18 +68,27 @@ export const Login = () => {
   };
   
   //facebookstuff
-  const responseFacebook = (response) => {
+  const responseFacebook = async(response) => {
     if (response.status == "unknown") {
       return;
     }
+    console.log("fb response",response)
+    console.log("fb response",response.accessToken)
     setData(response);
     if (!response.picture.data.url) {
       return;
     } else {
-      setPicture(response.picture.data.url);
+    await  dispatch(setIsLoggedIn(true));
+    await  dispatch(setToken(response.accessToken));
+    await  dispatch(setUserId(response.userID))
+    await  localStorage.setItem("token", response.accessToken);
+    await  localStorage.setItem("CurrentUserId",response.userID)
+    await  setPicture(response.picture.data.url);
+      
     }
     if (response.accessToken) {
       setLogin1(true);
+      history.push("/")
     } else {
       setLogin1(false);
     }
@@ -85,58 +97,12 @@ export const Login = () => {
 
   return (
     <>
-        <>
-        <Form onSubmit={loginSender}>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password"  onChange={(e) => setPasswordd(e.target.value)}/>
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Login
-  </Button>
-  <Button variant="primary" onClick={()=> history.push("/signup")}>
-    Signup
-  </Button>
-  <Button variant="primary" onClick={()=> history.push("/")}>
-    Home
-  </Button>
-</Form>
-          {/* <form onSubmit={loginSender}>
-            <br />
-            <input
-              type="email"
-              placeholder="email here"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <br />
-            <input
-              type="password"
-              placeholder="password here"
-              onChange={(e) => setPasswordd(e.target.value)}
-            />
-            <br />
-            <button>Login</button>
-          </form>
-          {message && <div>{message}</div>}
-          <br/>
-          <button onClick={()=> history.push("/signup")}>Sign up</button>
-          <button onClick={()=> history.push("/")}>back to main page</button> */}
-        </>
-
-        <>
-      <div className="container">
-        <Card style={{ width: "600px" }}>
+        <div className="main-form">
+          <div className="form-login">
+            <h3 className="title-form">Sign in </h3>
+            <hr></hr>
+            <div className="login-with-facebook">
+            <Card>
           <Card.Header>
             {!login1 && (
               <FacebookLogin
@@ -157,8 +123,29 @@ export const Login = () => {
             </Card.Body>
           )}
         </Card>
-      </div>
-      </>
+            </div>
+
+            <div className="option-login">
+
+            <span>or</span>
+            </div>
+        <Form onSubmit={loginSender} className=''>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Control type="password" placeholder="Password"  onChange={(e) => setPasswordd(e.target.value)}/>
+  </Form.Group>
+  <input type="submit" className="sgin-btn" value='Sign in to GoFundMe'/>
+</Form>
+<hr></hr>
+<div className='forget-password'>
+
+  <p>Forget Password ?</p>
+</div>
+        </div>
+        </div>
 
     </>
   );

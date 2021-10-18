@@ -1,6 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -26,7 +28,19 @@ export const StripeForm = () => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const user_id = localStorage.getItem("CurrentUserId")
   
+const state2 = useSelector((state) => {
+    
+  return { amount: state.amount.amount };
+});
+const state3 = useSelector((state) => {
+    console.log("state",state)
+  return { postId: state.postId.postId };
+});
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -39,9 +53,11 @@ export const StripeForm = () => {
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:5000/payment", {
           id,
-          amount: 5000,
+          amount:state2.amount*100, 
+          campaign_id : state3.postId,
+          userId:user_id
         });
-
+        console.log("Mraish test",state2.amount)
         if (response.data.success) {
           console.log("response.data.success",response.data)
           console.log("Successful payment");
