@@ -2,7 +2,9 @@ import React , {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
+import './signup.css';
 const Signup = () => {
     const [firstName , setFirstName] = useState('');
     const [lastName , setLastName] = useState('');
@@ -44,56 +46,41 @@ const Signup = () => {
     }
     return (
         <>
+        <div className="Main-SignUp">
+            <div className="form-signup">
+            <h3 className="title-form">Sign Up </h3>
+            <hr></hr>
             <Form onSubmit={insertNewUser}>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>First Name </Form.Label>
-            <Form.Control type="text" placeholder="First Name"  onChange={(e)=>{setFirstName(e.target.value)}}/>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>last Name</Form.Label>
-            <Form.Control type="text" placeholder="Last Name" onChange={(e)=>{setLastName(e.target.value)}} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Age</Form.Label>
-            <Form.Control type="number" placeholder="Age" onChange={(e)=>{setAge(e.target.value)}}/>
-        </Form.Group>
+<Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Control type="text" placeholder="First Name"  onChange={(e)=>{setFirstName(e.target.value)}}/>
+</Form.Group>
 
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Image</Form.Label>
-            <Form.Control type="file" placeholder="Image" onChange={(e)=>{setImg(e.target.value)}} />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>E-mail</Form.Label>
-            <Form.Control type="text" placeholder="E-mail" onChange={(e)=>{setEmail(e.target.value)}}/>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Country</Form.Label>
-            <Form.Control type="text" placeholder="Country" onChange={(e)=>{setCountry(e.target.value)}}/>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="text" placeholder="Password" onChange={(e)=>{setPasswordd(e.target.value)}}/>
-        </Form.Group>
+<Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="E-mail" onChange={(e)=>{setEmail(e.target.value)}}/>
+</Form.Group>
 
 
-        {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>password confrim</Form.Label>
-            <Form.Control type="email" placeholder="password confrim"/>
-        </Form.Group> */}
+<Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Control type="text" placeholder="Country" onChange={(e)=>{setCountry(e.target.value)}}/>
+</Form.Group>
 
-        <button variant="primary" type="submit">
-            Submit
-        </button>
-        <button onClick={()=> history.push("/login")}>login</button>
-        <button onClick={()=> history.push("/")}>Home</button>
-        </Form>
+<Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Control type="password" placeholder="Password" onChange={(e)=>{setPasswordd(e.target.value)}}/>
+</Form.Group>
+
+
+<Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Control type="password" placeholder="confrim Password"/>
+</Form.Group>
+
+<button variant="primary" class="signup-btn"type="submit">
+   Next
+</button>
+</Form>
+                </div>
+        </div>
         
         </>
     )

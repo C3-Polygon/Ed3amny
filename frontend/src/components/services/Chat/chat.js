@@ -4,6 +4,7 @@ import { process } from "../../../reducers/chat/chatReducer";
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import './chat.css';
 
 function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
@@ -51,10 +52,10 @@ function Chat({ username, roomname, socket }) {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div>
-      <div>
+    <div className="Main-chat">
+      <div className="chat-form">
         <h2>
-          {username} <span style={{ fontSize: "0.7rem" }}> in {roomname}</span>
+          {username} <span> in {roomname}</span>
         </h2>
       </div>
       <div>
