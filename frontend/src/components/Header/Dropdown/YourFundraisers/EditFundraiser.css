@@ -10,6 +10,7 @@
 }
 .update-post-title{
     display: flex;
+    align-items: center;
 }
 .main-update img{
     width: 100px;
