@@ -44,6 +44,8 @@ const server = app.listen(PORT, () => {
 
 const io = socket(server, { cors: { origin: "*" } })
 
+app.set('socketio', io);   // exporting socket io to all files - global ussage in all app files
+
 io.on("connection", (socket) => {
     //for a new user joining the room
     socket.on("joinRoom", ({ username, roomname }) => {
@@ -92,21 +94,6 @@ io.on("connection", (socket) => {
             });
         }
     });
-
-    // notification 
-    // socket.on("reachtarget",() => {
-    //   const notification = postInformationSender(socket.userid? or postid)
-
-    //   if(notification){
-    //     io.to(notifcation_area or to user?).emit("notification", {
-    //       postId: p_post.id,
-    //       text:`${p_post.id} has reached it's target`
-    //     })
-    //   }
-    // })
-
-
-
 
 }); //end socket
 module.exports = {io}

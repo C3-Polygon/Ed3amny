@@ -69,35 +69,6 @@ const GetAllFundraiserByUser = () => {
 
 export default GetAllFundraiserByUser;
 
-{/* <h1>{title}</h1>; */}
-
-
-{/* <> 
-<div className="container">
-  
-  <div className="MainSectionFundRaiserView">
-    <div className="Contect-Main-Section">
-      {usersFundraisers &&
-        usersFundraisers.map((elem,index) => {
-            return (
-                <div key={index}className="fundRaiserView">                        
-                <h1> {elem.country} </h1>
-                <h1> {elem.targett}  </h1>
-                <h1> {elem.current_target} </h1>
-                <h1> {elem.descriptionn} </h1>
-              <div className="content">
-                <img src={elem.img} />
-                <h5>{elem.title}</h5>
-                
-              </div>
-            </div>
-          );
-        })}
-    </div>
-  </div>
-</div>
-</> */}
-
 
 
 
