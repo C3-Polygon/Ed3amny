@@ -11,7 +11,9 @@ import Share from "../services/Share/shareViaFacebook";
 import  ProgressBar  from 'react-bootstrap/ProgressBar';
 import { AiOutlineDownload ,AiOutlineMoneyCollect ,AiOutlineCloseSquare} from "react-icons/ai";
 
+
 const FundRaiserView = () => {
+
   const { id } = useParams();
   const history = useHistory();
   const [fundRaiserView, setFundRaiserView] = useState();
@@ -27,6 +29,12 @@ const FundRaiserView = () => {
         console.log(err);
       });
   }, []);
+
+  const asd = () => {
+
+console.log(" ====> here <====");
+  }
+
   return (
       <> 
       <div className="container">
@@ -81,10 +89,9 @@ const FundRaiserView = () => {
                  <ProgressBar variant="success" now={Math.round((elem.current_target / elem.targett) * 100)}/>
 
                  <button className="share-fundRaiserView"> <AiOutlineDownload className='share-facebook'/> Share</button>
-                 <button className="share-fundRaiserView"> <AiOutlineMoneyCollect className='share-facebook'/> donation now</button>
-                 
+                 <button className="share-fundRaiserView"  onClick={()=>{ asd() }} > <AiOutlineMoneyCollect className='share-facebook'/> donation2 now</button>
                  </div>
-                 
+                
                    </div>
                  </>
                 );
