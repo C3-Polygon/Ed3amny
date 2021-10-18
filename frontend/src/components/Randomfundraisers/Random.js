@@ -43,7 +43,7 @@ useEffect(() => {
                      </div>;
                 })}
                 </div>
-                <p className='see-more-fundraiser'>See More  <AiFillCaretRight/> </p>
+                <p className='see-more-fundraiser' onClick={()=>history.push('/allfundraiser')}>See More  <AiFillCaretRight/> </p>
             </div>
         </div>
             

@@ -27,6 +27,7 @@ import BloodPostView from "./components/BloodPost/BloodPostView"
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import Donation from "./components/services/payment/Donation";
 import { BsFillChatRightTextFill } from "react-icons/bs";
+import {GetAllFundraiser} from './components/GetAllFundraiser/GetAllFundraiser'
     // mshan allah
     // mshan allah
     // mshan allah
@@ -80,6 +81,7 @@ function App() {
             <Route  exact path="/fundraiserView/:id"  component={FundRaiserView} />
             <Route exact path="/adminPage" component={MainPage} />
             <Route exact path='/donation' component={Donation} />
+            <Route exact path='/allfundraiser' component={GetAllFundraiser} />
             {/* <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                    */}
           </Switch>
           
