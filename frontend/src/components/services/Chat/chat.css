@@ -1,0 +1,6 @@
+.Main-chat {
+    position: absolute;
+    right: 0px;
+    bottom: 40px;
+    border: 10px solid red;
+}
