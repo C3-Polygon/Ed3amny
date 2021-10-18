@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './YourFundraisers.css';
 import {useHistory} from 'react-router-dom';
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiFillCaretLeft } from "react-icons/ai";
 
 import axios from "axios";
 
@@ -30,12 +30,17 @@ export const EditFundraiser = ()=>{
     return (
     <div className='main-update'>
         <div className='container'>
-         <button>Back</button>
+         <button className='back-button'> <AiFillCaretLeft/> Back</button>
          <div>{post&&post.map((elm,i)=>{
-             return (<div key={i}>
-                 {elm.title}
-                 <img src={elm.img}/>
-                 </div>)
+             return (
+                 <div key={i} className='update-post-title'>
+                  <img src={elm.img} />
+                  <div>
+                   <h3>Edit & Settings</h3>
+                   <p>{elm.title}</p>
+                  </div>
+                 </div>
+                 )
          })}</div>
          
         </div>
