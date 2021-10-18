@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import axios from "axios";
-import { AiFillCheckCircle } from "react-icons/ai";
+// import { AiFillCheckCircle } from "react-icons/ai";
 
 
 const AccountSettings=()=>{
@@ -18,7 +18,7 @@ const AccountSettings=()=>{
     const [age, setAge] = useState('');
     const [img, setImage] = useState('');
     const [country, setCountry] = useState('');
-    const [successUpdate, setSuccesssUpdate] = useState();
+    const [successUpdate, setSuccesssUpdate] = useState("");
     // const [gender, setGender] = useState('');
 
     useEffect(()=>{
@@ -39,6 +39,9 @@ const AccountSettings=()=>{
         .catch(err=>console.log(err))
     },[])
 
+    const myFunction=()=> {
+      setTimeout(function(){ setSuccesssUpdate(" ") }, 3000);
+    }
     const onUpdate=async (e)=>{
       e.preventDefault();
         try {
@@ -54,7 +57,8 @@ const AccountSettings=()=>{
               Authorization: `Bearer ${tokenSave}`,
             }}
           ).then(result=>{
-            setSuccesssUpdate("Your account was successfully saved.");        
+            setSuccesssUpdate(`Your account was successfully saved.`);
+            myFunction();        
           })
         } catch (error) {
           console.log(error);
@@ -69,7 +73,7 @@ const AccountSettings=()=>{
           <h6>Account</h6>
           
         <div>
-        <p className="success-update"> <AiFillCheckCircle/> {successUpdate}</p>
+        <p className="success-update"> {successUpdate}</p>
         <Form onSubmit={onUpdate}>
   <Row className="mb-3">
     <Form.Group as={Col} controlId="formGridEmail">
