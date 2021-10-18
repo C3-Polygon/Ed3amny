@@ -16,7 +16,7 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView"
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
+import YourFundraisers from "./components/Header/Dropdown/AccountSettings/AccountSettings"
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
@@ -35,13 +35,15 @@ import { ToastContainer, toast } from 'react-toastify';
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
-
+let userIdSave = localStorage.getItem("CurrentUserId");
 //Notification
 let x = "";
 socket.on("notificationtarget",(data)=>{
   x=data.text
   console.log("notification data",data)
- notify(x)
+  if(data.owner==userIdSave){
+    notify(x)
+  }
 })
 const notify = () => toast(x)
 //Notification
@@ -63,7 +65,7 @@ function Appmain(props) {
 
 function App() {
   let tokenSave = localStorage.getItem("token");
-  let userIdSave = localStorage.getItem("CurrentUserId");
+ 
 
 
   return (
