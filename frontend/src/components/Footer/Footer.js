@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => <footer className="page-footer font-small blue pt-4">
     <div className="container">
         <div className="row">
-            <div className="col-md-6 mt-md-0 mt-3">
+            <div className="col-md-6">
                 <h5 className="text-uppercase">Footer Content</h5>
                 <p>Here you can use rows and columns to organize your footer content.</p>
             </div>
@@ -21,7 +21,7 @@ const Footer = () => <footer className="page-footer font-small blue pt-4">
                 </ul>
             </div>
 
-            <div className="col-md-2 mb-md-0 mb-3">
+            <div className="col-md-2">
                 <h5 className="text-uppercase">Links</h5>
                 <ul className="list-unstyled">
                     <li><a href="#!">Link 1</a></li>
@@ -30,7 +30,8 @@ const Footer = () => <footer className="page-footer font-small blue pt-4">
                     <li><a href="#!">Link 4</a></li>
                 </ul>
             </div>
-            <div className="col-md-2 mb-md-0 mb-3">
+            
+            <div className="col-md-2">
                 <h5 className="text-uppercase">Links</h5>
                 <ul className="list-unstyled">
                     <li><a href="#!">Link 1</a></li>
