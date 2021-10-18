@@ -8,6 +8,7 @@ import {useHistory} from 'react-router-dom';
 import { AiOutlinePlus } from "react-icons/ai";
 
 import axios from "axios";
+import { EditFundraiser } from "./EditFundraiser";
 
 
 const GetAllFundraiserByUser = () => {
@@ -29,6 +30,12 @@ const GetAllFundraiserByUser = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const EditFundraiser = (id)=>{
+
+    history.push(`/edityourfundraiser/${id}`)
+  }
+
 
   return (
     <>
@@ -52,7 +59,7 @@ const GetAllFundraiserByUser = () => {
                          <p> Fundraisers Created : {post.created_at}</p>
                          <hr></hr>
                          <div className='manage-Your-fundraisers'> 
-                         <span>Manage</span>
+                         <span onClick={()=>EditFundraiser(post.id)}>Manage</span>
                          </div>
                          
                        </div>
