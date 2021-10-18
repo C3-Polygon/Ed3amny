@@ -3,9 +3,9 @@
 }
 
 .form-signup {
-    background-color: #ffff;
+    background-color: #fff;
     box-shadow: 5px 0px 27px 1px #ccc;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
