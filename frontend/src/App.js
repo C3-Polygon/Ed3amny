@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/signup/signup";
 import CreateFundRaiser from "./components/Header/Dropdown/Fundraiser/CreatefundRaiser";
-import { useEffect } from "react";
+import { useEffect,React, useState, } from "react";
 import Section from "./components/section/section";
 import Topfundraiser from "./components/TopFundraiser/Topfundraiser";
 import Stories from "./components/stories/Stories";
@@ -24,14 +24,27 @@ import AllCategory from "./components/AllCategory/AllCategory";
 import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 import MainPage from "./components/DashboradAdmin/MainPage";
 import BloodPostView from "./components/BloodPost/BloodPostView"
-import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import Donation from "./components/services/payment/Donation";
 import { BsFillChatRightTextFill } from "react-icons/bs";
 import {GetAllFundraiser} from './components/GetAllFundraiser/GetAllFundraiser'
+import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings"
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+  import axios from "axios";
     // mshan allah
     // mshan allah
     // mshan allah
 const socket = io.connect("http://localhost:5000");
+
+//Notification
+let x = "";
+socket.on("notificationtarget",(data)=>{
+  x=data.text
+  console.log("notification data",data)
+ notify(x)
+})
+const notify = () => toast(x)
+//Notification
 
 
 function Appmain(props) {
@@ -49,15 +62,21 @@ function Appmain(props) {
 }
 
 function App() {
+  let tokenSave = localStorage.getItem("token");
+  let userIdSave = localStorage.getItem("CurrentUserId");
+
+
   return (
     <>
         <Navbar />
+        <ToastContainer />
         <div className="App">
           <Switch>
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route exact path="/signup">
+            {/* if is logged in or token available history.push /  you should not enter signup while u have token or isslogged in up to */}
+            <Route exact path="/signup"> 
               <Signup />
             </Route>
             <Route exact path="/">
