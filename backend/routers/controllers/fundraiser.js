@@ -27,7 +27,7 @@ const createNewFundraiser = (req, res) => {
 
 // Get all fundraiser
 const getAllFundraiser = (req, res) => {
-    const query = `SELECT * FROM campaigns WHERE is_deleted=1`;
+    const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY id ASC LIMIT 12 `;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
