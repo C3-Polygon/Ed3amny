@@ -10,12 +10,13 @@ import axios from "axios";
 // import "./CreatefundRaiser.css;
 import userId from "../../../../reducers/login/userId";
 import { storage } from "../../../../FireBase/FireBase";
+import { useHistory } from "react-router-dom";
 
 const CreatefundRaiser = (e) => {
   let tokenSave = localStorage.getItem("token");
   let userIdSave = localStorage.getItem("CurrentUserId");
   const [categorys, setCategorys] = useState();
-
+  const history = useHistory();
   const state1 = useSelector((state) => {
     return { token: state.token_1.token };
   });
@@ -59,6 +60,7 @@ const CreatefundRaiser = (e) => {
       .catch((err) => {
         console.log(err);
       });
+      history.push("/Drop/YourFundraisers")
   };
   useEffect(() => {
     axios
@@ -109,7 +111,7 @@ const CreatefundRaiser = (e) => {
 
   return (
     <>
-      <Form>
+      <Form onSubmit={insertfundRaiser} >
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Country</Form.Label>
