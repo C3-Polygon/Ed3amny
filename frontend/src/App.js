@@ -26,7 +26,7 @@ import MainPage from "./components/DashboradAdmin/MainPage";
 import BloodPostView from "./components/BloodPost/BloodPostView"
 import Donation from "./components/services/payment/Donation";
 import { BsFillChatRightTextFill } from "react-icons/bs";
-import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings"
+import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
   import axios from "axios";
