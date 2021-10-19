@@ -21,8 +21,7 @@ const CreatefundRaiser = (e) => {
   const state2 = useSelector((state2) => {
     return { userId: state2.userId.userId };
   });
-  console.log("1", state2);
-  console.log("2", state2.userId);
+
 
   const [country, setCountry] = useState("");
   const [typee, setType] = useState("");
@@ -30,9 +29,9 @@ const CreatefundRaiser = (e) => {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [descriptionn, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState();
   const [url, setUrl] = useState("");
-  const [progress, setProgress] = useState(0);
+  // const [progress, setProgress] = useState(0);
   const [phoneNumber,setPhoneNumber] = useState(0);
 
   const insertfundRaiser = (e) => {
@@ -60,23 +59,23 @@ const CreatefundRaiser = (e) => {
       });
   };
 
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-    handleUpload()
-  };
+  // const handleChange = async(e) => {
+  //   if (e.target.files[0]) {
+  //    await setImage(e.target.files[0]);             await doesnt affect this type of function , it needs time so we handle it by
+  //    console.log("inside",e.target.files[0])        targeting 
+  //    console.log("inside image",image)
+  //   }
+    
+    //  await  handleUpload()
+  // };
 
-  const handleUpload = () => {
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+  const handleUpload =  (e) => {
+    let image = e.target.files[0]
+    console.log(image)
+       const uploadTask =  storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {
-        // const progress = Math.round(
-        //   (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        // );
-        setProgress(progress)
-      },
+      (snapshot) => {},
       (error) => {
         console.log(error);
       },
@@ -146,7 +145,7 @@ const CreatefundRaiser = (e) => {
           <Form.Control
             type="file"
             placeholder="Image"
-            onChange={handleChange}
+            onChange={handleUpload}
           />
         </Form.Group>
         {/* <button onClick={handleUpload}>Upload Image</button> */}
