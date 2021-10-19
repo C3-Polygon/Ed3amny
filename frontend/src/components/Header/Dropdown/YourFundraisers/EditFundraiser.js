@@ -5,14 +5,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./EditFundraiser.css";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs"
-import Button from "react-bootstrap/Button";
 import "./YourFundraisers.css";
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+
+import Row from 'react-bootstrap/Row';
+
 import { useHistory } from "react-router-dom";
 import { AiFillCaretLeft } from "react-icons/ai";
 
 import axios from "axios";
 
 export const EditFundraiser = () => {
+  const history = useHistory()
   const { id } = useParams();
   const [post, setPost] = useState();
 
@@ -31,7 +36,7 @@ export const EditFundraiser = () => {
   return (
     <div className="main-update">
       <div className="container">
-        <button className="back-button">
+        <button onClick={()=>{history.goBack()}} className="back-button">
           {" "}
           <AiFillCaretLeft /> Back
         </button>
@@ -59,12 +64,33 @@ export const EditFundraiser = () => {
           {post &&
             post.map((elm, i) => {
               return (
-                <div key={i} className="update-post-title">
-                  <img src={elm.img} />
-                  <div>
-                    
-                    <p>{elm.title}</p>
-                  </div>
+                <div key={i} className="update-post-overview">
+                <Form>
+                    <Row className="mb-3">
+                      <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control type="text" value={elm.title} />
+                      </Form.Group>
+
+                      <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>$ Current Target</Form.Label>
+                        <Form.Control type="number" value={elm.current_target} />
+                      </Form.Group>
+                    </Row>
+                  <Row className="mb-3">
+                      <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Label>Country</Form.Label>
+                        <Form.Control type="text" value={elm.country} />
+                      </Form.Group>
+
+                      <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Label>$ Target</Form.Label>
+                        <Form.Control type="number" value={elm.targett} />
+                      </Form.Group>
+                    </Row>
+
+                    <button className="Save-update" type="submit">Save</button>
+                  </Form>
                 </div>
               );
             })}
@@ -77,6 +103,7 @@ export const EditFundraiser = () => {
                 <div key={i} className="update-post-photo">
                   <img src={elm.img} />
                   
+                  <button className="Save-update" type="submit">Save</button>
                 </div>
               );
             })}
@@ -91,6 +118,8 @@ export const EditFundraiser = () => {
                   <div>
                     
                     <p>{elm.descriptionn}</p>
+                    
+                    <button className="Save-update" type="submit">Save</button>
                   </div>
                 </div>
               );
