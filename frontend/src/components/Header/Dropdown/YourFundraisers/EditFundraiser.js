@@ -20,7 +20,8 @@ import {
 } from "react-icons/ai";
 
 import { storage } from "../../../../FireBase/FireBase";
-
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export const EditFundraiser = () => {
   let tokenSave = localStorage.getItem("token");
@@ -233,7 +234,7 @@ const updateFundraiserImage = (e) => {
                 <div key={i} className="update-post-story">
                   
                   <div>
-                    
+                    <CKEditor editor={ClassicEditor} />
                     <input onChange={(e)=>{setDescriptionn(e.target.value)}} placeholder={elm.descriptionn}/><br></br>
                     
                     <button className="Save-update" onClick={updateFundraiserStory}>Save</button>
