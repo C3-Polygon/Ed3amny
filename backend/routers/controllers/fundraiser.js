@@ -185,7 +185,7 @@ const getTopFundraiserByCurrentTarget = (req, res) => {
 }
 
 const getThreeRandomFundraisers = (req, res) => {
-    const query = `SELECT * FROM campaigns ORDER BY RAND() LIMIT 6`;
+    const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY RAND() LIMIT 6`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({

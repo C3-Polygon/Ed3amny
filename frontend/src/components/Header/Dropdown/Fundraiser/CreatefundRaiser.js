@@ -103,6 +103,10 @@ const CreatefundRaiser = (e) => {
       }
     );
   };
+  const handler = (e)=>{
+    setType(e.target.value)
+  }
+  
 
   return (
     <>
@@ -118,7 +122,7 @@ const CreatefundRaiser = (e) => {
           />
         </Form.Group>
 
-        <Form.Select aria-label="Default select example">
+        <Form.Select aria-label="Default select example" onChange={handler}>
           
           <option value="0">Select a Category</option>
           {categorys&&categorys.map((elm)=>{
