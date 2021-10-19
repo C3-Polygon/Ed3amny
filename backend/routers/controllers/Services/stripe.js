@@ -46,7 +46,8 @@ const stripePayment = async (req, res) => {
 
             
                 io.emit("notificationtarget",{
-                  text:`Congratulations, your ${result1[0].title} has reached its target!`
+                  text:`Congratulations, your ${result1[0].title} has reached its target!`,
+                  owner: result1[0].userId
                 })
 
                 console.log("socket");

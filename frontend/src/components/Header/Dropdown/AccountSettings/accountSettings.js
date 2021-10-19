@@ -39,9 +39,6 @@ const AccountSettings=()=>{
         .catch(err=>console.log(err))
     },[])
 
-    const myFunction=()=> {
-      setTimeout(function(){ setSuccesssUpdate(" ") }, 3000);
-    }
     const onUpdate=async (e)=>{
       e.preventDefault();
         try {
@@ -58,7 +55,7 @@ const AccountSettings=()=>{
             }}
           ).then(result=>{
             setSuccesssUpdate(`Your account was successfully saved.`);
-            myFunction();        
+                   
           })
         } catch (error) {
           console.log(error);
