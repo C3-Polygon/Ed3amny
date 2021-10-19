@@ -21,10 +21,10 @@ const AccountSettings = () => {
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [successUpdate, setSuccesssUpdate] = useState("");
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   // const [gender, setGender] = useState('');
-
+const [toggle,setToggle]=useState(false)
   useEffect(() => {
     axios
       .get(`http://localhost:5000/search/GetUserById/${userIdSave}`, {
@@ -42,9 +42,10 @@ const AccountSettings = () => {
         setImg(result.data.result[0].img);
         setCountry(result.data.result[0].country);
         setPhoneNumber(result.data.result[0].phoneNumber);
+       
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [toggle]);
 
   const onUpdate = async (e) => {
     e.preventDefault();
@@ -74,17 +75,19 @@ const AccountSettings = () => {
     } catch (error) {
       console.log(error);
     }
+    setToggle(true)
   };
 
   //---
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-    handleUpload()
-  };
+//   const handleChange = (e) => {
+//     if (e.target.files[0]) {
+//       setImage(e.target.files[0]);
+//     }
+//     handleUpload()
+//   };
 
-  const handleUpload = () => {
+  const handleUpload = async (e) => {
+      let image = e.target.files[0]
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -103,6 +106,7 @@ const AccountSettings = () => {
           });
       }
     );
+    
   };
 
   return (
@@ -111,7 +115,7 @@ const AccountSettings = () => {
         <h1>Settings</h1>
         <hr></hr>
         <h6>Account</h6>
-
+        <img src={img} alt= "no-img" width="250px" height="250"/>
         <div>
           <p className="success-update"> {successUpdate}</p>
           <Form onSubmit={onUpdate}>
@@ -147,13 +151,13 @@ const AccountSettings = () => {
             <Form.Group className="mb-3" controlId="formGridAddress2">
               <Form.Label>Image</Form.Label>
               <Form.Control
-                placeholder="Image"
+                placeholder="image"
                 type="file"
-                onChange={handleChange}
+                onChange={handleUpload}
                 // onChange={(e) => setImg(e.target.value)}
               />
             </Form.Group>
-            {/* <button onClick={handleUpload}>Upload Image</button> */}
+            
 
             <Form.Group className="mb-3" controlId="formGridAddress2">
               <Form.Label>Country</Form.Label>
