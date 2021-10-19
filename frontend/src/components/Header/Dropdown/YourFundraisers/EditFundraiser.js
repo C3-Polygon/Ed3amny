@@ -55,6 +55,7 @@ export const EditFundraiser = () => {
       .catch((err) => {
         console.log(err);
       });
+
   },[toggle]);
 
   const softDelete = ()=>{
@@ -150,7 +151,7 @@ const updateFundraiserImage = (e) => {
   }).catch((err)=>{
     console.log("err", err);
   })
-  setToggle(true)
+  setToggle(!toggle)
 }
 
   return (
