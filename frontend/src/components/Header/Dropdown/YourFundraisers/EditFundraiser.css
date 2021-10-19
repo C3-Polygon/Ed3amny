@@ -1,0 +1,22 @@
+.main-update{
+    margin-top:50px;
+}
+.main-update .back-button{
+    border: 1px solid #000;
+    border-radius: 3px;
+    padding: 10px 25px;
+    font-weight: bolder;
+    background: none;
+}
+.update-post-title{
+    display: flex;
+    align-items: center;
+}
+.main-update img{
+    width: 100px;
+    height: 100px;
+}
+.update-post-title div {
+    margin-left: 15px;
+    
+}
