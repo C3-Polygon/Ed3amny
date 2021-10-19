@@ -2,13 +2,13 @@ const connection = require("../../../db/db")
 
 const updateUserById = (req, res) => {
     const id = req.params.id; // user id
-    const { firstName, lastName, age, img, country } = req.body;
+    const { firstName, lastName, age, img, country,phoneNumber } = req.body;
     const query = `SELECT * FROM users Where id=${id}`;
 
     connection.query(query, (error, result) => {
         if (result) {
-            const data = [firstName, lastName, age, img, country];
-            const query1 = `UPDATE users SET firstName=? , lastName=? , age=?  , img=? , country=? WHERE id = ${id}`;
+            const data = [firstName, lastName, age, img, country,phoneNumber];
+            const query1 = `UPDATE users SET firstName=? , lastName=? , age=?  , img=? , country=? , phoneNumber=? WHERE id = ${id}`;
             if (error) {
                 res.status(401).json({
                     success: false,

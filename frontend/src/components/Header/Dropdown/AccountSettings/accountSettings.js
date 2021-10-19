@@ -15,10 +15,12 @@ const AccountSettings=()=>{
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [age, setAge] = useState('');
+    const [age, setAge] = useState(0);
     const [img, setImage] = useState('');
     const [country, setCountry] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState(0);
     const [successUpdate, setSuccesssUpdate] = useState("");
+    
     // const [gender, setGender] = useState('');
 
     useEffect(()=>{
@@ -35,6 +37,7 @@ const AccountSettings=()=>{
             setAge(result.data.result[0].age)
             setImage(result.data.result[0].img)
             setCountry(result.data.result[0].country)
+            setPhoneNumber(result.data.result[0].phoneNumber)
            })
         .catch(err=>console.log(err))
     },[])
@@ -48,12 +51,15 @@ const AccountSettings=()=>{
             lastName:lastName,
             age:age,
             img: img,
-            country:country
+            country:country,
+            phoneNumber:phoneNumber
           }, {
             headers: {
               Authorization: `Bearer ${tokenSave}`,
             }}
           ).then(result=>{
+            console.log("update",result)
+            console.log(phoneNumber,"phonenumber")
             setSuccesssUpdate(`Your account was successfully saved.`);
                    
           })
@@ -74,12 +80,12 @@ const AccountSettings=()=>{
         <Form onSubmit={onUpdate}>
   <Row className="mb-3">
     <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>FirstName</Form.Label>
+      <Form.Label>First Name</Form.Label>
       <Form.Control type="text" placeholder={firstName} onChange={(e)=>setFirstName(e.target.value)} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label>lastName</Form.Label>
+      <Form.Label>Last Name</Form.Label>
       <Form.Control type="text" placeholder={lastName} onChange={(e)=>setLastName(e.target.value)} />
     </Form.Group>
   </Row>
@@ -96,8 +102,13 @@ const AccountSettings=()=>{
 
 
   <Form.Group className="mb-3" controlId="formGridAddress2">
-    <Form.Label>country</Form.Label>
+    <Form.Label>Country</Form.Label>
     <Form.Control placeholder={country} type="text" onChange={(e)=>setCountry(e.target.value)} />
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress2">
+    <Form.Label>Phone Number</Form.Label>
+    <Form.Control placeholder={phoneNumber} type="number" onChange={(e)=>setPhoneNumber(e.target.value)} />
   </Form.Group>
 
   <button className="change_info" type='submit'>Save Change</button> 
