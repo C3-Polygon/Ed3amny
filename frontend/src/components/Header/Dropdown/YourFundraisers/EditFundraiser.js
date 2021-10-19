@@ -3,7 +3,8 @@ import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./EditFundraiser.css";
-import Form from "react-bootstrap/Form";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs"
 import Button from "react-bootstrap/Button";
 import "./YourFundraisers.css";
 import { useHistory } from "react-router-dom";
@@ -54,15 +55,49 @@ export const EditFundraiser = () => {
           id="uncontrolled-tab-example"
           className="mb-3"
         >
-          <Tab eventKey="home" title="Home">
-            <Sonnet />
+          <Tab eventKey="overview" title="Overview">
+          {post &&
+            post.map((elm, i) => {
+              return (
+                <div key={i} className="update-post-title">
+                  <img src={elm.img} />
+                  <div>
+                    
+                    <p>{elm.title}</p>
+                  </div>
+                </div>
+              );
+            })}
+            
           </Tab>
-          <Tab eventKey="profile" title="Profile">
-            <Sonnet />
+          <Tab eventKey="photo" title="Photo">
+          {post &&
+            post.map((elm, i) => {
+              return (
+                <div key={i} className="update-post-photo">
+                  <img src={elm.img} />
+                  
+                </div>
+              );
+            })}
+            
           </Tab>
-          <Tab eventKey="contact" title="Contact" disabled>
-            <Sonnet />
+          <Tab eventKey="story" title="Story">
+          {post &&
+            post.map((elm, i) => {
+              return (
+                <div key={i} className="update-post-story">
+                  
+                  <div>
+                    
+                    <p>{elm.descriptionn}</p>
+                  </div>
+                </div>
+              );
+            })}
+            
           </Tab>
+
         </Tabs>
       </div>
     </div>
