@@ -137,7 +137,7 @@ const Navbar = () => {
                         Specific Donation
                       </Dropdown.Item>
 
-                      <Dropdown.Item onClick={()=> history.push("/Drop/CreateBloodPost")}>
+                      <Dropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>
                         Ask For a blood donation
                       </Dropdown.Item>
                       

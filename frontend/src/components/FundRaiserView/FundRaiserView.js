@@ -18,8 +18,8 @@ import {
   AiOutlineMoneyCollect,
   AiOutlineCloseSquare,
 } from "react-icons/ai";
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 const FundRaiserView = () => {

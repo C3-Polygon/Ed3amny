@@ -109,7 +109,7 @@ function App() {
           <Route exact path="/donation" component={Donation} />
           <Route exact path="/allfundraiser" component={GetAllFundraiser} />
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
-          {/* <CreateBloodPost exact Path = "/Drop/CreateBloodPost"/>                    */}
+          <CreateBloodPost exact Path = "/Drop/Blood/BloodPost/Create"/>                   
         </Switch>
       </div>
       <Footer />
