@@ -16,7 +16,7 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView";
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import YourFundraisers from "./components/Header/Dropdown/AccountSettings/AccountSettings"
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers"
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
