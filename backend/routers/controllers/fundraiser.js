@@ -342,7 +342,7 @@ const updateOverView = (req, res) => {
             const data = [title, phoneNumber, targett, country];
             const query1 = `UPDATE campaigns SET title=? , phoneNumber=? , targett=?  , country=? WHERE id = ${id}`;
             if (error) {
-                res.status(200).json({
+                res.status(500).json({
                     success: false,
                     message: `Error happened during query for the fundraiser`,
                     error: error,
@@ -359,6 +359,7 @@ const updateOverView = (req, res) => {
                     res.status(404).json({
                         success: false,
                         message: `Fundraiser Not Found => ${id}`,
+
                     });
                 }
                 if (error) {

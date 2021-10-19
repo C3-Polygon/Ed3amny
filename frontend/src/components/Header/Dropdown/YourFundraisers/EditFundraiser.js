@@ -20,10 +20,19 @@ import {
 } from "react-icons/ai";
 
 export const EditFundraiser = () => {
+  let tokenSave = localStorage.getItem("token");
   const history = useHistory()
   const { id } = useParams();
   const [post, setPost] = useState();
   const [showbtnDelete, setShowbtnDelete] = useState(false);
+
+  ///update post overview 
+  const [title, setTitle] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [country, setCountry] = useState('');
+  const [targett, setTargett] = useState('');
+
+
 
   useEffect(() => {
     axios
@@ -43,6 +52,27 @@ export const EditFundraiser = () => {
     }).catch((err) => {
       console.log(err);
     })
+  }
+
+  const updateFundraiserOverView = (e)=>{
+    console.log("id" , id);
+    e.preventDefault();
+    axios.put(`http://localhost:5000/fundraiser/update/fundraiser/overview/9`,
+{    title,
+    phoneNumber,
+    targett,
+    country
+  },{
+    headers: {
+      Authorization: `Bearer ${tokenSave}`,
+    }
+  }
+    ).then((result) => {
+      console.log("updateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+    }).catch((err)=>{
+      console.log("err", err);
+    })
+
   }
 
   return (
@@ -77,27 +107,27 @@ export const EditFundraiser = () => {
             post.map((elm, i) => {
               return (
                 <div key={i} className="update-post-overview">
-                <Form>
+                <Form onSubmit={updateFundraiserOverView}>
                     <Row className="mb-3">
                       <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" value={elm.title} />
+                        <Form.Control type="text" placeholder={elm.title} onChange={(e)=>{setTitle(e.target.value)}}/>
                       </Form.Group>
 
                       <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Phone Number</Form.Label>
-                        <Form.Control type="number" value={elm.phoneNumber} />
+                        <Form.Control type="number" placeholder={elm.phoneNumber} onChange={(e)=>{setPhoneNumber(e.target.value)}}/>
                       </Form.Group>
                     </Row>
                   <Row className="mb-3">
                       <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Country</Form.Label>
-                        <Form.Control type="text" value={elm.country} />
+                        <Form.Control type="text" placeholder={elm.country} onChange={(e)=>{setCountry(e.target.value)}}/>
                       </Form.Group>
 
                       <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label> Goal</Form.Label>
-                        <Form.Control type="number" value={elm.targett} />
+                        <Form.Control type="number" placeholder={elm.targett} onChange={(e)=>{setTargett(e.target.value)}}/>
                       </Form.Group>
                     </Row>
 
