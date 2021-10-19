@@ -1,6 +1,6 @@
 //create
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,7 +14,8 @@ import { storage } from "../../../../FireBase/FireBase";
 const CreatefundRaiser = (e) => {
   let tokenSave = localStorage.getItem("token");
   let userIdSave = localStorage.getItem("CurrentUserId");
-  console.log("userIdSave", userIdSave);
+  const [categorys, setCategorys] = useState();
+
   const state1 = useSelector((state) => {
     return { token: state.token_1.token };
   });
@@ -33,19 +34,19 @@ const CreatefundRaiser = (e) => {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
-  const [phoneNumber,setPhoneNumber] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState(0);
 
   const insertfundRaiser = (e) => {
     e.preventDefault();
     const theFundRaiserCreated = {
       userId: state2.userId,
-      country:country,
-      typee:typee,
-      targett:targett,
-      img:url,
-      title:title,
-      descriptionn:descriptionn,
-      phoneNumber:phoneNumber
+      country: country,
+      typee: typee,
+      targett: targett,
+      img: url,
+      title: title,
+      descriptionn: descriptionn,
+      phoneNumber: phoneNumber,
     };
     console.log(theFundRaiserCreated);
     axios
@@ -59,12 +60,22 @@ const CreatefundRaiser = (e) => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/fundraiser/categorys/categorys/categorys")
+      .then((result) => {
+        setCategorys(result.data.allData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
-    handleUpload()
+    handleUpload();
   };
 
   const handleUpload = () => {
@@ -75,7 +86,7 @@ const CreatefundRaiser = (e) => {
         // const progress = Math.round(
         //   (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         // );
-        setProgress(progress)
+        setProgress(progress);
       },
       (error) => {
         console.log(error);
@@ -107,16 +118,13 @@ const CreatefundRaiser = (e) => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label> Type </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Type"
-            onChange={(e) => {
-              setType(e.target.value);
-            }}
-          />
-        </Form.Group>
+        <Form.Select aria-label="Default select example">
+          
+          <option value="0">Select a Category</option>
+          {categorys&&categorys.map((elm)=>{
+            return (<option value={elm.id}>{elm.namee}</option>)
+          })}
+        </Form.Select>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Target</Form.Label>
@@ -140,7 +148,6 @@ const CreatefundRaiser = (e) => {
           />
         </Form.Group>
 
-
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Image</Form.Label>
           <Form.Control
@@ -150,7 +157,7 @@ const CreatefundRaiser = (e) => {
           />
         </Form.Group>
         {/* <button onClick={handleUpload}>Upload Image</button> */}
-            {/* <progress value={progress} max="100" /> */}
+        {/* <progress value={progress} max="100" /> */}
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Title</Form.Label>
           <Form.Control
