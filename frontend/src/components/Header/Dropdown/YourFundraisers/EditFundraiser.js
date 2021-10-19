@@ -35,8 +35,11 @@ export const EditFundraiser = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [country, setCountry] = useState('');
   const [targett, setTargett] = useState('');
-  const [image, setImage] = useState(null);
+
+  //update image
+  // const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
+  const [toggle,setToggle]=useState(false)
 
 
   ///update story
@@ -53,7 +56,8 @@ export const EditFundraiser = () => {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+
+  },[toggle]);
 
   const softDelete = ()=>{
     axios.put(`http://localhost:5000/fundraiser/soft/delete/fundreiser/${id}`).then((result) => {
@@ -101,22 +105,23 @@ export const EditFundraiser = () => {
     })
   }
 
-  const handleChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-    handleUpload()
-  };
+//   const handleChange = async(e) => {
+//     if (e.target.files[0]) {
+//       await   setImage(e.target.files[0]);
+//     }
+//     await  handleUpload()
+//   };
 
-  const handleUpload = () => {
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+  const handleUpload = async(e) => {
+    let image =  e.target.files[0]
+  const uploadTask = storage.ref(`/images/${image.name}`) .put(image);
     uploadTask.on(
       "state_changed",
       (snapshot) => {},
       (error) => {
         console.log(error);
       },
-      () => {
+     async () => {
         storage
           .ref("images")
           .child(image.name)
@@ -147,7 +152,7 @@ const updateFundraiserImage = (e) => {
   }).catch((err)=>{
     console.log("err", err);
   })
-
+  setToggle(!toggle)
 }
 
   return (
@@ -219,7 +224,7 @@ const updateFundraiserImage = (e) => {
               return (
                 <div key={i} className="update-post-photo">
                   <img src={elm.img} />
-                  <input type="file" onChange={handleChange}/>
+                  <input type="file" onChange={handleUpload}/>
                   {/* <button onClick={handleUpload} className="Save-update" type="submit">Upload Image</button> */}
                   <button onClick={updateFundraiserImage} className="Save-update" type="submit">Change</button>
                 </div>
