@@ -35,11 +35,10 @@ export const EditFundraiser = () => {
       .catch((err) => {
         console.log(err);
       });
-  });
+  },[]);
 
   const softDelete = ()=>{
     axios.put(`http://localhost:5000/fundraiser/soft/delete/fundreiser/${id}`).then((result) => {
-      console.log("deleted");
       history.goBack();
     }).catch((err) => {
       console.log(err);
@@ -87,7 +86,7 @@ export const EditFundraiser = () => {
 
                       <Form.Group as={Col} controlId="formGridPassword">
                         <Form.Label>Phone Number</Form.Label>
-                        <Form.Control type="number" value={elm.current_target} />
+                        <Form.Control type="number" value={elm.phoneNumber} />
                       </Form.Group>
                     </Row>
                   <Row className="mb-3">

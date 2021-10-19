@@ -330,7 +330,47 @@ const deleteFundraiserByid = (req, res) => {
 
 
 
+////
 
+const updateOverView = (req, res) => {
+    const id = req.params.id; // fundraiser id
+    const { title, phoneNumber, targett, country } = req.body;
+    const query = `SELECT * FROM campaigns Where id=${id}`;
+
+    connection.query(query, (error, result) => {
+        if (result) {
+            const data = [title, phoneNumber, targett, country];
+            const query1 = `UPDATE campaigns SET title=? , phoneNumber=? , targett=?  , country=? WHERE id = ${id}`;
+            if (error) {
+                res.status(200).json({
+                    success: false,
+                    message: `Error happened during query for the fundraiser`,
+                    error: error,
+                });
+            }
+            connection.query(query1, data, (error, result) => {
+                if (result) {
+                    res.status(200).json({
+                        success: true,
+                        message: `Success, updated the Fundraiser => ${id}`,
+                        result: result,
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        message: `Fundraiser Not Found => ${id}`,
+                    });
+                }
+                if (error) {
+                    res.status(500).json({
+                        success: false,
+                        message: `Server error`,
+                    });
+                }
+            });
+        }
+    });
+};
 
 module.exports = {
     createNewFundraiser,
@@ -346,5 +386,6 @@ module.exports = {
     getTotalsCategories,
     getCategorybyId,
     getTotalsFundreiser,
-    deleteFundraiserByid
+    deleteFundraiserByid,
+    updateOverView
 };
