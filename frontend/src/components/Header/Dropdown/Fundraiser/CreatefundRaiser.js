@@ -64,6 +64,7 @@ const CreatefundRaiser = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
+    handleUpload()
   };
 
   const handleUpload = () => {
@@ -71,9 +72,9 @@ const CreatefundRaiser = (e) => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
+        // const progress = Math.round(
+        //   (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        // );
         setProgress(progress)
       },
       (error) => {
@@ -148,8 +149,8 @@ const CreatefundRaiser = (e) => {
             onChange={handleChange}
           />
         </Form.Group>
-        <button onClick={handleUpload}>Upload Image</button>
-            <progress value={progress} max="100" />
+        {/* <button onClick={handleUpload}>Upload Image</button> */}
+            {/* <progress value={progress} max="100" /> */}
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Title</Form.Label>
           <Form.Control

@@ -104,6 +104,7 @@ export const EditFundraiser = () => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
+    handleUpload()
   };
 
   const handleUpload = () => {
@@ -218,7 +219,7 @@ const updateFundraiserImage = (e) => {
                 <div key={i} className="update-post-photo">
                   <img src={elm.img} />
                   <input type="file" onChange={handleChange}/>
-                  <button onClick={handleUpload} className="Save-update" type="submit">Upload Image</button>
+                  {/* <button onClick={handleUpload} className="Save-update" type="submit">Upload Image</button> */}
                   <button onClick={updateFundraiserImage} className="Save-update" type="submit">Change</button>
                 </div>
               );
