@@ -19,6 +19,9 @@ import {
   AiOutlineCloseSquare
 } from "react-icons/ai";
 
+import { storage } from "../../../../FireBase/FireBase";
+
+
 export const EditFundraiser = () => {
   let tokenSave = localStorage.getItem("token");
   const history = useHistory()
@@ -31,7 +34,8 @@ export const EditFundraiser = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [country, setCountry] = useState('');
   const [targett, setTargett] = useState('');
-
+  const [image, setImage] = useState(null);
+  const [url, setUrl] = useState("");
 
 
   ///update story
@@ -95,6 +99,55 @@ export const EditFundraiser = () => {
       console.log("err", err);
     })
   }
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleUpload = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            setUrl(url);
+          });
+      }
+    );
+  };
+
+
+
+
+const updateFundraiserImage = (e) => {
+  e.preventDefault();
+  axios.put(`http://localhost:5000/fundraiser/update/fundraiser/image/${id}`,
+{   
+  img:url,
+},{
+  headers: {
+    Authorization: `Bearer ${tokenSave}`,
+  }
+}
+  ).then((result) => {
+    console.log(result,"your fundraiser img update ");
+  }).catch((err)=>{
+    console.log("err", err);
+  })
+
+}
+
   return (
     <div className="main-update">
       <div className="container">
@@ -164,8 +217,9 @@ export const EditFundraiser = () => {
               return (
                 <div key={i} className="update-post-photo">
                   <img src={elm.img} />
-                  
-                  <button className="Save-update" type="submit">Change</button>
+                  <input type="file" onChange={handleChange}/>
+                  <button onClick={handleUpload} className="Save-update" type="submit">Upload Image</button>
+                  <button onClick={updateFundraiserImage} className="Save-update" type="submit">Change</button>
                 </div>
               );
             })}
