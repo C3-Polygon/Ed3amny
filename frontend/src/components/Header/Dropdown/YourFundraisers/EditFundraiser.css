@@ -48,3 +48,39 @@
     width: 100%;
     height: 100%;
 }
+
+.Delete-my-postinfo {
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Delete-my-postinfo h5 {
+    font-weight: bold;
+}
+
+.Delete-my-postinfo p {
+    color: #666;
+}
+
+.Delete-my-postinfo .btn-delete-post {
+    color: #c54646;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.main-update .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link {
+    color: #02a95c;
+}
+
+.main-update .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link:hover {
+    color: #02a95c;
+}
+
+.main-update .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link {
+    border-bottom: 2px solid #02a95c;
+}

@@ -103,7 +103,7 @@ export const EditFundraiser = () => {
                 <div key={i} className="update-post-photo">
                   <img src={elm.img} />
                   
-                  <button className="Save-update" type="submit">Save</button>
+                  <button className="Save-update" type="submit">Change</button>
                 </div>
               );
             })}
@@ -128,7 +128,17 @@ export const EditFundraiser = () => {
           </Tab>
 
         </Tabs>
+        <div className="Delete-my-postinfo">
+          <div>
+            <h5>Delete my fundraiser</h5>
+            <p>You will no longer have access to this fundraiser after deleting.<br></br>
+              f you received donations, your donors will still be able to view a summary.</p>
+          </div>
+          
+          <p className="btn-delete-post">Delete</p>
+          </div>
       </div>
+
     </div>
   );
 };
