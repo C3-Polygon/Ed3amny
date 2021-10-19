@@ -15,11 +15,15 @@ import { useHistory } from "react-router-dom";
 import { AiFillCaretLeft } from "react-icons/ai";
 
 import axios from "axios";
+import {
+  AiOutlineCloseSquare
+} from "react-icons/ai";
 
 export const EditFundraiser = () => {
   const history = useHistory()
   const { id } = useParams();
   const [post, setPost] = useState();
+  const [showbtnDelete, setShowbtnDelete] = useState(false);
 
   useEffect(() => {
     axios
@@ -32,6 +36,15 @@ export const EditFundraiser = () => {
         console.log(err);
       });
   });
+
+  const softDelete = ()=>{
+    axios.put(`http://localhost:5000/fundraiser/soft/delete/fundreiser/${id}`).then((result) => {
+      console.log("deleted");
+      history.goBack();
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
 
   return (
     <div className="main-update">
@@ -73,7 +86,7 @@ export const EditFundraiser = () => {
                       </Form.Group>
 
                       <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>$ Current Target</Form.Label>
+                        <Form.Label>Phone Number</Form.Label>
                         <Form.Control type="number" value={elm.current_target} />
                       </Form.Group>
                     </Row>
@@ -84,7 +97,7 @@ export const EditFundraiser = () => {
                       </Form.Group>
 
                       <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>$ Target</Form.Label>
+                        <Form.Label> Goal</Form.Label>
                         <Form.Control type="number" value={elm.targett} />
                       </Form.Group>
                     </Row>
@@ -135,8 +148,27 @@ export const EditFundraiser = () => {
               f you received donations, your donors will still be able to view a summary.</p>
           </div>
           
-          <p className="btn-delete-post">Delete</p>
+          <p onClick={()=>{setShowbtnDelete(!showbtnDelete)}} className="btn-delete-post">Delete</p>
           </div>
+
+          {showbtnDelete && (
+            <div class='model-delete-post'>
+            <div className='info-deleted'>
+            
+            <AiOutlineCloseSquare className='close-pop' onClick={()=>{setShowbtnDelete(!showbtnDelete)}}/>
+            <div className='text-center'>
+              <h3>Delete your fundraiser</h3>
+              <hr></hr>
+
+              <p>
+              You will no longer have access to this fundraiser after deleting
+              </p>
+              <button className='confirm-delete-post' onClick={softDelete}>Delete fundraiser</button> 
+            </div>
+            </div>
+          </div>
+          )
+          }
       </div>
 
     </div>
