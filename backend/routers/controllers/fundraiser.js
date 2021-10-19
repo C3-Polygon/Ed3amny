@@ -185,7 +185,7 @@ const getTopFundraiserByCurrentTarget = (req, res) => {
 }
 
 const getThreeRandomFundraisers = (req, res) => {
-    const query = `SELECT * FROM campaigns ORDER BY RAND() LIMIT 6`;
+    const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY RAND() LIMIT 6`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
@@ -225,19 +225,18 @@ const getTotalsCategories = (req, res) => {
     const allStory = `SELECT * FROM categories`;
     connection.query(allStory, (err, response) => {
         if (err) {
-            res.json({
+            return res.status(500).json({
                 success: false,
                 message: "SERVER ERROR"
             })
-            res.status(500);
         }
         if (response) {
-            res.json({
+            return res.status(200).json({
                 success: true,
                 message: "All Data",
                 allData: response
             })
-            res.status(200);
+            
         }
     })
 }

@@ -1,11 +1,11 @@
-//create
-
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import "./CreateFundRaiser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
-
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import axios from "axios";
 // import "./CreatefundRaiser.css;
 import userId from "../../../../reducers/login/userId";
@@ -14,7 +14,8 @@ import { storage } from "../../../../FireBase/FireBase";
 const CreatefundRaiser = (e) => {
   let tokenSave = localStorage.getItem("token");
   let userIdSave = localStorage.getItem("CurrentUserId");
-  console.log("userIdSave", userIdSave);
+  const [categorys, setCategorys] = useState();
+
   const state1 = useSelector((state) => {
     return { token: state.token_1.token };
   });
@@ -28,23 +29,24 @@ const CreatefundRaiser = (e) => {
   const [targett, setTarget] = useState("");
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
-  const [descriptionn, setDescription] = useState("");
+   const [descriptionn, setDescriptionn] = useState("");
   // const [image, setImage] = useState();
   const [url, setUrl] = useState("");
   // const [progress, setProgress] = useState(0);
   const [phoneNumber,setPhoneNumber] = useState(0);
 
+
   const insertfundRaiser = (e) => {
     e.preventDefault();
     const theFundRaiserCreated = {
       userId: state2.userId,
-      country:country,
-      typee:typee,
-      targett:targett,
-      img:url,
-      title:title,
-      descriptionn:descriptionn,
-      phoneNumber:phoneNumber
+      country: country,
+      typee: typee,
+      targett: targett,
+      img: url,
+      title: title,
+      descriptionn: descriptionn,
+      phoneNumber: phoneNumber,
     };
     console.log(theFundRaiserCreated);
     axios
@@ -58,6 +60,16 @@ const CreatefundRaiser = (e) => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/fundraiser/categorys/categorys/categorys")
+      .then((result) => {
+        setCategorys(result.data.allData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   // const handleChange = async(e) => {
   //   if (e.target.files[0]) {
@@ -91,45 +103,50 @@ const CreatefundRaiser = (e) => {
       }
     );
   };
+  const handler = (e) => {
+    setType(e.target.value);
+  };
 
   return (
     <>
-      <Form onSubmit={insertfundRaiser}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label> Country </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter country"
-            onChange={(e) => {
-              setCountry(e.target.value);
-            }}
-          />
-        </Form.Group>
+      <Form>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Country</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter country"
+              onChange={(e) => {
+                setCountry(e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Select
+            aria-label="Default select example"
+            as={Col}
+            onChange={handler}
+          >
+            <option value="0">Select a Category</option>
+            {categorys &&
+              categorys.map((elm) => {
+                return <option value={elm.id}>{elm.namee}</option>;
+              })}
+          </Form.Select>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label> Type </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Type"
-            onChange={(e) => {
-              setType(e.target.value);
-            }}
-          />
-        </Form.Group>
+          <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Label>Target</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Target"
+              onChange={(e) => {
+                setTarget(e.target.value);
+              }}
+            />
+          </Form.Group>
+        </Row>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Target</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Target"
-            onChange={(e) => {
-              setTarget(e.target.value);
-            }}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>PhoneNumber</Form.Label>
+        <Form.Group className="mb-3" controlId="formGridAddress1">
+          <Form.Label>Phone Number</Form.Label>
           <Form.Control
             type="number"
             placeholder="PhoneNumber"
@@ -139,42 +156,42 @@ const CreatefundRaiser = (e) => {
           />
         </Form.Group>
 
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Image</Form.Label>
+        <Form.Group className="mb-3" controlId="formGridAddress2">
+          <Form.Label>Address 2</Form.Label>
           <Form.Control
             type="file"
             placeholder="Image"
             onChange={handleUpload}
           />
         </Form.Group>
-        {/* <button onClick={handleUpload}>Upload Image</button> */}
-            {/* <progress value={progress} max="100" /> */}
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-        </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label> Description </Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Description"
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          />
-        </Form.Group>
-        <button variant="primary" type="submit">
-          {" "}
-          Start a Campaign{" "}
-        </button>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridCity">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Title"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridZip">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Description"
+              onChange={(e) => {
+                setDescriptionn(e.target.value);
+              }}
+            />
+          </Form.Group>
+        </Row>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
     </>
   );
