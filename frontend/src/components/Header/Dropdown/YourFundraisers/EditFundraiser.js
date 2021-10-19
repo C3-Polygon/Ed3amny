@@ -34,6 +34,10 @@ export const EditFundraiser = () => {
 
 
 
+  ///update story
+  const [descriptionn, setDescriptionn] = useState('');
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/fundraiser/id/${id}`)
@@ -57,7 +61,7 @@ export const EditFundraiser = () => {
   const updateFundraiserOverView = (e)=>{
     console.log("id" , id);
     e.preventDefault();
-    axios.put(`http://localhost:5000/fundraiser/update/fundraiser/overview/9`,
+    axios.put(`http://localhost:5000/fundraiser/update/fundraiser/overview/${id}`,
 {    title,
     phoneNumber,
     targett,
@@ -75,6 +79,22 @@ export const EditFundraiser = () => {
 
   }
 
+  const updateFundraiserStory = (e)=>{
+    e.preventDefault();
+    axios.put(`http://localhost:5000/fundraiser/update/fundraiser/story/${id}`,
+{   
+  descriptionn
+  },{
+    headers: {
+      Authorization: `Bearer ${tokenSave}`,
+    }
+  }
+    ).then((result) => {
+      console.log("descriptionn update ");
+    }).catch((err)=>{
+      console.log("err", err);
+    })
+  }
   return (
     <div className="main-update">
       <div className="container">
@@ -159,9 +179,9 @@ export const EditFundraiser = () => {
                   
                   <div>
                     
-                    <p>{elm.descriptionn}</p>
+                    <input onChange={(e)=>{setDescriptionn(e.target.value)}} placeholder={elm.descriptionn}/><br></br>
                     
-                    <button className="Save-update" type="submit">Save</button>
+                    <button className="Save-update" onClick={updateFundraiserStory}>Save</button>
                   </div>
                 </div>
               );

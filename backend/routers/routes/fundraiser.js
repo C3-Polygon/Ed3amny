@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories, getTotalsCategories, getCategorybyId, getTotalsFundreiser, deleteFundraiserByid, updateOverView } = require("../controllers/fundraiser");
+const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories, getTotalsCategories, getCategorybyId, getTotalsFundreiser, deleteFundraiserByid, updateOverView, updatestory } = require("../controllers/fundraiser");
 
 
 // define router
@@ -68,4 +68,6 @@ fundraiserRouter.get("/admin/dashbord/get/getallfundreiser", getTotalsFundreiser
 fundraiserRouter.put("/soft/delete/fundreiser/:id", deleteFundraiserByid)
 
 fundraiserRouter.put("/update/fundraiser/overview/:id", updateOverView)
+
+fundraiserRouter.put("/update/fundraiser/story/:id", updatestory);
 module.exports = fundraiserRouter;
