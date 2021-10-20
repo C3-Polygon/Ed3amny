@@ -28,6 +28,11 @@
     -o-border-radius: 4px;
 }
 
+.userAvatar{
+    border-radius: 50%;
+}
+
+
 .small-media {
     display: none;
 }

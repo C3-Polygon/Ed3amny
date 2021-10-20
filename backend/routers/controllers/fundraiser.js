@@ -2,9 +2,9 @@ const connection = require("../../db/db");
 
 //create new fundraiser
 const createNewFundraiser = (req, res) => {
-    const { userId, title, country, typee, targett, img, descriptionn } = req.body;
-    const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn) VALUES (?,?,?,?,?,?,?)`;
-    const data = [userId, title, country, typee, targett, img, descriptionn];
+    const { userId, title, country, typee, targett, img, descriptionn,phoneNumber } = req.body;
+    const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn,phoneNumber) VALUES (?,?,?,?,?,?,?,?)`;
+    const data = [userId, title, country, typee, targett, img, descriptionn,phoneNumber];
     connection.query(queryString, data, (err, result) => {
         console.log(data, "dataaaaaaaaa");
         console.log("Erroe", err);

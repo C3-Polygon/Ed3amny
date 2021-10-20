@@ -6,7 +6,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { storage } from "../../../../FireBase/FireBase";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setUserAvatar } from "../../../../reducers/login/userAvatar";
 // import { AiFillCheckCircle } from "react-icons/ai";
 
 const AccountSettings = () => {
@@ -25,6 +26,9 @@ const AccountSettings = () => {
   const [url, setUrl] = useState("");
   // const [gender, setGender] = useState('');
 const [toggle,setToggle]=useState(false)
+const dispatch = useDispatch();
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/search/GetUserById/${userIdSave}`, {
@@ -42,7 +46,7 @@ const [toggle,setToggle]=useState(false)
         setImg(result.data.result[0].img);
         setCountry(result.data.result[0].country);
         setPhoneNumber(result.data.result[0].phoneNumber);
-       
+        
       })
       .catch((err) => console.log(err));
   }, [toggle]);
@@ -76,6 +80,7 @@ const [toggle,setToggle]=useState(false)
       console.log(error);
     }
     setToggle(true)
+    dispatch(setUserAvatar(url))
   };
 
   //---

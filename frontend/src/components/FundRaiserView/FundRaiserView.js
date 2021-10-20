@@ -168,7 +168,7 @@ const FundRaiserView = () => {
       </div>
       <div>
         <Button
-          className="Flafelbtn"
+          className="hommossbtn"
           variant="success"
           onClick={handleShow}
         ></Button>
