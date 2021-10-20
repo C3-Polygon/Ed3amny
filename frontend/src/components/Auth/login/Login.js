@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
+import { setUserAvatar } from "../../../reducers/login/userAvatar";
 import axios from "axios";
 import { setUserId } from "../../../reducers/login/userId";
 import FacebookLogin from 'react-facebook-login';
@@ -28,7 +29,6 @@ export const Login = () => {
   const dispatch = useDispatch();
 
 
-
   const state = useSelector((state) => {
     return { isLoggedIn: state.isLoggedIn.isLoggedIn };
   });
@@ -37,6 +37,11 @@ export const Login = () => {
     return { token: state.token_1.token };
   });
   
+  const state2 = useSelector((state)=>{
+   return {userAvatar: state.userAvatar.userAvatar}
+  })
+
+
   const loginSender = async (e) => {
     e.preventDefault();
     try {
@@ -53,11 +58,13 @@ export const Login = () => {
           dispatch(setIsLoggedIn(true));
           dispatch(setToken(res.data.token));
           dispatch(setUserId(res.data.payload.userId))
+          dispatch(setUserAvatar(res.data.payload.img))
           setLogoutChecker(true)
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("logoutChecker" , logoutChecker)
           localStorage.setItem("CurrentUserId",res.data.payload.userId)
           history.push("/")
+          console.log("user info", res.data)
         } else throw Error;
       }
     } catch (error) {

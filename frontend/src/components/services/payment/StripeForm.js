@@ -39,7 +39,10 @@ const state3 = useSelector((state) => {
   return { postId: state.postId.postId };
 });
 
-
+const state1 = useSelector((state) => {
+    
+  return { title: state.title.title };
+});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,15 +50,21 @@ const state3 = useSelector((state) => {
       type: "card",
       card: elements.getElement(CardElement),
     });
-    
+  
     if (!error) {
       try {
+        const d = new Date().toISOString().substr(0, 19).replace('T', ' ');
+        console.log(d,"date")
+        // const date = `${d.getFullYear()}-${d.getMonth() + 2}-${d.getDate()}`
+        // console.log(date,"date date")
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:5000/payment", {
           id,
           amount:state2.amount*100, 
           campaign_id : state3.postId,
-          userId:user_id
+          userId:user_id,
+          created_at:d,
+          title:state1.title
         });
         console.log("Mraish test",state2.amount)
         if (response.data.success) {

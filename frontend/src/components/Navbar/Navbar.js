@@ -33,6 +33,11 @@ const Navbar = () => {
   const state2 = useSelector((state2) => {
     return { userId: state2.userId.userId };
   });
+  const state3 = useSelector((state3) => {
+    return { userAvatar: state3.userAvatar.userAvatar };
+  });
+
+ 
 
   const logout = () => {
     localStorage.clear();
@@ -122,9 +127,9 @@ const Navbar = () => {
                         Account Settings
                       </Dropdown.Item>
 
-                      {/* <Dropdown.Item href="#/action-2">
+                      <Dropdown.Item onClick={()=> history.push("/Contributions/Contributions/Contributions/Contributions")}>
                         Donations You've Made
-                      </Dropdown.Item> */}
+                      </Dropdown.Item>
 
                       <Dropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>
                         Your Fundraisers
@@ -133,17 +138,18 @@ const Navbar = () => {
                         Start a Fundraiser
                       </Dropdown.Item>
 
-                      <Dropdown.Item onClick={()=> history.push("/Drop/DonateForSpecific")}>
+                      {/* <Dropdown.Item onClick={()=> history.push("/Drop/DonateForSpecific")}>
                         Specific Donation
-                      </Dropdown.Item>
+                      </Dropdown.Item> */}
 
-                      <Dropdown.Item onClick={()=> history.push("/Drop/CreateBloodPost")}>
+                      <Dropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>
                         Ask For a blood donation
                       </Dropdown.Item>
                       
                       <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
+                  <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
                 </div>
               ) : (
                 <Link to="/login" className="navLogin">

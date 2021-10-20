@@ -103,10 +103,14 @@
     right: 15px;
     font-size: 30px;
     top: 15px;
+    cursor: pointer;
 }
 
 #basic-addon2 {
     background-color: #02a95c;
     color: #fff;
     margin-left: 15px;
+}
+.hommossbtn{
+    position: fixed;
 }

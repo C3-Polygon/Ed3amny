@@ -2,9 +2,9 @@ const connection = require("../../db/db");
 
 //create new fundraiser
 const createNewFundraiser = (req, res) => {
-    const { userId, title, country, typee, targett, img, descriptionn } = req.body;
-    const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn) VALUES (?,?,?,?,?,?,?)`;
-    const data = [userId, title, country, typee, targett, img, descriptionn];
+    const { userId, title, country, typee, targett, img, descriptionn,phoneNumber } = req.body;
+    const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn,phoneNumber) VALUES (?,?,?,?,?,?,?,?)`;
+    const data = [userId, title, country, typee, targett, img, descriptionn,phoneNumber];
     connection.query(queryString, data, (err, result) => {
         console.log(data, "dataaaaaaaaa");
         console.log("Erroe", err);
@@ -27,7 +27,7 @@ const createNewFundraiser = (req, res) => {
 
 // Get all fundraiser
 const getAllFundraiser = (req, res) => {
-    const query = `SELECT * FROM campaigns WHERE is_deleted=1`;
+    const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY id ASC LIMIT 12 `;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
@@ -185,7 +185,7 @@ const getTopFundraiserByCurrentTarget = (req, res) => {
 }
 
 const getThreeRandomFundraisers = (req, res) => {
-    const query = `SELECT * FROM campaigns ORDER BY RAND() LIMIT 6`;
+    const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY RAND() LIMIT 6`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
@@ -225,19 +225,18 @@ const getTotalsCategories = (req, res) => {
     const allStory = `SELECT * FROM categories`;
     connection.query(allStory, (err, response) => {
         if (err) {
-            res.json({
+            return res.status(500).json({
                 success: false,
                 message: "SERVER ERROR"
             })
-            res.status(500);
         }
         if (response) {
-            res.json({
+            return res.status(200).json({
                 success: true,
                 message: "All Data",
                 allData: response
             })
-            res.status(200);
+            
         }
     })
 }
@@ -288,8 +287,176 @@ const getTotalsFundreiser = (req, res) => {
 }
 
 
+/* soft delete  fundreiser */
+
+const deleteFundraiserByid = (req, res) => {
+    const id = req.params.id; // fundraiser id
+    const query = `SELECT * FROM campaigns Where id=${id}`;
+
+    connection.query(query, (error, result) => {
+        if (result) {
+            const query1 = `UPDATE campaigns SET is_deleted = 2 WHERE id = ${id}`;
+            if (error) {
+                res.status(200).json({
+                    success: false,
+                    message: `Error happened during query for the fundraiser`,
+                    error: error,
+                });
+            }
+            connection.query(query1, (error, result) => {
+                if (result) {
+                    res.status(200).json({
+                        success: true,
+                        message: `Success, updated the Fundraiser => ${id}`,
+                        result: result,
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        message: `Fundraiser Not Found => ${id}`,
+                    });
+                }
+                if (error) {
+                    res.status(500).json({
+                        success: false,
+                        message: `Server error`,
+                    });
+                }
+            });
+        }
+    });
+};
 
 
+
+////
+
+const updateOverView = (req, res) => {
+    const id = req.params.id; // fundraiser id
+    const { title, phoneNumber, targett, country } = req.body;
+    const query = `SELECT * FROM campaigns Where id=${id}`;
+
+    connection.query(query, (error, result) => {
+        if (result) {
+            const data = [title, phoneNumber, targett, country];
+            const query1 = `UPDATE campaigns SET title=? , phoneNumber=? , targett=?  , country=? WHERE id = ${id}`;
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: `Error happened during query for the fundraiser`,
+                    error: error,
+                });
+            }
+            connection.query(query1, data, (error, result) => {
+                if (result) {
+                    res.status(200).json({
+                        success: true,
+                        message: `Success, updated the Fundraiser => ${id}`,
+                        result: result,
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        message: `Fundraiser Not Found => ${id}`,
+
+                    });
+                }
+                if (error) {
+                    res.status(500).json({
+                        success: false,
+                        message: `Server error`,
+                    });
+                }
+            });
+        }
+    });
+};
+
+
+/// update story
+
+
+const updatestory = (req, res) => {
+    const id = req.params.id; // fundraiser id
+    const { descriptionn } = req.body;
+    const query = `SELECT * FROM campaigns Where id=${id}`;
+
+    connection.query(query, (error, result) => {
+        if (result) {
+            const data = [descriptionn];
+            const query1 = `UPDATE campaigns SET descriptionn=? WHERE id = ${id}`;
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: `Error happened during query for the fundraiser`,
+                    error: error,
+                });
+            }
+            connection.query(query1, data, (error, result) => {
+                if (result) {
+                    res.status(200).json({
+                        success: true,
+                        message: `Success, updated the Fundraiser => ${id}`,
+                        result: result,
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        message: `Fundraiser Not Found => ${id}`,
+
+                    });
+                }
+                if (error) {
+                    res.status(500).json({
+                        success: false,
+                        message: `Server error`,
+                    });
+                }
+            });
+        }
+    });
+};
+
+const updateYourFundraiserImage = (req, res) => {
+    const id = req.params.id; // fundraiser id
+    const { img } = req.body;
+    const query = `SELECT * FROM campaigns Where id=${id}`;
+
+    connection.query(query, (error, result) => {
+        if (result) {
+            const data = [img];
+            const query1 = `UPDATE campaigns SET img=? WHERE id = ${id}`;
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: `Error happened during query for the fundraiser`,
+                    error: error,
+                });
+            }
+            connection.query(query1, data, (error, result) => {
+                if (result) {
+                    res.status(200).json({
+                        success: true,
+                        message: `Success, updated the Fundraiser => ${id}`,
+                        result: result,
+                    });
+                } else {
+                    res.status(404).json({
+                        success: false,
+                        message: `Fundraiser Not Found => ${id}`,
+
+                    });
+                }
+                if (error) {
+                    res.status(500).json({
+                        success: false,
+                        message: `Server error`,
+                    });
+                }
+            });
+        }
+    });
+};
 
 module.exports = {
     createNewFundraiser,
@@ -304,5 +471,9 @@ module.exports = {
     getAllCategories,
     getTotalsCategories,
     getCategorybyId,
-    getTotalsFundreiser
+    getTotalsFundreiser,
+    deleteFundraiserByid,
+    updateOverView,
+    updatestory,
+    updateYourFundraiserImage
 };

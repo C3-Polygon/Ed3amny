@@ -31,21 +31,22 @@ const createNewContribution = (req, res) => {
 };
 
 const getOwnUserContributionsById = (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT * FROM campaigns WHERE id = ${id}`;
+  const userId = req.params.id;
+  const query = `SELECT * FROM contributions WHERE userId = ${userId}`;
 
   connection.query(query, (err, result) => {
     if (result) {
       return res.status(200).json({
         success: true,
-        message: `User with the following id => ${id} has the following campaigns`,
+        message: `User with the following id => ${userId} has the following contributions`,
         result: result,
       });
     }
     if (err) {
       return res.status(404).json({
         success: false,
-        message: `No campaigns found for this user with the following id ==> ${id}`,
+        message: `No contributions found for this user with the following id ==> ${userId}`,
+        err:err
       });
     } else {
       res.status(500).json({
@@ -56,4 +57,32 @@ const getOwnUserContributionsById = (req, res) => {
   });
 };
 
-module.exports = { createNewContribution,getOwnUserContributionsById };
+const getContributorsByCampaignId = (req,res) =>{
+  const campaign_id = req.params.id;
+  const query = `SELECT * FROM contributions WHERE campaign_id = ${campaign_id}`;
+
+  connection.query(query, (err, result) => {
+    if (result) {
+      return res.status(200).json({
+        success: true,
+        message: `Users that contributed for this campaign => ${campaign_id}`,
+        result: result,
+      });
+    }
+    if (err) {
+      return res.status(404).json({
+        success: false,
+        message: `No contributions found for this campaign with the following campaign_id ==> ${campaign_id}`,
+        err:err
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+  });
+}
+
+
+module.exports = { createNewContribution,getOwnUserContributionsById ,getContributorsByCampaignId};
