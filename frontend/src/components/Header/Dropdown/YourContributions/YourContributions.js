@@ -48,8 +48,8 @@ const YourContributions = () => {
                 <tr onClick = {() => viewBatata(elm)}>
                   <td >{elm.campaign_id}</td>
                   <td>{elm.title}</td>
-                  <td>{moment(elm.created_at).format('DD/MM/YYYY')}</td>
-                  <td>{elm.amount}</td>
+                  <td>{moment(elm.created_at).format('llll')}</td>
+                  <td>{elm.amount/100}</td>
                 </tr>
               </tbody>
               </>
