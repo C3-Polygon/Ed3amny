@@ -16,6 +16,7 @@ import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Card from "react-bootstrap/Card";
 import { setPostId } from "../../reducers/Donation/PostId";
+import { useLocation } from "react-router";
 import {
   AiOutlineDownload,
   AiOutlineMoneyCollect,
@@ -28,13 +29,14 @@ const FundRaiserView = () => {
   const [sharePopup, setSharePopup] = useState(false);
   const [show, setShow] = useState(false);
   const [contributors , setContributors] = useState()
-
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation()
   const [fundRaiserView, setFundRaiserView] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  let path = `https://localhost:3000/${location.pathname}`
 
   // const openSharePopup = () => {
   //   setSharePopup(true);
@@ -94,7 +96,7 @@ const FundRaiserView = () => {
 
                 <InputGroup className="mb-3">
                   <FormControl
-                    placeholder="Copy URL"
+                    placeholder={path}
                     aria-label="Recipient's username"
                     aria-describedby="basic-addon2"
                   />

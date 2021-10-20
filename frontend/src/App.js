@@ -33,6 +33,7 @@ import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/Edi
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
+import { SearchResults } from "./components/Header/Search/SearchResults";
 import AboutUs from './components/Aboutus/AboutUs';
 // mshan allah
 // mshan allah
@@ -101,13 +102,9 @@ function App() {
           {/* <DonateForSpecific exact path="/Drop/DonateForSpecific" /> */}
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
           <Route exact path="/category/:id" component={CategoryByType} />
-          <Route
-            exact
-            path="/category/allCategory/Category"
-            component={AllCategory}
-          />
+          <Route exact path="/category/allCategory/Category" component={AllCategory}/>
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
-          <Route path="/chat/:roomname/:username" component={Appmain} />
+          <Route exact path="/chat/:roomname/:username" component={Appmain} />
           <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
           <Route exact path="/adminPage" component={MainPage} />
           <Route exact path="/donation" component={Donation} />
@@ -115,7 +112,9 @@ function App() {
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
           <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
            {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
-          <CreateBloodPost exact Path = "/Drop/Blood/BloodPost/Create"/> 
+          {/* <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/>  */}
+          <Route exact path = "/search" component={SearchResults}/>
+          <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
       </div>
       {/* <Footer /> */}

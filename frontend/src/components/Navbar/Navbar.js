@@ -12,6 +12,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import Categories from '../categories/Categories';
 import AllCategory from "../AllCategory/AllCategory";
+import {setText1} from "../../reducers/search/searchReducer"
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
 import Button from "react-bootstrap/Button";
@@ -65,7 +66,7 @@ const Navbar = () => {
   };
 
   const onChangeHandler = (text) => {
-    console.log(text);
+    setText(text);
     let matches = [];
     if (text.length > 0) {
       matches = title.filter((elm) => {
@@ -73,10 +74,13 @@ const Navbar = () => {
         return elm.title.match(regex);
       });
     }
-    console.log(matches, "matches");
     setSuggestions(matches);
-    setText(text);
   };
+
+  const searchResult = () =>{
+    dispatch(setText1(text))
+    history.push('/search')
+  }
 
   return (
     <div className="Main-Nav">
@@ -117,6 +121,7 @@ const Navbar = () => {
                 }, 100);
               }}
             />
+            <BsSearch onClick={searchResult}/>
             {suggestions &&
               suggestions.map((elm, i) => {
                 return (
@@ -170,8 +175,8 @@ const Navbar = () => {
                         Specific Donation
                       </Dropdown.Item> */}
 
-                      <Dropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>
-                        Ask For a blood donation
+                      <Dropdown.Item>
+                       <Link to='/Drop/Blood/BloodPost/Create'>Ask For a blood donation</Link> 
                       </Dropdown.Item>
                       
                       <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
