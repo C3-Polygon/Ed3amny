@@ -1,6 +1,6 @@
 import React from 'react'
 import './section.css';
-import imgheader from './img/family-couple-saving-money_74855-5240.jpg';
+import imgheader from './img/image (2).png';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useHistory } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const history = useHistory();
                 <div className="col-md-6 col-sm-12 text-header">
                     <h2>Trusted fundraising for all of life's moments</h2>
                     <h5 className="text-secondary">Get help. Give kindness. Start in just 5 minutes.</h5>
-                    <div className='row'>
+                    <div className='row btn-option'>
                         <div className='col-md-6'>
                             <button onClick={sendToFundraiser} className='btn-success p-2 btn-Start'>Start GoFundMe</button>
                         </div>

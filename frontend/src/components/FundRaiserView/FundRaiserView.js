@@ -100,9 +100,9 @@ const FundRaiserView = () => {
                   />
                   <InputGroup.Text
                     id="basic-addon2"
-                    onClick={() => {
-                      navigator.clipboard.writeText(this.state.textToCopy);
-                    }}
+                    // onClick={() => {
+                    //   navigator.clipboard.writeText(this.state.textToCopy);
+                    // }}
                   >
                     Copy
                   </InputGroup.Text>

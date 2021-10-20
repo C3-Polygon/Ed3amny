@@ -1,5 +1,10 @@
+.Main-Topfundraiser {
+    /* background-color: #f8f8f8; */
+    padding: 50px 20px;
+}
+
 .Main-Topfundraiser h2 {
-    margin: 25px 0px;
+    margin-bottom: 30px;
 }
 
 .mainViewfundraiser img {
@@ -30,6 +35,7 @@
 
 .mainViewfundraiserText {
     min-height: 400px;
+    padding: 10px;
 }
 
 .mainViewfundraiserText h5 {
