@@ -5,6 +5,10 @@ import Table from 'react-bootstrap/Table';
 
 const yourDonations = () => {
 
+    /**
+     get  /Contribution/:id'
+
+     */
     return (
         <Table striped bordered hover variant="dark">
         <thead>

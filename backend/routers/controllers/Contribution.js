@@ -31,21 +31,22 @@ const createNewContribution = (req, res) => {
 };
 
 const getOwnUserContributionsById = (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT * FROM contributions WHERE id = ${id}`;
+  const userId = req.params.id;
+  const query = `SELECT * FROM contributions WHERE userId = ${userId}`;
 
   connection.query(query, (err, result) => {
     if (result) {
       return res.status(200).json({
         success: true,
-        message: `User with the following id => ${id} has the following contributions`,
+        message: `User with the following id => ${userId} has the following contributions`,
         result: result,
       });
     }
     if (err) {
       return res.status(404).json({
         success: false,
-        message: `No contributions found for this user with the following id ==> ${id}`,
+        message: `No contributions found for this user with the following id ==> ${userId}`,
+        err:err
       });
     } else {
       res.status(500).json({
