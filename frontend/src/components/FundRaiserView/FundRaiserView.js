@@ -12,7 +12,10 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { useDispatch, useSelector } from "react-redux";
 import { setImage } from "../../reducers/Donation/ImageReducer";
 import { setTitle } from "../../reducers/Donation/TitleReducer";
-import { setPostId } from "../../reducers/Donation/PostId"
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import Card from "react-bootstrap/Card";
+import { setPostId } from "../../reducers/Donation/PostId";
 import {
   AiOutlineDownload,
   AiOutlineMoneyCollect,
@@ -21,41 +24,52 @@ import {
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-
 const FundRaiserView = () => {
   const [sharePopup, setSharePopup] = useState(false);
+  const [show, setShow] = useState(false);
+  const [contributors , setContributors] = useState()
 
   const { id } = useParams();
   const history = useHistory();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [fundRaiserView, setFundRaiserView] = useState([]);
-  
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   // const openSharePopup = () => {
   //   setSharePopup(true);
   // };
   // const exit = () => {
   //   setSharePopup(false);
   // };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/Contribution/contributors/${id}`)
+      .then((result) => {
+        
+        setContributors(result.data.result);
+      })
+      .catch((err) => console.log(err));
+  }, [contributors]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((res) => {
         setFundRaiserView(res.data.result);
-        
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  const senderr =(title , img)=>{
-    dispatch(setTitle(title))
-    dispatch(setImage(img))
-    dispatch(setPostId(id))
-    console.log("batata",id )
-    history.push('/donation')
-  }
+  const senderr = (title, img) => {
+    dispatch(setTitle(title));
+    dispatch(setImage(img));
+    dispatch(setPostId(id));
+    console.log("batata", id);
+    history.push("/donation");
+  };
   return (
     <>
       <div className="container">
@@ -63,7 +77,12 @@ const FundRaiserView = () => {
           {sharePopup && (
             <div className="pop-fundraiser">
               <div className="pop-fundraiser-child">
-                <AiOutlineCloseSquare className="close-pop" onClick={() => {setSharePopup(!sharePopup)}} />
+                <AiOutlineCloseSquare
+                  className="close-pop"
+                  onClick={() => {
+                    setSharePopup(!sharePopup);
+                  }}
+                />
                 <h1>Help by sharing</h1>
                 <p>
                   Fundraisers shared on social networks raise up to 5x more
@@ -90,8 +109,7 @@ const FundRaiserView = () => {
                 </InputGroup>
               </div>
             </div>
-          ) 
-          }
+          )}
 
           <div className="row">
             {fundRaiserView &&
@@ -109,9 +127,7 @@ const FundRaiserView = () => {
                         <p> {elem.descriptionn} </p>
                       </div>
 
-                      <div className="content">
-                        {/* <Stripe /> */}
-                      </div>
+                      <div className="content">{/* <Stripe /> */}</div>
                     </div>
 
                     {/* right section*/}
@@ -125,14 +141,19 @@ const FundRaiserView = () => {
                             (elem.current_target / elem.targett) * 100
                           )}
                         />
-                        <button className="share-fundRaiserView" onClick={()=>{setSharePopup(!sharePopup)}}>
+                        <button
+                          className="share-fundRaiserView"
+                          onClick={() => {
+                            setSharePopup(!sharePopup);
+                          }}
+                        >
                           {" "}
-                          <AiOutlineDownload
-                            className="share-facebook"
-                          />{" "}
-                          Share
+                          <AiOutlineDownload className="share-facebook" /> Share
                         </button>
-                        <button className="share-fundRaiserView" onClick= {()=>senderr(elem.title , elem.img)}>
+                        <button
+                          className="share-fundRaiserView"
+                          onClick={() => senderr(elem.title, elem.img)}
+                        >
                           {" "}
                           <AiOutlineMoneyCollect className="share-facebook" />{" "}
                           donation now
@@ -144,6 +165,32 @@ const FundRaiserView = () => {
               })}
           </div>
         </div>
+      </div>
+      <div>
+        <Button
+          className="Flafelbtn"
+          variant="success"
+          onClick={handleShow}
+        ></Button>
+
+        <Offcanvas show={show} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Contributors</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            {contributors &&
+              contributors.map((elem, index) => {
+                return (
+                  <Card key={index} style={{ width: "18rem" }}>
+                    <Card.Body>
+                      <Card.Title>{elem.title}</Card.Title>
+                      <Card.Text>{elem.amount}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
+          </Offcanvas.Body>
+        </Offcanvas>
       </div>
     </>
   );

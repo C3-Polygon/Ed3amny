@@ -57,7 +57,7 @@ const getOwnUserContributionsById = (req, res) => {
   });
 };
 
-const getContributorsByCampaignId = () =>{
+const getContributorsByCampaignId = (req,res) =>{
   const campaign_id = req.params.id;
   const query = `SELECT * FROM contributions WHERE campaign_id = ${campaign_id}`;
 
