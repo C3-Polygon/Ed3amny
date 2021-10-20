@@ -14,7 +14,8 @@ import Categories from '../categories/Categories';
 import AllCategory from "../AllCategory/AllCategory";
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
-
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal"
 import "../Header/Dropdown/Fundraiser/CreatefundRaiser";
 
 const Navbar = () => {
@@ -37,6 +38,7 @@ const Navbar = () => {
     return { userAvatar: state3.userAvatar.userAvatar };
   });
 
+  const [show, setShow] = useState(false);
  
 
   const logout = () => {
@@ -81,13 +83,30 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar">
           
-            
-          <h5 onClick={() => history.push("/")}>LogoName</h5>
-            <Categories/>
-          <div className="search-bar">
-            <input
-              type="search"
-              placeholder="Search Here ..."
+             <div className="search-bar">
+            {/*  */}
+
+              <p onClick={()=>{setShow(!show)}}>Search</p>
+            <BsSearch className="search" />
+
+            {show && 
+                <>
+          
+                <Modal
+                  show={show}
+                  onHide={() => setShow(false)}
+                  dialogClassName="modal-90w"
+                  aria-labelledby="example-custom-modal-styling-title"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <BsSearch/> Search GoFundMe
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                  <input
+              type="search" className='Search-input'
+              placeholder="Find Fundrasier by title"
               onChange={(e) => {
                 onChangeHandler(e.target.value);
               }}
@@ -106,8 +125,17 @@ const Navbar = () => {
                   </div>
                 );
               })}
-            <BsSearch className="search" />
+                  </Modal.Body>
+                </Modal>
+              </>
+            
+            }
           </div>
+          <div>
+          <Categories/>
+          </div>
+          <h5 onClick={() => history.push("/")}>LogoName</h5>
+            
           <div>
             <div className="navbar">
               {state1.token || tokenSave || state.isLoggedIn ? (

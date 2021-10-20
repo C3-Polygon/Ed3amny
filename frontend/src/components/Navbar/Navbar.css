@@ -5,6 +5,8 @@
 
 .search-bar {
     position: relative;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 .navLinkOption {
@@ -14,9 +16,16 @@
 
 .search-bar .search {
     position: absolute;
-    right: 5px;
-    top: 8px;
+    left: -22px;
+    top: 7px;
+    font-size: 17px;
     outline: none;
+}
+
+.modal-body input {
+    width: 100%;
+    border: 2px solid #000;
+    padding: 6px;
 }
 
 .btn-login {
@@ -28,10 +37,9 @@
     -o-border-radius: 4px;
 }
 
-.userAvatar{
+.userAvatar {
     border-radius: 50%;
 }
-
 
 .small-media {
     display: none;
