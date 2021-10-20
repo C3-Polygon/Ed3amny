@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
+import moment from 'moment'
 
 const YourContributions = () => {
     console.log("we entered your contributions page");
@@ -40,7 +41,7 @@ const YourContributions = () => {
                 <tbody>
                 <tr >
                   <td>{elm.campaign_id}</td>
-                  <td>{elm.created_at}</td>
+                  <td>{moment(elm.created_at).format('DD/MM/YYYY')}</td>
                   <td>{elm.amount}</td>
                 </tr>
               </tbody>

@@ -40,22 +40,26 @@ const state3 = useSelector((state) => {
 });
 
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
     });
-    
+  
     if (!error) {
       try {
+        const d = new Date();
+        console.log(d,"date")
+        const date = `${d.getFullYear()}-${d.getMonth() + 2}-${d.getDate()}`
+        console.log(date,"date date")
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:5000/payment", {
           id,
           amount:state2.amount*100, 
           campaign_id : state3.postId,
-          userId:user_id
+          userId:user_id,
+          created_at:date
         });
         console.log("Mraish test",state2.amount)
         if (response.data.success) {
