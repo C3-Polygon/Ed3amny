@@ -1,3 +1,4 @@
+
 import { ProcessReducer } from "./chat/chatReducer";
 import { createStore, combineReducers } from "redux";
 
@@ -11,7 +12,6 @@ import img from "./Donation/ImageReducer";
 import title from "./Donation/TitleReducer";
 import amount from "./Donation/AmountReducer"
 import postId from "./Donation/PostId";
-
 
 const reducers = combineReducers({
   token_1: token,

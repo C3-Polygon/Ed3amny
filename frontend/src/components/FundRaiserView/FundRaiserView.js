@@ -21,10 +21,7 @@ import {
 
 
 const FundRaiserView = () => {
-<<<<<<< HEAD
-=======
   const [sharePopup, setSharePopup] = useState(false);
->>>>>>> 42c62df574d10696f767f42528d6d4bd26fce72e
 
   const { id } = useParams();
   const history = useHistory();
@@ -115,14 +112,6 @@ const FundRaiserView = () => {
                       </div>
                     </div>
 
-<<<<<<< HEAD
-                 <button className="share-fundRaiserView"> <AiOutlineDownload className='share-facebook'/> Share</button>
-                 <button className="share-fundRaiserView"  onClick={()=>{ asd() }} > <AiOutlineMoneyCollect className='share-facebook'/> donation2 now</button>
-                 </div>
-                
-                   </div>
-                 </>
-=======
                     {/* right section*/}
                     <div className="col-lg-4">
                       <div className="donation-fundRaiserView">
@@ -149,7 +138,6 @@ const FundRaiserView = () => {
                       </div>
                     </div>
                   </>
->>>>>>> 42c62df574d10696f767f42528d6d4bd26fce72e
                 );
               })}
           </div>
