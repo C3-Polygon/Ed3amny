@@ -4,7 +4,7 @@ const socket = require("socket.io");
 const io = require("../../../server");
 
 const stripePayment = async (req, res) => {
-  const { amount, id, campaign_id, userId, created_at } = req.body;
+  const { amount, id, campaign_id, userId, created_at,title } = req.body;
   
   try {
     const payment = await stripe.paymentIntents.create({
@@ -18,8 +18,8 @@ const stripePayment = async (req, res) => {
 
     if (payment.status == "succeeded") {
       
-      const queryString = `INSERT INTO  contributions (userId , campaign_id, amount, created_at  ) VALUES (?,?,?,?)`;
-      const data = [userId, campaign_id, amount,created_at];
+      const queryString = `INSERT INTO  contributions (userId , campaign_id, amount, created_at, title  ) VALUES (?,?,?,?,?)`;
+      const data = [userId, campaign_id, amount,created_at, title];
       connection.query(queryString, data, (err, result) => {
         if (result) {
           const query = `SELECT current_target,targett,userId,title FROM campaigns WHERE id=${campaign_id}`;
