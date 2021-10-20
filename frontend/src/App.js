@@ -33,6 +33,7 @@ import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/Edi
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
+import AboutUs from './components/Aboutus/AboutUs';
 // mshan allah
 // mshan allah
 // mshan allah
@@ -91,7 +92,9 @@ function App() {
             <Stories />
             <Leader />
             <Random />
+            <AboutUs/>
             <ReadyToStart />
+           
           </Route>
           <AccountSettings exact path="/Drop/AccountSettings" />
           <YourFundraisers exact path="/Drop/YourFundraisers" />
