@@ -32,20 +32,20 @@ const createNewContribution = (req, res) => {
 
 const getOwnUserContributionsById = (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM campaigns WHERE id = ${id}`;
+  const query = `SELECT * FROM contributions WHERE id = ${id}`;
 
   connection.query(query, (err, result) => {
     if (result) {
       return res.status(200).json({
         success: true,
-        message: `User with the following id => ${id} has the following campaigns`,
+        message: `User with the following id => ${id} has the following contributions`,
         result: result,
       });
     }
     if (err) {
       return res.status(404).json({
         success: false,
-        message: `No campaigns found for this user with the following id ==> ${id}`,
+        message: `No contributions found for this user with the following id ==> ${id}`,
       });
     } else {
       res.status(500).json({

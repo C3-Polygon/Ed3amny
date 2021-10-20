@@ -32,6 +32,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/EditFundraiser";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import yourDonations from "./components/Header/Dropdown/DonationsYou'veMade/yourDonations";
 // mshan allah
 // mshan allah
 // mshan allah
@@ -109,7 +110,9 @@ function App() {
           <Route exact path="/donation" component={Donation} />
           <Route exact path="/allfundraiser" component={GetAllFundraiser} />
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
-          <CreateBloodPost exact Path = "/Drop/Blood/BloodPost/Create"/>                   
+          <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={yourDonations}/>
+           {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
+          <CreateBloodPost exact Path = "/Drop/Blood/BloodPost/Create"/> 
         </Switch>
       </div>
       <Footer />

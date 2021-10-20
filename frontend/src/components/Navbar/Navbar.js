@@ -122,9 +122,9 @@ const Navbar = () => {
                         Account Settings
                       </Dropdown.Item>
 
-                      {/* <Dropdown.Item href="#/action-2">
+                      <Dropdown.Item onClick={()=> history.push("/Contributions/Contributions/Contributions/Contributions")}>
                         Donations You've Made
-                      </Dropdown.Item> */}
+                      </Dropdown.Item>
 
                       <Dropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>
                         Your Fundraisers
