@@ -43,10 +43,11 @@
 
 .video-show {
     border: 2px solid #ccc;
+    color:#ccc ;
     border-radius: 50%;
     cursor: pointer;
     padding: 5px;
-    font-size: 35px;
+    font-size: 40px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;

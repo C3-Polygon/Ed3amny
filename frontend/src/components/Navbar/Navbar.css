@@ -84,6 +84,7 @@
 /* Mraish start css */
 .btn-primary {
     color: #198754;
+    font-size  : 20px;
     background-color: white !important;
     background-color: cutom-color !important;
     border-color: white !important;                         
@@ -93,13 +94,18 @@
     https://stackoverflow.com/questions/50842135/how-to-change-colors-for-a-button-in-react-bootstrap
     */
 }
+.btn-primary:hover{
+    color:black;
+    
+}
 .btn-primary:focus:not(:focus-visible){
-   
+    color:black;
     box-shadow: none !important;
 }
     
 .btn:focus { 
     box-shadow: none !important;
+    color:black;
 }
 
 /* Mraish end css*/
