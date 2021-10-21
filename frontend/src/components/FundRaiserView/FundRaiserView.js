@@ -169,8 +169,8 @@ const FundRaiserView = () => {
                                 <img src='https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg'/>
                                 
                                 <div className='price-user'>
-                                 <p>Price donate :<strong> ${elem.amount}</strong></p> 
-                                 <p>Name donateer (fuck inner join) </p>
+                                 <p>Price donate :<strong> ${elem.amount / 100}</strong></p> 
+                                 <p>Name donateer: <strong> {elem.firstName} {elem.lastName}</strong></p>
                                
                                  <hr></hr>
                                 </div>
