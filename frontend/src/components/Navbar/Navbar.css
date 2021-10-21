@@ -1,6 +1,6 @@
 .Main-Nav {
-    background-color: #fbf8f6;
-    border-bottom: 2px solid #ccc;
+    background-color: white;
+    border-bottom: 0.5px solid teal;
 }
 
 .search-bar {
@@ -81,11 +81,12 @@
         display: none;
     }
 }
+/* Mraish start css */
 .btn-primary {
     color: #198754;
-    background-color: #fbf8f6 !important;
+    background-color: white !important;
     background-color: cutom-color !important;
-    border-color:#fbf8f6 !important;                         
+    border-color: white !important;                         
     border-color: none !important;
     /* هيك بتنعمل اما بتحطها بهاي الطريقه او بدك تعمل اشي اسمه بريفكس موديفيكيشن 
     https://react-bootstrap.github.io/getting-started/theming/
@@ -93,14 +94,15 @@
     */
 }
 .btn-primary:focus:not(:focus-visible){
-    outline: none !important;
+   
     box-shadow: none !important;
 }
-/* .primary.dropdown-toggle:focus { 
-    outline: none !important;
-    box-shadow: none !important;
-} */
     
+.btn:focus { 
+    box-shadow: none !important;
+}
+
+/* Mraish end css*/
 
 /* .btn-primary{
     color:#000;
