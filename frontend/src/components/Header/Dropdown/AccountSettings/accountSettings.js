@@ -117,10 +117,9 @@ const dispatch = useDispatch();
   return (
     <div className="Main-Edit-Profile">
       <div className="container">
-        <h1>Settings</h1>
+        <h1>Account Settings </h1>
         <hr></hr>
-        <h6>Account</h6>
-        <img src={img} alt= "no-img" width="250px" height="250"/>
+        <img src={img} alt= "no-img"/> 
         <div>
           <p className="success-update"> {successUpdate}</p>
           <Form onSubmit={onUpdate}>

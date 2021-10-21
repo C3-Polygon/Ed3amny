@@ -1,0 +1,16 @@
+.main-cont {
+    margin-top: 50px;
+}
+
+.main-cont h4 {
+    margin: 25px 0px;
+    color: #02a95c;
+}
+
+.main-cont button {
+    padding: 8px 20px;
+    background-color: #02a95c;
+    border: 1px solid #02a95c;
+    color: #fff;
+    cursor: pointer;
+}
