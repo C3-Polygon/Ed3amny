@@ -120,8 +120,12 @@ const Navbar = () => {
                   setSuggestions([]);
                 }, 100);
               }}  
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  searchResult();
+                }
+              }}
             />
-            <BsSearch onClick={searchResult}/>
             {suggestions &&
               suggestions.map((elm, i) => {
                 return (

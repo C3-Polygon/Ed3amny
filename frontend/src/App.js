@@ -104,7 +104,7 @@ function App() {
           <Route exact path="/category/:id" component={CategoryByType} />
           <Route exact path="/category/allCategory/Category" component={AllCategory}/>
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
-          <Route exact path="/chat/:roomname/:username" component={Appmain} />
+          {/* <Route exact path="/chat/:roomname/:username" component={Appmain} /> */}
           <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
           <Route exact path="/adminPage" component={MainPage} />
           <Route exact path="/donation" component={Donation} />

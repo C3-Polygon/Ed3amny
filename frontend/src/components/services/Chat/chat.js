@@ -13,8 +13,6 @@ function Chat({ username, roomname, socket }) {
   if(socket.connected===false){
       username=''
       roomname=''
-      console.log('string user',username)
-      console.log('string room',roomname)
     history.push('/')
 }
 
