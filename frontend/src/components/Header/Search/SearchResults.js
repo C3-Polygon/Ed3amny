@@ -39,7 +39,7 @@ export const SearchResults = () => {
   return (
     <div className="Main-search">
          <div className='container'>
-           <p className='title-searchh'>Fundraisers for <span>"{state.text1}"</span> in all locations count {state.text1.length}</p>
+           <p className='title-searchh'>Fundraisers for <span>"{state.text1}"</span> in all locations</p>
           <div className="row"> 
       {search &&
         search.map((data) => {

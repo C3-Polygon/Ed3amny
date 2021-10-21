@@ -1,15 +1,4 @@
-.Main-Edit-Profile {
-    margin-top: 50px;
-}
-
-.Main-Edit-Profile h6 {
-    border-bottom: 3px solid #02a95c;
-    color: #666;
-    display: inline-block;
-    margin-bottom: 25px;
-}
-
-.change_info {
+.Create-fundraiser-form button {
     text-align: center;
     padding: 7px 50px;
     background-color: #02a95c;
@@ -25,4 +14,12 @@
 .success-update {
     color: #02a95c;
     font-size: 25px;
+}
+
+.Create-fundraiser-form {
+    margin-top: 50px;
+}
+
+.Create-fundraiser-form h4 {
+    margin: 35px 0px;
 }

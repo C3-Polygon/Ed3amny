@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./CreateFundRaiser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
@@ -71,8 +70,7 @@ const CreatefundRaiser = (e) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
+  }, [categorys]);
   // const handleChange = async(e) => {
   //   if (e.target.files[0]) {
   //    await setImage(e.target.files[0]);             await doesnt affect this type of function , it needs time so we handle it by
@@ -110,92 +108,63 @@ const CreatefundRaiser = (e) => {
   };
 
   return (
-    <>
-      <Form onSubmit={insertfundRaiser} >
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Country</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter country"
-              onChange={(e) => {
-                setCountry(e.target.value);
-              }}
-            />
-          </Form.Group>
-          <Form.Select
-            aria-label="Default select example"
-            as={Col}
-            onChange={handler}
-          >
-            <option value="0">Select a Category</option>
-            {categorys &&
+    <div className="Create-fundraiser-form">
+    <div className="container">
+      <h4>Create New Fundraiser</h4>
+    <Form onSubmit={insertfundRaiser}>
+  <Row className="mb-3">
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>Your Fundraiser Title </Form.Label>
+      <Form.Control type="text" placeholder="Here ..." onChange={(e)=>{setTitle(e.target.value)}}/>
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridPassword">
+     <Form.Label>Set your fundraising goal</Form.Label>
+      <Form.Control type="text" placeholder="Here ... " onChange={(e)=>{setTarget(e.target.value)}} />
+    </Form.Group>
+  </Row>
+
+  <Form.Group className="mb-3" controlId="formGridAddress1">
+    <Form.Label>Upload image</Form.Label>
+    <Form.Control type='file' placeholder="Image"
+            onChange={handleUpload}/>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formGridAddress2">
+    <Form.Label>Your Fundraiser description </Form.Label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Here ..." rows="3" onChange={(e)=>{setDescriptionn(e.target.value)}}></textarea>
+  </Form.Group>
+
+  <Row className="mb-3">
+    <Form.Group as={Col} controlId="formGridCity">
+      <Form.Label>City</Form.Label>
+      <Form.Control placeholder="Here ..." type='text' onChange={(e)=>{setCountry(e.target.value)}}/>
+    </Form.Group>
+
+    <Form.Group as={Col} controlId="formGridState">
+      <Form.Label>Category</Form.Label>
+      <Form.Select aria-label="Default select example"
+ onChange={handler}> 
+      <option value="0">Select a Category</option>
+      {categorys &&
               categorys.map((elm) => {
                 return <option value={elm.id}>{elm.namee}</option>;
               })}
-          </Form.Select>
+      </Form.Select>
+    </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Target</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Target"
-              onChange={(e) => {
-                setTarget(e.target.value);
-              }}
-            />
-          </Form.Group>
-        </Row>
+    <Form.Group as={Col} controlId="formGridZip">
+      <Form.Label>phoneNumber</Form.Label>
+      <Form.Control type='number' placeholder="Here ..." onChange={(e)=>{setPhoneNumber(e.target.value)}}/>
+    </Form.Group>
+  </Row>
 
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label>Phone Number</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="PhoneNumber"
-            onChange={(e) => {
-              setPhoneNumber(e.target.value);
-            }}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control
-            type="file"
-            placeholder="Image"
-            onChange={handleUpload}
-          />
-        </Form.Group>
-
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Title"
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-            />
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Description"
-              onChange={(e) => {
-                setDescriptionn(e.target.value);
-              }}
-            />
-          </Form.Group>
-        </Row>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </>
+  <button variant="primary" type="submit">
+    Submit
+  </button>
+</Form>
+</div>
+    </div>
   );
 };
 
