@@ -37,6 +37,7 @@ import AboutUs from './components/Aboutus/AboutUs';
 // mshan allah
 // mshan allah
 import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers'
+import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 // mshan allah
 
 const socket = io.connect("http://localhost:5000");
@@ -113,7 +114,8 @@ function App() {
           <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
            {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
           <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/> 
-          {/* <Route exact path = "/search" component={SearchResults}/> */}
+          <Route exact path = "/search" component={SearchResults}/>
+          <Route exact path="/ForgotMainPage" component={ForgotMainPage}/>
           <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
       </div>
