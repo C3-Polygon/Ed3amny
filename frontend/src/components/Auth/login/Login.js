@@ -28,6 +28,9 @@ export const Login = () => {
   const [picture, setPicture] = useState("");
   const dispatch = useDispatch();
 
+  const goToForgetMain = () =>{
+    history.push('/ForgotMainPage')
+  }
 
   const state = useSelector((state) => {
     return { isLoggedIn: state.isLoggedIn.isLoggedIn };
@@ -149,7 +152,7 @@ export const Login = () => {
 <hr></hr>
 <div className='forget-password'>
 
-  <p>Forget Password ?</p>
+  <p onClick={goToForgetMain}>Forget Password ?</p>
 </div>
         </div>
         </div>

@@ -22,6 +22,7 @@ const contributionRouter = require('./routers/routes/Contribution')
 const stripeRouter = require('./routers/routes/Services/stripe')
 const helpSpecificRouter = require('./routers/routes/helpSpecific')
 const { join_User, get_Current_User, user_Disconnect, } = require('./routers/controllers/Services/chat');
+const forgetPasswordRouter = require('./routers/routes/Services/forgotPassword')
 // const { isTypedArray } = require("util/types");
 
 // const {postInformationSender} = requrire bla bla //
@@ -35,6 +36,7 @@ app.use('/search', searchRouter);
 app.use("/Contribution", contributionRouter);
 app.use('/payment', stripeRouter)
 app.use('/helpSpecific', helpSpecificRouter)
+app.use('/forgetPassword', forgetPasswordRouter)
 
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
