@@ -1,8 +1,11 @@
 import {FacebookShareButton,} from "react-share";
   import { FacebookIcon } from "react-share";
   import { Button, Container, Header, Segment, Grid } from "semantic-ui-react";
+  import { useLocation } from "react-router";
 
 function Share(){
+  const location = useLocation()
+  let path = `https://localhost:3000/${location.pathname}`
 
     return ( 
 
@@ -11,7 +14,7 @@ function Share(){
           <Segment>
             <FacebookShareButton
               // url="https://www.facebook.com/AhmadMuraish"
-              url='https://www.linkedin.com/in/maamoum-alkiswani-ba24031b2/'
+              url={path}
               quote={"Easy Peasy Lemon Squeezy"}
               hashtag="#facebookshare"
             >

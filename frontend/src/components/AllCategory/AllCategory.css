@@ -3,12 +3,6 @@
     background-color: #fbf8f6;
 }
 
-.Main-all-category span {
-    padding: 15px;
-    background-color: #ffff;
-    cursor: pointer;
-}
-
 .Main-all-category button {
     margin-top: 20px;
     background-color: #02a95c;

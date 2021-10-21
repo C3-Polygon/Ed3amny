@@ -1,10 +1,39 @@
 .Main-Nav {
-    background-color: #fbf8f6;
-    border-bottom: 2px solid #ccc;
+    background-color: white;
+    border-bottom: 0.5px solid teal;
 }
 
 .search-bar {
     position: relative;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.navLogin {
+    text-decoration: none;
+    padding: 5px 15px;
+    color: #666;
+}
+
+.navLogin:hover {
+    color: #02a95c;
+}
+
+.navsignup {
+    text-decoration: none;
+    color: #02a95c;
+    border: 2px solid #02a95c;
+    padding: 5px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.navsignup:hover {
+    color: #02a95c;
 }
 
 .navLinkOption {
@@ -14,9 +43,16 @@
 
 .search-bar .search {
     position: absolute;
-    right: 5px;
-    top: 8px;
+    left: -22px;
+    top: 7px;
+    font-size: 17px;
     outline: none;
+}
+
+.modal-body input {
+    width: 100%;
+    border: 2px solid #000;
+    padding: 6px;
 }
 
 .btn-login {
@@ -28,10 +64,9 @@
     -o-border-radius: 4px;
 }
 
-.userAvatar{
+.userAvatar {
     border-radius: 50%;
 }
-
 
 .small-media {
     display: none;
@@ -46,3 +81,47 @@
         display: none;
     }
 }
+/* Mraish start css */
+.btn-primary {
+    color: #198754;
+    font-size  : 20px;
+    background-color: white !important;
+    background-color: cutom-color !important;
+    border-color: white !important;                         
+    border-color: none !important;
+    /* هيك بتنعمل اما بتحطها بهاي الطريقه او بدك تعمل اشي اسمه بريفكس موديفيكيشن 
+    https://react-bootstrap.github.io/getting-started/theming/
+    https://stackoverflow.com/questions/50842135/how-to-change-colors-for-a-button-in-react-bootstrap
+    */
+}
+.btn-primary:hover{
+    color:black;
+    
+}
+.btn-primary:focus:not(:focus-visible){
+    color:black;
+    box-shadow: none !important;
+}
+    
+.btn:focus { 
+    box-shadow: none !important;
+    color:black;
+}
+
+/* Mraish end css*/
+
+/* .btn-primary{
+    color:#000;
+    background-color: none;
+    border-color: none;
+} */
+/* 
+.btn-check:active+.btn-primary,
+.btn-check:checked+.btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: none;
+    border-color: none;
+} */

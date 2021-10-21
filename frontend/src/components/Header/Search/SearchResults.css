@@ -1,0 +1,38 @@
+.Main-search {
+    margin-top: 75px;
+}
+
+.title-searchh span {
+    font-weight: bold;
+}
+
+.img-contect img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.search-contect {
+    overflow: hidden;
+    transition: 1s ease;
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -ms-transition: 1s ease;
+    -o-transition: 1s ease;
+}
+
+.search-contect:hover {
+    box-shadow: 0px 5px 5px 2px #ccc;
+}
+
+.title-search {
+    padding: 10px;
+    border: 2px solid #ccc;
+}
+
+.search-contect {
+    margin-top: 10px;
+}
+
+.pages {
+    text-align: center;
+}

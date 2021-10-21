@@ -28,9 +28,8 @@ function Categories() {
         as={ButtonGroup}
         key={idx}
         id={`dropdown-button-drop-${idx}`}
-        size="sm"
         variant="none"
-        title="fundraise for "
+        title="Categories"
       >
         {cate&&cate.map((ele)=>{
             return(

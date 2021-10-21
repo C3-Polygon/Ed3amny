@@ -1,17 +1,23 @@
+.Main-Topfundraiser {
+    /* background-color: #f8f8f8; */
+    padding: 50px 20px;
+}
+
 .Main-Topfundraiser h2 {
-    margin: 25px 0px;
+    margin-bottom: 30px;
 }
 
 .mainViewfundraiser img {
-    /* width: 450px;
-    height: 250px; */
+    /*width: 450px;
+    height: 250px;
+    */
     width: 100%;
     height: 250px;
-    /* border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px; */
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .mainViewfundraiser {
@@ -30,6 +36,7 @@
 
 .mainViewfundraiserText {
     min-height: 400px;
+    padding: 10px;
 }
 
 .mainViewfundraiserText h5 {

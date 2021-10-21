@@ -16,7 +16,6 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView";
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers"
 import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
@@ -33,8 +32,11 @@ import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/Edi
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
+import { SearchResults } from "./components/Header/Search/SearchResults";
+import AboutUs from './components/Aboutus/AboutUs';
 // mshan allah
 // mshan allah
+import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers'
 // mshan allah
 
 const socket = io.connect("http://localhost:5000");
@@ -91,20 +93,18 @@ function App() {
             <Stories />
             <Leader />
             <Random />
+            <AboutUs/>
             <ReadyToStart />
+           
           </Route>
           <AccountSettings exact path="/Drop/AccountSettings" />
           <YourFundraisers exact path="/Drop/YourFundraisers" />
           {/* <DonateForSpecific exact path="/Drop/DonateForSpecific" /> */}
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
           <Route exact path="/category/:id" component={CategoryByType} />
-          <Route
-            exact
-            path="/category/allCategory/Category"
-            component={AllCategory}
-          />
+          <Route exact path="/category/allCategory/Category" component={AllCategory}/>
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
-          <Route path="/chat/:roomname/:username" component={Appmain} />
+          <Route exact path="/chat/:roomname/:username" component={Appmain} />
           <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
           <Route exact path="/adminPage" component={MainPage} />
           <Route exact path="/donation" component={Donation} />
@@ -112,7 +112,9 @@ function App() {
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
           <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
            {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
-          <CreateBloodPost exact Path = "/Drop/Blood/BloodPost/Create"/> 
+          {/* <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/>  */}
+          <Route exact path = "/search" component={SearchResults}/>
+          <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
       </div>
       {/* <Footer /> */}

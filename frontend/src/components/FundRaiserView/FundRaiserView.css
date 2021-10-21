@@ -88,14 +88,6 @@
     height: 500px;
     border-radius: 3px;
     padding: 25px;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
 }
 
 .close-pop {
@@ -111,6 +103,22 @@
     color: #fff;
     margin-left: 15px;
 }
-.hommossbtn{
+
+.hommossbtn {
     position: fixed;
+}
+
+.contributors-title {
+    margin-top: 35px;
+}
+
+.contribut {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contribut img {
+    width: 63px;
 }

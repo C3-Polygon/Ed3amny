@@ -12,9 +12,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import Categories from '../categories/Categories';
 import AllCategory from "../AllCategory/AllCategory";
+import {setText1} from "../../reducers/search/searchReducer"
 // import token from "../../reducers/login/token";
 // import Signup from '../Auth/signup/signup';
-
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal"
 import "../Header/Dropdown/Fundraiser/CreatefundRaiser";
 
 const Navbar = () => {
@@ -37,6 +39,7 @@ const Navbar = () => {
     return { userAvatar: state3.userAvatar.userAvatar };
   });
 
+  const [show, setShow] = useState(false);
  
 
   const logout = () => {
@@ -63,7 +66,7 @@ const Navbar = () => {
   };
 
   const onChangeHandler = (text) => {
-    console.log(text);
+    setText(text);
     let matches = [];
     if (text.length > 0) {
       matches = title.filter((elm) => {
@@ -71,23 +74,43 @@ const Navbar = () => {
         return elm.title.match(regex);
       });
     }
-    console.log(matches, "matches");
     setSuggestions(matches);
-    setText(text);
   };
+
+  const searchResult = () =>{
+    dispatch(setText1(text))
+    history.push('/search')
+  }
 
   return (
     <div className="Main-Nav">
       <div className="container">
         <div className="navbar">
           
-            
-          <h5 onClick={() => history.push("/")}>LogoName</h5>
-            <Categories/>
-          <div className="search-bar">
-            <input
-              type="search"
-              placeholder="Search Here ..."
+             <div className="search-bar">
+            {/*  */}
+
+              <p onClick={()=>{setShow(!show)}}>Search</p>
+            <BsSearch className="search" />
+
+            {show && 
+                <>
+          
+                <Modal
+                  show={show}
+                  onHide={() => setShow(false)}
+                  dialogClassName="modal-90w"
+                  aria-labelledby="example-custom-modal-styling-title"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title id="example-custom-modal-styling-title">
+                    <BsSearch/> Search GoFundMe
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                  <input 
+              type="search" className='Search-input'
+              placeholder="Find Fundrasier by title"
               onChange={(e) => {
                 onChangeHandler(e.target.value);
               }}
@@ -96,8 +119,9 @@ const Navbar = () => {
                 setTimeout(() => {
                   setSuggestions([]);
                 }, 100);
-              }}
+              }}  
             />
+            <BsSearch onClick={searchResult}/>
             {suggestions &&
               suggestions.map((elm, i) => {
                 return (
@@ -106,20 +130,24 @@ const Navbar = () => {
                   </div>
                 );
               })}
-            <BsSearch className="search" />
+                  </Modal.Body>
+                </Modal>
+              </>
+            
+            }
           </div>
+          <div>
+          <Categories/>
+          </div>
+          <h5 onClick={() => history.push("/")}>Ed3amny</h5>
+            
           <div>
             <div className="navbar">
               {state1.token || tokenSave || state.isLoggedIn ? (
                 <div className="navLinkOption">
-                  <Link to="/fundraiser" className="navFundRaiser">
-                    Start Fund Raiser
-                  </Link>
-                  <BsBellFill />
-
                   <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
-                      <BsGrid3X3GapFill />
+                    <Dropdown.Toggle id="dropdown-basic" >  
+                     <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
@@ -142,20 +170,23 @@ const Navbar = () => {
                         Specific Donation
                       </Dropdown.Item> */}
 
-                      <Dropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>
-                        Ask For a blood donation
+                      <Dropdown.Item>
+                       <Link to='/Drop/Blood/BloodPost/Create'>Ask For a blood donation</Link> 
                       </Dropdown.Item>
                       
                       <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                  <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
                 </div>
               ) : (
-                <Link to="/login" className="navLogin">
-                  Login
+                <>
+                   <Link to="/login" className="navLogin">
+                  Sign in
                 </Link>
-              )}
+                <Link to='/signup' className="navsignup">Start a GoFundMe</Link></>
+              )
+              
+              }
             </div>
           </div>
         </div>
