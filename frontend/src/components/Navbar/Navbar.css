@@ -92,6 +92,15 @@
     https://stackoverflow.com/questions/50842135/how-to-change-colors-for-a-button-in-react-bootstrap
     */
 }
+.btn-primary:focus:not(:focus-visible){
+    outline: none !important;
+    box-shadow: none !important;
+}
+/* .primary.dropdown-toggle:focus { 
+    outline: none !important;
+    box-shadow: none !important;
+} */
+    
 
 /* .btn-primary{
     color:#000;
