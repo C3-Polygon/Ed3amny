@@ -139,14 +139,14 @@ const Navbar = () => {
           <div>
           <Categories/>
           </div>
-          <h5 onClick={() => history.push("/")}>LogoName</h5>
+          <h5 onClick={() => history.push("/")}>Ed3amny</h5>
             
           <div>
             <div className="navbar">
               {state1.token || tokenSave || state.isLoggedIn ? (
                 <div className="navLinkOption">
                   <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">  
+                    <Dropdown.Toggle id="dropdown-basic" >  
                      <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
                     </Dropdown.Toggle>
 

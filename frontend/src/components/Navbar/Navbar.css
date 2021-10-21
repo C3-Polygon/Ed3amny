@@ -1,6 +1,6 @@
 .Main-Nav {
-    background-color: #fbf8f6;
-    border-bottom: 2px solid #ccc;
+    background-color: white;
+    border-bottom: 0.5px solid teal;
 }
 
 .search-bar {
@@ -81,8 +81,40 @@
         display: none;
     }
 }
+/* Mraish start css */
+.btn-primary {
+    color: #198754;
+    font-size  : 20px;
+    background-color: white !important;
+    background-color: cutom-color !important;
+    border-color: white !important;                         
+    border-color: none !important;
+    /* هيك بتنعمل اما بتحطها بهاي الطريقه او بدك تعمل اشي اسمه بريفكس موديفيكيشن 
+    https://react-bootstrap.github.io/getting-started/theming/
+    https://stackoverflow.com/questions/50842135/how-to-change-colors-for-a-button-in-react-bootstrap
+    */
+}
+.btn-primary:hover{
+    color:black;
+    
+}
+.btn-primary:focus:not(:focus-visible){
+    color:black;
+    box-shadow: none !important;
+}
+    
+.btn:focus { 
+    box-shadow: none !important;
+    color:black;
+}
 
+/* Mraish end css*/
 
+/* .btn-primary{
+    color:#000;
+    background-color: none;
+    border-color: none;
+} */
 /* 
 .btn-check:active+.btn-primary,
 .btn-check:checked+.btn-primary,
