@@ -2,6 +2,10 @@
     margin-top: 50px;
 }
 
+.Main-Edit-Profile h1 {
+    color: #02a95c;
+}
+
 .Main-Edit-Profile h6 {
     border-bottom: 3px solid #02a95c;
     color: #666;
@@ -25,4 +29,14 @@
 .success-update {
     color: #02a95c;
     font-size: 25px;
+}
+
+.Main-Edit-Profile img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }

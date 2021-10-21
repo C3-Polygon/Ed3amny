@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import './YourContributions.css';
 import Table from "react-bootstrap/Table";
 import moment from 'moment'
 import { useHistory } from "react-router-dom";
@@ -30,34 +31,38 @@ const YourContributions = () => {
 }
 
   return (
-      <>
-    <Table striped bordered hover variant="dark">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Title</th>
-          <th>Date</th>
-          <th>Ammount</th>
-        </tr>
-      </thead>
-      {userDonations &&
+      <div className="main-cont">
+      <div className="container">
+        <h4>YourContributions</h4>
+   <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>title</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+          {userDonations &&
             userDonations.map((elm, i) => {
               return (
                 <>
-                <tbody>
-                <tr onClick = {() => viewBatata(elm)}>
-                  <td >{elm.campaign_id}</td>
-                  <td>{elm.title}</td>
-                  <td>{moment(elm.created_at).format('llll')}</td>
-                  <td>{elm.amount/100}</td>
-                </tr>
-              </tbody>
+  <tr>
+      <td>{moment(elm.created_at).format('llll')}</td>
+      <td>{elm.title}</td>
+      <td>${elm.amount/100}</td>
+    </tr>
               </>
            );
             })}
-    </Table>
-    </>
+  </tbody>
+</Table>
+
+<button onClick={()=>{history.goBack()}}>Back</button>
+    </div>
+    </div>
   );
 };
 
 export default YourContributions;
+

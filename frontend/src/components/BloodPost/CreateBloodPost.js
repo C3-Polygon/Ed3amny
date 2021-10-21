@@ -1,14 +1,17 @@
 import React, { useContext, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {useHistory} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
+import "./BloodPostView.css";
 
 
 
 
 
 const CreateBloodPost = (e) => {
+  const history = useHistory();
     let tokenSave = localStorage.getItem("token");
     let userIdSave = localStorage.getItem("CurrentUserId")
 
@@ -35,12 +38,16 @@ const CreateBloodPost = (e) => {
       .catch((err) => {
         console.log(err);
       });
+      history.push("/");
   };
 
  
 
   return (
     <>
+    <div className='Main-Create-Blood'>
+    <div className="container">
+      <h4>Create New Blood</h4> 
       <Form onSubmit={insertBloodPost}>
        
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -75,11 +82,13 @@ const CreateBloodPost = (e) => {
             }}
           />
         </Form.Group>
-        <button variant="primary" type="submit">
+        <button variant="primary" type="submit" >
           {" "}
           Start a Campaign{" "}
         </button>
       </Form>
+      </div>
+    </div>
     </>
   );
 };

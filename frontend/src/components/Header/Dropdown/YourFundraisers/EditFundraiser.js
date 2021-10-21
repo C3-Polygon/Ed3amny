@@ -169,7 +169,7 @@ const updateFundraiserImage = (e) => {
                 <div key={i} className="update-post-title">
                   <img src={elm.img} />
                   <div>
-                    <h3>Edit & Settings</h3>
+                    <h3 >Edit & Settings</h3>
                     <p>{elm.title}</p>
                   </div>
                 </div>

@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+.Main-title-Fundreiser h4 {
+    color: #02a95c;
+    text-transform: uppercase;
+}
+
 .Main-title-Fundreiser button {
     text-align: center;
     padding: 7px 30px;
@@ -41,6 +46,15 @@
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
+    margin-bottom: 25px;
+}
+
+.Main-View-YourFundraisers hr {
+    color: #198754;
+}
+
+.Main-View-YourFundraisers hr:not([size]) {
+    height: 3px;
 }
 
 .Main-your-Fundraisers .Main-view-content {
@@ -59,6 +73,8 @@
 
 .manage-Your-fundraisers {
     text-align: center;
-    padding: 5px;
+    padding: 0px;
     margin: 15px 0px;
+    cursor: pointer;
+    color: #02a95c;
 }

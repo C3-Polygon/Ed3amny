@@ -27,6 +27,10 @@
     height: 100px;
 }
 
+.update-post-title h3 {
+    color: #02a95c;
+}
+
 .update-post-title div {
     margin-left: 15px;
 }

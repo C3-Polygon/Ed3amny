@@ -44,7 +44,7 @@ const GetAllFundraiserByUser = () => {
           
           <div className="Main-title-Fundreiser">
           <h4>Your fundraisers</h4>
-          <button> <AiOutlinePlus/> Start a new fundraiser </button>
+          <button onClick={()=>{history.push('/fundraiser')}}> <AiOutlinePlus/> Start a new fundraiser </button>
           </div>
 
 

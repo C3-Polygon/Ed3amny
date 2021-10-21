@@ -28,9 +28,9 @@ export const SearchResults = () => {
     loadTitle();
   }, [state.text1]);
 
-  // const ViewFundRaiser = (data) => {
-  //   history.push(`/fundraiserView/${data.id}`);
-  // };
+  const ViewFundRaiser = (data) => {
+    history.push(`/fundraiserView/${data.id}`);
+  };
 
   // onClick={() => {
   //   ViewFundRaiser(data);
@@ -45,7 +45,7 @@ export const SearchResults = () => {
         search.map((data) => {
           return (
             <>
-                <div
+                <div onClick={()=>{ViewFundRaiser(data)}}
                     key={data.id}
                     className="col-lg-3 Main-ccc"
                   >

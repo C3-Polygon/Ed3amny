@@ -112,8 +112,8 @@ function App() {
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
           <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
            {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
-          {/* <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/>  */}
-          <Route exact path = "/search" component={SearchResults}/>
+          <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/> 
+          {/* <Route exact path = "/search" component={SearchResults}/> */}
           <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
       </div>
