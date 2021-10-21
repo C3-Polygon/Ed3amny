@@ -9,6 +9,33 @@
     cursor: pointer;
 }
 
+.navLogin {
+    text-decoration: none;
+    padding: 5px 15px;
+    color: #666;
+}
+
+.navLogin:hover {
+    color: #02a95c;
+}
+
+.navsignup {
+    text-decoration: none;
+    color: #02a95c;
+    border: 2px solid #02a95c;
+    padding: 5px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.navsignup:hover {
+    color: #02a95c;
+}
+
 .navLinkOption {
     display: flex;
     justify-content: space-between;
@@ -54,3 +81,15 @@
         display: none;
     }
 }
+
+
+/* 
+.btn-check:active+.btn-primary,
+.btn-check:checked+.btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: none;
+    border-color: none;
+} */
