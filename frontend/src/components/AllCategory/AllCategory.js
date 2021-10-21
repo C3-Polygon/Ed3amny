@@ -25,7 +25,7 @@ const AllCategory = ()=>{
             <div className='container'>
 
                 <div className='Back-To-Home'>
-                    <span onClick={()=>{history.push('/')}}> <AiFillCaretLeft/> Home </span>
+                    <span className='back-home' onClick={()=>{history.push('/')}}> <AiFillCaretLeft/> Home </span>
 
                     <h1>Start a Fundraiser</h1>
                     <h6>People around the world are raising money for what they are passionate about.</h6>

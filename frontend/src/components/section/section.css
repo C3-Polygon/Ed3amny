@@ -1,10 +1,23 @@
 :root {}
 
 .Main-section {
+    position: relative;
     height: 600px;
     align-items: center;
     display: flex;
     background-color: #f8f8f8;
+}
+
+.vidoss-view {
+    background-color: #ffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 75%;
+    border-radius: 3px;
+    padding: 25px;
 }
 
 .Main-section img {

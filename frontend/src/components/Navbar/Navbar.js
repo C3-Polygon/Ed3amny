@@ -108,7 +108,7 @@ const Navbar = () => {
                     </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                  <input
+                  <input 
               type="search" className='Search-input'
               placeholder="Find Fundrasier by title"
               onChange={(e) => {
@@ -119,7 +119,7 @@ const Navbar = () => {
                 setTimeout(() => {
                   setSuggestions([]);
                 }, 100);
-              }}
+              }}  
             />
             <BsSearch onClick={searchResult}/>
             {suggestions &&
@@ -145,14 +145,9 @@ const Navbar = () => {
             <div className="navbar">
               {state1.token || tokenSave || state.isLoggedIn ? (
                 <div className="navLinkOption">
-                  <Link to="/fundraiser" className="navFundRaiser">
-                    Start Fund Raiser
-                  </Link>
-                  <BsBellFill />
-
                   <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic">
-                      <BsGrid3X3GapFill />
+                    <Dropdown.Toggle id="dropdown-basic">  
+                     <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
@@ -182,13 +177,16 @@ const Navbar = () => {
                       <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                  <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
                 </div>
               ) : (
-                <Link to="/login" className="navLogin">
-                  Login
+                <>
+                   <Link to="/login" className="navLogin">
+                  Sign in
                 </Link>
-              )}
+                <Link to='/signup' className="navsignup">Start a GoFundMe</Link></>
+              )
+              
+              }
             </div>
           </div>
         </div>

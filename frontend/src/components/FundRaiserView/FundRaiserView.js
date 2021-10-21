@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setImage } from "../../reducers/Donation/ImageReducer";
 import { setTitle } from "../../reducers/Donation/TitleReducer";
 import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
 import Card from "react-bootstrap/Card";
 import { setPostId } from "../../reducers/Donation/PostId";
 import { useLocation } from "react-router";
@@ -161,38 +160,31 @@ const FundRaiserView = () => {
                           donation now
                         </button>
                       </div>
+                        <div className='contributors-title'>
+                        <h5 className="text-uppercase">donate ({contributors.length})</h5>
+                            {contributors &&
+                            contributors.map((elem, index) => {
+                            return (
+                              <div className='contribut'>
+                                <img src='https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg'/>
+                                
+                                <div className='price-user'>
+                                 <p>Price donate :<strong> ${elem.amount}</strong></p> 
+                                 <p>Name donateer (fuck inner join) </p>
+                               
+                                 <hr></hr>
+                                </div>
+
+                              </div>
+                            );
+                          })}
+                        </div>
                     </div>
                   </>
                 );
               })}
           </div>
         </div>
-      </div>
-      <div>
-        <Button
-          className="hommossbtn"
-          variant="success"
-          onClick={handleShow}
-        ></Button>
-
-        <Offcanvas show={show} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Contributors</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            {contributors &&
-              contributors.map((elem, index) => {
-                return (
-                  <Card key={index} style={{ width: "18rem" }}>
-                    <Card.Body>
-                      <Card.Title>{elem.title}</Card.Title>
-                      <Card.Text>{elem.amount}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-          </Offcanvas.Body>
-        </Offcanvas>
       </div>
     </>
   );
