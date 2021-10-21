@@ -1,4 +1,4 @@
-const connection = require("../../db/db");
+const connection = require("../../../db/db");
 require("dotenv").config();
 const sgMail = require("@sendgrid/mail");
 const bcrypt = require("bcrypt");
@@ -38,7 +38,7 @@ const sendEmail = async (req, res) => {
             from: "obada.amarneh20@gmail.com", // Change to your verified sender
             subject: "Sending with SendGrid is Fun",
             text: `your a New password ${password}  `,
-            html: `<strong>  <h1>  your a New password  ${password}  </h1> <hr><hr/> `,
+            html: `<strong> <hr><hr/> <h1>  your a New password  ${password}  </h1> <hr><hr/> `,
           };
           sgMail
             .send(msg)
