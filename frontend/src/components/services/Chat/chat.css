@@ -4,9 +4,13 @@
     padding: 1rem;
     display: flex;
     border-radius: 10px;
-    background-color: #c2c2ff;
+    background-color: #02a95c;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 9999;
+    position: fixed;
+    right: 25px;
+    bottom: 125px;
 }
 
 .user-name {
@@ -15,9 +19,10 @@
 }
 
 .user-name h2 {
-    font-weight: 300;
+    font-weight: bolder;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 1rem;
+    color: #fff;
 }
 
 .message {
@@ -28,11 +33,10 @@
 
 .message p {
     font-size: 1rem;
-    background-color: #250202;
+    background-color: #fff;
     padding: 1rem;
     border-radius: 0px 10px 10px 10px;
-    font-weight: 300;
-    color: #b4b6be;
+    font-weight: bolder;
 }
 
 .message span {
@@ -88,8 +92,15 @@
     border-radius: 5px 0px 0px 5px;
 }
 
+.send input:focus {
+    outline: none;
+}
+
 .send button {
     width: 20%;
-    border: none;
     border-radius: 0px 5px 5px 0px;
+}
+
+.send button:hover {
+    cursor: pointer;
 }
