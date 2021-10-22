@@ -11,6 +11,8 @@ import { Card, Image } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Form from 'react-bootstrap/Form';
 import './login.css';
+import { ToastContainer, toast } from "react-toastify";
+
 // @ OBADA OBADA OBADA   DONT DELETE FACEBOOK IMPORTS AGAIN    -- Thank you
 
 // import {Signup} from "./../signup/signup"
@@ -81,6 +83,8 @@ export const Login = () => {
   };
   
   //facebookstuff
+ 
+  
   const responseFacebook = async(response) => {
     if (response.status == "unknown") {
       return;
@@ -99,6 +103,7 @@ export const Login = () => {
     setFbmail(Facebookmail)
     let FacebookPassword = Math.random().toString(36).slice(-8);
     setFbpass(FacebookPassword)
+      
     let firstName, lastName, age, img, email, passwordd, country;
     firstName=FacebookfName
     lastName=FacebooklName
@@ -107,6 +112,7 @@ export const Login = () => {
     email=Facebookmail
     passwordd=FacebookPassword
     country="temporaycountry"
+    
     const theUser = {
       firstName,
       lastName,
@@ -117,25 +123,23 @@ export const Login = () => {
       country
   }
     axios.post('http://localhost:5000/signup' , theUser).then((result)=>{
-      setMessage("Check your email for your password")
-    }).catch((error)=>{
-
-       setMessage("Duplicate Email Found")
-    })
-   
-    }
-    if (response.accessToken) {
-      await  dispatch(setIsLoggedIn(true));
-      await  dispatch(setToken(response.accessToken));
-      await  dispatch(setUserAvatar(response.picture.data.url))
-      await  localStorage.setItem("token", response.accessToken);
-      await  localStorage.setItem("CurrentUserId",response.userID)
-      await  setPicture(response.picture.data.url);
+      if (result){
+       
+        setMessage("Check your email for your password")
+      }
       
-    } else {
-      return
+    }).catch((error) =>{
+       setMessage("Duplicate Email Found, user has account")
+         dispatch(setIsLoggedIn(true));
+         dispatch(setToken(response.accessToken));
+         dispatch(setUserAvatar(response.picture.data.url))
+         localStorage.setItem("token", response.accessToken);
+         localStorage.setItem("CurrentUserId",response.userID)
+         setPicture(response.picture.data.url);
+       history.push("/")
+    })
     }
-  //  history.push("/login")
+   
   }; //end facebookstuff
 
   // FB.logout(function(response) {
