@@ -28,6 +28,7 @@ export const Login = () => {
   const [picture, setPicture] = useState("");
   const dispatch = useDispatch();
 
+
   const goToForgetMain = () =>{
     history.push('/ForgotMainPage')
   }
@@ -82,27 +83,58 @@ export const Login = () => {
     if (response.status == "unknown") {
       return;
     }
-    console.log("fb response",response)
-    console.log("fb response",response.accessToken)
     setData(response);
     if (!response.picture.data.url) {
       return;
     } else {
-    await  dispatch(setIsLoggedIn(true));
-    await  dispatch(setToken(response.accessToken));
-    await  dispatch(setUserId(response.userID))
-    await  localStorage.setItem("token", response.accessToken);
-    await  localStorage.setItem("CurrentUserId",response.userID)
-    await  setPicture(response.picture.data.url);
-      
+      console.log("response" ,response)
+    let Facebookimage = response.picture.data.url //fb img
+    let FacebookName = response.name.split(" ").toString().replace(",", "") // firstnamelastname
+    let Fname = response.name.split(" ")
+    let FacebookfName = Fname[0]
+    let FacebooklName = Fname[1]
+    let Facebookmail = response.email
+    let FacebookPassword = Math.random().toString(36).slice(-8);
+    let firstName, lastName, age, img, email, passwordd, country;
+    firstName=FacebookfName
+    lastName=FacebooklName
+    img=Facebookimage
+    age=18
+    email=Facebookmail
+    passwordd=FacebookPassword
+    country="temporaycountry"
+    const theUser = {
+      firstName,
+      lastName,
+      age,
+      img,
+      email,
+      passwordd,
+      country
+  }
+    axios.post('http://localhost:5000/signup' , theUser).then((result)=>{
+      setMessage("Check your email for your password")
+    }).catch((error)=>{
+
+       setMessage("Duplicate Email Found")
+    })
+    // await  dispatch(setIsLoggedIn(true));
+    // await  dispatch(setToken(response.accessToken));
+    // await  dispatch(setUserAvatar(response.picture.data.url))
+    // await  localStorage.setItem("token", response.accessToken);
+    // await  localStorage.setItem("CurrentUserId",response.userID)
+    // await  setPicture(response.picture.data.url);
     }
     if (response.accessToken) {
-      setLogin1(true);
-      history.push("/")
+      // setLogin1(true);
+      
     } else {
-      setLogin1(false);
+      // setLogin1(false);
     }
+    // history.push("/login")
   }; //end facebookstuff
+
+
 
 
   return (
@@ -119,7 +151,7 @@ export const Login = () => {
                 appId="1259903211090202"
                 autoLoad={false}
                 fields="name,email,picture"
-                scope="public_profile,user_friends"
+                scope="public_profile,user_friends,email"
                 callback={responseFacebook}
                 icon="fa-facebook"
               />
@@ -128,8 +160,8 @@ export const Login = () => {
           </Card.Header>
           {login1 && (
             <Card.Body>
-              <Card.Title>{data.name}</Card.Title>
-              <Card.Text>{data.email}</Card.Text>
+              {/* <Card.Title>{data.name}</Card.Title>
+              <Card.Text>{data.email}</Card.Text> */}
             </Card.Body>
           )}
         </Card>
@@ -151,8 +183,10 @@ export const Login = () => {
 </Form>
 <hr></hr>
 <div className='forget-password'>
-
   <p onClick={goToForgetMain}>Forget Password ?</p>
+</div>
+<div className="LoginErrors">
+<p>{message}</p>
 </div>
         </div>
         </div>

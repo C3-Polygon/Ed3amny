@@ -83,3 +83,8 @@
 .kep-login-facebook {
     width: 100%;
 }
+
+.LoginErrors{
+    color:red;
+    text-align: center;
+}
