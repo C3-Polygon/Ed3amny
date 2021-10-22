@@ -50,24 +50,24 @@ function Chat({ username, roomname, socket }) {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div className="Main-chat">
-      <div className="chat-form">
+    <div className="chat">
+      <div className="user-name">
         <h2>
           {username} <span> in {roomname}</span>
         </h2>
       </div>
-      <div>
+      <div className="chat-message">
         {messages.map((elm) => {
           if (elm.username === username) {
             return (
-              <div>
+              <div className='message'>
                 <p>{elm.text}</p>
                 <span>{elm.username}</span>
               </div>
             );
           } else {
             return (
-              <div>
+              <div className='message mess-right'>
                 <p>{elm.text}</p>
                 <span>{elm.username}</span>
               </div>
@@ -76,7 +76,7 @@ function Chat({ username, roomname, socket }) {
         })}
         <div ref={messagesEndRef}></div>
       </div>
-      <div>
+      <div className='send'>
         <input
           placeholder="enter your message"
           value={text}

@@ -1,5 +1,23 @@
 .page-footer {
     /* background-color: #fbf8f6; */
-    background-color: #fbf8f6;
+    background-color: #fff6;
     border-top: 1px solid #ccc;
+    padding: 25px 0px;
+}
+
+.Main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Main-footer .categorys ul li {
+    list-style: none;
+    cursor: pointer;
+    padding-top: 3px;
+}
+
+.Main-footer h5 {
+    color: #02A95C;
+    font-weight: bold;
 }
