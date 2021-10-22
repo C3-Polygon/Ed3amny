@@ -34,11 +34,9 @@ import axios from "axios";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
 import { SearchResults } from "./components/Header/Search/SearchResults";
 import AboutUs from './components/Aboutus/AboutUs';
-
 import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
-
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
-
+import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 
 const socket = io.connect("http://localhost:5000");
 let userIdSave = localStorage.getItem("CurrentUserId");
@@ -75,7 +73,8 @@ function App() {
 
   return (
     <>
-      <Navbar />
+    <Navigationbar/>
+      {/* <Navbar /> */}
       <ToastContainer />
       <div className="App">
         <Switch>
