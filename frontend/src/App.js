@@ -34,11 +34,11 @@ import axios from "axios";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
 import { SearchResults } from "./components/Header/Search/SearchResults";
 import AboutUs from './components/Aboutus/AboutUs';
-// mshan allah
-// mshan allah
-import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers"
+
+import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
+
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
-// mshan allah
+
 
 const socket = io.connect("http://localhost:5000");
 let userIdSave = localStorage.getItem("CurrentUserId");
@@ -113,13 +113,14 @@ function App() {
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
           <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
            {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
-          <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/> 
+          
           <Route exact path = "/search" component={SearchResults}/>
           <Route exact path="/ForgotMainPage" component={ForgotMainPage}/>
+          <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/> 
           <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
