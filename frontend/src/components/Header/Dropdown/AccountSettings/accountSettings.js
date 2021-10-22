@@ -117,7 +117,7 @@ const dispatch = useDispatch();
   return (
     <div className="Main-Edit-Profile">
       <div className="container">
-        <h1>Account Settings </h1>
+        <h4>Account Settings </h4>
         <hr></hr>
         <img src={img} alt= "no-img"/> 
         <div>

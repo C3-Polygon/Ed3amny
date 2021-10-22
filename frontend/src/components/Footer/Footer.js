@@ -1,52 +1,68 @@
-import React from "react"
+import React , { useState, useEffect }from "react"
 import './Footer.css';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 
-const Footer = () => <footer className="page-footer font-small blue pt-4">
-    <div className="container">
-        <div className="row">
-            <div className="col-md-6">
-                <h5 className="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns to organize your footer content.</p>
-            </div>
+/**axios.get(`http://localhost:5000/fundraiser/categorys/categorys/categorys`). */
+const Footer = () => {
+    const history = useHistory();
+const [getcategorys, setGetcategorys] = useState();
+useEffect(() => {
+    axios.get(`http://localhost:5000/fundraiser/categorys/categorys/categorys`).then((res)=>{
+        setGetcategorys(res.data.allData); 
+    }).catch((error)=>{
+        console.log(error);
+    })
+    
+  }, []);
 
-            <hr className="clearfix w-100 d-md-none pb-0"/>
+  const cate = (id)=>{
+      history.push(`/category/${id}`);
+  }
+    return(
+        <footer className="page-footer">
+        <div className="container">
 
-            <div className="col-md-2 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Links</h5>
+            <div className="Main-footer">
+                <div className="logo-footer">
+                    <h5>Logo Name </h5>
+                    <p>Go a FundME</p>
+                </div>
+
+
+                <div className="categorys">
+                    {/* <ul>
+                        {getcategorys&&getcategorys.map((ele)=>{
+                            return(
+                                <li onClick={()=>{cate(ele.id)}}> <a>{ele.namee}</a></li>
+                            )
+                        })}
+                    </ul> */}
+                
+                <h5 className="">FUNDRAISE FOR</h5>
                 <ul className="list-unstyled">
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
+                    <li> {getcategorys&&getcategorys.map((ele)=>{
+                            return(
+                                <li onClick={()=>{cate(ele.id)}}> <a>{ele.namee}</a></li>
+                            )
+                        })}</li>
                 </ul>
-            </div>
+            
+                </div>
 
-            <div className="col-md-2">
-                <h5 className="text-uppercase">Links</h5>
-                <ul className="list-unstyled">
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
+
+                <div className="option">
+                    <h5>Link</h5>
+                </div>
             </div>
             
-            <div className="col-md-2">
-                <h5 className="text-uppercase">Links</h5>
-                <ul className="list-unstyled">
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4Link 4Link 4Link 4Link 4</a></li>
-                </ul>
-            </div>
+    
+
+        <div className="footer-copyright text-center py-3">© 2021 Copyright:
+            <a href="#!"> Ed3amny</a>
         </div>
-    </div>
-
-    <div className="footer-copyright text-center py-3">© 2021 Copyright:
-        <a href="https://ed3amny.com"> Ed3amny</a>
-    </div>
-
-</footer>
-
+        </div>
+    </footer>
+    )
+}
 export default Footer
