@@ -26,6 +26,8 @@ export const Login = () => {
   const [login1, setLogin1] = useState(false);
   const [data, setData] = useState({});
   const [picture, setPicture] = useState("");
+  const [fbmail,setFbmail] = useState("")
+  const [fbpass,setFbpass] = useState("")
   const dispatch = useDispatch();
 
 
@@ -89,12 +91,14 @@ export const Login = () => {
     } else {
       console.log("response" ,response)
     let Facebookimage = response.picture.data.url //fb img
-    let FacebookName = response.name.split(" ").toString().replace(",", "") // firstnamelastname
+    // let FacebookName = response.name.split(" ").toString().replace(",", "") // firstnamelastname
     let Fname = response.name.split(" ")
     let FacebookfName = Fname[0]
     let FacebooklName = Fname[1]
     let Facebookmail = response.email
+    setFbmail(Facebookmail)
     let FacebookPassword = Math.random().toString(36).slice(-8);
+    setFbpass(FacebookPassword)
     let firstName, lastName, age, img, email, passwordd, country;
     firstName=FacebookfName
     lastName=FacebooklName
@@ -118,23 +122,25 @@ export const Login = () => {
 
        setMessage("Duplicate Email Found")
     })
-    // await  dispatch(setIsLoggedIn(true));
-    // await  dispatch(setToken(response.accessToken));
-    // await  dispatch(setUserAvatar(response.picture.data.url))
-    // await  localStorage.setItem("token", response.accessToken);
-    // await  localStorage.setItem("CurrentUserId",response.userID)
-    // await  setPicture(response.picture.data.url);
+   
     }
     if (response.accessToken) {
-      // setLogin1(true);
+      await  dispatch(setIsLoggedIn(true));
+      await  dispatch(setToken(response.accessToken));
+      await  dispatch(setUserAvatar(response.picture.data.url))
+      await  localStorage.setItem("token", response.accessToken);
+      await  localStorage.setItem("CurrentUserId",response.userID)
+      await  setPicture(response.picture.data.url);
       
     } else {
-      // setLogin1(false);
+      return
     }
-    // history.push("/login")
+  //  history.push("/login")
   }; //end facebookstuff
 
-
+  // FB.logout(function(response) {
+  //   // user is now logged out
+  // });
 
 
   return (
@@ -187,6 +193,8 @@ export const Login = () => {
 </div>
 <div className="LoginErrors">
 <p>{message}</p>
+<p>{fbmail}</p>
+<p>{fbpass}</p>
 </div>
         </div>
         </div>
