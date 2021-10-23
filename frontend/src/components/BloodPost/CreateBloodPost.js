@@ -1,13 +1,10 @@
-import React, { useContext, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useHistory} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import "./BloodPostView.css";
-
-
-
+import { storage } from "../../FireBase/FireBase";
 
 
 const CreateBloodPost = (e) => {
@@ -18,13 +15,13 @@ const CreateBloodPost = (e) => {
   const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [descriptionn, setDescription] = useState("");
-  
+  const [url, setUrl] = useState("");
 
   const insertBloodPost = (e) => {
     e.preventDefault();
     const theBloodPostCreated = {
       userId: userIdSave,
-      img,
+      img: url,
       title,
       descriptionn,
     };
@@ -41,23 +38,43 @@ const CreateBloodPost = (e) => {
       history.push("/");
   };
 
+  const handleUpload =  (e) => {
+    let image = e.target.files[0]
+    console.log(image)
+       const uploadTask =  storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+            setUrl(url);
+          });
+      }
+    );
+  };
  
 
   return (
     <>
     <div className='Main-Create-Blood'>
     <div className="container">
-      <h4>Create New Blood</h4> 
+      <h4>Create New Blood Post</h4> 
       <Form onSubmit={insertBloodPost}>
        
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Image</Form.Label>
           <Form.Control
-            type="text"
+            type='file'
             placeholder="Image"
-            onChange={(e) => {
-              setImg(e.target.value);
-            }}
+            onChange={handleUpload}
           />
         </Form.Group>
 
