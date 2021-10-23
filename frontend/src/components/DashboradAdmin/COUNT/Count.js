@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import './Count.css';
 import { AiFillEye  ,AiTwotoneSchedule ,AiOutlineUsergroupAdd} from 'react-icons/ai';
+
 const Count = ()=> {
     const [fundraiser, setFundraiser] = useState();
     const [user, setUser] = useState();
@@ -65,8 +66,8 @@ const Count = ()=> {
                     <div className="col-lg-4">
                     <div className='child-item'>
                              <div>
-                             <h2>{pendingpost !== 0 ? pendingpost : <h6>There's No Fundraiser is Pending</h6> }</h2>
-                             <p>Fundraisers Pending</p>
+                             <h2>{pendingpost !== 0 ? pendingpost : <h6>There's No Pending Fundraisers</h6> }</h2>
+                             <p>Pending Fundraisers</p>
                              </div>
                              <AiFillEye className='icon-show'/> 
                           </div>

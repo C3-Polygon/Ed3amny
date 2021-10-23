@@ -6,17 +6,13 @@ import axios from "axios";
 import "./FundRaiserView.css";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import Stripe from "../services/payment/Stripe";
 import Share from "../services/Share/shareViaFacebook";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setImage } from "../../reducers/Donation/ImageReducer";
 import { setTitle } from "../../reducers/Donation/TitleReducer";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import { setPostId } from "../../reducers/Donation/PostId";
 import { useLocation } from "react-router";
-
 import { FaHandHoldingMedical , FaMobileAlt } from 'react-icons/fa';
 import {RiSecurePaymentFill} from 'react-icons/ri';
 import {
@@ -26,7 +22,9 @@ import {
 } from "react-icons/ai";
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+// import Button from "react-bootstrap/Button";
+// import Stripe from "../services/payment/Stripe";
+// import Card from "react-bootstrap/Card";
 
 const FundRaiserView = () => {
   const [sharePopup, setSharePopup] = useState(false);
@@ -90,8 +88,7 @@ const FundRaiserView = () => {
                 />
                 <h1>Help by sharing</h1>
                 <p>
-                  Fundraisers shared on social networks raise up to 5x more
-                  (SOON)
+                  Fundraisers shared on social networks raise faster, up to 5x more!
                 </p>
                 <hr></hr>
                 <Share />
@@ -163,11 +160,11 @@ const FundRaiserView = () => {
                         >
                           {" "}
                           <AiOutlineMoneyCollect className="share-facebook" />{" "}
-                          donation now
+                          Donate now
                         </button>
                       </div>
                         <div className='contributors-title'>
-                        <h5 className="text-uppercase">donate ({contributors.length})</h5>
+                        <h5 className="text-uppercase">Donors ({contributors.length})</h5>
                             {contributors &&
                             contributors.map((elem, index) => {
                             return (
@@ -175,8 +172,8 @@ const FundRaiserView = () => {
                                 <img src='https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg'/>
                                 
                                 <div className='price-user'>
-                                 <p>Price donate :<strong> ${elem.amount / 100}</strong></p> 
-                                 <p>Name donateer: <strong> {elem.firstName} {elem.lastName}</strong></p>
+                                 <p>Amount Donated :<strong> ${elem.amount / 100}</strong></p> 
+                                 <p>Donnor: <strong> {elem.firstName} {elem.lastName}</strong></p>
                                
                                  <hr></hr>
                                 </div>

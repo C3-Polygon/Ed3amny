@@ -4,7 +4,6 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import {AiFillFacebook ,AiFillInstagram ,AiFillTwitterSquare} from 'react-icons/ai';
 
-/**axios.get(`http://localhost:5000/fundraiser/categorys/categorys/categorys`). */
 const Footer = () => {
     const history = useHistory();
 const [getcategorys, setGetcategorys] = useState();
@@ -26,8 +25,8 @@ useEffect(() => {
 
             <div className="Main-footer">
                 <div className="logo-footer">
-                    <h5>Logo Name </h5>
-                    <p>Go a FundME</p>
+                    <h5>Logo Name</h5>
+                    <p>Ed3amny</p>
                 </div>
 
 
@@ -49,7 +48,7 @@ useEffect(() => {
                     <ul className="list-unstyled">
                     <li>Help center</li>
                     <li>Blog</li>
-                    <li>GoFundMe Stories</li>
+                    <li>Ed3amny Stories</li>
                     <li>Press center</li>
                     
                 </ul>

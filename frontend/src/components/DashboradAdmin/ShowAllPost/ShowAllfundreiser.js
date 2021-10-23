@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Table from 'react-bootstrap/Table';
 import User from '../getAllUsers/Users';
 import axios from 'axios';
-import { Button } from 'bootstrap';
+// import { Button } from 'bootstrap';
 // import { reject } from 'bcrypt/promises';
 
 const ShowAllfundreiser = () =>{
@@ -81,9 +81,9 @@ const ShowAllfundreiser = () =>{
                     <Table striped bordered hover size="sm">
                         <thead>
                             <tr>
-                            <th>#id</th>
-                            <th>Fundraisers title </th>
-                            <th>update fundraiser</th>
+                            <th>#Id</th>
+                            <th>Fundraiser Title </th>
+                            <th>Update Fundraiser</th>
                             <th>Status</th>
                             </tr>
                         </thead>
@@ -96,7 +96,7 @@ const ShowAllfundreiser = () =>{
                                     <td>{post.id}</td>
                                     <td>{post.title}</td>
                                     <td>Empty</td>
-                                    <td>{ post.is_deleted === 0 ? <button className='pending' onClick={()=>{ChangeFundraiserType(post.id , 0)}}>in process</button> : post.is_deleted === 1 ? <button className='approved' onClick={()=>{ChangeFundraiserType(post.id ,1 )}}>approved</button> : post.is_deleted === 2 ? <button className='deleted' onClick={()=>{ChangeFundraiserType(post.id , 2)}}>deleted</button> : console.log("UnKnown")} </td>
+                                    <td>{ post.is_deleted === 0 ? <button className='pending' onClick={()=>{ChangeFundraiserType(post.id , 0)}}>In Process</button> : post.is_deleted === 1 ? <button className='approved' onClick={()=>{ChangeFundraiserType(post.id ,1 )}}>Approved</button> : post.is_deleted === 2 ? <button className='deleted' onClick={()=>{ChangeFundraiserType(post.id , 2)}}>Deleted</button> : console.log("UnKnown")} </td>
                                     </tr>
                                     </>
                                 )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
@@ -13,13 +13,8 @@ import Form from 'react-bootstrap/Form';
 import {AiOutlineExclamation} from 'react-icons/ai';
 import './login.css';
 import Alert from 'react-bootstrap/Alert';
-import { ToastContainer, toast } from "react-toastify";
 import Container from 'react-bootstrap/Container';
-
-// @ OBADA OBADA OBADA   DONT DELETE FACEBOOK IMPORTS AGAIN    -- Thank you
-
-// import {Signup} from "./../signup/signup"
-
+// import { ToastContainer, toast } from "react-toastify";
 
 export const Login = () => {
   const history = useHistory();
@@ -197,7 +192,7 @@ export const Login = () => {
             </div>
         <Form onSubmit={loginSender} className=''>
   <Form.Group className="mb-3" controlId="formBasicEmail" >
-    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />
+    <Form.Control type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} required />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -207,7 +202,7 @@ export const Login = () => {
 </Form>
 <hr></hr>
 <div className='forget-password'>
-  <p onClick={goToForgetMain}>Forget Password ?</p>
+  <p onClick={goToForgetMain}>Forgot Your Password ?</p>
 </div>
 <div className="LoginErrors">
 <p>{fbmail}</p>

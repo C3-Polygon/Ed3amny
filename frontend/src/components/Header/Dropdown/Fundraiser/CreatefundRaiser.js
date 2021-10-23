@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./CreateFundRaiser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
@@ -7,13 +7,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 // import "./CreatefundRaiser.css;
-import userId from "../../../../reducers/login/userId";
+// import userId from "../../../../reducers/login/userId";
 import { storage } from "../../../../FireBase/FireBase";
 import { useHistory } from "react-router-dom";
 
 const CreatefundRaiser = (e) => {
   let tokenSave = localStorage.getItem("token");
-  let userIdSave = localStorage.getItem("CurrentUserId");
+  // let userIdSave = localStorage.getItem("CurrentUserId");
   const [categorys, setCategorys] = useState();
   const history = useHistory();
   const state1 = useSelector((state) => {

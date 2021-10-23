@@ -46,82 +46,6 @@ const Signup = () => {
     }
 
 
-
-
-    // const responseFacebook = async(response) => {
-    //     if (response.status == "unknown") {
-    //       return;
-    //     }
-    //     setData(response);
-    //     if (!response.picture.data.url) {
-    //       return;
-    //     } else {
-    //       console.log("response" ,response)
-    //     let Facebookimage = response.picture.data.url //fb img
-    //     // let FacebookName = response.name.split(" ").toString().replace(",", "") // firstnamelastname
-    //     let Fname = response.name.split(" ")
-    //     let FacebookfName = Fname[0]
-    //     let FacebooklName = Fname[1]
-    //     let Facebookmail = response.email
-    //     let FacebookPassword = Math.random().toString(36).slice(-8);
-    //     let firstName, lastName, age, img, email, passwordd, country;
-    //     firstName=FacebookfName
-    //     lastName=FacebooklName
-    //     img=Facebookimage
-    //     age=18
-    //     email=Facebookmail
-    //     passwordd=FacebookPassword
-    //     country="temporaycountry"
-    //     const theUser = {
-    //       firstName,
-    //       lastName,
-    //       age,
-    //       img,
-    //       email,
-    //       passwordd,
-    //       country
-    //   }
-    //     axios.post('http://localhost:5000/signup' , theUser).then((result)=>{
-    //       setMessage("Check your email for your password")
-    //     }).catch((error)=>{
-    
-    //        setMessage("Duplicate Email Found")
-    //     })
-    //     // await  dispatch(setIsLoggedIn(true));
-    //     // await  dispatch(setToken(response.accessToken));
-    //     // await  dispatch(setUserAvatar(response.picture.data.url))
-    //     // await  localStorage.setItem("token", response.accessToken);
-    //     // await  localStorage.setItem("CurrentUserId",response.userID)
-    //     // await  setPicture(response.picture.data.url);
-    //     }
-    //     if (response.accessToken) {
-          
-          
-    //     } else {
-          
-    //     }
-    //    history.push("/login")
-    //   }; //end facebookstuff
-    
-    //   FB.logout(function(response) {
-    //     // user is now logged out
-    //   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <>
         <div className="Main-SignUp">
@@ -150,7 +74,7 @@ const Signup = () => {
 
 
 <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Control type="password" placeholder="confrim Password"/>
+    <Form.Control type="password" placeholder="Confirm Password"/>
 </Form.Group>
 
 <button variant="primary" class="signup-btn"type="submit">

@@ -66,7 +66,7 @@ const CreateBloodPost = (e) => {
     <>
     <div className='Main-Create-Blood'>
     <div className="container">
-      <h4>Create New Blood Post</h4> 
+      <h4>Ask for a blood Donation</h4> 
       <Form onSubmit={insertBloodPost}>
        
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -100,8 +100,7 @@ const CreateBloodPost = (e) => {
           />
         </Form.Group>
         <button variant="primary" type="submit" >
-          {" "}
-          Start a Campaign{" "}
+          {" "}Create{" "}
         </button>
       </Form>
       </div>
