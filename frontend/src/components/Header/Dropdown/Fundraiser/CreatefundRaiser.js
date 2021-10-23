@@ -129,7 +129,7 @@ const CreatefundRaiser = (e) => {
 
   <Form.Group className="mb-3" controlId="formGridAddress2">
     <Form.Label>Your Fundraiser description </Form.Label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Here ..." rows="3" onChange={(e)=>{setDescriptionn(e.target.value)}}></textarea>
+    <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Here ..." rows="3" onChange={(e)=>{setDescriptionn(e.target.value)}}></textarea>
   </Form.Group>
 
   <Row className="mb-3">
@@ -144,8 +144,8 @@ const CreatefundRaiser = (e) => {
  onChange={handler}> 
       <option value="0">Select a Category</option>
       {categorys &&
-              categorys.map((elm) => {
-                return <option value={elm.id}>{elm.namee}</option>;
+              categorys.map((elm,index) => {
+                return <option key = {index} value={elm.id}>{elm.namee}</option>;
               })}
       </Form.Select>
     </Form.Group>

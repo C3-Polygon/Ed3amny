@@ -48,9 +48,9 @@ const GetAllFundraiserByUser = () => {
 
 
           <div className="row">
-            {usersFundraisers&&usersFundraisers.map((post)=>{
+            {usersFundraisers&&usersFundraisers.map((post,index)=>{
               return (
-                      <div className="col-lg-4">
+                      <div key={index} className="col-lg-4">
                       <div className='Main-View-YourFundraisers'>
                         <img src={post.img}/>
                        <div className='Main-view-content'>

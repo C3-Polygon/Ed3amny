@@ -31,9 +31,9 @@ function Categories() {
         variant="none"
         title="Categories"
       >
-        {cate&&cate.map((ele)=>{
+        {cate&&cate.map((ele,index)=>{
             return(
-                 <div>
+                 <div key = {index}>
                      <Dropdown.Item onClick={()=>{categoriesPush(ele.id)}}>{ele.namee}</Dropdown.Item>
                  </div>
             )

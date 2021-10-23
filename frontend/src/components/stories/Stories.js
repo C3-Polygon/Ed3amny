@@ -19,11 +19,11 @@ function Stories() {
         <div className="Main-Stories">
             <div className='container'>
             <Carousel fade>
-            {story&&story.map((data)=>{
+            {story&&story.map((data,index)=>{
               return(
                
 
-                  <Carousel.Item className="">
+                  <Carousel.Item className="" key = {index}>
                     <div className='Slider-Show'>
                     <div className='fundmeText'>
                       <h5>ED3AMNY FUNDRAISING STORIES</h5>

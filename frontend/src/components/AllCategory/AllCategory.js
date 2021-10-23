@@ -38,11 +38,11 @@ const AllCategory = ()=>{
                 <div className="Fundraising-categories">
                     <h3>Fundraising categories</h3>
 
-                    <div class='row viewCategory'>
-                        {category&&category.map((element)=>{
+                    <div className='row viewCategory'>
+                        {category&&category.map((element,index)=>{
                             return (
 
-                                    <div className="col-lg-4">
+                                    <div key={index} className="col-lg-4">
 
                                         {/* <img src={element.img}/>
                                         <div>
