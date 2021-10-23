@@ -23,12 +23,12 @@ import Donation from "./components/services/payment/Donation";
 import { GetAllFundraiser } from "./components/GetAllFundraiser/GetAllFundraiser";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/EditFundraiser";
-import "react-toastify/dist/ReactToastify.css";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
 import { SearchResults } from "./components/Header/Search/SearchResults";
 import AboutUs from './components/Aboutus/AboutUs';
-import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers'
+import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 
@@ -40,14 +40,18 @@ import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 // import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 
 const socket = io.connect("http://localhost:5000");
+
 let userIdSave = localStorage.getItem("CurrentUserId");
-//Notification
+// console.log(userIdSave,"userIdSave")
 let x = "";
 
 socket.on("notificationtarget",(data)=>{
+  // console.log("frontend notification")
+  // console.log(data,"notification data")
+  // console.log(data.owner,"owner")
   x=data.text
-  if(data.owner===userIdSave){
-    notify(x)
+  if (data.owner == userIdSave){
+    notify()
   }
 })
 const notify = () => toast(x)
@@ -73,9 +77,10 @@ function App() {
 
   return (
     <>
+     <ToastContainer />
     <Navigationbar/>
+    
       {/* <Navbar /> */}
-      <ToastContainer />
       <div className="App">
         <Switch>
           <Route exact path="/login">
@@ -119,6 +124,7 @@ function App() {
           <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
       </div>
+     
       <Footer />
     </>
   );

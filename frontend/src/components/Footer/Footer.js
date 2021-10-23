@@ -33,11 +33,11 @@ useEffect(() => {
                 <div className="categorys">   
                 <h5>FUNDRAISE FOR</h5>
                 <ul className="list-unstyled">
-                    <li> {getcategorys&&getcategorys.map((ele, index)=>{
+                     {getcategorys&&getcategorys.map((ele, index)=>{
                             return(
                                 <li key = {index} onClick={()=>{cate(ele.id)}}> <a>{ele.namee}</a></li>
                             )
-                        })}</li>
+                        })}
                 </ul>
             
                 </div>
