@@ -2,7 +2,7 @@ const connection = require("../../../db/db")
 
 const searchForCampaigns = (req, res) => {
   const searchTitle = req.query.name
-  const query = `SELECT * FROM campaigns WHERE title LIKE "%${searchTitle}%"`;
+  const query = `SELECT * FROM campaigns WHERE title LIKE "%${searchTitle}%" AND is_deleted=1`;
 
   connection.query(query, (error, result) => {
     if (result.length) {
