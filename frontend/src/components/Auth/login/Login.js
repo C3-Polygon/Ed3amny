@@ -10,8 +10,11 @@ import FacebookLogin from 'react-facebook-login';
 import { Card, Image } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Form from 'react-bootstrap/Form';
+import {AiOutlineExclamation} from 'react-icons/ai';
 import './login.css';
+import Alert from 'react-bootstrap/Alert';
 import { ToastContainer, toast } from "react-toastify";
+import Container from 'react-bootstrap/Container';
 
 // @ OBADA OBADA OBADA   DONT DELETE FACEBOOK IMPORTS AGAIN    -- Thank you
 
@@ -150,6 +153,17 @@ export const Login = () => {
   return (
     <>
         <div className="main-form">
+          <Container className="main-Error">
+            {message.length > 0 ? [
+  'danger'
+].map((variant, idx) => (
+  <Alert key={idx} variant={variant} className='Alert-login'>
+  
+  <AiOutlineExclamation className='Error-Login'/> {message}
+  </Alert>
+)) : ""}
+
+          </Container>
           <div className="form-login">
             <h3 className="title-form">Sign in </h3>
             <hr></hr>
@@ -182,12 +196,12 @@ export const Login = () => {
             <span>or</span>
             </div>
         <Form onSubmit={loginSender} className=''>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+  <Form.Group className="mb-3" controlId="formBasicEmail" >
+    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Control type="password" placeholder="Password"  onChange={(e) => setPasswordd(e.target.value)}/>
+    <Form.Control type="password" placeholder="Password"  onChange={(e) => setPasswordd(e.target.value)} required/>
   </Form.Group>
   <input type="submit" className="sgin-btn" value='Sign in to GoFundMe'/>
 </Form>
@@ -196,7 +210,6 @@ export const Login = () => {
   <p onClick={goToForgetMain}>Forget Password ?</p>
 </div>
 <div className="LoginErrors">
-<p>{message}</p>
 <p>{fbmail}</p>
 <p>{fbpass}</p>
 </div>

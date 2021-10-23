@@ -102,9 +102,9 @@ const Navigationbar = () => {
 
 
     return (
-        <Navbar bg="light" expand="lg">
-  <Container fluid>
-    <Navbar.Brand href="#">Ed3amny</Navbar.Brand>
+        <Navbar bg="light" expand="lg" className='Main-nav'>
+  <Container>
+    <Navbar.Brand className='Navlogo' onClick={()=> history.push('/')}>Ed3amny</Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
       <Nav
@@ -112,28 +112,10 @@ const Navigationbar = () => {
         style={{ maxHeight: '100px' }}
         navbarScroll
       >
-        <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
-        <NavDropdown  id="navbarScrollingDropdown" >
-          <NavDropdown.Item onClick={()=> history.push("/Drop/AccountSettings")}>Account Settings</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=> history.push("/Contributions/Contributions/Contributions/Contributions")}>Donations You've Made</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>Your Fundraisers</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=> history.push("/fundraiser")}>Start a Fundraiser</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>Ask For a Blood Donation</NavDropdown.Item>
-          
-          <NavDropdown.Item disabled onClick={()=> history.push("/Drop/DonateForSpecific")}>Specific Donation</NavDropdown.Item>
 
-          <NavDropdown.Divider />
-          <NavDropdown.Item onClick={logout}>
-          Signout
-          </NavDropdown.Item>
-        </NavDropdown>
-
-        <Nav.Link onClick={()=> history.push("/")}>Home</Nav.Link>
-        <div> <Categories/></div>
         
-        <Nav.Link href="#" enabled>
-          Link
-        </Nav.Link>
+        
+
       </Nav>
       <Form className="d-flex">
         <FormControl
@@ -157,6 +139,7 @@ const Navigationbar = () => {
           aria-label="Search"
           
         />
+         <Categories/>
         {/* {suggestions &&
               suggestions.map((elm, i) => {
                 return (
@@ -165,7 +148,38 @@ const Navigationbar = () => {
                   </div>
                 );
               })} */}
-        <Button variant="outline-success">Search</Button>
+
+        {state1.token || tokenSave || state.isLoggedIn ? (
+          <>
+       <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
+        <NavDropdown  id="navbarScrollingDropdown" >
+          <NavDropdown.Item onClick={()=> history.push("/Drop/AccountSettings")}>Account Settings</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> history.push("/Contributions/Contributions/Contributions/Contributions")}>Donations You've Made</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>Your Fundraisers</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> history.push("/fundraiser")}>Start a Fundraiser</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>Ask For a Blood Donation</NavDropdown.Item>
+          
+          <NavDropdown.Item disabled onClick={()=> history.push("/Drop/DonateForSpecific")}>Specific Donation</NavDropdown.Item>
+
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={logout}>
+          Signout
+          </NavDropdown.Item>
+        </NavDropdown>
+        </>
+      ): (
+          <>
+          
+          <Link to="/login" className="navLogin">
+                  Sign in
+                </Link>
+                <Link to='/signup' className="navsignup">Start a GoFundMe</Link>
+          </>
+        )}      
+
+
+
+
       </Form>
     </Navbar.Collapse>
   </Container>
