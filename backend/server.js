@@ -3,10 +3,10 @@ const cors = require("cors");
 const db = require("./db/db");
 const socket = require('socket.io')
 const app = express();
+app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser")
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
@@ -43,8 +43,8 @@ const server = app.listen(PORT, () => {
     console.log(`Server On ${PORT}`);
 });
 
-const io = socket(server, { cors: { origin: "*",
-credentials: false } })
+
+const io = socket(server, { cors: { origin: "*" } })
 
 
 app.set('socketio', io);   // exporting socket io to all files - global ussage in all app files

@@ -67,6 +67,7 @@ const state1 = useSelector((state) => {
           title:state1.title
         });
         if (response.data.success) {
+          console.log("succ payment",response.data.success)
           setSuccess(true);
         }
       } catch (error) {

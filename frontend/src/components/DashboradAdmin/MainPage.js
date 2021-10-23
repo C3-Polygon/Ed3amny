@@ -1,19 +1,18 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import NavbarAdmin from './Navbar/NavbarAdmin';
-import Count from './COUNT/Count';
 import './MainPage.css';
-import ShowAllfundreiser from './ShowAllPost/ShowAllfundreiser';
+import Slider from './Slider/Slider';
+import MainPageD from './MainPage/MainPageD';
 
 const MainPage = ()=> {
     return (
         <div className="Main-app-admin">
-        <div className='container'>
         <NavbarAdmin/>
-        <Count/>
-        <ShowAllfundreiser/>
+        <Slider/>
+        <MainPageD/>
         </div>
-        </div>
+        
     )
 }
 
