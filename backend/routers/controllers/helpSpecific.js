@@ -17,5 +17,4 @@ const getAllHospitals = (req, res) => {
   });
 };
 
-
-module.exports = {getAllHospitals};
+module.exports = { getAllHospitals };

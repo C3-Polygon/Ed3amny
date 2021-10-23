@@ -5,12 +5,9 @@ function join_User(id, username, room) {
   const p_user = { id, username, room };
 
   c_users.push(p_user);
- 
 
   return p_user;
 }
-
-
 
 // Gets a particular user id to return the current user
 function get_Current_User(id) {

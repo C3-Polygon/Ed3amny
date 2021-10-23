@@ -4,19 +4,18 @@ const sgMail = require("@sendgrid/mail");
 const bcrypt = require("bcrypt");
 const sendEmail = async (req, res) => {
   const password = Math.floor(Math.random() * 100000000).toString();
-  
+
   const passwordHash = await bcrypt.hash(password, 10);
- 
+
   const { email } = req.body;
   const sgMailApiKey =
     "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";
   const querySelect = `SELECT * FROM users WHERE email="${email}"`;
 
   connection.query(querySelect, (error, result) => {
-
     if (result) {
       const data = [passwordHash];
-        const queryUpdate = `UPDATE users SET passwordd=? WHERE email="${email}"`;
+      const queryUpdate = `UPDATE users SET passwordd=? WHERE email="${email}"`;
       if (error) {
         res.status(500).json({
           success: false,
@@ -25,7 +24,6 @@ const sendEmail = async (req, res) => {
         });
       }
       connection.query(queryUpdate, data, (error, resultRRR) => {
-         
         if (resultRRR) {
           res.status(200).json({
             success: true,
@@ -42,12 +40,8 @@ const sendEmail = async (req, res) => {
           };
           sgMail
             .send(msg)
-            .then(() => {
-             
-            })
-            .catch((error) => {
-              
-            });
+            .then(() => {})
+            .catch((error) => {});
         } else {
           res.status(404).json({
             success: false,
