@@ -12,8 +12,7 @@ function DonateForSpecific() {
     const [cate, setCate] = useState();
     useEffect(() => {
         axios.get(`http://localhost:5000/helpSpecific`).then((res)=>{
-            console.log("hospital result",res)
-
+      
              setCate(res.data.result); 
         }).catch((error)=>{
             console.log(error);

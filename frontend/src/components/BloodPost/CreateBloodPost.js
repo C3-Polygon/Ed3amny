@@ -30,7 +30,6 @@ const CreateBloodPost = (e) => {
         headers: { Authorization: `Bearer ${tokenSave}` },
       })
       .then((result) => {
-        console.log("result", result);
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +39,6 @@ const CreateBloodPost = (e) => {
 
   const handleUpload =  (e) => {
     let image = e.target.files[0]
-    console.log(image)
        const uploadTask =  storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -54,7 +52,6 @@ const CreateBloodPost = (e) => {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
             setUrl(url);
           });
       }

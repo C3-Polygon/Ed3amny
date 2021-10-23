@@ -35,7 +35,7 @@ const Fundraiser = (e) => {
               },
             }
           );
-          console.log(res.data);
+         
         } catch (error) {
           console.log(error);
         }

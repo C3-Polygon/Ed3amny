@@ -7,7 +7,6 @@ import moment from 'moment'
 import { useHistory } from "react-router-dom";
 
 const YourContributions = () => {
-    console.log("we entered your contributions page");
 
   const [userDonations, setUserDonations] = useState([]);
   let userIdSave = localStorage.getItem("CurrentUserId");
@@ -18,7 +17,6 @@ const YourContributions = () => {
     axios
       .get(`http://localhost:5000/Contribution/${userIdSave}`)
       .then((result) => {
-          console.log("Donation data",result.data.result)
          setUserDonations(result.data.result);
       })
       .catch((err) => {

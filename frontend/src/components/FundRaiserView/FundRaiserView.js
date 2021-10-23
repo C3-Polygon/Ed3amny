@@ -71,7 +71,6 @@ const FundRaiserView = () => {
     dispatch(setTitle(title));
     dispatch(setImage(img));
     dispatch(setPostId(id));
-    console.log("batata", id);
     history.push("/donation");
   };
   return (

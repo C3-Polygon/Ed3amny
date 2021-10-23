@@ -24,7 +24,7 @@ const GetAllFundraiserByUser = () => {
         },
       })
       .then((result) => {
-        console.log("result here", result);
+      
         setUsersFundraisers(result.data.result)
       })
       .catch((err) => console.log(err));
