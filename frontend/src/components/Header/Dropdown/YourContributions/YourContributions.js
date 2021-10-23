@@ -24,9 +24,9 @@ const YourContributions = () => {
       });
   }, []);
 
-//   const viewBatata = (data) => {
-//     history.push(`/fundraiserView/${data.campaign_id}`);
-// }
+  const viewBatata = (data) => {
+    history.push(`/fundraiserView/${data.campaign_id}`);
+}
 
   return (
       <div className="main-cont">
@@ -45,7 +45,7 @@ const YourContributions = () => {
             userDonations.map((elm, index) => {
               return (
                 <>
-  <tr key={index}>
+  <tr key={index} onClick={()=>viewBatata(elm)}>
       <td>{moment(elm.created_at).format('llll')}</td>
       <td>{elm.title}</td>
       <td>${elm.amount/100}</td>

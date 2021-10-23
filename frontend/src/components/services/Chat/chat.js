@@ -10,6 +10,7 @@ function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
   const history = useHistory()
+  let firstName = localStorage.getItem('customerName')
   
   if(socket.connected===false){
       username=''
@@ -53,9 +54,9 @@ function Chat({ username, roomname, socket }) {
   return (
     <div className="chat">
       <div className="user-name">
-        <h2>
-          {username} <span> in {roomname}</span>
-        </h2>
+        <h3>
+          Welcome {firstName}
+        </h3>
       </div>
       <div className="chat-message">
         {messages.map((elm) => {

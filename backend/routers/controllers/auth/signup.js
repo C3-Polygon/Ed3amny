@@ -7,10 +7,11 @@ const register = async(req, res) => {
     let passwordHash = await bcrypt.hash(passwordd, 10);
 
     let data = [firstName, lastName, age, img, email, passwordHash, country];
-    
+    console.log("resultsadksa" ,data)
     let query = `INSERT INTO users (firstName,lastName,age,img,email,passwordd,country) VALUES(?,?,?,?,?,?,?)`;
 
     connection.query(query, data, (error, result) => {
+        console.log("result" ,result)
          if (result){
             res.status(200);
             res.json(result);
@@ -23,7 +24,7 @@ const register = async(req, res) => {
         //     });
         //   }
         if (error) {
-          
+          console.log(error)
             res.status(409).json({
                 success: false,
                 message: `Duplicate Email Found`,

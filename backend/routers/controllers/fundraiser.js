@@ -102,7 +102,7 @@ const getAllFundRaiserByUser = (req, res) => {
 //`SELECT * FROM campaigns JOIN categories  ON campaigns.typee=categories.id WHERE campaigns.id = ${id} AND is_deleted=1`
 const getFundRaiserById = (req, res) => {
     let id = req.params.id;
-    const query = `SELECT * FROM campaigns JOIN categories  ON campaigns.typee=categories.id WHERE campaigns.id = ${id} AND is_deleted=1`;
+    const query = `SELECT * FROM campaigns WHERE id = ${id} AND is_deleted=1`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
@@ -146,7 +146,7 @@ const deleteFundraiserByUser = (req, res) => {
 
 const getAllFundraiserByType = (req, res) => { //need testing
     let typee = req.params.typee
-    const query = `SELECT * FROM campaigns WHERE typee = ${typee}`;
+    const query = `SELECT * FROM campaigns WHERE typee = ${typee} AND is_deleted=1`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({

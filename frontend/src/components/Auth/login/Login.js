@@ -69,6 +69,7 @@ export const Login = () => {
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("logoutChecker" , logoutChecker)
           localStorage.setItem("CurrentUserId",res.data.payload.userId)
+          localStorage.setItem('customerName', res.data.payload.firstName)
           history.push("/")
         } else throw Error;
       }
