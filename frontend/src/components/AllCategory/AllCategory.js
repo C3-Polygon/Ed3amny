@@ -29,7 +29,7 @@ const AllCategory = ()=>{
 
                     <h1>Start a Fundraiser</h1>
                     <h6>People around the world are raising money for what they are passionate about.</h6>
-                    <button type="button" onClick={()=>{history.push("/fundraiser")}}>Start GoFundMe</button> 
+                    <button type="button" onClick={()=>{history.push("/fundraiser")}}>Ed3amny Now</button> 
                 </div>
 
 

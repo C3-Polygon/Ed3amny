@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import ProgressBar from "react-bootstrap/ProgressBar";
 import { useHistory } from "react-router-dom";
 import './SearchResults.css';
-import Pagination from 'react-bootstrap/Pagination';
+// import ProgressBar from "react-bootstrap/ProgressBar";
+// import Pagination from 'react-bootstrap/Pagination';
 
 export const SearchResults = () => {
   const [search, setSearch] = useState();
   const history = useHistory();
 
   const state = useSelector((state) => {
-    console.log(state, "sdsadadasd");
     return { text1: state.text1.text1 };
   });
 
@@ -22,7 +20,6 @@ export const SearchResults = () => {
       const response = await axios.get(
         `http://localhost:5000/search?name=${state.text1}`
       );
-      console.log("response.data.search", response.data.search);
       setSearch(response.data.search);
     };
     loadTitle();

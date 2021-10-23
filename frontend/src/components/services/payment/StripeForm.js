@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import './Donation.css';
 
 
@@ -36,7 +36,7 @@ const state2 = useSelector((state) => {
   return { amount: state.amount.amount };
 });
 const state3 = useSelector((state) => {
-    console.log("state",state)
+    
   return { postId: state.postId.postId };
 });
 
@@ -67,10 +67,7 @@ const state1 = useSelector((state) => {
           created_at:d,
           title:state1.title
         });
-        console.log("Mraish test",state2.amount)
         if (response.data.success) {
-          console.log("response.data.success",response.data)
-          console.log("Successful payment");
           setSuccess(true);
         }
       } catch (error) {

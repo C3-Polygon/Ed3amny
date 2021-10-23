@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,18 +7,13 @@ import Tabs from "react-bootstrap/Tabs"
 import "./YourFundraisers.css";
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-
 import Row from 'react-bootstrap/Row';
-
 import { useHistory } from "react-router-dom";
 import { AiFillCaretLeft } from "react-icons/ai";
-
 import axios from "axios";
-import {
-  AiOutlineCloseSquare
-} from "react-icons/ai";
-
+import {AiOutlineCloseSquare} from "react-icons/ai";
 import { storage } from "../../../../FireBase/FireBase";
+// import { useDispatch, useSelector } from "react-redux";
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -114,7 +108,7 @@ export const EditFundraiser = () => {
 
   const handleUpload = async(e) => {
     let image =  e.target.files[0]
-  const uploadTask = storage.ref(`/images/${image.name}`) .put(image);
+  const uploadTask = storage.ref(`/images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
       (snapshot) => {},
@@ -255,7 +249,7 @@ const updateFundraiserImage = (e) => {
           <div>
             <h5>Delete my fundraiser</h5>
             <p>You will no longer have access to this fundraiser after deleting.<br></br>
-              f you received donations, your donors will still be able to view a summary.</p>
+              if you received donations, your donors will still be able to view a summary.</p>
           </div>
           
           <p onClick={()=>{setShowbtnDelete(!showbtnDelete)}} className="btn-delete-post">Delete</p>
@@ -271,7 +265,7 @@ const updateFundraiserImage = (e) => {
               <hr></hr>
 
               <p>
-              You will no longer have access to this fundraiser after deleting
+              You will no longer have access to this fundraiser after deleting it.
               </p>
               <button className='confirm-delete-post' onClick={softDelete}>Delete fundraiser</button> 
             </div>

@@ -5,14 +5,14 @@ import './YourContributions.css';
 import Table from "react-bootstrap/Table";
 import moment from 'moment'
 import { useHistory } from "react-router-dom";
+
 const YourContributions = () => {
     console.log("we entered your contributions page");
 
   const [userDonations, setUserDonations] = useState([]);
-//   const [state, setstate] = useState()
   let userIdSave = localStorage.getItem("CurrentUserId");
-  let tokenSave = localStorage.getItem("token");
   const history = useHistory();
+  // let tokenSave = localStorage.getItem("token");
 
   useEffect(() => {
     axios
@@ -26,19 +26,19 @@ const YourContributions = () => {
       });
   }, []);
 
-  const viewBatata = (data) => {
-    history.push(`/fundraiserView/${data.campaign_id}`);
-}
+//   const viewBatata = (data) => {
+//     history.push(`/fundraiserView/${data.campaign_id}`);
+// }
 
   return (
       <div className="main-cont">
       <div className="container">
-        <h4>YourContributions</h4>
+        <h4>Your Donations</h4>
    <Table striped bordered hover>
   <thead>
     <tr>
       <th>Date</th>
-      <th>title</th>
+      <th>Title</th>
       <th>Amount</th>
     </tr>
   </thead>

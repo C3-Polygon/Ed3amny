@@ -1,39 +1,39 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./CreateFundRaiser.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
-// import "./CreatefundRaiser.css;
-import userId from "../../../../reducers/login/userId";
 import { storage } from "../../../../FireBase/FireBase";
 import { useHistory } from "react-router-dom";
+// import "./CreatefundRaiser.css;
+// import userId from "../../../../reducers/login/userId";
 
 const CreatefundRaiser = (e) => {
   let tokenSave = localStorage.getItem("token");
-  let userIdSave = localStorage.getItem("CurrentUserId");
-  const [categorys, setCategorys] = useState();
-  const history = useHistory();
-  const state1 = useSelector((state) => {
-    return { token: state.token_1.token };
-  });
+  // let userIdSave = localStorage.getItem("CurrentUserId");
+  // const [progress, setProgress] = useState(0);
+    // const [image, setImage] = useState();
+
+  // const state1 = useSelector((state) => {
+  //   return { token: state.token_1.token };
+  // });
   const state2 = useSelector((state2) => {
     return { userId: state2.userId.userId };
   });
 
-
+  const [categorys, setCategorys] = useState();
+  const history = useHistory();
   const [country, setCountry] = useState("");
   const [typee, setType] = useState("");
   const [targett, setTarget] = useState("");
-  const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
-   const [descriptionn, setDescriptionn] = useState("");
-  // const [image, setImage] = useState();
+  const [descriptionn, setDescriptionn] = useState("");
   const [url, setUrl] = useState("");
-  // const [progress, setProgress] = useState(0);
   const [phoneNumber,setPhoneNumber] = useState(0);
+  // const [img, setImg] = useState("");
 
 
   const insertfundRaiser = (e) => {
@@ -137,7 +137,7 @@ const CreatefundRaiser = (e) => {
 
   <Row className="mb-3">
     <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>City</Form.Label>
+      <Form.Label>Country</Form.Label>
       <Form.Control placeholder="Here ..." type='text' onChange={(e)=>{setCountry(e.target.value)}}/>
     </Form.Group>
 
@@ -154,7 +154,7 @@ const CreatefundRaiser = (e) => {
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>phoneNumber</Form.Label>
+      <Form.Label>PhoneNumber</Form.Label>
       <Form.Control type='number' placeholder="Here ..." onChange={(e)=>{setPhoneNumber(e.target.value)}}/>
     </Form.Group>
   </Row>

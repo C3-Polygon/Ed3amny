@@ -39,7 +39,7 @@ function Categories() {
             )
         })}
         <Dropdown.Divider />
-        <Dropdown.Item eventKey="4" className='see-all-categories' onClick={()=>{history.push('/category/allCategory/Category')}} >See all</Dropdown.Item>
+        <Dropdown.Item eventKey="4" className='see-all-categories' onClick={()=>{history.push('/category/allCategory/Category')}} >See All</Dropdown.Item>
       </DropdownType>
     ))}
         </div>

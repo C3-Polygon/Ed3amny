@@ -13,7 +13,7 @@ const AboutUs = () => {
                     </div>
                 </div>
                 <div className="column col-right">
-                <h3 className="content-title"> About Gofundme</h3>
+                <h3 className="content-title"> About Ed3amny</h3>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, praesentium veritatis facere hic sequi dolorem adipisci, aspernatur dignissimos enim facilis quidem aliquid voluptatem pariatur exercitationem suscipit dicta. Officia voluptatem nesciunt deserunt 
                 </p>

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import { setUserAvatar } from "../../../reducers/login/userAvatar";
@@ -13,13 +13,8 @@ import Form from 'react-bootstrap/Form';
 import {AiOutlineExclamation} from 'react-icons/ai';
 import './login.css';
 import Alert from 'react-bootstrap/Alert';
-import { ToastContainer, toast } from "react-toastify";
 import Container from 'react-bootstrap/Container';
-
-// @ OBADA OBADA OBADA   DONT DELETE FACEBOOK IMPORTS AGAIN    -- Thank you
-
-// import {Signup} from "./../signup/signup"
-
+// import { ToastContainer, toast } from "react-toastify";
 
 export const Login = () => {
   const history = useHistory();
@@ -40,17 +35,17 @@ export const Login = () => {
     history.push('/ForgotMainPage')
   }
 
-  const state = useSelector((state) => {
-    return { isLoggedIn: state.isLoggedIn.isLoggedIn };
-  });
+  // const state = useSelector((state) => {
+  //   return { isLoggedIn: state.isLoggedIn.isLoggedIn };
+  // });
 
-  const state1 = useSelector((state) => {
-    return { token: state.token_1.token };
-  });
+  // const state1 = useSelector((state) => {
+  //   return { token: state.token_1.token };
+  // });
   
-  const state2 = useSelector((state)=>{
-   return {userAvatar: state.userAvatar.userAvatar}
-  })
+  // const state2 = useSelector((state)=>{
+  //  return {userAvatar: state.userAvatar.userAvatar}
+  // })
 
 
   const loginSender = async (e) => {
@@ -75,7 +70,6 @@ export const Login = () => {
           localStorage.setItem("logoutChecker" , logoutChecker)
           localStorage.setItem("CurrentUserId",res.data.payload.userId)
           history.push("/")
-          console.log("user info", res.data)
         } else throw Error;
       }
     } catch (error) {
@@ -89,14 +83,13 @@ export const Login = () => {
  
   
   const responseFacebook = async(response) => {
-    if (response.status == "unknown") {
+    if (response.status === "unknown") {
       return;
     }
     setData(response);
     if (!response.picture.data.url) {
       return;
     } else {
-      console.log("response" ,response)
     let Facebookimage = response.picture.data.url //fb img
     // let FacebookName = response.name.split(" ").toString().replace(",", "") // firstnamelastname
     let Fname = response.name.split(" ")
@@ -197,7 +190,7 @@ export const Login = () => {
             </div>
         <Form onSubmit={loginSender} className=''>
   <Form.Group className="mb-3" controlId="formBasicEmail" >
-    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required />
+    <Form.Control type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} required />
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -207,7 +200,7 @@ export const Login = () => {
 </Form>
 <hr></hr>
 <div className='forget-password'>
-  <p onClick={goToForgetMain}>Forget Password ?</p>
+  <p onClick={goToForgetMain}>Forgot Your Password ?</p>
 </div>
 <div className="LoginErrors">
 <p>{fbmail}</p>

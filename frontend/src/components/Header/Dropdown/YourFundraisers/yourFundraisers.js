@@ -1,15 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
 import { React, useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; 
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import './YourFundraisers.css';
 import {useHistory} from 'react-router-dom';
 import { AiOutlinePlus } from "react-icons/ai";
-
 import axios from "axios";
-import { EditFundraiser } from "./EditFundraiser";
 
+// import { EditFundraiser } from "./EditFundraiser";
+// import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
+// import { useDispatch, useSelector } from "react-redux";
 
 const GetAllFundraiserByUser = () => {
   const history = useHistory();
@@ -56,7 +55,7 @@ const GetAllFundraiserByUser = () => {
                         <img src={post.img}/>
                        <div className='Main-view-content'>
                        <h6>{post.title}</h6>
-                         <p> Fundraisers Created : {post.created_at}</p>
+                         <p> Created Fundraisers: {post.created_at}</p>
                          <hr></hr>
                          <div className='manage-Your-fundraisers'> 
                          <span onClick={()=>EditFundraiser(post.id)}>Manage</span>

@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
             console.log(err);
         },)
       },[]);
+
       const ViewFundRaiser = (data) => {
         history.push(`/fundraiserView/${data.id}`);
     }
@@ -24,7 +25,7 @@ import { useHistory } from "react-router-dom";
         <>
         <div className="Main-Topfundraiser">
             <div className="container">
-                <h2>Top fundraiser</h2>
+                <h2>Top fundraisers</h2>
                 <div className="row">
             {result &&
                 result.map((data) => {
@@ -35,12 +36,8 @@ import { useHistory } from "react-router-dom";
                         <div className="mainViewfundraiserText">
                             <h5>{data.title}</h5>
                             <p>{data.descriptionn}</p>
-                            {/* bdha await ?? */}
                             <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
                              {console.log("D.T",data)}
-                             {/* {console.log("D.CT",data.current_target)}
-                             {console.log("percentage",(data.current_target*100)/data.targett)} */}
-                            
                             <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
                         </div>
                     </div>

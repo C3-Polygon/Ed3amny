@@ -1,6 +1,6 @@
 import {FacebookShareButton,} from "react-share";
   import { FacebookIcon } from "react-share";
-  import { Button, Container, Header, Segment, Grid } from "semantic-ui-react";
+  import {  Container, Segment } from "semantic-ui-react";
   import { useLocation } from "react-router";
 
 function Share(){

@@ -42,7 +42,7 @@ function DonateForSpecific() {
             )
         })}
         <Dropdown.Divider />
-        <Dropdown.Item eventKey="4" className='see-all-hospitals'>See All hospitals</Dropdown.Item>
+        <Dropdown.Item eventKey="4" className='see-all-hospitals'>See all Hospitals</Dropdown.Item>
       </DropdownType>
     ))}
         </div>
