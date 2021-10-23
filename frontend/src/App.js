@@ -28,7 +28,7 @@ import "react-toastify/dist/ReactToastify.css";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
 import { SearchResults } from "./components/Header/Search/SearchResults";
 import AboutUs from './components/Aboutus/AboutUs';
-import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
+import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers'
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 

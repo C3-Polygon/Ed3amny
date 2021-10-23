@@ -1,27 +1,34 @@
-import React from 'react'
-import "bootstrap/dist/css/bootstrap.min.css"; 
-import Navbar from 'react-bootstrap/Navbar';
+import React from 'react' 
 import Nav from 'react-bootstrap/Nav';
+import '../Slider/Slider.css';
+import {useHistory} from 'react-router-dom';
+
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const  NavbarAdmin = () => {
+  const history = useHistory();
     return (
-        <div className='NavAdmin'>
-            
-            <Navbar collapseOnSelect expand="lg" variant="light">
+      <div className="main-content">
+      <header>
+      <h2>
+          <label for="nav-toggle">
+              <span class="las la-bars"></span>
+          </label> Admin
+      </h2>
 
-  <Navbar.Brand href="#home">DashBorad</Navbar.Brand>
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="me-auto">
-      <Nav.Link href="#features">Features</Nav.Link>
-    </Nav>
-    <Nav>
-      <Nav.Link href="#deets">More deets</Nav.Link>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
-        </div>
+      <div class="search-wrapper">
+          <span class="las la-search"></span>
+          <input type="search" placeholder="Search ..." />
+      </div>
+      <div class="user-wrapper">
+          <img src="https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" width="80px" height="50px" alt=""/>
+          <div>
+              <h4>Administrador</h4>
+              <button onClick={()=>{history.push('/')}}>Logout</button>
+          </div>
+      </div>
+  </header>
+  </div>
     )
 }
 
