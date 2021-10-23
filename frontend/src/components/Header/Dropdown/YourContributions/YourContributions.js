@@ -42,10 +42,10 @@ const YourContributions = () => {
   </thead>
   <tbody>
           {userDonations &&
-            userDonations.map((elm, i) => {
+            userDonations.map((elm, index) => {
               return (
                 <>
-  <tr>
+  <tr key={index}>
       <td>{moment(elm.created_at).format('llll')}</td>
       <td>{elm.title}</td>
       <td>${elm.amount/100}</td>

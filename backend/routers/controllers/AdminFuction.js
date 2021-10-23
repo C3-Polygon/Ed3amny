@@ -165,7 +165,7 @@ const rejectedTheFunders = (req, res) => {
     const id = req.params.id;
     const select = `SELECT * FROM campaigns where id = ${id}`;
     connection.query(select, (err, response) => {
-        console.log("GOGOGOGOGOGOOG", response);
+       
         if (err) {
             const error = {
                 success: false,

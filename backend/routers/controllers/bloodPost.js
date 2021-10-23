@@ -9,14 +9,14 @@ const createNewBloodPost = (req, res) => {
             res.status(201).json({
                 success: true,
                 message: ` Success bloodpost created`,
-                bloodpost: result,
+                bloodpost: result
             });
         }
         if (err) {
             res.status(500).json({
                 success: false,
                 message: `Server Error`,
-                err: err,
+                err: err
             });
         }
     });

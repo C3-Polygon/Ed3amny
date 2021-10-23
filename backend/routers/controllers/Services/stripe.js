@@ -14,7 +14,7 @@ const stripePayment = async (req, res) => {
       payment_method: id,
       confirm: true,
     });
-    console.log("Payment", payment.status);
+   
 
     if (payment.status == "succeeded") {
       
@@ -50,7 +50,7 @@ const stripePayment = async (req, res) => {
                   owner: result1[0].userId
                 })
 
-                console.log("socket");
+               
               }
             });
           });

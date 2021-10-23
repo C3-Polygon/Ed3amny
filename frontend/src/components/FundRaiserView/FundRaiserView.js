@@ -168,10 +168,10 @@ const FundRaiserView = () => {
                             {contributors &&
                             contributors.map((elem, index) => {
                             return (
-                              <div className='contribut'>
+                              <div key={index} className='contribut'>
                                 <img src='https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg'/>
                                 
-                                <div className='price-user'>
+                                <div  className='price-user'>
                                  <p>Amount Donated :<strong> ${elem.amount / 100}</strong></p> 
                                  <p>Donnor: <strong> {elem.firstName} {elem.lastName}</strong></p>
                                
