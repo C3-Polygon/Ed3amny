@@ -21,7 +21,7 @@ import MainPage from "./components/DashboradAdmin/MainPage";
 import BloodPostView from "./components/BloodPost/BloodPostView";
 import Donation from "./components/services/payment/Donation";
 import { GetAllFundraiser } from "./components/GetAllFundraiser/GetAllFundraiser";
-import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings"
+import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import { ToastContainer, toast } from "react-toastify";
 import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/EditFundraiser";
 import "react-toastify/dist/ReactToastify.css";

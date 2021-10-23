@@ -6,8 +6,7 @@ const createNewFundraiser = (req, res) => {
     const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn,phoneNumber) VALUES (?,?,?,?,?,?,?,?)`;
     const data = [userId, title, country, typee, targett, img, descriptionn, phoneNumber];
     connection.query(queryString, data, (err, result) => {
-        console.log(data, "dataaaaaaaaa");
-        console.log("Erroe", err);
+        
         if (result) {
             res.status(201).json({
                 success: true,
