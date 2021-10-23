@@ -55,7 +55,6 @@ const state1 = useSelector((state) => {
     if (!error) {
       try {
         const d = new Date().toISOString().substr(0, 19).replace('T', ' ');
-        console.log(d,"date")
         // const date = `${d.getFullYear()}-${d.getMonth() + 2}-${d.getDate()}`
         // console.log(date,"date date")
         const { id } = paymentMethod;

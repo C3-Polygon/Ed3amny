@@ -46,7 +46,6 @@ let x = "";
 
 socket.on("notificationtarget",(data)=>{
   x=data.text
-  console.log("notification data",data)
   if(data.owner===userIdSave){
     notify(x)
   }

@@ -48,7 +48,6 @@ const CreatefundRaiser = (e) => {
       descriptionn: descriptionn,
       phoneNumber: phoneNumber,
     };
-    console.log(theFundRaiserCreated);
     axios
       .post(`http://localhost:5000/fundraiser`, theFundRaiserCreated, {
         headers: { Authorization: `Bearer ${tokenSave}` },
@@ -83,7 +82,6 @@ const CreatefundRaiser = (e) => {
 
   const handleUpload =  (e) => {
     let image = e.target.files[0]
-    console.log(image)
        const uploadTask =  storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state_changed",
@@ -97,7 +95,6 @@ const CreatefundRaiser = (e) => {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
             setUrl(url);
           });
       }

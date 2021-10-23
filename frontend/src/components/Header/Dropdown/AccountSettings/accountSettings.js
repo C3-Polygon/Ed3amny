@@ -11,7 +11,6 @@ import { setUserAvatar } from "../../../../reducers/login/userAvatar";
 // import { AiFillCheckCircle } from "react-icons/ai";
 
 const AccountSettings = () => {
-  console.log("we entered account settings page");
   let tokenSave = localStorage.getItem("token");
   let userIdSave = localStorage.getItem("CurrentUserId");
 
@@ -72,8 +71,6 @@ const AccountSettings = () => {
           }
         )
         .then((result) => {
-          console.log("update", result);
-          console.log(phoneNumber, "phonenumber");
           setSuccesssUpdate(`Your account was successfully saved.`);
         });
     } catch (error) {
@@ -106,7 +103,6 @@ const AccountSettings = () => {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
             setUrl(url);
           });
       }

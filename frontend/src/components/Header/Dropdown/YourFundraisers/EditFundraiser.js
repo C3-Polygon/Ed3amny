@@ -44,7 +44,7 @@ export const EditFundraiser = () => {
     axios
       .get(`http://localhost:5000/fundraiser/id/${id}`)
       .then((result) => {
-        console.log("result", result);
+        
         setPost(result.data.result);
       })
       .catch((err) => {
@@ -62,7 +62,7 @@ export const EditFundraiser = () => {
   }
 
   const updateFundraiserOverView = (e)=>{
-    console.log("id" , id);
+   
     e.preventDefault();
     axios.put(`http://localhost:5000/fundraiser/update/fundraiser/overview/${id}`,
 {    title,
@@ -75,7 +75,7 @@ export const EditFundraiser = () => {
     }
   }
     ).then((result) => {
-      console.log("updateeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+      
     }).catch((err)=>{
       console.log("err", err);
     })
@@ -93,7 +93,7 @@ export const EditFundraiser = () => {
     }
   }
     ).then((result) => {
-      console.log("descriptionn update ");
+      
     }).catch((err)=>{
       console.log("err", err);
     })
@@ -121,7 +121,7 @@ export const EditFundraiser = () => {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
+          
             setUrl(url);
           });
       }
@@ -142,7 +142,7 @@ const updateFundraiserImage = (e) => {
   }
 }
   ).then((result) => {
-    console.log(result,"your fundraiser img update ");
+    
   }).catch((err)=>{
     console.log("err", err);
   })
