@@ -34,6 +34,9 @@ function CategoryByType() {
             console.log(err);
           });
       }, [id]);
+    const handleFundraiser = (fundId) =>{
+      history.push(`/fundraiserView/${fundId}`)
+    }
     return (
         <div className="Main-Topfundraiser">
             
@@ -67,7 +70,7 @@ function CategoryByType() {
         {cate &&
             cate.map((data,index) => {
                 
-            return <div key = {index} className="col-lg-4 col-md-12">
+            return <div key = {index} className="col-lg-4 col-md-12" onClick={()=>handleFundraiser(data.id)}>
                 <div className="mainViewfundraiser">
                     <img src={data.img} alt='Photo not found' alt="NOT FOUND"/>
                     <div className="mainViewfundraiserText">

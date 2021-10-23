@@ -3,6 +3,7 @@ const cors = require("cors");
 const db = require("./db/db");
 const socket = require('socket.io')
 const app = express();
+const { instrument } = require("@socket.io/admin-ui")
 app.use(cors());
 app.use(express.json());
 const PORT = process.env.PORT || 5000;
@@ -44,8 +45,11 @@ const server = app.listen(PORT, () => {
     console.log(`Server On ${PORT}`);
 });
 
-const io = socket(server, { cors: { origin: "*" } })
-
+const io = socket(server, { cors: { origin: ["https://admin.socket.io"],
+credentials: true } })
+instrument(io, {
+    auth: false
+  });
 app.set('socketio', io);   // exporting socket io to all files - global ussage in all app files
 
 io.on("connection", (socket) => {
