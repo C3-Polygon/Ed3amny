@@ -73,6 +73,9 @@ const FundRaiserView = () => {
     dispatch(setPostId(id));
     history.push("/donation");
   };
+  const handleCategory = (cateId)=>{
+    history.push(`/category/${cateId}`)
+  }
   return (
     <>
       <div className="container">
@@ -124,7 +127,8 @@ const FundRaiserView = () => {
                       <img src={elem.img} />
                       <div className="context-text-funRaiserView">
                         <p className="create-fundRaiserView">
-                          Created : {elem.created_at}{" "}
+                          Created : {elem.created_at}{" "} 
+                          <p onClick={()=>handleCategory(elem.typee)}>{elem.namee}</p>
                         </p>
                         <p> {elem.descriptionn} </p>
 
