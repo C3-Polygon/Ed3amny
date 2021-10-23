@@ -111,7 +111,7 @@ function App() {
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
           {/* <Route exact path="/chat/:roomname/:username" component={Appmain} /> */}
           <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
-          <Route exact path="/adminPage" component={MainPage} />
+          <Route exact path="/admin" component={MainPage} />
           <Route exact path="/donation" component={Donation} />
           <Route exact path="/allfundraiser" component={GetAllFundraiser} />
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />

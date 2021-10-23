@@ -168,7 +168,7 @@ const FundRaiserView = () => {
                         </button>
                       </div>
                         <div className='contributors-title'>
-                        <h5 className="text-uppercase">Donors ({contributors.length})</h5>
+                        <h5 className="text-uppercase">Donors ({contributors && contributors.length})</h5>
                             {contributors &&
                             contributors.map((elem, index) => {
                             return (

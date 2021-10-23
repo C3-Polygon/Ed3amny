@@ -49,7 +49,7 @@ const getOwnUserContributionsById = (req, res) => {
                 err: err
             });
         } else {
-            res.status(500).json({
+            return res.status(500).json({
                 success: false,
                 message: `Server Error`,
             });

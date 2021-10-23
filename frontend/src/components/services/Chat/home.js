@@ -4,7 +4,7 @@ import Chat from "./chat";
 // import { Link } from "react-router-dom";
 
 function Home({ socket }) {
-  let username = localStorage.getItem("CurrentUserId");
+  let username = localStorage.getItem('customerName')
   let roomname = localStorage.getItem("CurrentUserId");
   const [show, setShow] = useState();
   const sendData = () => {
