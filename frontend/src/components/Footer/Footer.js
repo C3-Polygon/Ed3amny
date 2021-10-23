@@ -2,6 +2,7 @@ import React , { useState, useEffect }from "react"
 import './Footer.css';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import {AiFillFacebook ,AiFillInstagram ,AiFillTwitterSquare} from 'react-icons/ai';
 
 /**axios.get(`http://localhost:5000/fundraiser/categorys/categorys/categorys`). */
 const Footer = () => {
@@ -30,16 +31,8 @@ useEffect(() => {
                 </div>
 
 
-                <div className="categorys">
-                    {/* <ul>
-                        {getcategorys&&getcategorys.map((ele)=>{
-                            return(
-                                <li onClick={()=>{cate(ele.id)}}> <a>{ele.namee}</a></li>
-                            )
-                        })}
-                    </ul> */}
-                
-                <h5 className="">FUNDRAISE FOR</h5>
+                <div className="categorys">   
+                <h5>FUNDRAISE FOR</h5>
                 <ul className="list-unstyled">
                     <li> {getcategorys&&getcategorys.map((ele)=>{
                             return(
@@ -52,14 +45,29 @@ useEffect(() => {
 
 
                 <div className="option">
-                    <h5>Link</h5>
+                    <h5>RESOURCES</h5>
+                    <ul className="list-unstyled">
+                    <li>Help center</li>
+                    <li>Blog</li>
+                    <li>GoFundMe Stories</li>
+                    <li>Press center</li>
+                    
+                </ul>
                 </div>
             </div>
             
     
 
-        <div className="footer-copyright text-center py-3">© 2021 Copyright:
+        <div class="copy-footer">
+            <div>
+            © 2021 Copyright: 
             <a href="#!"> Ed3amny</a>
+            </div>
+            <div className='icon-footer'>
+               <AiFillFacebook className='facebook'/>
+               <AiFillTwitterSquare className='facebook'/>
+               <AiFillInstagram/>
+            </div>
         </div>
         </div>
     </footer>

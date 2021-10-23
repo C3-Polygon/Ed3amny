@@ -2,9 +2,9 @@ const connection = require("../../db/db");
 
 //create new fundraiser
 const createNewFundraiser = (req, res) => {
-    const { userId, title, country, typee, targett, img, descriptionn,phoneNumber } = req.body;
+    const { userId, title, country, typee, targett, img, descriptionn, phoneNumber } = req.body;
     const queryString = `INSERT INTO  campaigns (userId, title , country, typee, targett, img, descriptionn,phoneNumber) VALUES (?,?,?,?,?,?,?,?)`;
-    const data = [userId, title, country, typee, targett, img, descriptionn,phoneNumber];
+    const data = [userId, title, country, typee, targett, img, descriptionn, phoneNumber];
     connection.query(queryString, data, (err, result) => {
         console.log(data, "dataaaaaaaaa");
         console.log("Erroe", err);
@@ -168,7 +168,7 @@ const getTopFundraiserByCurrentTarget = (req, res) => {
 
     //   SELECT * FROM campaigns ORDER BY current_target DESC LIMIT 3;
 
-    const query = `SELECT * FROM campaigns ORDER BY current_target DESC LIMIT 3`;
+    const query = `SELECT * FROM campaigns where is_deleted=1  ORDER BY current_target DESC LIMIT 3`;
     connection.query(query, (error, result) => {
         if (error) {
             res.status(500).json({
@@ -236,7 +236,7 @@ const getTotalsCategories = (req, res) => {
                 message: "All Data",
                 allData: response
             })
-            
+
         }
     })
 }

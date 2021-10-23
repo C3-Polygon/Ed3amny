@@ -1,3 +1,49 @@
 .userAvatar {
     border-radius: 50%;
+    margin-left: 10px;
+}
+
+.Main-nav {
+    border-bottom: 1px solid #ccc;
+}
+
+.navLogin {
+    text-decoration: none;
+    padding: 5px 15px;
+    color: #666;
+}
+
+.navLogin:hover {
+    color: #02a95c;
+}
+
+.navsignup {
+    text-decoration: none;
+    color: #02a95c;
+    border: 2px solid #02a95c;
+    padding: 5px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.navsignup:hover {
+    color: #02a95c;
+}
+
+.Main-nav .form-control {
+    width: 30%;
+}
+
+.Navlogo {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 772px) {
+    .Main-nav {
+        margin-bottom: 50px;
+    }
 }

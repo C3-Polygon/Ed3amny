@@ -39,9 +39,9 @@ const Donation = () => {
             <hr></hr>
             <div className="image-title-container">
               <img src={state.img} />
-              <h2>You're supporting {state1.title}</h2>
+              <p>You're supporting <strong>{state1.title}</strong></p>
             </div>
-            <h4>Enter your donation</h4>
+            <h6>Enter your donation</h6>
             <div className="dollar-right">
               <input
                 type="number"
@@ -55,8 +55,8 @@ const Donation = () => {
             <hr></hr>
             <Stripe />
             <p>
-              By continuing, you agree with GoFundMe terms and privacy policy.
-              Potato PotatoPotato PotatoPotatoPotatoPotatoPotatoPotatoPotatoPotatoPotatoPotato
+              Tip GoFundMe Services
+              We have pre-set a 10% contribution for GoFundMe. Your contribution helps us provide a safe and reliable fundraising service. You can select a different percentage from the drop-down menu or eliminate this contribution by clicking on the link below.
             </p>
             <hr></hr>
 
@@ -73,7 +73,7 @@ const Donation = () => {
                   </div>
                   <hr></hr>
                   <div className='total-donation'>
-                       <p>total donation</p>
+                       <p>Total due today</p>
                        <p> ${state2.amount} </p>
                   </div>
 

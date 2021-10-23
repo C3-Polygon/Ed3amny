@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import './Donation.css';
 
 
 const CARD_OPTIONS = {
@@ -91,11 +92,11 @@ const state1 = useSelector((state) => {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button>DONATE</button>
+          <button className='donate'>DONATE NOW</button>
         </form>
       ) : (
         <div>
-          <h2>Thank You For Your Donation</h2>
+          <h2 className='donate-done'>Thank You For Your Donation</h2>
         </div>
       )}
     </>

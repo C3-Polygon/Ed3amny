@@ -16,6 +16,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { setPostId } from "../../reducers/Donation/PostId";
 import { useLocation } from "react-router";
+
+import { FaHandHoldingMedical , FaMobileAlt } from 'react-icons/fa';
+import {RiSecurePaymentFill} from 'react-icons/ri';
 import {
   AiOutlineDownload,
   AiOutlineMoneyCollect,
@@ -127,6 +130,8 @@ const FundRaiserView = () => {
                           Created : {elem.created_at}{" "}
                         </p>
                         <p> {elem.descriptionn} </p>
+
+                        <hr></hr>
                       </div>
 
                       <div className="content">{/* <Stripe /> */}</div>
@@ -186,6 +191,37 @@ const FundRaiserView = () => {
               })}
           </div>
         </div>
+                                <div className="features">
+
+
+
+          <div className="containerr">
+            <div className="feat">
+            <FaHandHoldingMedical className='icons'/>
+                <h5>QUALITY EQUIPMENT</h5>
+                    <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. expedita
+                    voluptatum, ipsum sit dolor exercitationem temporibus qui!
+                      </p>
+                      </div>
+                        <div className="feat">
+                        <FaMobileAlt className='icons'/>
+                        <h5>QUALITY EQUIPMENT</h5>
+                        <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. expedita
+                        voluptatum, ipsum sit dolor exercitationem temporibus qui!
+                        </p>
+                        </div>
+                        <div className="feat">
+                        <RiSecurePaymentFill className='icons'/>
+                        <h5>QUALITY EQUIPMENT</h5>
+                      <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. expedita
+                    voluptatum, ipsum sit dolor exercitationem temporibus qui!
+                    </p>
+                </div>
+              </div>
+          </div>
       </div>
     </>
   );
