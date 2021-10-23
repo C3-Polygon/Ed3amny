@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./accountSettings.css";
+import "./AccountSettings.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";

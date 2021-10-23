@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS users(
     id INT AUTO_INCREMENT NOT NULL,
     firstName VARCHAR(255),
     lastName VARCHAR(255),
-    age INT(3),
+    age INT(3),   is now varchar 255
     img BLOB(5120),
     email VARCHAR(255) UNIQUE NOT NULL,
     country VARCHAR(255),
