@@ -26,7 +26,7 @@ function Stories() {
                   <Carousel.Item className="">
                     <div className='Slider-Show'>
                     <div className='fundmeText'>
-                      <h5>GOFUNDME FUNDRAISING STORIES</h5>
+                      <h5>ED3AMNY FUNDRAISING STORIES</h5>
                       <h2>{data.namee}</h2>
                     <p>{data.descriptionn}</p>
                     </div>

@@ -1,251 +1,253 @@
-import React, { useState, useEffect } from "react";
-import "./Navbar.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BsBellFill, BsSearch, BsGrid3X3GapFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setToken } from "../../reducers/login/token";
-import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
-import { setUserId } from "../../reducers/login/userId";
-import Dropdown from "react-bootstrap/Dropdown";
-import axios from "axios";
-import Categories from '../categories/Categories';
-import AllCategory from "../AllCategory/AllCategory";
-import {setText1} from "../../reducers/search/searchReducer"
-// import token from "../../reducers/login/token";
-// import Signup from '../Auth/signup/signup';
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal"
-import "../Header/Dropdown/Fundraiser/CreatefundRaiser";
+// import React, { useState, useEffect } from "react";
+// import "./Navbar.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import { Link } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useHistory } from "react-router-dom";
+// import { setToken } from "../../reducers/login/token";
+// import { setIsLoggedIn } from "../../reducers/login/isLoggedIn";
+// import Dropdown from "react-bootstrap/Dropdown";
+// import axios from "axios";
+// import Categories from '../categories/Categories';
+// import {setText1} from "../../reducers/search/searchReducer"
+// import Modal from "react-bootstrap/Modal"
+// import "../Header/Dropdown/Fundraiser/CreatefundRaiser";
+// import { BsSearch} from "react-icons/bs";
 
-const Navbar = () => {
-  const [title, setTitle] = useState([]);
-  const [text, setText] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const tokenSave = localStorage.getItem("token");
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const state = useSelector((state) => {
-    return { isLoggedIn: state.isLoggedIn.isLoggedIn };
-  });
-  const state1 = useSelector((state1) => {
-    return { token: state1.token_1.token };
-  });
-  const state2 = useSelector((state2) => {
-    return { userId: state2.userId.userId };
-  });
-  const state3 = useSelector((state3) => {
-    return { userAvatar: state3.userAvatar.userAvatar };
-  });
+// // import { setUserId } from "../../reducers/login/userId";
+// // import AllCategory from "../AllCategory/AllCategory";
+// // import Button from "react-bootstrap/Button";
+// // import token from "../../reducers/login/token";
+// // import Signup from '../Auth/signup/signup';
+// // "react-icons/bs"; BsGrid3X3GapFill BsBellFill
 
-  const [show, setShow] = useState(false);
+// const Navbar = () => {
+//   const [title, setTitle] = useState([]);
+//   const [text, setText] = useState("");
+//   const [suggestions, setSuggestions] = useState([]);
+//   const tokenSave = localStorage.getItem("token");
+//   const history = useHistory();
+//   const dispatch = useDispatch();
+//   const state = useSelector((state) => {
+//     return { isLoggedIn: state.isLoggedIn.isLoggedIn };
+//   });
+//   const state1 = useSelector((state1) => {
+//     return { token: state1.token_1.token };
+//   });
+//   const state2 = useSelector((state2) => {
+//     return { userId: state2.userId.userId };
+//   });
+//   const state3 = useSelector((state3) => {
+//     return { userAvatar: state3.userAvatar.userAvatar };
+//   });
+
+//   const [show, setShow] = useState(false);
  
 
-  const logout = () => {
-    localStorage.clear();
-    history.push("/");
-    dispatch(setToken(""));
-    dispatch(setIsLoggedIn(false));
-  };
+//   const logout = () => {
+//     localStorage.clear();
+//     history.push("/");
+//     dispatch(setToken(""));
+//     dispatch(setIsLoggedIn(false));
+//   };
 
-  useEffect(() => {
-    const loadTitle = async () => {
-      const response = await axios.get(
-        `http://localhost:5000/search?name=${text}`
-      );
-      console.log("response.data.search", response.data.search);
-      setTitle(response.data.search);
-    };
-    loadTitle();
-  }, []);
+//   useEffect(() => {
+//     const loadTitle = async () => {
+//       const response = await axios.get(
+//         `http://localhost:5000/search?name=${text}`
+//       );
+//       console.log("response.data.search", response.data.search);
+//       setTitle(response.data.search);
+//     };
+//     loadTitle();
+//   }, []);
 
-  const onSuggestHandler = (text) => {
-    setText(text);
-    setSuggestions([]);
-  };
+//   const onSuggestHandler = (text) => {
+//     setText(text);
+//     setSuggestions([]);
+//   };
 
-  const onChangeHandler = (text) => {
-    setText(text);
-    let matches = [];
-    if (text.length > 0) {
-      matches = title.filter((elm) => {
-        const regex = new RegExp(`${text}`, "gi");
-        return elm.title.match(regex);
-      });
-    }
-    setSuggestions(matches);
-  };
+//   const onChangeHandler = (text) => {
+//     setText(text);
+//     let matches = [];
+//     if (text.length > 0) {
+//       matches = title.filter((elm) => {
+//         const regex = new RegExp(`${text}`, "gi");
+//         return elm.title.match(regex);
+//       });
+//     }
+//     setSuggestions(matches);
+//   };
 
-  const searchResult = () =>{
-    dispatch(setText1(text))
-    history.push('/search')
-  }
+//   const searchResult = () =>{
+//     dispatch(setText1(text))
+//     history.push('/search')
+//   }
 
-  return (
-    <div className="Main-Nav">
-      <div className="container">
-        <div className="navbar">
+//   return (
+//     <div className="Main-Nav">
+//       <div className="container">
+//         <div className="navbar">
           
-             <div className="search-bar">
-            {/*  */}
+//              <div className="search-bar">
+//             {/*  */}
 
-              <p onClick={()=>{setShow(!show)}}>Search</p>
-            <BsSearch className="search" />
+//               <p onClick={()=>{setShow(!show)}}>Search</p>
+//             <BsSearch className="search" />
 
-            {show && 
-                <>
+//             {show && 
+//                 <>
           
-                <Modal
-                  show={show}
-                  onHide={() => setShow(false)}
-                  dialogClassName="modal-90w"
-                  aria-labelledby="example-custom-modal-styling-title"
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title id="example-custom-modal-styling-title">
-                    <BsSearch/> Search GoFundMe
-                    </Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                  <input 
-              type="search" className='Search-input'
-              placeholder="Find Fundrasier by title"
-              onChange={(e) => {
-                onChangeHandler(e.target.value);
-              }}
-              value={text}
-              onBlur={() => {
-                setTimeout(() => {
-                  setSuggestions([]);
-                }, 100);
-              }}  
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  searchResult();
-                }
-              }}
-            />
-            {suggestions &&
-              suggestions.map((elm, i) => {
-                return (
-                  <div key={i} onClick={() => onSuggestHandler(elm.title)}>
-                    {elm.title}
-                  </div>
-                );
-              })}
-                  </Modal.Body>
-                </Modal>
-              </>
+//                 <Modal
+//                   show={show}
+//                   onHide={() => setShow(false)}
+//                   dialogClassName="modal-90w"
+//                   aria-labelledby="example-custom-modal-styling-title"
+//                 >
+//                   <Modal.Header closeButton>
+//                     <Modal.Title id="example-custom-modal-styling-title">
+//                     <BsSearch/> Search Ed3amny
+//                     </Modal.Title>
+//                   </Modal.Header>
+//                   <Modal.Body>
+//                   <input 
+//               type="search" className='Search-input'
+//               placeholder="Find Fundrasier by title"
+//               onChange={(e) => {
+//                 onChangeHandler(e.target.value);
+//               }}
+//               value={text}
+//               onBlur={() => {
+//                 setTimeout(() => {
+//                   setSuggestions([]);
+//                 }, 100);
+//               }}  
+//               onKeyPress={(e) => {
+//                 if (e.key === "Enter") {
+//                   searchResult();
+//                 }
+//               }}
+//             />
+//             {suggestions &&
+//               suggestions.map((elm, i) => {
+//                 return (
+//                   <div key={i} onClick={() => onSuggestHandler(elm.title)}>
+//                     {elm.title}
+//                   </div>
+//                 );
+//               })}
+//                   </Modal.Body>
+//                 </Modal>
+//               </>
             
-            }
-          </div>
-          <div>
-          <Categories/>
-          </div>
-          <h5 onClick={() => history.push("/")}>Ed3amny</h5>
+//             }
+//           </div>
+//           <div>
+//           <Categories/>
+//           </div>
+//           <h5 onClick={() => history.push("/")}>Ed3amny</h5>
             
-          <div>
-            <div className="navbar">
-              {state1.token || tokenSave || state.isLoggedIn ? (
-                <div className="navLinkOption">
-                  <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic" >  
-                     <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
-                    </Dropdown.Toggle>
+//           <div>
+//             <div className="navbar">
+//               {state1.token || tokenSave || state.isLoggedIn ? (
+//                 <div className="navLinkOption">
+//                   <Dropdown>
+//                     <Dropdown.Toggle id="dropdown-basic" >  
+//                      <img src={state3.userAvatar} alt="xxx " width="50px" height="50px" className="userAvatar"></img>
+//                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=> history.push("/Drop/AccountSettings")}>
-                        Account Settings
-                      </Dropdown.Item>
+//                     <Dropdown.Menu>
+//                       <Dropdown.Item onClick={()=> history.push("/Drop/AccountSettings")}>
+//                         Account Settings
+//                       </Dropdown.Item>
 
-                      <Dropdown.Item onClick={()=> history.push("/Contributions/Contributions/Contributions/Contributions")}>
-                        Donations You've Made
-                      </Dropdown.Item>
+//                       <Dropdown.Item onClick={()=> history.push("/Contributions/Contributions/Contributions/Contributions")}>
+//                         Donations You've Made
+//                       </Dropdown.Item>
 
-                      <Dropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>
-                        Your Fundraisers
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={()=> history.push("/fundraiser")}>
-                        Start a Fundraiser
-                      </Dropdown.Item>
+//                       <Dropdown.Item onClick={()=> history.push("/Drop/YourFundraisers")}>
+//                         Your Fundraisers
+//                       </Dropdown.Item>
+//                       <Dropdown.Item onClick={()=> history.push("/fundraiser")}>
+//                         Start a Fundraiser
+//                       </Dropdown.Item>
 
-                      {/* <Dropdown.Item onClick={()=> history.push("/Drop/DonateForSpecific")}>
-                        Specific Donation
-                      </Dropdown.Item> */}
+//                       {/* <Dropdown.Item onClick={()=> history.push("/Drop/DonateForSpecific")}>
+//                         Specific Donation
+//                       </Dropdown.Item> */}
 
-                      <Dropdown.Item>
-                       <Link to='/Drop/Blood/BloodPost/Create'>Ask For a blood donation</Link> 
-                      </Dropdown.Item>
+//                       <Dropdown.Item>
+//                        <Link to='/Drop/Blood/BloodPost/Create'>Ask For a blood donation</Link> 
+//                       </Dropdown.Item>
                       
-                      <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>
-              ) : (
-                <>
-                   <Link to="/login" className="navLogin">
-                  Sign in
-                </Link>
-                <Link to='/signup' className="navsignup">Start a GoFundMe</Link></>
-              )
+//                       <Dropdown.Item onClick={logout}>Signout</Dropdown.Item>
+//                     </Dropdown.Menu>
+//                   </Dropdown>
+//                 </div>
+//               ) : (
+//                 <>
+//                    <Link to="/login" className="navLogin">
+//                   Sign in
+//                 </Link>
+//                 <Link to='/signup' className="navsignup">Ed3amny now</Link></>
+//               )
               
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//               }
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
-export default Navbar;
+// export default Navbar;
 
-/*
-return (
-    <>
-      {test.isLoggedIn || a ? (
-        <>
-          <div className="container">
-            <div className="navbar">
-              <h5>LogoName</h5>
-              <div className="search-bar">
-                <input type="search" placeholder="Search Here ..." />
-                <BsSearch className="search" />
-              </div>
-              <div>
-                <BsBellFill />
-                <BsGrid3X3GapFill className="small-media" />
-                <button onClick={logout}>Logout</button>
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-         <div className="container">
-            <div className="navbar">
-              <h5>LogoName</h5>
-              <div className="search-bar">
-                <input type="search" placeholder="Search Here ..." />
-                <BsSearch className="search" />
-              </div>
-              <div>
-                <BsBellFill />
-                <BsGrid3X3GapFill className="small-media" />
-                <button onClick={loginsender}>login</button>
-                <Link to="/login">Login</Link>
-              </div>
-            </div>
-          </div>
+// /*
+// return (
+//     <>
+//       {test.isLoggedIn || a ? (
+//         <>
+//           <div className="container">
+//             <div className="navbar">
+//               <h5>LogoName</h5>
+//               <div className="search-bar">
+//                 <input type="search" placeholder="Search Here ..." />
+//                 <BsSearch className="search" />
+//               </div>
+//               <div>
+//                 <BsBellFill />
+//                 <BsGrid3X3GapFill className="small-media" />
+//                 <button onClick={logout}>Logout</button>
+//               </div>
+//             </div>
+//           </div>
+//         </>
+//       ) : (
+//         <>
+//          <div className="container">
+//             <div className="navbar">
+//               <h5>LogoName</h5>
+//               <div className="search-bar">
+//                 <input type="search" placeholder="Search Here ..." />
+//                 <BsSearch className="search" />
+//               </div>
+//               <div>
+//                 <BsBellFill />
+//                 <BsGrid3X3GapFill className="small-media" />
+//                 <button onClick={loginsender}>login</button>
+//                 <Link to="/login">Login</Link>
+//               </div>
+//             </div>
+//           </div>
     
-        </>
-      )}
-    </>
-  );
+//         </>
+//       )}
+//     </>
+//   );
 
 
- <button onClick={logout}>
-                    log out
-                  </button>
-*/
+//  <button onClick={logout}>
+//                     log out
+//                   </button>
+// */

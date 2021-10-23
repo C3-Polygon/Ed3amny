@@ -2,28 +2,28 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { BsBellFill, BsSearch, BsGrid3X3GapFill } from "react-icons/bs";
 import axios from "axios";
 import "./Navigationbar.css"
+// import { BsBellFill, BsSearch, BsGrid3X3GapFill } from "react-icons/bs";
 
 //reducers
 import {setToken} from "../reducers/login/token"
 import {setIsLoggedIn} from "../reducers/login/isLoggedIn"
-import {setUserId} from "../reducers/login/userId"
+// import {setUserId} from "../reducers/login/userId"
 import {setText1} from "../reducers/search/searchReducer"
-import token from "../reducers/login/token";
+// import token from "../reducers/login/token";
 
 //components
 import Categories from "../components/categories/Categories"
-import Signup from "../components/Auth/signup/signup"
-import AllCategory from "../components/AllCategory/AllCategory"
+// import Signup from "../components/Auth/signup/signup"
+// import AllCategory from "../components/AllCategory/AllCategory"
 import "../components/Header/Dropdown/Fundraiser/CreatefundRaiser"
 
 //bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal"
+// import Dropdown from "react-bootstrap/Dropdown";
+// import Button from "react-bootstrap/Button";
+// import Modal from "react-bootstrap/Modal"
 import Navbar from "react-bootstrap/Navbar"
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
@@ -48,15 +48,15 @@ const Navigationbar = () => {
     const state1 = useSelector((state1) => {
       return { token: state1.token_1.token };
     });
-    const state2 = useSelector((state2) => {
-      return { userId: state2.userId.userId };
-    });
+    // const state2 = useSelector((state2) => {
+    //   return { userId: state2.userId.userId };
+    // });
     const state3 = useSelector((state3) => {
       return { userAvatar: state3.userAvatar.userAvatar };
     });
 
 
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
  
 
     const logout = () => {
@@ -71,16 +71,16 @@ const Navigationbar = () => {
         const response = await axios.get(
           `http://localhost:5000/search?name=${text}`
         );
-        console.log("response.data.search", response.data.search);
+
         setTitle(response.data.search);
       };
       loadTitle();
     }, []);
   
-    const onSuggestHandler = (text) => {
-      setText(text);
-      setSuggestions([]);
-    };
+    // const onSuggestHandler = (text) => {
+    //   setText(text);
+    //   setSuggestions([]);
+    // };
   
     const onChangeHandler = (text) => {
       setText(text);

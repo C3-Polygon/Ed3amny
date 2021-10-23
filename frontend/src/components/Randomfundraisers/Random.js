@@ -29,7 +29,7 @@ function Random() {
     <>
       <div className="Main-Topfundraiser">
         <div className="container">
-          <h2>Find a GoFundMe Randomly</h2>
+          <h2>Find a random fundraiser</h2>
           <div className="row">
             {random &&
               random.map((data) => {
@@ -42,7 +42,7 @@ function Random() {
                     }}
                   >
                     <div className="mainViewfundraiser">
-                      <img src={data.img} alt="not found photo" />
+                      <img src={data.img} alt="no photo found" />
                       <div className="mainViewfundraiserText">
                         <h5>{data.title}</h5>
                         <p>{data.descriptionn}</p>

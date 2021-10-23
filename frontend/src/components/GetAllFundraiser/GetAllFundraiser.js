@@ -3,8 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import axios from "axios";
 import { useHistory } from "react-router";
-import { AiFillCaretRight ,AiFillCaretLeft } from "react-icons/ai";
+import { AiFillCaretLeft } from "react-icons/ai";
 import './GetAllFundraiser.css';
+// import { AiFillCaretRight ,AiFillCaretLeft } from "react-icons/ai";
 
 export const GetAllFundraiser = () => {
   const [fundraiser, setFundraiser] = useState();
@@ -33,7 +34,7 @@ export const GetAllFundraiser = () => {
                     
          <h3>Browse fundraisers</h3>
          <h6>People around the world are raising money for what they are passionate about.</h6>
-                    <button type="button" onClick={()=>{history.push("/fundraiser")}}>Start GoFundMe</button> 
+                    <button type="button" onClick={()=>{history.push("/fundraiser")}}>Ed3amny Now!</button> 
                 </div>
          </div>
           <div className="row">

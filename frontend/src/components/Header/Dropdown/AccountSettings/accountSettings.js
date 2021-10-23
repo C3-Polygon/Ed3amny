@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { storage } from "../../../../FireBase/FireBase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserAvatar } from "../../../../reducers/login/userAvatar";
 // import { AiFillCheckCircle } from "react-icons/ai";
 
@@ -22,11 +22,11 @@ const AccountSettings = () => {
   const [country, setCountry] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(0);
   const [successUpdate, setSuccesssUpdate] = useState("");
-  // const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
+  const [toggle,setToggle]=useState(false)
+  const dispatch = useDispatch();
+  // const [image, setImage] = useState(null);
   // const [gender, setGender] = useState('');
-const [toggle,setToggle]=useState(false)
-const dispatch = useDispatch();
 
 
   useEffect(() => {

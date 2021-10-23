@@ -1,29 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Donation.css";
 import { AiFillCaretLeft, AiFillDollarCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Label } from "semantic-ui-react";
 import Stripe from "../../services/payment/Stripe";
 import {setAmount } from "../../../reducers/Donation/AmountReducer"
+// import { Label } from "semantic-ui-react";
 
 const Donation = () => {
   const history = useHistory()
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
   
   const state = useSelector((state) => {
-    
     return { img: state.img.img };
   });
   const state1 = useSelector((state) => {
-    
     return { title: state.title.title };
   });
   const state2 = useSelector((state) => {
-    
     return { amount: state.amount.amount };
   });
+
   const back = () =>{
     history.goBack();
   }
@@ -34,7 +32,7 @@ const Donation = () => {
         <div className="row">
           <div className="col-lg-9 info-donation">
             <button className="button-go-back" onClick={back}>
-              <AiFillCaretLeft /> Return to fundraiser
+              <AiFillCaretLeft /> Return
             </button>
             <hr></hr>
             <div className="image-title-container">
@@ -55,8 +53,8 @@ const Donation = () => {
             <hr></hr>
             <Stripe />
             <p>
-              Tip GoFundMe Services
-              We have pre-set a 10% contribution for GoFundMe. Your contribution helps us provide a safe and reliable fundraising service. You can select a different percentage from the drop-down menu or eliminate this contribution by clicking on the link below.
+              Tip Ed3amny Services
+              We have pre-set a 10% contribution for Ed3amny. Your contribution helps us provide a safe and reliable fundraising service. You can select a different percentage from the drop-down menu or eliminate this contribution by clicking on the link below.
             </p>
             <hr></hr>
 

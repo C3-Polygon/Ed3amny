@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { BsFillChatRightTextFill } from "react-icons/bs";
 import Chat from "./chat";
+// import { Link } from "react-router-dom";
 
 function Home({ socket }) {
   let username = localStorage.getItem("CurrentUserId");

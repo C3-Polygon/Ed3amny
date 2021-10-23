@@ -10,6 +10,7 @@ function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
   const history = useHistory()
+  
   if(socket.connected===false){
       username=''
       roomname=''

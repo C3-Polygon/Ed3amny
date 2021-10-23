@@ -2,9 +2,10 @@ import React , {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import './signup.css';
+// import Col from 'react-bootstrap/Col';
+
 const Signup = () => {
     const [firstName , setFirstName] = useState('');
     const [lastName , setLastName] = useState('');
@@ -77,7 +78,7 @@ const Signup = () => {
     <Form.Control type="password" placeholder="Confirm Password"/>
 </Form.Group>
 
-<button variant="primary" class="signup-btn"type="submit">
+<button variant="primary" className="signup-btn"type="submit">
    Next
 </button>
 </Form>

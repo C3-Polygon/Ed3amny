@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
-import { Route, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 import axios from "axios";
 import "./FundRaiserView.css";
@@ -28,16 +28,17 @@ import {
 
 const FundRaiserView = () => {
   const [sharePopup, setSharePopup] = useState(false);
-  const [show, setShow] = useState(false);
   const [contributors , setContributors] = useState()
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation()
   const [fundRaiserView, setFundRaiserView] = useState([]);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   let path = `https://localhost:3000/${location.pathname}`
+  
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   // const openSharePopup = () => {
   //   setSharePopup(true);

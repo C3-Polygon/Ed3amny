@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setToken } from "../../../reducers/login/token";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import { setUserAvatar } from "../../../reducers/login/userAvatar";
@@ -35,17 +35,17 @@ export const Login = () => {
     history.push('/ForgotMainPage')
   }
 
-  const state = useSelector((state) => {
-    return { isLoggedIn: state.isLoggedIn.isLoggedIn };
-  });
+  // const state = useSelector((state) => {
+  //   return { isLoggedIn: state.isLoggedIn.isLoggedIn };
+  // });
 
-  const state1 = useSelector((state) => {
-    return { token: state.token_1.token };
-  });
+  // const state1 = useSelector((state) => {
+  //   return { token: state.token_1.token };
+  // });
   
-  const state2 = useSelector((state)=>{
-   return {userAvatar: state.userAvatar.userAvatar}
-  })
+  // const state2 = useSelector((state)=>{
+  //  return {userAvatar: state.userAvatar.userAvatar}
+  // })
 
 
   const loginSender = async (e) => {
@@ -70,7 +70,6 @@ export const Login = () => {
           localStorage.setItem("logoutChecker" , logoutChecker)
           localStorage.setItem("CurrentUserId",res.data.payload.userId)
           history.push("/")
-          console.log("user info", res.data)
         } else throw Error;
       }
     } catch (error) {
@@ -84,14 +83,13 @@ export const Login = () => {
  
   
   const responseFacebook = async(response) => {
-    if (response.status == "unknown") {
+    if (response.status === "unknown") {
       return;
     }
     setData(response);
     if (!response.picture.data.url) {
       return;
     } else {
-      console.log("response" ,response)
     let Facebookimage = response.picture.data.url //fb img
     // let FacebookName = response.name.split(" ").toString().replace(",", "") // firstnamelastname
     let Fname = response.name.split(" ")

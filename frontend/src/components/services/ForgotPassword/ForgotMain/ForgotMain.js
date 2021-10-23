@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./ForgotMain.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+
 const ForgotMainPage = () => {
     const history = useHistory();
   const [emailCheck, setEmailCheck] = useState("");
   const [showEmailCheck, setShowEmailCheck] = useState(false);
-  const [smsCheck, setSmsCheck] = useState("");
+  // const [smsCheck, setSmsCheck] = useState("");
   const [showSmsCheck, setShowSmsCheck] = useState(false);
 
   const emailCheckForSend = () => {
@@ -35,6 +36,7 @@ const ForgotMainPage = () => {
     history.push('/login')
   };
   console.log("showEmailCheck 2", showEmailCheck);
+
   return (
     <>
       {showEmailCheck ? (
@@ -42,7 +44,7 @@ const ForgotMainPage = () => {
           <br />{" "}
           <h1>
             {" "}
-            we will send a new password <br /> on your email " {
+            We will send you a new password <br /> on this email " {
               emailCheck
             } "{" "}
           </h1>
@@ -59,12 +61,12 @@ const ForgotMainPage = () => {
         </div>
       ) : (
         <div>
-          <button onClick={emailCheckForSend}> email help</button>
-          <button onClick={smsCheckForSend}> SMS</button>
+          <button onClick={emailCheckForSend}> By E-mail</button>
+          <button onClick={smsCheckForSend}> By SMS</button>
         </div>
       )}
     </>
   );
-};
+      }
 
 export default ForgotMainPage;

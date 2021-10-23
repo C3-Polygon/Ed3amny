@@ -11,7 +11,7 @@ function Process() {
              <p>{state.cypher}</p> 
           </div>
           <div>
-             <h4>decrypt Data</h4>
+             <h4>Decrypt Data</h4>
              <p>{state.text}</p> 
           </div>
       </div>

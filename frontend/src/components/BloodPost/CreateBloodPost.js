@@ -12,7 +12,7 @@ const CreateBloodPost = (e) => {
     let tokenSave = localStorage.getItem("token");
     let userIdSave = localStorage.getItem("CurrentUserId")
 
-  const [img, setImg] = useState("");
+  // const [img, setImg] = useState("");
   const [title, setTitle] = useState("");
   const [descriptionn, setDescription] = useState("");
   const [url, setUrl] = useState("");

@@ -69,7 +69,7 @@ function CategoryByType() {
                 
             return <div key = {index} className="col-lg-4 col-md-12">
                 <div className="mainViewfundraiser">
-                    <img src={data.img} alt='Photo not found'/>
+                    <img src={data.img} alt='Photo not found' alt="NOT FOUND"/>
                     <div className="mainViewfundraiserText">
                         <h5>{data.title}</h5>
                         <p>{data.descriptionn}</p>

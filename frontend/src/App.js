@@ -1,14 +1,11 @@
 import "./App.css";
 import { Login } from "./components/Auth/login/Login";
-import Chat from "./components/services/Chat/chat";
-import Process from "./components/services/Chat/process";
 import Home from "./components/services/Chat/home";
 import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/signup/signup";
 import CreateFundRaiser from "./components/Header/Dropdown/Fundraiser/CreatefundRaiser";
-import { useEffect, React, useState } from "react";
+import { React} from "react";
 import Section from "./components/section/section";
 import Topfundraiser from "./components/TopFundraiser/Topfundraiser";
 import Stories from "./components/stories/Stories";
@@ -16,7 +13,6 @@ import Leader from "./components/Leader/Leader";
 import Random from "./components/Randomfundraisers/Random";
 import FundRaiserView from "./components/FundRaiserView/FundRaiserView";
 import CategoryByType from "./components/CategoryByType/CategoryByType";
-import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 import Footer from "./components/Footer/Footer";
 import ReadyToStart from "./components/ReadyStart/ReadyToStart";
 import AllCategory from "./components/AllCategory/AllCategory";
@@ -24,19 +20,24 @@ import CreateBloodPost from "./components/BloodPost/CreateBloodPost";
 import MainPage from "./components/DashboradAdmin/MainPage";
 import BloodPostView from "./components/BloodPost/BloodPostView";
 import Donation from "./components/services/payment/Donation";
-import { BsFillChatRightTextFill } from "react-icons/bs";
 import { GetAllFundraiser } from "./components/GetAllFundraiser/GetAllFundraiser";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings"
 import { ToastContainer, toast } from "react-toastify";
 import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/EditFundraiser";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
 import { SearchResults } from "./components/Header/Search/SearchResults";
 import AboutUs from './components/Aboutus/AboutUs';
 import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
+
+// import Chat from "./components/services/Chat/chat";
+// import Navbar from "./components/Navbar/Navbar";
+// import Process from "./components/services/Chat/process";
+// import { BsFillChatRightTextFill } from "react-icons/bs";
+// import axios from "axios";
+// import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 
 const socket = io.connect("http://localhost:5000");
 let userIdSave = localStorage.getItem("CurrentUserId");
@@ -46,29 +47,29 @@ let x = "";
 socket.on("notificationtarget",(data)=>{
   x=data.text
   console.log("notification data",data)
-  if(data.owner==userIdSave){
+  if(data.owner===userIdSave){
     notify(x)
   }
 })
 const notify = () => toast(x)
 
 
-function Appmain(props) {
-  return (
-    <>
-      <div>
-        <Chat
-          username={props.match.params.username}
-          roomname={props.match.params.roomname}
-          socket={socket}
-        />
-      </div>
-    </>
-  );
-}
+// function Appmain(props) {
+//   return (
+//     <>
+//       <div>
+//         <Chat
+//           username={props.match.params.username}
+//           roomname={props.match.params.roomname}
+//           socket={socket}
+//         />
+//       </div>
+//     </>
+//   );
+// }
 
 function App() {
-  let tokenSave = localStorage.getItem("token");
+  // let tokenSave = localStorage.getItem("token");
  
 
   return (

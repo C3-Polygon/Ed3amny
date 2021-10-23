@@ -57,7 +57,7 @@ useEffect(() => {
             
     
 
-        <div class="copy-footer">
+        <div className="copy-footer">
             <div>
             © 2021 Copyright: 
             <a href="#!"> Ed3amny</a>
