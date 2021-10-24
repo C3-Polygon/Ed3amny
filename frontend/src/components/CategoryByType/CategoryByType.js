@@ -66,6 +66,7 @@ function CategoryByType() {
                 )
             })}
             </div>
+            <hr></hr>
             <div className="row">
         {cate &&
             cate.map((data,index) => {
