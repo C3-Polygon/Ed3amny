@@ -41,11 +41,21 @@ function Random() {
                       ViewFundRaiser(data);
                     }}
                   >
-                    <div className="mainViewfundraiser">
+                     {/* Mother of all */}
+                    <div className="mainViewfundraiser">{/* height 800px */}
+                    <div className="ImageDev">
                       <img src={data.img} alt="no photo found" />
+                      </div>
+
                       <div className="mainViewfundraiserText">
+
+                      <div className="TitleDev"> {/* height 100px */}
                         <h5>{data.title}</h5>
+                        </div>
+                        <div className="DescriptionDev">{/* height 200px */}
                         <p>{data.descriptionn.substring(0,255)} ...</p>
+                        </div>
+                        
                         <ProgressBar
                           variant="success"
                           now={Math.round(

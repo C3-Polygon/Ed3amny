@@ -42,7 +42,7 @@ import { useHistory } from "react-router-dom";
                             <div className="TitleDev"> {/* height 100px */}
                             <h5>{data.title}</h5>
                             </div>
-                            <div className="DescriptionDev">{/* height 250px */}
+                            <div className="DescriptionDev">{/* height 200px */}
                             <p>{data.descriptionn}</p>
                             </div>
                             {/* height 50px   if needed add dev we will see*/}
