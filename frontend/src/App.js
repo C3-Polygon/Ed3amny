@@ -31,7 +31,6 @@ import AboutUs from './components/Aboutus/AboutUs';
 import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
-
 // import Chat from "./components/services/Chat/chat";
 // import Navbar from "./components/Navbar/Navbar";
 // import Process from "./components/services/Chat/process";
@@ -112,6 +111,7 @@ function App() {
           {/* <Route exact path="/chat/:roomname/:username" component={Appmain} /> */}
           <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
           <Route exact path="/admin" component={MainPage} />
+          {/* <Route exact path="/admin/createstory" component={AddStory} /> */}
           <Route exact path="/donation" component={Donation} />
           <Route exact path="/allfundraiser" component={GetAllFundraiser} />
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
@@ -125,7 +125,7 @@ function App() {
         </Switch>
       </div>
      
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

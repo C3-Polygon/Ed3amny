@@ -107,7 +107,7 @@ const Navigationbar = () => {
         <Navbar bg="light" expand="lg" className='Main-nav'>
   <Container>
     
-    <Navbar.Brand className='Navlogo' onClick={()=> history.push('/')}><img src={Edaamny} alt="xxx " width="50px" height="50px" className="userAvatar"></img>Ed3amny</Navbar.Brand>
+    <Navbar.Brand className='Navlogo' onClick={()=> history.push('/')}>Ed3amny</Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
       <Nav
