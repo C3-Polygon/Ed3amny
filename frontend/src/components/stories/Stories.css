@@ -14,13 +14,8 @@
     margin: 100px;
 }
 
-.Slider-Show img {
-    max-width: 500px;
-    height: 300px;
-}
-
 .fundmeText {
-    width: 500px;
+    width: 100%;
 }
 
 .carousel-control-next-icon,
@@ -52,12 +47,19 @@
     color: #666;
 }
 
-@media only screen and (max-width: 772px) {
+@media only screen and (max-width: 1040px) {
     .Slider-Show {
         flex-direction: column;
     }
     .carousel-control-next-icon,
     .carousel-control-prev-icon {
         display: none;
+    }
+    .fundmeText {
+        width: 100%;
+    }
+    .Slider-Show img {
+        width: 100%;
+        height: 100%;
     }
 }
