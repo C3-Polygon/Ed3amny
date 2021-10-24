@@ -45,7 +45,7 @@ function Random() {
                       <img src={data.img} alt="no photo found" />
                       <div className="mainViewfundraiserText">
                         <h5>{data.title}</h5>
-                        <p>{data.descriptionn}</p>
+                        <p>{data.descriptionn.substring(0,255)} ...</p>
                         <ProgressBar
                           variant="success"
                           now={Math.round(

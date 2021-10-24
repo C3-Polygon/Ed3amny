@@ -3,7 +3,7 @@ import './section.css';
 import imgheader from './img/image (2).png';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useHistory } from "react-router-dom";
-import { AiFillVideoCamera ,AiOutlineCloseSquare} from "react-icons/ai";
+import { AiFillCaretRight ,AiOutlineCloseSquare} from "react-icons/ai";
 
 function Section() {
 const [showVideo, setShowVideo] = useState(false);
@@ -26,7 +26,7 @@ const history = useHistory();
                             <button onClick={sendToFundraiser} className='btn-success p-2 btn-Start'>Ed3amny now</button>
                         </div>
                         <div className='col-md-6 video-section'>
-                            <AiFillVideoCamera className='video-show' onClick={()=>{setShowVideo(!showVideo)}}/>
+                            <AiFillCaretRight className='video-show' onClick={()=>{setShowVideo(!showVideo)}}/>
                             <p>See how Ed3amny works</p>
                         </div>
                     </div>

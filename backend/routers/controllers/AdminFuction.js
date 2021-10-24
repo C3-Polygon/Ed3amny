@@ -140,6 +140,7 @@ const AcceptFundraisers = (req, res) => {
 
 ///reject the fundraiser
 const rejectedTheFunders = (req, res) => {
+
   const id = req.params.id;
   const select = `SELECT * FROM campaigns where id = ${id}`;
   connection.query(select, (err, response) => {
@@ -153,6 +154,7 @@ const rejectedTheFunders = (req, res) => {
     if (response.length) {
       const reject = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
       connection.query(reject, (err, response) => {
+
         if (err) {
           res.status(500).modulejson({
             success: false,
