@@ -162,7 +162,7 @@ const Navigationbar = () => {
           <NavDropdown.Item onClick={()=> history.push("/fundraiser")}>Start a Fundraiser</NavDropdown.Item>
           <NavDropdown.Item onClick={()=> history.push("/Drop/Blood/BloodPost/Create")}>Ask For a Blood Donation</NavDropdown.Item>
           
-          <NavDropdown.Item disabled onClick={()=> history.push("/Drop/DonateForSpecific")}>Specific Donation</NavDropdown.Item>
+          <NavDropdown.Item  onClick={()=> history.push("/Drop/DonateForSpecific")}>Specific Donation</NavDropdown.Item>
 
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={logout}>
