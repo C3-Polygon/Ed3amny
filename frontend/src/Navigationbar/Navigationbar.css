@@ -9,7 +9,7 @@
 
 .navLogin {
     text-decoration: none;
-    padding: 5px 15px;
+    padding: 10px 15px;
     color: #666;
 }
 
@@ -20,8 +20,8 @@
 .navsignup {
     text-decoration: none;
     color: #02a95c;
-    border: 2px solid #02a95c;
-    padding: 5px 15px;
+    border: 1px solid #02a95c;
+    padding: 10px 15px;
     margin-left: 5px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -35,7 +35,7 @@
 }
 
 .Main-nav .form-control {
-    width: 30%;
+    width: 36%;
 }
 
 .Navlogo {
@@ -48,4 +48,12 @@
     .Main-nav {
         margin-bottom: 50px;
     }
+}
+.nav-link {
+    padding: 10px 15px;
+    color:black;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #ced4da;
 }
