@@ -31,11 +31,21 @@ import { useHistory } from "react-router-dom";
                 result.map((data) => {
                     
                 return <div key = {data.id} onClick={()=>{ViewFundRaiser(data)}} className="col-lg-4 col-md-12">
-                    <div className="mainViewfundraiser">
+                    
+                     {/* Mother of all */}
+                    <div className="mainViewfundraiser"> {/* height 800px */}
+                       <div className="ImageDev"> {/* height 400px */}
                         <img src={data.img} alt='not found photo'/>
+                        </div>
                         <div className="mainViewfundraiserText">
+                            
+                            <div className="TitleDev"> {/* height 100px */}
                             <h5>{data.title}</h5>
+                            </div>
+                            <div className="DescriptionDev">{/* height 250px */}
                             <p>{data.descriptionn}</p>
+                            </div>
+                            {/* height 50px   if needed add dev we will see*/}
                             <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
                             <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
                         </div>
