@@ -36,7 +36,7 @@ import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 // import Process from "./components/services/Chat/process";
 // import { BsFillChatRightTextFill } from "react-icons/bs";
 // import axios from "axios";
-// import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
+import DonateForSpecific from './components/Header/Dropdown/DonateForSpecific/DonateForSpecific';
 
 const socket = io.connect("http://localhost:5000");
 
@@ -103,7 +103,7 @@ function App() {
           </Route>
           <AccountSettings exact path="/Drop/AccountSettings" />
           <YourFundraisers exact path="/Drop/YourFundraisers" />
-          {/* <DonateForSpecific exact path="/Drop/DonateForSpecific" /> */}
+          <DonateForSpecific exact path="/Drop/DonateForSpecific" />
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
           <Route exact path="/category/:id" component={CategoryByType} />
           <Route exact path="/category/allCategory/Category" component={AllCategory}/>
