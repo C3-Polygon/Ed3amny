@@ -4,8 +4,8 @@ const socket = require("socket.io");
 const io = require("../../../server");
 
 const stripePayment = async (req, res) => {
-  const { amount, id, campaign_id, userId, created_at,title } = req.body;
-  
+  const { amount, id, campaign_id, userId, created_at, title } = req.body;
+
   try {
     const payment = await stripe.paymentIntents.create({
       amount: amount,
@@ -14,12 +14,10 @@ const stripePayment = async (req, res) => {
       payment_method: id,
       confirm: true,
     });
-   
 
     if (payment.status == "succeeded") {
-      
       const queryString = `INSERT INTO  contributions (userId , campaign_id, amount, created_at, title  ) VALUES (?,?,?,?,?)`;
-      const data = [userId, campaign_id, amount,created_at, title];
+      const data = [userId, campaign_id, amount, created_at, title];
       connection.query(queryString, data, (err, result) => {
         if (result) {
           const query = `SELECT current_target,targett,userId,title FROM campaigns WHERE id=${campaign_id}`;
@@ -44,19 +42,15 @@ const stripePayment = async (req, res) => {
               if (result1[0].current_target >= result1[0].targett) {
                 const io = req.app.get("socketio"); // importing the socket instance
 
-            
-                io.emit("notificationtarget",{
-                  text:`Congratulations, your ${result1[0].title} has reached its target!`,
-                  owner: result1[0].userId
-                })
-
-               
+                io.emit("notificationtarget", {
+                  text: `Congratulations, your ${result1[0].title} has reached its target!`,
+                  owner: result1[0].userId,
+                });
               }
             });
           });
         }
         if (err) {
-          console.log("Error", err);
           res.json({
             message: "Payment failed",
             success: false,
@@ -65,7 +59,6 @@ const stripePayment = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("Error", error);
     res.json({
       message: "Payment failed",
       success: false,
