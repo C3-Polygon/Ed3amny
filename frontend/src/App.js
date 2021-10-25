@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Signup from "./components/Auth/signup/signup";
 import CreateFundRaiser from "./components/Header/Dropdown/Fundraiser/CreatefundRaiser";
-import { React} from "react";
+import { React } from "react";
 import Section from "./components/section/section";
 import Topfundraiser from "./components/TopFundraiser/Topfundraiser";
 import Stories from "./components/stories/Stories";
@@ -23,12 +23,12 @@ import Donation from "./components/services/payment/Donation";
 import { GetAllFundraiser } from "./components/GetAllFundraiser/GetAllFundraiser";
 import AccountSettings from "./components/Header/Dropdown/AccountSettings/AccountSettings";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { EditFundraiser } from "./components/Header/Dropdown/YourFundraisers/EditFundraiser";
 import YourContributions from "./components/Header/Dropdown/YourContributions/YourContributions";
 import { SearchResults } from "./components/Header/Search/SearchResults";
-import AboutUs from './components/Aboutus/AboutUs';
-import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
+import AboutUs from "./components/Aboutus/AboutUs";
+import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers";
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 import { useSelector } from "react-redux";
@@ -44,91 +44,157 @@ const socket = io.connect("http://localhost:5000");
 
 let userIdSave = localStorage.getItem("CurrentUserId");
 
-let isAdmin = localStorage.getItem("isAdmin")
- console.log(userIdSave,"userIdSave")
-let x = "";
+let x;
 
-socket.on("notificationtarget",(data)=>{
-  // console.log("frontend notification")
-  // console.log(data,"notification data")
-  // console.log(data.owner,"owner")
-  x=data.text
-  if (data.owner == userIdSave){
-    notify()
+socket.on("notificationtarget", (data) => {
+  x = data.text;
+  if (data.owner == userIdSave) {
+    notify();
   }
-})
-const notify = () => toast(x)
-
-
-// function Appmain(props) {
-//   return (
-//     <>
-//       <div>
-//         <Chat
-//           username={props.match.params.username}
-//           roomname={props.match.params.roomname}
-//           socket={socket}
-//         />
-//       </div>
-//     </>
-//   );
-// }
+});
+const notify = () => toast(x);
 
 function App() {
-  // let tokenSave = localStorage.getItem("token");
   const state2 = useSelector((state2) => {
     return { userId: state2.userId.userId };
+  });
+  const state1 = useSelector((state) => {
+       return { token: state.token_1.token };
   });
 
   return (
     <>
       <div>
-        {state2.userId==6 ? (
+        {state2.userId == 6 ? (
           <Switch>
             <Route exact path="/admin" component={MainPage} />
-            </Switch>
+          </Switch>
+        ) : !state1.token  ? (
+          <>
+            <div className="App">
+              <ToastContainer />
+              <Navigationbar />
+              <Switch>
+                <Route exact path="/login">
+                  <Login />{" "}
+                </Route>
+                <Route exact path="/signup">
+                  <Signup />{" "}
+                </Route>
+                <Route exact path="/">
+                  <Home socket={socket} />
+                  <Section />
+                  <BloodPostView />
+                  <Topfundraiser />
+                  <Stories />
+                  <Leader />
+                  <Random />
+                  <AboutUs />
+                  <ReadyToStart />
+                </Route>
+
+                <Route exact path="/category/:id" component={CategoryByType} />
+                <Route
+                  exact
+                  path="/category/allCategory/Category"
+                  component={AllCategory}
+                />
+                <Route
+                  exact
+                  path="/fundraiserView/:id"
+                  component={FundRaiserView}
+                />
+                <Route exact path="/donation" component={Donation} />
+                <Route
+                  exact
+                  path="/allfundraiser"
+                  component={GetAllFundraiser}
+                />
+                <Route exact path="/search" component={SearchResults} />
+                <Route
+                  exact
+                  path="/ForgotMainPage"
+                  component={ForgotMainPage}
+                />
+
+                <Route exact path="*" render={() => "not found"} />
+              </Switch>
+            </div>
+          </>
         ) : (
           <>
-          <div className="App">
-             <ToastContainer />
-             <Navigationbar/>    
-             <Switch>
-          <Route exact path="/login"><Login /> </Route>
-          <Route exact path="/signup"><Signup /> </Route>
-          <Route exact path="/">
-            <Home socket={socket} />
-            <Section />
-            <BloodPostView />
-            <Topfundraiser />
-            <Stories />
-            <Leader />
-            <Random />
-            <AboutUs/>
-            <ReadyToStart />
-          </Route>
-          <AccountSettings exact path="/Drop/AccountSettings" />
-          <YourFundraisers exact path="/Drop/YourFundraisers" />
-          <Route exact path="/fundraiser" component={CreateFundRaiser} />
-          <Route exact path="/category/:id" component={CategoryByType} />
-          <Route exact path="/category/allCategory/Category" component={AllCategory}/>
-          <Route exact path="/fundraiser" component={CreateFundRaiser} />
-          <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
-          <Route exact path="/donation" component={Donation} />
-          <Route exact path="/allfundraiser" component={GetAllFundraiser} />
-          <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
-          <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
-          <Route exact path = "/search" component={SearchResults}/>
-          <Route exact path="/ForgotMainPage" component={ForgotMainPage}/>
-          <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/> 
-          <Route exact path ="*" render={()=>'not found'}/>
-        </Switch>
-        </div>
+            <div className="App">
+              <ToastContainer />
+              <Navigationbar />
+              <Switch>
+                <Route exact path="/login">
+                  <Login />{" "}
+                </Route>
+                <Route exact path="/signup">
+                  <Signup />{" "}
+                </Route>
+                <Route exact path="/">
+                  <Home socket={socket} />
+                  <Section />
+                  <BloodPostView />
+                  <Topfundraiser />
+                  <Stories />
+                  <Leader />
+                  <Random />
+                  <AboutUs />
+                  <ReadyToStart />
+                </Route>
+                <AccountSettings exact path="/Drop/AccountSettings" />
+                <YourFundraisers exact path="/Drop/YourFundraisers" />
+                <Route exact path="/fundraiser" component={CreateFundRaiser} />
+                <Route exact path="/category/:id" component={CategoryByType} />
+                <Route
+                  exact
+                  path="/category/allCategory/Category"
+                  component={AllCategory}
+                />
+                <Route
+                  exact
+                  path="/fundraiserView/:id"
+                  component={FundRaiserView}
+                />
+                <Route exact path="/donation" component={Donation} />
+                <Route
+                  exact
+                  path="/allfundraiser"
+                  component={GetAllFundraiser}
+                />
+                <Route
+                  exact
+                  path="/edityourfundraiser/:id"
+                  component={EditFundraiser}
+                />
+                <Route
+                  exact
+                  path="/Contributions/Contributions/Contributions/Contributions"
+                  component={YourContributions}
+                />
+                <Route exact path="/search" component={SearchResults} />
+                <Route
+                  exact
+                  path="/ForgotMainPage"
+                  component={ForgotMainPage}
+                />
+                <Route
+                  exact
+                  Path="/Drop/Blood/BloodPost/Create"
+                  component={CreateBloodPost}
+                />
+                <Route exact path="*" render={() => "not found"} />
+              </Switch>
+            </div>
           </>
-          
         )}
+        <Footer />
       </div>
     </>
   );
 }
 
 export default App;
+

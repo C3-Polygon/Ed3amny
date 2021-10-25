@@ -42,7 +42,7 @@
 .message span {
     font-size: 0.6rem;
     font-weight: 200;
-    color: #b4b6be;
+    color: #fff;
     padding-left: 0.5rem;
 }
 
@@ -66,6 +66,7 @@
     text-align: end;
     padding-left: 0rem;
     padding-right: 0.5rem;
+    color: #fff;
 }
 
 .chat-message {
@@ -86,10 +87,10 @@
 .send input {
     width: 80%;
     text-decoration: none;
-    background-color: #404450;
     border: none;
     padding-left: 1rem;
     border-radius: 5px 0px 0px 5px;
+
 }
 
 .send input:focus {
@@ -99,6 +100,7 @@
 .send button {
     width: 20%;
     border-radius: 0px 5px 5px 0px;
+
 }
 
 .send button:hover {

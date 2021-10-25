@@ -5,11 +5,24 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { AiFillCaretLeft } from "react-icons/ai";
 import './GetAllFundraiser.css';
+import { useSelector } from "react-redux";
 // import { AiFillCaretRight ,AiFillCaretLeft } from "react-icons/ai";
 
 export const GetAllFundraiser = () => {
   const [fundraiser, setFundraiser] = useState();
   const history = useHistory()
+  const state1 = useSelector((state) => {
+    return { token: state.token_1.token };
+});
+
+    const sendToFundraiser = ()=>{
+        if(state1.token){
+            history.push('/fundraiser')
+        }else{
+            history.push('/signup')
+        }
+    }
+  
   useEffect(() => {
     axios
       .get("http://localhost:5000/fundraiser")
@@ -34,7 +47,7 @@ export const GetAllFundraiser = () => {
                     
          <h3>Browse fundraisers</h3>
          <h6>People around the world are raising money for what they are passionate about.</h6>
-                    <button type="button" onClick={()=>{history.push("/fundraiser")}}>Ed3amny Now!</button> 
+                    <button type="button" onClick={sendToFundraiser}>Ed3amny Now!</button> 
                 </div>
          </div>
           <div className="row">

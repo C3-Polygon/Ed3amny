@@ -1,93 +1,116 @@
-import React , { useState, useEffect }from 'react'
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import './CategoryByType.css'
+import "./CategoryByType.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ProgressBar from 'react-bootstrap/ProgressBar';
-
-
+import ProgressBar from "react-bootstrap/ProgressBar";
+import { useSelector } from "react-redux";
 
 function CategoryByType() {
-    const history = useHistory()
-    const { id } = useParams();
-    const [cate, setCate] = useState();
-    const [categoryname, setCategoryname] = useState();
+  const history = useHistory();
+  const { id } = useParams();
+  const [cate, setCate] = useState();
+  const [categoryname, setCategoryname] = useState();
+  const state1 = useSelector((state) => {
+    return { token: state.token_1.token };
+  });
 
-       
-    useEffect(() => {
-        axios.get(`http://localhost:5000/fundraiser/category/categorys/categorys/${id}`)
-          .then((res) => {
-            setCategoryname(res.data.Data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, [id]);
-
-    useEffect(() => {
-        axios.get(`http://localhost:5000/fundraiser/typee/${id}`)
-          .then((res) => {
-            setCate(res.data.result);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, [id]);
-    const handleFundraiser = (fundId) =>{
-      history.push(`/fundraiserView/${fundId}`)
+  const sendToFundraiser = () => {
+    if (state1.token) {
+      history.push("/fundraiser");
+    } else {
+      history.push("/signup");
     }
-    return (
-        <div className="Main-Topfundraiser">
-            
-        <div className="container">
-            <div className="row category-name-section"> 
-            {categoryname&&categoryname.map((category, index)=>{
-                return(
-                  
-                    <>
-                      <div className='col-lg-6' key={index}>
-                          <h3>{category.namee}</h3>
-                          
-                          <h5>{category.title}</h5>
-                          
-                          <p>{category.decc}</p>
+  };
 
-                          <button onClick={()=>{history.push('/fundraiser')}}>Start a GoFundMe</button>
-                    </div>
-                    {/**Right Section */}
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:5000/fundraiser/category/categorys/categorys/${id}`
+      )
+      .then((res) => {
+        setCategoryname(res.data.Data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
-                    <div className="col-lg-6">
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/fundraiser/typee/${id}`)
+      .then((res) => {
+        setCate(res.data.result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+  const handleFundraiser = (fundId) => {
+    history.push(`/fundraiserView/${fundId}`);
+  };
 
-                        <img src={category.img}/>
+  return (
+    <div className="Main-Topfundraiser">
+      <div className="container">
+        <div className="row category-name-section">
+          {categoryname &&
+            categoryname.map((category, index) => {
+              return (
+                <>
+                  <div className="col-lg-6" key={index}>
+                    <h3>{category.namee}</h3>
 
-                    </div>
-                    </>
-                )
+                    <h5>{category.title}</h5>
+
+                    <p>{category.decc}</p>
+
+                    <button onClick={sendToFundraiser}>Start a GoFundMe</button>
+                  </div>
+                  {/**Right Section */}
+
+                  <div className="col-lg-6">
+                    <img src={category.img} />
+                  </div>
+                </>
+              );
             })}
-            </div>
-            <hr></hr>
-            <div className="row">
-        {cate &&
-            cate.map((data,index) => {
-                
-            return <div key = {index} className="col-lg-4 col-md-12" onClick={()=>handleFundraiser(data.id)}>
-                <div className="mainViewfundraiser">
-                    <img src={data.img} alt='Photo not found' alt="NOT FOUND"/>
-                    <div className="mainViewfundraiserText">
-                        <h5>{data.title}</h5>
-                        <p>{data.descriptionn}</p>
-                        <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
-                        <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
-                    </div>
-                </div>
-                 </div>;
-            })
-            }
-            </div>
         </div>
+        <hr></hr>
+        <div className="row">
+          {cate &&
+            cate.map((data, index) => {
+              return (
+                <div
+                  key={index}
+                  className="col-lg-4 col-md-12"
+                  onClick={() => handleFundraiser(data.id)}
+                >
+                  <div className="mainViewfundraiser">
+                    <img src={data.img} alt="Photo not found" alt="NOT FOUND" />
+                    <div className="mainViewfundraiserText">
+                      <h5>{data.title}</h5>
+                      <p>{data.descriptionn}</p>
+                      <ProgressBar
+                        variant="success"
+                        now={Math.round(
+                          (data.current_target / data.targett) * 100
+                        )}
+                      />
+                      <span className="raised">
+                        ${data.current_target} raised of
+                      </span>{" "}
+                      <span>${data.targett}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+      </div>
     </div>
-    )
+  );
 }
 
-export default CategoryByType
+export default CategoryByType;

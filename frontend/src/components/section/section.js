@@ -4,13 +4,21 @@ import imgheader from './img/image (2).png';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useHistory } from "react-router-dom";
 import { AiFillCaretRight ,AiOutlineCloseSquare} from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 function Section() {
 const [showVideo, setShowVideo] = useState(false);
 const history = useHistory();
+const state1 = useSelector((state) => {
+    return { token: state.token_1.token };
+});
 
     const sendToFundraiser = ()=>{
-        history.push('/fundraiser')
+        if(state1.token){
+            history.push('/fundraiser')
+        }else{
+            history.push('/signup')
+        }
     }
 
     return (
