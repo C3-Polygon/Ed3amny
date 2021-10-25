@@ -8,13 +8,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Share from "../services/Share/shareViaFacebook";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { setImage } from "../../reducers/Donation/ImageReducer";
 import { setTitle } from "../../reducers/Donation/TitleReducer";
 import { setPostId } from "../../reducers/Donation/PostId";
 import { useLocation } from "react-router";
-import { FaHandHoldingMedical , FaMobileAlt } from 'react-icons/fa';
-import {RiSecurePaymentFill} from 'react-icons/ri';
+import { FaHandHoldingMedical, FaMobileAlt } from "react-icons/fa";
+import { RiSecurePaymentFill } from "react-icons/ri";
 import {
   AiOutlineDownload,
   AiOutlineMoneyCollect,
@@ -27,15 +27,16 @@ import {
 // import Card from "react-bootstrap/Card";
 
 const FundRaiserView = () => {
+  let tokenSave = localStorage.getItem('token')
   const [sharePopup, setSharePopup] = useState(false);
-  const [contributors , setContributors] = useState()
+  const [contributors, setContributors] = useState();
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
-  const location = useLocation()
+  const location = useLocation();
   const [fundRaiserView, setFundRaiserView] = useState([]);
-  let path = `https://localhost:3000/${location.pathname}`
-  
+  let path = `https://localhost:3000/${location.pathname}`;
+
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
@@ -48,9 +49,9 @@ const FundRaiserView = () => {
   // };
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/Contribution/contributors/${id}`)
+      .get(`http://localhost:5000/Contribution/contributors/${id}`,{headers: {
+        Authorization: `Bearer ${tokenSave}`}})
       .then((result) => {
-        
         setContributors(result.data.result);
       })
       .catch((err) => console.log(err));
@@ -73,9 +74,9 @@ const FundRaiserView = () => {
     dispatch(setPostId(id));
     history.push("/donation");
   };
-  const handleCategory = (cateId)=>{
-    history.push(`/category/${cateId}`)
-  }
+  const handleCategory = (cateId) => {
+    history.push(`/category/${cateId}`);
+  };
   return (
     <>
       <div className="container">
@@ -91,7 +92,8 @@ const FundRaiserView = () => {
                 />
                 <h1>Help by sharing</h1>
                 <p>
-                  Fundraisers shared on social networks raise faster, up to 5x more!
+                  Fundraisers shared on social networks raise faster, up to 5x
+                  more!
                 </p>
                 <hr></hr>
                 <Share />
@@ -127,8 +129,10 @@ const FundRaiserView = () => {
                       <img src={elem.img} />
                       <div className="context-text-funRaiserView">
                         <p className="create-fundRaiserView">
-                          Created : {elem.created_at}{" "} 
-                          <p onClick={()=>handleCategory(elem.typee)}>{elem.namee}</p>
+                          Created : {elem.created_at}{" "}
+                          <p onClick={() => handleCategory(elem.typee)}>
+                            {elem.namee}
+                          </p>
                         </p>
                         <p> {elem.descriptionn} </p>
 
@@ -167,62 +171,72 @@ const FundRaiserView = () => {
                           Donate now
                         </button>
                       </div>
-                        <div className='contributors-title'>
-                        <h5 className="text-uppercase">Donors ({contributors && contributors.length})</h5>
-                            {contributors &&
-                            contributors.map((elem, index) => {
+                      <div className="contributors-title">
+                        <h5 className="text-uppercase">
+                          Donors ({contributors && contributors.length})
+                        </h5>
+                        {contributors &&
+                          contributors.map((elem, index) => {
                             return (
-                              <div key={index} className='contribut'>
-                                <img src='https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg'/>
-                                
-                                <div  className='price-user'>
-                                 <p>Amount Donated :<strong> ${elem.amount / 100}</strong></p> 
-                                 <p>Donnor: <strong> {elem.firstName} {elem.lastName}</strong></p>
-                               
-                                 <hr></hr>
-                                </div>
+                              <div key={index} className="contribut">
+                                <img src="https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg" />
 
+                                <div className="price-user">
+                                  <p>
+                                    Amount Donated :
+                                    <strong> ${elem.amount / 100}</strong>
+                                  </p>
+                                  <p>
+                                    Donnor:{" "}
+                                    <strong>
+                                      {" "}
+                                      {elem.firstName} {elem.lastName}
+                                    </strong>
+                                  </p>
+
+                                  <hr></hr>
+                                </div>
                               </div>
                             );
                           })}
-                        </div>
+                      </div>
                     </div>
                   </>
                 );
               })}
           </div>
         </div>
-                                <div className="features">
-
-
-
+        <div className="features">
           <div className="containerr">
             <div className="feat">
-            <FaHandHoldingMedical className='icons'/>
-                <h5>QUALITY EQUIPMENT</h5>
-                    <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. expedita
-                    voluptatum, ipsum sit dolor exercitationem temporibus qui!
-                      </p>
-                      </div>
-                        <div className="feat">
-                        <FaMobileAlt className='icons'/>
-                        <h5>QUALITY EQUIPMENT</h5>
-                        <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. expedita
-                        voluptatum, ipsum sit dolor exercitationem temporibus qui!
-                        </p>
-                        </div>
-                        <div className="feat">
-                        <RiSecurePaymentFill className='icons'/>
-                        <h5>QUALITY EQUIPMENT</h5>
-                      <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. expedita
-                    voluptatum, ipsum sit dolor exercitationem temporibus qui!
-                    </p>
-                </div>
-              </div>
+              <FaHandHoldingMedical className="icons" />
+              <h5>QUALITY EQUIPMENT</h5>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                expedita voluptatum, ipsum sit dolor exercitationem temporibus
+                qui!
+              </p>
+            </div>
+            <div className="feat">
+              <FaMobileAlt className="icons" />
+              <h5>QUALITY EQUIPMENT</h5>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                expedita voluptatum, ipsum sit dolor exercitationem temporibus
+                qui!
+              </p>
+            </div>
+            <div className="feat">
+              <RiSecurePaymentFill className="icons" />
+              <h5>QUALITY EQUIPMENT</h5>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                expedita voluptatum, ipsum sit dolor exercitationem temporibus
+                qui!
+              </p>
+            </div>
           </div>
+        </div>
       </div>
     </>
   );

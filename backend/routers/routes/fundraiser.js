@@ -65,13 +65,13 @@ fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
 fundraiserRouter.get("/admin/dashbord/get/getallfundreiser", getTotalsFundreiser)
 
-fundraiserRouter.put("/soft/delete/fundreiser/:id", deleteFundraiserByid)
+fundraiserRouter.put("/soft/delete/fundreiser/:id" ,deleteFundraiserByid)
 
-fundraiserRouter.put("/update/fundraiser/overview/:id", updateOverView)
+fundraiserRouter.put("/update/fundraiser/overview/:id", authentication,updateOverView)
 
-fundraiserRouter.put("/update/fundraiser/story/:id", updatestory);
+fundraiserRouter.put("/update/fundraiser/story/:id", authentication,updatestory);
 
-fundraiserRouter.put("/update/fundraiser/image/:id", updateYourFundraiserImage);
+fundraiserRouter.put("/update/fundraiser/image/:id",authentication, updateYourFundraiserImage);
 
 
 
