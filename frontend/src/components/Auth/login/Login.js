@@ -28,6 +28,7 @@ export const Login = () => {
   const [picture, setPicture] = useState("");
   const [fbmail,setFbmail] = useState("")
   const [fbpass,setFbpass] = useState("")
+  // const [isadmin,setIsadmin] = useState("")
   const dispatch = useDispatch();
 
 
@@ -55,8 +56,11 @@ export const Login = () => {
         email,
         passwordd,
       });
-      if(res.data.payload.email === "15@15.com"){
-        history.push('/admin');
+      if(res.data.payload.email == "admin@admin.com"){
+        // await  setIsadmin(true)
+        dispatch(setUserId(res.data.payload.userId))
+        // await   localStorage.setItem("isAdmin", isadmin);
+        history.push("/admin");
         
       }else{
         if (res.data.success) {
@@ -148,7 +152,7 @@ export const Login = () => {
     <>
         <div className="main-form">
           <Container className="main-Error">
-            {message.length > 0 ? [
+            {message && message.length > 0 ? [
   'danger'
 ].map((variant, idx) => (
   <Alert key={idx} variant={variant} className='Alert-login'>

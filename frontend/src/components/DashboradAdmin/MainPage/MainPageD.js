@@ -8,8 +8,13 @@ import Form from "react-bootstrap/Form";
 import { storage } from "../../../FireBase/FireBase";
 import { AiFillEye, AiTwotoneSchedule, AiOutlineUsergroupAdd } from 'react-icons/ai';
 import Home from '../../services/Chat/home';
-
+import { setUserId } from '../../../reducers/login/userId';
+import { setIsLoggedIn } from '../../../reducers/login/isLoggedIn';
+import { setToken } from '../../../reducers/login/token';
+import { useDispatch} from "react-redux";
 function MainPageD() {
+    console.log("mainpage D")
+    const dispatch = useDispatch();
     const [url, setUrl] = useState("");
     const [namee, setNamee] = useState("");
     const [descriptionn, setDescription] = useState("");
@@ -19,7 +24,6 @@ function MainPageD() {
     const [pendingpost, setPendingpost] = useState();
     const [getfundraiser, setGetfundraiser] = useState([]);
     const [homePage, setHomePage] = useState(true);
-
     const [users, setUsers] = useState();
     useEffect(() => {
         axios.get(`http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`).then((result) => {
@@ -143,6 +147,14 @@ function MainPageD() {
             pending(id);
         }
     }
+
+    const logout = () => {
+        localStorage.clear();
+        history.push("/");
+        dispatch(setToken(""));
+        dispatch(setIsLoggedIn(false));
+        dispatch(setUserId(0))
+      };
     return ( 
         <>
         {/** Start Navbar */}
@@ -161,7 +173,7 @@ function MainPageD() {
           
           <div>
               <h4>Administrator</h4>
-              <button onClick={()=>{history.push('/')}}>Logout</button>
+              <button onClick={logout}>Logout</button>
           </div>
       </div>
   </header>

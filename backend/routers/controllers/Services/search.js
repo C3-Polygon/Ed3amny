@@ -5,14 +5,14 @@ const searchForCampaigns = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE title LIKE "%${searchTitle}%" AND is_deleted=1`;
 
   connection.query(query, (error, result) => {
-    if (result.length) {
+    if (result) {
       res.status(200).json({
         success: true,
         search: result
       });
       return
     }
-    if (!result.length) {
+    if (error) {
       res.status(400).json({
         success: false,
         message: "campaign title doesn't exist"
