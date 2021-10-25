@@ -31,6 +31,8 @@ import AboutUs from './components/Aboutus/AboutUs';
 import YourFundraisers from './components/Header/Dropdown/YourFundraisers/YourFundraisers';
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
+import { useSelector } from "react-redux";
+
 // import Chat from "./components/services/Chat/chat";
 // import Navbar from "./components/Navbar/Navbar";
 // import Process from "./components/services/Chat/process";
@@ -41,7 +43,9 @@ import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 const socket = io.connect("http://localhost:5000");
 
 let userIdSave = localStorage.getItem("CurrentUserId");
-// console.log(userIdSave,"userIdSave")
+
+let isAdmin = localStorage.getItem("isAdmin")
+ console.log(userIdSave,"userIdSave")
 let x = "";
 
 socket.on("notificationtarget",(data)=>{
@@ -72,23 +76,25 @@ const notify = () => toast(x)
 
 function App() {
   // let tokenSave = localStorage.getItem("token");
- 
+  const state2 = useSelector((state2) => {
+    return { userId: state2.userId.userId };
+  });
 
   return (
     <>
-     <ToastContainer />
-    <Navigationbar/>
-    
-      {/* <Navbar /> */}
-      <div className="App">
-        <Switch>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          {/* if is logged in or token available history.push /  you should not enter signup while u have token or isslogged in up to */}
-          <Route exact path="/signup">
-            <Signup />
-          </Route>
+      <div>
+        {state2.userId==6 ? (
+          <Switch>
+            <Route exact path="/admin" component={MainPage} />
+            </Switch>
+        ) : (
+          <>
+          <div className="App">
+             <ToastContainer />
+             <Navigationbar/>    
+             <Switch>
+          <Route exact path="/login"><Login /> </Route>
+          <Route exact path="/signup"><Signup /> </Route>
           <Route exact path="/">
             <Home socket={socket} />
             <Section />
@@ -99,33 +105,28 @@ function App() {
             <Random />
             <AboutUs/>
             <ReadyToStart />
-           
           </Route>
           <AccountSettings exact path="/Drop/AccountSettings" />
           <YourFundraisers exact path="/Drop/YourFundraisers" />
-          {/* <DonateForSpecific exact path="/Drop/DonateForSpecific" /> */}
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
           <Route exact path="/category/:id" component={CategoryByType} />
           <Route exact path="/category/allCategory/Category" component={AllCategory}/>
           <Route exact path="/fundraiser" component={CreateFundRaiser} />
-          {/* <Route exact path="/chat/:roomname/:username" component={Appmain} /> */}
           <Route exact path="/fundraiserView/:id" component={FundRaiserView} />
-          <Route exact path="/admin" component={MainPage} />
-          {/* <Route exact path="/admin/createstory" component={AddStory} /> */}
           <Route exact path="/donation" component={Donation} />
           <Route exact path="/allfundraiser" component={GetAllFundraiser} />
           <Route exact path="/edityourfundraiser/:id" component={EditFundraiser} />
           <Route exact path="/Contributions/Contributions/Contributions/Contributions" component={YourContributions}/>
-           {/* <yourDonations exact Path = "/Contributions/Contributions/Contributions/Contributions"/>                   */}
-          
           <Route exact path = "/search" component={SearchResults}/>
           <Route exact path="/ForgotMainPage" component={ForgotMainPage}/>
           <Route exact Path = "/Drop/Blood/BloodPost/Create" component={CreateBloodPost}/> 
           <Route exact path ="*" render={()=>'not found'}/>
         </Switch>
+        </div>
+          </>
+          
+        )}
       </div>
-     
-      {/* <Footer /> */}
     </>
   );
 }

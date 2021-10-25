@@ -8,7 +8,7 @@ const login = async (req, res) => {
   const query = `SELECT * FROM users WHERE email = ?`;
   const data = [email, passwordd];
   connection.query(query, data, async (error, result) => {
-    if (result.length) {
+    if (result) {
       const valid = await bcrypt.compare(passwordd, result[0].passwordd);
       if (valid) {
         const payload = {
