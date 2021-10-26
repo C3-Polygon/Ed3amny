@@ -1,6 +1,10 @@
+.Main-Create-Blood {
+    height: 75vh;
+}
+
 .main-cont {
     margin-top: 50px;
-    height: 550px;
+    /* margin-bottom: 50px; */
 }
 
 .main-cont h4 {
@@ -9,6 +13,7 @@
 }
 
 .main-cont button {
+    margin-bottom: 50px;
     padding: 8px 20px;
     background-color: #02a95c;
     border: 1px solid #02a95c;

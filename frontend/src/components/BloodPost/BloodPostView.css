@@ -1,5 +1,7 @@
 .Flafelbtn {
     position: fixed;
+    font-size: 50px;
+    color: #8a0303;
 }
 
 .card {

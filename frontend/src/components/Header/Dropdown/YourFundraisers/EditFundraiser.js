@@ -299,9 +299,9 @@ export const EditFundraiser = () => {
           <div>
             <h5>Delete my fundraiser</h5>
             <p>
-              You will no longer have access to this fundraiser after deleting.
+              You will no longer have access to this fundraiser after deleting it.
               <br></br>
-              if you received donations, your donors will still be able to view
+              If you've received donations, your donors will still be able to view
               a summary.
             </p>
           </div>

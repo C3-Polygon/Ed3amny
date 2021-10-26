@@ -66,7 +66,7 @@ function CategoryByType() {
 
                     <p>{category.decc}</p>
 
-                    <button onClick={sendToFundraiser}>Start a GoFundMe</button>
+                    <button onClick={sendToFundraiser}>Ed3amny Now</button>
                   </div>
                   {/**Right Section */}
 
@@ -90,8 +90,12 @@ function CategoryByType() {
                   <div className="mainViewfundraiser">
                     <img src={data.img} alt="Photo not found" alt="NOT FOUND" />
                     <div className="mainViewfundraiserText">
+                    <div className="TitleDev"> {/* height 100px */}
                       <h5>{data.title}</h5>
+                      </div>
+                      <div className="DescriptionDev">{/* height 200px */}
                       <p>{data.descriptionn}</p>
+                      </div>
                       <ProgressBar
                         variant="success"
                         now={Math.round(

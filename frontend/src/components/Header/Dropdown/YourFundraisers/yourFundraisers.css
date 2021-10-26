@@ -47,6 +47,7 @@
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
     margin-bottom: 25px;
+    height: 500px;
 }
 
 .Main-View-YourFundraisers hr {
@@ -59,6 +60,7 @@
 
 .Main-your-Fundraisers .Main-view-content {
     padding: 20px;
+    height: 200px;
 }
 
 .Main-view-content h6 {
@@ -77,4 +79,8 @@
     margin: 15px 0px;
     cursor: pointer;
     color: #02a95c;
+}
+
+.PostTitleClass{
+    height: 100px;
 }

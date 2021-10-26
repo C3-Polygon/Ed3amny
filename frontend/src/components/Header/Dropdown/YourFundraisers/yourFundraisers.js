@@ -57,8 +57,8 @@ const GetAllFundraiserByUser = () => {
                     <div className="Main-View-YourFundraisers">
                       <img src={post.img} />
                       <div className="Main-view-content">
-                        <h6>{post.title}</h6>
-                        <p> Created Fundraisers: {post.created_at}</p>
+                        <h6 className="PostTitleClass">{post.title}</h6>
+                        {/* <p> Created Fundraisers: {post.created_at}</p> */}
                         <hr></hr>
                         <div className="manage-Your-fundraisers">
                           <span onClick={() => EditFundraiser(post.id)}>
