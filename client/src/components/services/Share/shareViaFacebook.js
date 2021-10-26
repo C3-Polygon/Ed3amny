@@ -19,7 +19,7 @@ import "./shareViaFacebook.css"
 
 function Share() {
   const location = useLocation();
-  let path = `${location.pathname}`;
+  let path = `https://ed3amny.herokuapp.com${location.pathname}`;
 
   return (
     <>
