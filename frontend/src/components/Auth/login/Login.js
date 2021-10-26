@@ -167,7 +167,7 @@ export const Login = () => {
             <hr></hr>
             <div className="login-with-facebook">
             <Card>
-          <Card.Header>
+          
             {!login1 && (
               <FacebookLogin
                 appId="1259903211090202"
@@ -179,12 +179,12 @@ export const Login = () => {
               />
             )}
             {login1 && <Image src={picture} roundedCircle />}
-          </Card.Header>
+          
           {login1 && (
-            <Card.Body>
+            
               {/* <Card.Title>{data.name}</Card.Title>
               <Card.Text>{data.email}</Card.Text> */}
-            </Card.Body>
+            
           )}
         </Card>
             </div>
@@ -201,7 +201,7 @@ export const Login = () => {
   <Form.Group className="mb-3" controlId="formBasicPassword">
     <Form.Control type="password" placeholder="Password"  onChange={(e) => setPasswordd(e.target.value)} required/>
   </Form.Group>
-  <input type="submit" className="sgin-btn" value='Sign in to GoFundMe'/>
+  <input type="submit" className="sgin-btn" value='Sign in to Ed3amny'/>
 </Form>
 <hr></hr>
 <div className='forget-password'>

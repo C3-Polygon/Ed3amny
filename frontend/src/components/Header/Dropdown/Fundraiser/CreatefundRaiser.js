@@ -117,7 +117,7 @@ const CreatefundRaiser = (e) => {
 
     <Form.Group as={Col} controlId="formGridPassword">
      <Form.Label>Set your fundraising goal</Form.Label>
-      <Form.Control type="text" placeholder="Here ... " onChange={(e)=>{setTarget(e.target.value)}} />
+      <Form.Control type="number" placeholder="Here ... " onChange={(e)=>{setTarget(e.target.value)}} />
     </Form.Group>
   </Row>
 
@@ -129,7 +129,7 @@ const CreatefundRaiser = (e) => {
 
   <Form.Group className="mb-3" controlId="formGridAddress2">
     <Form.Label>Your Fundraiser description </Form.Label>
-    <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Here ..." rows="3" onChange={(e)=>{setDescriptionn(e.target.value)}} maxLength="245" ></textarea>
+    <textarea className="form-control" type="text" id="exampleFormControlTextarea1" placeholder="Here ..." rows="3" onChange={(e)=>{setDescriptionn(e.target.value)}} maxLength="245" ></textarea>
   </Form.Group>
 
   <Row className="mb-3">
