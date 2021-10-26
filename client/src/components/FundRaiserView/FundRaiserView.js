@@ -37,7 +37,7 @@ const FundRaiserView = () => {
   const location = useLocation();
   const [showAllDonate, setShowAllDonate] = useState(false);
   const [fundRaiserView, setFundRaiserView] = useState([]);
-  let path = `${location.pathname}`;
+  let path = `https://ed3amny.herokuapp.com${location.pathname}`;
   const [allContributors, setAllContributors] = useState();
 
   // const [show, setShow] = useState(false);
