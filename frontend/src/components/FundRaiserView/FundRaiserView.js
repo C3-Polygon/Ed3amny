@@ -97,8 +97,6 @@ const FundRaiserView = () => {
                 </p>
                 <hr></hr>
                 <Share />
-                <p>Facebook</p>
-
                 <InputGroup className="mb-3">
                   <FormControl
                     placeholder={path}
