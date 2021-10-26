@@ -28,7 +28,7 @@
 
 .donation-fundRaiserView {
     margin-top: 75px;
-    padding: 25px;
+    padding: 30px;
     /* box-shadow: 5px 11px 18px 0px #ccc; */
     box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
 }
@@ -43,23 +43,68 @@
     font-size: 30px;
 }
 
-.share-fundRaiserView {
+.share-fundRaiserView,
+.share-donate {
     margin-top: 15px;
     width: 100%;
     font-weight: bold;
     border: none;
-    padding: 5px;
-    background-color: #f58131;
+    padding: 12px;
+    border-radius: 3px;
     position: relative;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    transition: 1s ease;
+    -o-border-radius: 3px;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
 }
 
-.share-fundRaiserView .share-facebook {
+
+/* .share-fundRaiserView:hover {
+    background: none;
+    border: 1px solid #f58131;
+}
+
+.share-donate:hover {
+    background: none;
+    border: 1px solid #fcb957;
+} */
+
+.share-fundRaiserView {
+    background-color: #fcb957;
+}
+
+.share-donate {
+    background-color: #f58131;
+}
+
+.share-fundRaiserView .share-facebook,
+.share-donate .share-facebook {
     position: absolute;
-    left: 6px;
+    left: 20px;
     background-color: #000;
+    width: 30px;
     color: #fff;
-    font-size: 22px;
-    top: 11px;
+    font-size: 27px;
+    top: 13px;
+}
+
+.donation-fundRaiserView .all-donate {
+    margin-top: 25px;
+    padding: 8px;
+    border: 2px solid #02a95c;
+    background-color: #fff;
+    color: #02a95c;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    font-weight: 700;
 }
 
 
@@ -108,6 +153,18 @@
     position: fixed;
 }
 
+.pop-fundraiser .pop-fundraiser-child-donate {
+    background-color: #ffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 800px;
+    border-radius: 3px;
+    padding: 25px;
+}
+
 .contributors-title {
     margin-top: 35px;
 }
@@ -119,6 +176,27 @@
     align-items: center;
 }
 
+.Main-title-contributors {
+    height: 600px;
+    overflow: scroll;
+}
+
+.title-contribut {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title-contribut img {
+    width: 20%;
+}
+
 .contribut img {
-    width: 63px;
+    width: 20%;
+}
+
+.no-fundraisers {
+    color: red;
+    text-align: center
 }

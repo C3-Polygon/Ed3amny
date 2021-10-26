@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createNewContribution,getOwnUserContributionsById,getContributorsByCampaignId } = require("../controllers/Contribution");
+const { createNewContribution, getOwnUserContributionsById, getContributorsByCampaignId, getAllContributorsByCampaignId } = require("../controllers/Contribution");
 
 
 // define router
@@ -10,9 +10,10 @@ const ContributionRouter = express.Router();
 const authentication = require("../middlewares/authentication")
 
 // //Routes
-ContributionRouter.get('/contributors/:id',authentication,getContributorsByCampaignId)
+ContributionRouter.get('/contributors/:id', authentication, getContributorsByCampaignId)
 ContributionRouter.post('/', createNewContribution);
-ContributionRouter.get('/:id',authentication, getOwnUserContributionsById)
+ContributionRouter.get('/:id', authentication, getOwnUserContributionsById)
+ContributionRouter.get('/allcontribution/:id', getAllContributorsByCampaignId)
 
 
 module.exports = ContributionRouter;

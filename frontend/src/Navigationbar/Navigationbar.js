@@ -97,6 +97,7 @@ const Navigationbar = () => {
     };
   
     const searchResult = () =>{
+      // e.preventDefault();
       dispatch(setText1(text))
       history.push('/search')
     }

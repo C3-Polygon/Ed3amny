@@ -4,6 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useHistory } from "react-router-dom";
 import './SearchResults.css';
+import { storage } from "../../../FireBase/FireBase";
 // import ProgressBar from "react-bootstrap/ProgressBar";
 // import Pagination from 'react-bootstrap/Pagination';
 
@@ -36,7 +37,7 @@ export const SearchResults = () => {
   return (
     <div className="Main-search">
          <div className='container'>
-           <p className='title-searchh'>Fundraisers for <span>"{state.text1}"</span> in all locations</p>
+           <p className='title-searchh'><strong>{search && search.length}</strong> Results for <strong>"{state.text1}"</strong> in all locations </p>
           <div className="row"> 
       {search &&
         search.map((data) => {
@@ -44,7 +45,7 @@ export const SearchResults = () => {
             <>
                 <div onClick={()=>{ViewFundRaiser(data)}}
                     key={data.id}
-                    className="col-lg-3 Main-ccc"
+                    className="col-lg-3 col-md-6"
                   >
                     <div className="search-contect">
 
