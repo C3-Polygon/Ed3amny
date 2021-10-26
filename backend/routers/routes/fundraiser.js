@@ -65,7 +65,7 @@ fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
 fundraiserRouter.get("/admin/dashbord/get/getallfundreiser", getTotalsFundreiser)
 
-fundraiserRouter.put("/soft/delete/fundreiser/:id" ,deleteFundraiserByid)
+fundraiserRouter.put("/soft/delete/fundreiser/:id" ,authentication,deleteFundraiserByid)
 
 fundraiserRouter.put("/update/fundraiser/overview/:id", authentication,updateOverView)
 
