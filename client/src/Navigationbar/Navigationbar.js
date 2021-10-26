@@ -177,7 +177,7 @@ const Navigationbar = () => {
           <Link to="/login" className="navLogin">
                   Sign in
                 </Link>
-                <Link to='/signup' className="navsignup">Start a GoFundMe</Link>
+                <Link to='/signup' className="navsignup">Ed3amny now</Link>
           </>
         )}      
 
