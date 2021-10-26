@@ -54,8 +54,13 @@ export const EditFundraiser = () => {
   }, [toggle]);
 
   const softDelete = () => {
+    console.log(tokenSave,"Mai token")
     axios
-      .put(`http://localhost:5000/fundraiser/soft/delete/fundreiser/${id}`)
+      .put(`http://localhost:5000/fundraiser/soft/delete/fundreiser/${id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${tokenSave}`,
+        },
+      })
       .then((result) => {
         history.goBack();
       })

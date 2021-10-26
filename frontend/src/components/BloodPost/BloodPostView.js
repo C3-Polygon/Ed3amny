@@ -13,7 +13,20 @@ function BloodPostView() {
   let tokenSave = localStorage.getItem("token");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/bloodpost/`, {
+        headers: {
+          Authorization: `Bearer ${tokenSave}`,
+        },
+      })
+      .then((result) => {
+        
+        setBloodPosts(result.data.Data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  
   useEffect(() => {
     axios
       .get(`http://localhost:5000/bloodpost/`, {
