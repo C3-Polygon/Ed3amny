@@ -32,6 +32,7 @@ import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFu
 import ForgotMainPage from "./components/services/ForgotPassword/ForgotMain/ForgotMain";
 import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 import { useSelector } from "react-redux";
+import Found from "./components/PageNotFound/Found";
 
 // import Chat from "./components/services/Chat/chat";
 // import Navbar from "./components/Navbar/Navbar";
@@ -117,7 +118,7 @@ function App() {
                   component={ForgotMainPage}
                 />
 
-                <Route exact path="*" render={() => "not found"} />
+                <Route exact path="*" component={Found} />
               </Switch>
             </div>
           </>
@@ -185,7 +186,7 @@ function App() {
                   Path="/Drop/Blood/BloodPost/Create"
                   component={CreateBloodPost}
                 />
-                <Route exact path="*" render={() => "not found"} />
+                <Route exact path="*" component={Found} />
               </Switch>
             </div>
           </>

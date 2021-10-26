@@ -13,6 +13,7 @@ import { setImage } from "../../reducers/Donation/ImageReducer";
 import { setTitle } from "../../reducers/Donation/TitleReducer";
 import { setPostId } from "../../reducers/Donation/PostId";
 import { useLocation } from "react-router";
+import {BsCurrencyDollar} from 'react-icons/bs';
 import { FaHandHoldingMedical, FaMobileAlt } from "react-icons/fa";
 import { RiSecurePaymentFill } from "react-icons/ri";
 import {
@@ -34,8 +35,10 @@ const FundRaiserView = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
+  const [showAllDonate, setShowAllDonate] = useState(false);
   const [fundRaiserView, setFundRaiserView] = useState([]);
   let path = `https://localhost:3000/${location.pathname}`;
+  const [allContributors, setAllContributors] = useState();
 
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
@@ -67,6 +70,15 @@ const FundRaiserView = () => {
         console.log(err);
       });
   }, []);
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/Contribution/allcontribution/${id}`).then((res) => {
+      setAllContributors(res.data.result);
+    }).catch((err) => {
+      console.log(err);
+    })
+  },[])
 
   const senderr = (title, img) => {
     dispatch(setTitle(title));
@@ -163,13 +175,73 @@ const FundRaiserView = () => {
                           <AiOutlineDownload className="share-facebook" /> Share
                         </button>
                         <button
-                          className="share-fundRaiserView"
+                          className="share-donate"
                           onClick={() => senderr(elem.title, elem.img)}
                         >
                           {" "}
-                          <AiOutlineMoneyCollect className="share-facebook" />{" "}
+                          <BsCurrencyDollar className="share-facebook" />{" "}
                           Donate now
                         </button>
+
+                        <button onClick={()=>{setShowAllDonate(!showAllDonate)}}className="all-donate">See donations</button>
+                        {showAllDonate && (
+                          <>
+                                 <div className="pop-fundraiser">
+              <div className="pop-fundraiser-child-donate">
+                <AiOutlineCloseSquare
+                  className="close-pop" onClick={() =>{setShowAllDonate(!showAllDonate)}}/>
+                  <h5>Donations ({allContributors.length})</h5>
+                  <button className='share-donate' onClick={() => history.push("/donation")}> Donate now</button>
+                  <hr></hr>
+                  {allContributors.length === 0 ? <>
+                  <div className="no-fundraisers">
+                  There's no donations for this fundraiser
+                  </div>
+
+                  
+                  </> : (<div className='Main-title-contributors'>
+                  {allContributors&&allContributors.map((ele)=>{
+                    return (
+                      
+                      <div key={index} className="title-contribut">
+                      <img src="https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg"/>
+
+                      <div className="price-user">
+                        <p>
+                          Amount Donated :
+                          <strong> ${ele.amount / 100}</strong>
+                        </p>
+                        <p>
+                          Donnor:{" "}
+                          <strong>
+                            {" "}
+                            {ele.firstName} {ele.lastName}
+                          </strong>
+                        </p>
+                        <p>
+                          Created at:{" "}
+                          <strong>
+                            {" "}
+                            {ele.created_at} 
+                            </strong>
+                          
+                        </p>
+
+                        <hr></hr>
+                      </div>
+                    </div>
+                      
+                    )
+                  })}
+                  
+                  </div>)}
+              </div>
+            </div>
+                          
+                          </>
+                          
+                        )}
+
                       </div>
                       <div className="contributors-title">
                         <h5 className="text-uppercase">
@@ -206,7 +278,7 @@ const FundRaiserView = () => {
               })}
           </div>
         </div>
-        <div className="features">
+        {/* <div className="features">
           <div className="containerr">
             <div className="feat">
               <FaHandHoldingMedical className="icons" />
@@ -236,7 +308,7 @@ const FundRaiserView = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
