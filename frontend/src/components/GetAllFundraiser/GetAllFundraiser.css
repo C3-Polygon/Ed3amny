@@ -36,3 +36,12 @@
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
 }
+
+.TitleDev {
+    height: 65px;
+}
+
+.DescriptionDev {
+    margin-bottom: 25px;
+    height: 200px;
+}

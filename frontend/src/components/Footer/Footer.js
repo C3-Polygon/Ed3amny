@@ -25,8 +25,8 @@ useEffect(() => {
 
             <div className="Main-footer">
                 <div className="logo-footer">
-                    <h5>Logo Name</h5>
-                    <p>Ed3amny</p>
+                    <h5>Ed3amny</h5>
+                    
                 </div>
 
 
@@ -44,12 +44,12 @@ useEffect(() => {
 
 
                 <div className="option">
-                    <h5>RESOURCES</h5>
+                    <h5>Resources</h5>
                     <ul className="list-unstyled">
-                    <li>Help center</li>
+                    <li>Help Center</li>
                     <li>Blog</li>
                     <li>Ed3amny Stories</li>
-                    <li>Press center</li>
+                    <li>Press Center</li>
                     
                 </ul>
                 </div>

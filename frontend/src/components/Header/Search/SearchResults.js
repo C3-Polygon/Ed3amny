@@ -47,12 +47,15 @@ export const SearchResults = () => {
                     className="col-lg-3 Main-ccc"
                   >
                     <div className="search-contect">
+
                      <div className="img-contect">
                      <img src={data.img} alt="not found photo" />
                      </div>
+
                       <div className="title-search">
                         <p>{data.title}</p>
                       </div>
+                      
                     </div>
                   </div>
             </>

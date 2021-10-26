@@ -64,8 +64,12 @@ export const GetAllFundraiser = () => {
                     <div className="mainViewfundraiser">
                       <img src={data.img} alt="not found photo" />
                       <div className="mainViewfundraiserText">
+                      <div className="TitleDev"> {/* height 100px */}
                         <h5>{data.title}</h5>
+                        </div>
+                        <div className="DescriptionDev">{/* height 200px */}
                         <p>{data.descriptionn}</p>
+                        </div>
                         <ProgressBar
                           variant="success"
                           now={Math.round(
