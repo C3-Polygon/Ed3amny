@@ -37,7 +37,7 @@ const FundRaiserView = () => {
   const location = useLocation();
   const [showAllDonate, setShowAllDonate] = useState(false);
   const [fundRaiserView, setFundRaiserView] = useState([]);
-  let path = `https://localhost:3000/${location.pathname}`;
+  let path = `${location.pathname}`;
   const [allContributors, setAllContributors] = useState();
 
   // const [show, setShow] = useState(false);

@@ -19,7 +19,7 @@ import "./shareViaFacebook.css"
 
 function Share() {
   const location = useLocation();
-  let path = `https://localhost:3000/${location.pathname}`;
+  let path = `${location.pathname}`;
 
   return (
     <>
