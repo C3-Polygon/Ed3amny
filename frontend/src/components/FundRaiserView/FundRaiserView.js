@@ -27,9 +27,11 @@ import {
 // import Card from "react-bootstrap/Card";
 
 const FundRaiserView = () => {
-  let tokenSave = localStorage.getItem('token')
+  let tokenSave = localStorage.getItem("token");
   const [sharePopup, setSharePopup] = useState(false);
   const [contributors, setContributors] = useState();
+  const [show, setShow] = useState(false);
+  const [allContributors, setAllContributors] = useState([]);
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -49,8 +51,11 @@ const FundRaiserView = () => {
   // };
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/Contribution/contributors/${id}`,{headers: {
-        Authorization: `Bearer ${tokenSave}`}})
+      .get(`http://localhost:5000/Contribution/contributors/${id}`, {
+        headers: {
+          Authorization: `Bearer ${tokenSave}`,
+        },
+      })
       .then((result) => {
         setContributors(result.data.result);
       })
@@ -66,6 +71,16 @@ const FundRaiserView = () => {
       .catch((err) => {
         console.log(err);
       });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/Contribution/allContributors/${id}`)
+      .then((result) => {
+        console.log("result sdsa", result.data);
+        setAllContributors(result.data.result);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const senderr = (title, img) => {
@@ -173,7 +188,7 @@ const FundRaiserView = () => {
                       </div>
                       <div className="contributors-title">
                         <h5 className="text-uppercase">
-                          Donors ({contributors && contributors.length})
+                          Donors ({allContributors && allContributors.length})
                         </h5>
                         {contributors &&
                           contributors.map((elem, index) => {
@@ -199,6 +214,9 @@ const FundRaiserView = () => {
                               </div>
                             );
                           })}
+                        <button onClick={() => setShow(!show)}>
+                          See all Donors
+                        </button>
                       </div>
                     </div>
                   </>
@@ -237,6 +255,46 @@ const FundRaiserView = () => {
             </div>
           </div>
         </div>
+        {show && (
+          <div class="model-delete-post">
+            <div className="info-deleted">
+              <AiOutlineCloseSquare
+                className="close-pop"
+                onClick={() => {
+                  setShow(!show);
+                }}
+              />
+              <div className="text-center">
+                <h3>All Donors</h3>
+                <hr></hr>
+                {allContributors &&
+                  allContributors.map((elem, i) => {
+                    return (
+                      <div key={i} className="contribut">
+                        <img src="https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg" />
+
+                        <div className="price-user">
+                          <p>
+                            Amount Donated :
+                            <strong> ${elem.amount / 100}</strong>
+                          </p>
+                          <p>
+                            Donnor:{" "}
+                            <strong>
+                              {" "}
+                              {elem.firstName} {elem.lastName}
+                            </strong>
+                          </p>
+
+                          <hr></hr>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

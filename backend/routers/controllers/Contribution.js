@@ -54,6 +54,34 @@ const getOwnUserContributionsById = (req, res) => {
 
 const getContributorsByCampaignId = (req, res) => {
   const campaign_id = req.params.id;
+  const query = `SELECT * FROM users JOIN contributions  ON users.id=contributions.userId WHERE contributions.campaign_id = ${campaign_id} LIMIT 3`;
+
+  connection.query(query, (err, result) => {
+    if (result) {
+      return res.status(200).json({
+        success: true,
+        message: `Users that contributed for this campaign => ${campaign_id}`,
+        result: result,
+      });
+    }
+    if (err) {
+      return res.status(404).json({
+        success: false,
+        message: `No contributions found for this campaign with the following campaign_id ==> ${campaign_id}`,
+        err: err,
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
+  });
+};
+
+
+const getContributorsByCampaignIdWithoutLimit = (req, res) => {
+  const campaign_id = req.params.id;
   const query = `SELECT * FROM users JOIN contributions  ON users.id=contributions.userId WHERE contributions.campaign_id = ${campaign_id}`;
 
   connection.query(query, (err, result) => {
@@ -83,4 +111,5 @@ module.exports = {
   createNewContribution,
   getOwnUserContributionsById,
   getContributorsByCampaignId,
+  getContributorsByCampaignIdWithoutLimit
 };

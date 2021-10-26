@@ -122,3 +122,10 @@
 .contribut img {
     width: 63px;
 }
+.allcontributors{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: scroll;
+}
