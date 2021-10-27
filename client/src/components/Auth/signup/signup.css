@@ -37,3 +37,9 @@
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
 }
+
+@media only screen and (max-width: 600px) {
+    .form-signup {
+        width: 330px;
+    }
+} 
