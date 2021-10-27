@@ -8,3 +8,14 @@
     margin:10px 0;
     font-size: small;
 }
+
+@media only screen and (max-width: 772px) {
+    .ShareButtonsParent p {
+        font-size: 15px;
+    }
+    .ShareButtonsParent div {
+        align-items: center;
+        margin: 3px;
+        text-align: center;
+    }
+} 

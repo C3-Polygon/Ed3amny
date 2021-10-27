@@ -200,3 +200,30 @@
     color: red;
     text-align: center
 }
+
+@media only screen and (max-width: 772px) {
+    .pop-fundraiser .pop-fundraiser-child {
+        width: 330px;
+    }
+    .donation-fundRaiserView {
+        margin-top: 0px;
+    }
+    .contribut {
+        font-size: 16px;
+    }
+    .contribut img {
+        width: 25%;
+    }
+    .donation-fundRaiserView span:first-child {
+        font-size: 22px;
+    }
+    .donation-fundRaiserView span {
+        font-size: 18px;
+    }
+    .pop-fundraiser .pop-fundraiser-child-donate {
+        width: 330px;
+    }
+    .price-user {
+        font-size: 15px;
+    }
+}

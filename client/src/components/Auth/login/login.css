@@ -107,3 +107,15 @@
     background-color:#02a95c !important;
     border:none !important;
 }
+
+@media only screen and (max-width: 600px) {
+    .form-login {
+        width: 330px;
+    }
+    .option-login span::before {
+        width: 60px;
+    }
+    .option-login span::after {
+        width: 60px;
+    }
+}

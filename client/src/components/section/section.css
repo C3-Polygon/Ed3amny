@@ -92,7 +92,18 @@
 }
 
 @media only screen and (max-width: 772px) {
-    .Main-section {
-        margin: 40px 0px;
+   
+
+    .video-section {
+        margin: 10px 0px;
+    }
+    .Main-section .btn-option {
+        margin-top: 25px;
     }
 }
+
+/* 
+ .Main-section {
+        margin: 40px 0px;
+    }
+*/
