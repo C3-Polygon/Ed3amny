@@ -55,7 +55,7 @@ function Random() {
                         <div className="DescriptionDev">{/* height 200px */}
                         <p>{data.descriptionn.substring(0,255)} ...</p>
                         </div>
-                        
+                        <div className='progressbar'>
                         <ProgressBar
                           variant="success"
                           now={Math.round(
@@ -66,6 +66,7 @@ function Random() {
                           ${data.current_target} raised of
                         </span>{" "}
                         <span>${data.targett}</span>
+                        </div>
                       </div>
                     </div>
                   </div>

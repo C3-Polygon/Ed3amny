@@ -46,8 +46,10 @@ import { useHistory } from "react-router-dom";
                             <p>{data.descriptionn}</p>
                             </div>
                             {/* height 50px   if needed add dev we will see*/}
+                            <div className='progressbar'>
                             <ProgressBar variant="success" now={Math.round((data.current_target / data.targett) * 100)}/>
                             <span className="raised">${data.current_target} raised of</span> <span>${data.targett}</span>
+                            </div>
                         </div>
                     </div>
                      </div>;

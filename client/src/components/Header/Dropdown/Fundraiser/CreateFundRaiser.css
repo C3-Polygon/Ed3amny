@@ -30,3 +30,12 @@
     color: #02a95c;
     text-transform: uppercase;
 }
+
+@media only screen and (max-width: 772px) {
+    .Create-fundraiser-form {
+        height: auto;
+    }
+    .goal {
+        font-size: 18px;
+    }
+}

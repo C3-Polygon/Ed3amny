@@ -44,16 +44,12 @@
     font-weight: bold !important;
 }
 
-@media only screen and (max-width: 772px) {
-    .Main-nav {
-        margin-bottom: 50px;
-    }
-}
 .nav-link {
     padding: 10px 15px;
-    color:black;
+    color: black;
 }
-.form-control:focus{
+
+.form-control:focus {
     box-shadow: none;
     border-color: #ced4da;
 }

@@ -70,6 +70,7 @@ export const GetAllFundraiser = () => {
                         <div className="DescriptionDev">{/* height 200px */}
                         <p>{data.descriptionn}</p>
                         </div>
+                        <div className='progressbar'>
                         <ProgressBar
                           variant="success"
                           now={Math.round(
@@ -80,6 +81,7 @@ export const GetAllFundraiser = () => {
                           ${data.current_target} raised of
                         </span>{" "}
                         <span>${data.targett}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
