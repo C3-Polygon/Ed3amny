@@ -2,6 +2,7 @@ import React from 'react'
 import './AboutUs.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 const AboutUs = () => {
+    console.log("maamoun");
     return (
         <>
     <section className="about" id="about">
