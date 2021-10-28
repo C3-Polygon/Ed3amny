@@ -8,6 +8,12 @@ const login = async (req, res) => {
   const query = `SELECT * FROM users WHERE email = ?`;
   const data = [email, passwordd];
   connection.query(query, data, async (error, result) => {
+    if(error){
+      return res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    }
     if (result) {
       const valid = await bcrypt.compare(passwordd, result[0].passwordd);
       if (valid) {

@@ -8,6 +8,9 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({ extended: true }))
+const path = require('path');
+app.use(express.static(path.resolve(__dirname, './client/build')));
+
 
 
 // import Routers
