@@ -17,7 +17,7 @@ const sendEmail = async (req, res) => {
       const data = [passwordHash];
       const queryUpdate = `UPDATE users SET passwordd=? WHERE email="${email}"`;
       if (error) {
-        res.status(500).json({
+        return res.status(500).json({
           success: false,
           message: `Error happened during query for the fundraiser`,
           error: error,
@@ -41,15 +41,15 @@ const sendEmail = async (req, res) => {
           sgMail
             .send(msg)
             .then(() => {})
-            .catch((error) => {});
+            .catch((error) => {return error});
         } else {
-          res.status(404).json({
+          return res.status(404).json({
             success: false,
             message: `Email Not Found => ${email}`,
           });
         }
         if (error) {
-          res.status(500).json({
+          return res.status(500).json({
             success: false,
             message: `Server error`,
           });

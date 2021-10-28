@@ -10,21 +10,19 @@ const searchForCampaigns = (req, res) => {
         success: true,
         search: result
       });
-      return
     }
     if (error) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: "campaign title doesn't exist"
       });
-      return
+      
     } else {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error
       });
-      return
     }
   });
 };

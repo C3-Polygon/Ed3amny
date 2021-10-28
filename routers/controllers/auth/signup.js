@@ -10,15 +10,15 @@ const register = async (req, res) => {
   let query = `INSERT INTO users (firstName,lastName,age,img,email,passwordd,country) VALUES(?,?,?,?,?,?,?)`;
 
   connection.query(query, data, (error, result) => {
-    if (result) {
-      return res.status(200).json(result);
-    }
     if (error) {
       return res.status(409).json({
         success: false,
         message: `Duplicate Email Found`,
         error: error,
       });
+    }
+    if (result) {
+      return res.status(200).json(result);
     }
   });
 };

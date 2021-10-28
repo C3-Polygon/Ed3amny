@@ -34,19 +34,19 @@ const login = async (req, res) => {
           payload: payload,
         });
       } else {
-        res.status(403).json({
+       return res.status(403).json({
           success: false,
           message: `Password is not correct`,
         });
       }
       if (error) {
-        res.status(500).json({
+        return res.status(500).json({
           success: false,
           message: `Server Error`,
         });
       }
     } else {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: `The email doesn't exist`,
       });
