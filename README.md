@@ -3,10 +3,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <h3 align="center">Ed3amny</h3>
   <a href="https://github.com/github_username/repo_name">
   </a>
 
-<h3 align="center">Ed3amny</h3>
+
 
   <p align="center">
     Developed in 2021, Ed3amny is a social fundraising platform. Its' mission is to help people fundraise for personal, business, and charitable causes.
@@ -130,9 +131,7 @@ npm start in the client folder.
     "redux-persist": "^6.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4",
-    "shepherd.js": "^8.3.1",
     "socket.io-client": "^4.2.0",
-    "toastify": "^2.0.1",
     "web-vitals": "^1.1.2"
     
     
