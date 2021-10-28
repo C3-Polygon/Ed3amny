@@ -4,7 +4,6 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="Ed3amny" alt="Ed3amny" width="80" height="80">
   </a>
 
 <h3 align="center">Ed3amny</h3>
@@ -137,7 +136,7 @@ npm start in the client folder.
     "web-vitals": "^1.1.2"
     
     
-   npm install server/backend:
+   npm install: "server/backend"
     "@ckeditor/ckeditor5-build-classic": "^30.0.0",
     "@ckeditor/ckeditor5-react": "^3.0.3",
     "@sendgrid/mail": "^7.5.0",
