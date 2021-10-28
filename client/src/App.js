@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Signup from "./components/Auth/signup/signup";
 import CreateFundRaiser from "./components/Header/Dropdown/Fundraiser/CreatefundRaiser";
-import { React } from "react";
+import { React,useEffect } from "react";
 import Section from "./components/section/section";
 import Topfundraiser from "./components/TopFundraiser/Topfundraiser";
 import Stories from "./components/stories/Stories";
@@ -33,7 +33,7 @@ import Navigationbar from "./Navigationbar/Navigationbar"; // navbar
 import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFundraisers"
 import { useSelector } from "react-redux";
 import Found from "./components/PageNotFound/Found";
-
+import { useJourney } from 'react-journey';
 
 // import Chat from "./components/services/Chat/chat";
 // import Navbar from "./components/Navbar/Navbar";
@@ -63,6 +63,13 @@ function App() {
   const state1 = useSelector((state) => {
        return { token: state.token_1.token };
   });
+
+  const { run, stop } = useJourney();
+  useEffect(() => {
+    run();
+    return stop;
+  });
+
 
   return (
     <>

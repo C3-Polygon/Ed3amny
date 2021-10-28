@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import axios from "axios";
 import { storage } from "../../../../FireBase/FireBase";
 import { useHistory } from "react-router-dom";
+import { JourneyStep } from 'react-journey';
 // import "./CreatefundRaiser.css;
 // import userId from "../../../../reducers/login/userId";
 
@@ -112,34 +113,45 @@ const CreatefundRaiser = (e) => {
   <Row className="mb-3">
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Your Fundraiser Title </Form.Label>
+      <JourneyStep message="Pick a meaningful title for your fundraiser">
       <Form.Control type="text" placeholder="Here ..." onChange={(e)=>{setTitle(e.target.value)}}/>
+      </JourneyStep>
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
-     <Form.Label>Set your fundraising goal</Form.Label>
+     <Form.Label>Set your fundraiser goal</Form.Label>
+     <JourneyStep message="Set your target here and make sure that it is within reason">
       <Form.Control type="number" placeholder="Here ... " onChange={(e)=>{setTarget(e.target.value)}} />
+      </JourneyStep>
     </Form.Group>
   </Row>
 
   <Form.Group className="mb-3" controlId="formGridAddress1">
     <Form.Label>Upload image</Form.Label>
+    <JourneyStep message="Choose a meaningful picture">
     <Form.Control type='file' placeholder="Image"
             onChange={handleUpload}/>
+            </JourneyStep>
   </Form.Group>
 
   <Form.Group className="mb-3" controlId="formGridAddress2">
     <Form.Label>Your Fundraiser description </Form.Label>
+    <JourneyStep message="Describe your status and why are you starting this fundraiser">
     <textarea className="form-control" type="text" id="exampleFormControlTextarea1" placeholder="Here ..." rows="3" onChange={(e)=>{setDescriptionn(e.target.value)}} maxLength="245" ></textarea>
+    </JourneyStep>
   </Form.Group>
 
   <Row className="mb-3">
     <Form.Group as={Col} controlId="formGridCity">
       <Form.Label>Country</Form.Label>
+      <JourneyStep message="Where are you from ?">
       <Form.Control placeholder="Here ..." type='text' onChange={(e)=>{setCountry(e.target.value)}}/>
+      </JourneyStep>
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>Category</Form.Label>
+      <JourneyStep message="Choose a correct category that reflects on the type of this fundraiser">
       <Form.Select aria-label="Default select example"
  onChange={handler}> 
       <option value="0">Select a Category</option>
@@ -148,17 +160,21 @@ const CreatefundRaiser = (e) => {
                 return <option key = {index} value={elm.id}>{elm.namee}</option>;
               })}
       </Form.Select>
+      </JourneyStep>
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridZip">
       <Form.Label>PhoneNumber</Form.Label>
+      <JourneyStep message="How can we contact you? Enter your phone number here">
       <Form.Control type='number' placeholder="Here ..." onChange={(e)=>{setPhoneNumber(e.target.value)}}/>
+      </JourneyStep>
     </Form.Group>
   </Row>
-
+  <JourneyStep message="Submit and Good Luck !">
   <button variant="primary" type="submit">
     Submit
   </button>
+  </JourneyStep>
 </Form>
 </div>
     </div>
