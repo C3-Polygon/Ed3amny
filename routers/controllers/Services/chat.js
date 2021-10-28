@@ -27,5 +27,4 @@ module.exports = {
   join_User,
   get_Current_User,
   user_Disconnect,
-  c_users
 };

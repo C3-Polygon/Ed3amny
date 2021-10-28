@@ -76,16 +76,16 @@ function App() {
       <div>
         {state2.userId == 6 ? (
           <Switch>
-            <Route exact path="/admin" render={()=> <MainPage socket={socket}/>}  />
+            <Route exact path="/admin" component={MainPage} />
           </Switch>
         ) : !state1.token  ? (
           <>
             <div className="App">
               <ToastContainer />
-              <Navigationbar socket={socket}/>
+              <Navigationbar />
               <Switch>
                 <Route exact path="/login">
-                <Login socket={socket} />{" "}
+                  <Login />{" "}
                 </Route>
                 <Route exact path="/signup">
                   <Signup />{" "}
@@ -134,7 +134,7 @@ function App() {
           <>
             <div className="App">
               <ToastContainer />
-              <Navigationbar socket={socket}/>
+              <Navigationbar />
               <Switch>
                 <Route exact path="/login">
                   <Login />{" "}
