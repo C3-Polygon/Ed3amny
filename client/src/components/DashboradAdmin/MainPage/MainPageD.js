@@ -6,8 +6,6 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import { storage } from "../../../FireBase/FireBase";
-import { useSelector } from "react-redux";
-import Chat from '../../services/Chat/chat'
 import {
   AiFillEye,
   AiTwotoneSchedule,
@@ -18,11 +16,8 @@ import { setUserId } from "../../../reducers/login/userId";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import { setToken } from "../../../reducers/login/token";
 import { useDispatch } from "react-redux";
-
-
-
-function MainPageD({socket}) {
-
+function MainPageD() {
+  console.log("mainpage D");
   const dispatch = useDispatch();
   const [url, setUrl] = useState("");
   const [namee, setNamee] = useState("");
@@ -33,14 +28,7 @@ function MainPageD({socket}) {
   const [pendingpost, setPendingpost] = useState();
   const [getfundraiser, setGetfundraiser] = useState([]);
   const [homePage, setHomePage] = useState(true);
-  const [showRoom, setShowRoom] = useState(false);
-  const [showRoom1, setShowRoom1] = useState(false);
-  const [openRoom ,setOpenRoom ] = useState([])
-  let obj = {}
   const [users, setUsers] = useState();
-
-  
-  
   useEffect(() => {
     axios
       .get(
@@ -158,7 +146,8 @@ function MainPageD({socket}) {
   const reject = (id) => {
     axios
       .put(
-        `/admin/rejected/${id}`
+        `
+        /admin/rejected/${id}`
       )
       .then((result) => {
         getallpost();
@@ -171,7 +160,8 @@ function MainPageD({socket}) {
   const pending = (id) => {
     axios
       .put(
-        `/admin/batataa/batata/pending/${id}`
+        `
+        /admin/batataa/batata/pending/${id}`
       )
       .then((result) => {
         getallpost();
@@ -190,18 +180,6 @@ function MainPageD({socket}) {
       pending(id);
     }
   };
-
-  useEffect(() => {
-    socket.on("admin", (data) => {
-      setOpenRoom(data.allusers);
-    });
-  }, [socket]);
-
-  const joinRoom = (room) =>{
-    let roomname = room
-    let username = "admin"
-     socket.emit("joinRoom", { username , roomname });
-  }
 
   const logout = () => {
     localStorage.clear();
@@ -261,14 +239,6 @@ function MainPageD({socket}) {
               }}
             >
               <span class="las la-user"></span> Add story
-            </li>
-            <li
-              onClick={() => {
-                setShowRoom(!showRoom);
-                setHomePage(false)
-              }}
-            >
-              <span class="las la-user"></span> Show Open Rooms
             </li>
           </ul>
         </div>
@@ -458,33 +428,6 @@ function MainPageD({socket}) {
                 {/** End users recientes*/}
               </div>
             </>
-          ) : showRoom ? (
-            <div>
-          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-          <div>{openRoom && openRoom.map((elm)=>{
-            if(obj[elm.room]){
-               obj[elm.room]+=1
-            }else{
-              obj[elm.room]=1
-              return (
-              <div>
-                <div>{elm.username} {elm.room}</div>
-                <button onClick={()=>joinRoom(elm.room)}>Join Room</button>
-                 
-                <Chat username="admin" roomname={elm.room} socket={socket}></Chat>
-        
-                </div>
-                )
-            }
-          
-          })}
-          </div>
-          
-          </div>
-
           ) : (
             <>
               <div className="Main-Create-Blood">
