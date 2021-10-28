@@ -21,7 +21,7 @@ const GetAllUser = (req, res) => {
         message: "All users ",
         result: result,
       };
-      res.status(200).json(success);
+      return res.status(200).json(success);
     }
   });
 };
