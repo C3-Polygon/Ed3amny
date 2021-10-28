@@ -5,7 +5,7 @@ const getAllHospitals = (req, res) => {
   const query = `SELECT * FROM hospitaltable LIMIT 5`;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,

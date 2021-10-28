@@ -10,7 +10,7 @@ const updateUserById = (req, res) => {
       const data = [firstName, lastName, age, img, country, phoneNumber];
       const query1 = `UPDATE users SET firstName=? , lastName=? , age=?  , img=? , country=? , phoneNumber=? WHERE id = ${id}`;
       if (error) {
-        return res.status(401).json({
+        res.status(401).json({
           success: false,
           message: `Error happened during query for the user`,
           error: error,
@@ -24,13 +24,13 @@ const updateUserById = (req, res) => {
             result: result,
           });
         } else {
-          return res.status(404).json({
+          res.status(404).json({
             success: false,
             message: `User Not Found => ${id}`,
           });
         }
         if (error) {
-          return res.status(500).json({
+          res.status(500).json({
             success: false,
             message: `Server error`,
           });
@@ -50,7 +50,7 @@ const GetUserById = (req, res) => {
         message: "Server Error",
         err: err,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result) {
       const success = {
@@ -65,7 +65,7 @@ const GetUserById = (req, res) => {
         message: "User not Found",
         result: result,
       };
-      return res.status(404).json(success);
+      res.status(404).json(success);
     }
   });
 };
