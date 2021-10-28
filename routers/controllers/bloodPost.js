@@ -13,7 +13,7 @@ const createNewBloodPost = (req, res) => {
       });
     }
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: `Server Error`,
         err: err,
@@ -32,7 +32,7 @@ const getAllBloodPost = (req, res) => {
         message: "SERVER ERROR",
         error: err,
       };
-      res.status(500).json(error);
+      return res.status(500).json(error);
     }
     if (result) {
       const success = {
@@ -52,7 +52,7 @@ const deleteTheBloodPost = (req, res) => {
   const selectPost = `SELECT * FROM bloodpost WHERE id =${id}`;
   connection.query(selectPost, (err, response) => {
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: "something error",
         error: err,
@@ -68,7 +68,7 @@ const deleteTheBloodPost = (req, res) => {
           });
         }
         if (err) {
-          res.status(500).json({
+          return res.status(500).json({
             success: false,
             message: "ERRROR",
             error: err,
@@ -76,7 +76,7 @@ const deleteTheBloodPost = (req, res) => {
         }
       });
     } else {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: `The id you was enterd ${id} is not Found`,
       });
@@ -98,7 +98,7 @@ const updateBloodPost = (req, res) => {
       });
     }
     if (err) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: `Server Error`,
         err: err,
