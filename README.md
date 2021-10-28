@@ -256,8 +256,8 @@ Project Link: [https://github.com/C3-Polygon/MERAKI_Academy_Project_5](https://g
 
 * [Ayman M.Hariri](https://github.com/engaymanh)
 * [Batool Maali](https://github.com/batoolmaali)
-* [Mohammed Farhan](https://github.com/Mohamad-Farhan)
 * [Mai Al-Shagarin](https://github.com/maialshagarin)
+* [Mohammed Farhan](https://github.com/Mohamad-Farhan)
 * [Mohammad Jouza](https://github.com/MohammadJouza)
 * [MERAKI_Academy](https://github.com/MERAKI-Academy)
 
