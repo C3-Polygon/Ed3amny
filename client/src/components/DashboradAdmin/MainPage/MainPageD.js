@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import { storage } from "../../../FireBase/FireBase";
+import { useSelector } from "react-redux";
+import Chat from '../../services/Chat/chat'
 import {
   AiFillEye,
   AiTwotoneSchedule,
@@ -16,8 +18,11 @@ import { setUserId } from "../../../reducers/login/userId";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import { setToken } from "../../../reducers/login/token";
 import { useDispatch } from "react-redux";
-function MainPageD() {
-  console.log("mainpage D");
+
+
+
+function MainPageD({socket}) {
+
   const dispatch = useDispatch();
   const [url, setUrl] = useState("");
   const [namee, setNamee] = useState("");
@@ -28,11 +33,18 @@ function MainPageD() {
   const [pendingpost, setPendingpost] = useState();
   const [getfundraiser, setGetfundraiser] = useState([]);
   const [homePage, setHomePage] = useState(true);
+  const [showRoom, setShowRoom] = useState(false);
+  const [showRoom1, setShowRoom1] = useState(false);
+  const [openRoom ,setOpenRoom ] = useState([])
+  let obj = {}
   const [users, setUsers] = useState();
+
+  
+  
   useEffect(() => {
     axios
       .get(
-        `/fundraiser/admin/dashbord/get/getallfundreiser`
+        `http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`
       )
       .then((result) => {
         setFundraiser(result.data.allData.length);
@@ -42,7 +54,7 @@ function MainPageD() {
       });
 
     axios
-      .get(`/admin/users`)
+      .get(`http://localhost:5000/admin/users`)
       .then((result) => {
         setUser(result.data.result.length);
       })
@@ -51,7 +63,7 @@ function MainPageD() {
       });
 
     axios
-      .get(`/admin/pending`)
+      .get(`http://localhost:5000/admin/pending`)
       .then((result) => {
         setPendingpost(result.data.Fundraiser.length);
       })
@@ -61,7 +73,7 @@ function MainPageD() {
 
     axios
       .get(
-        `/fundraiser/admin/dashbord/get/getallfundreiser`
+        `http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`
       )
       .then((result) => {
         setGetfundraiser(result.data.allData);
@@ -71,7 +83,7 @@ function MainPageD() {
         throw error;
       });
     axios
-      .get(`/admin/users`)
+      .get(`http://localhost:5000/admin/users`)
       .then((result) => {
         setUsers(result.data.result);
       })
@@ -109,7 +121,7 @@ function MainPageD() {
       descriptionn,
     };
     axios
-      .post(`/admin/story`, newStory)
+      .post(`http://localhost:5000/admin/story`, newStory)
       .then((result) => {
         console.log("result", result);
       })
@@ -121,7 +133,7 @@ function MainPageD() {
   const getallpost = () => {
     axios
       .get(
-        `/fundraiser/admin/dashbord/get/getallfundreiser`
+        `http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`
       )
       .then((result) => {
         setGetfundraiser(result.data.allData);
@@ -134,7 +146,7 @@ function MainPageD() {
 
   const Accsept = (id) => {
     axios
-      .put(`/admin/accept/${id}`)
+      .put(`http://localhost:5000/admin/accept/${id}`)
       .then((result) => {
         getallpost();
       })
@@ -147,7 +159,7 @@ function MainPageD() {
     axios
       .put(
         `
-        /admin/rejected/${id}`
+        http://localhost:5000/admin/rejected/${id}`
       )
       .then((result) => {
         getallpost();
@@ -161,7 +173,7 @@ function MainPageD() {
     axios
       .put(
         `
-        /admin/batataa/batata/pending/${id}`
+        http://localhost:5000/admin/batataa/batata/pending/${id}`
       )
       .then((result) => {
         getallpost();
@@ -180,6 +192,18 @@ function MainPageD() {
       pending(id);
     }
   };
+
+  useEffect(() => {
+    socket.on("admin", (data) => {
+      setOpenRoom(data.allusers);
+    });
+  }, [socket]);
+
+  const joinRoom = (room) =>{
+    let roomname = room
+    let username = "admin"
+     socket.emit("joinRoom", { username , roomname });
+  }
 
   const logout = () => {
     localStorage.clear();
@@ -239,6 +263,14 @@ function MainPageD() {
               }}
             >
               <span class="las la-user"></span> Add story
+            </li>
+            <li
+              onClick={() => {
+                setShowRoom(!showRoom);
+                setHomePage(false)
+              }}
+            >
+              <span class="las la-user"></span> Show Open Rooms
             </li>
           </ul>
         </div>
@@ -428,6 +460,33 @@ function MainPageD() {
                 {/** End users recientes*/}
               </div>
             </>
+          ) : showRoom ? (
+            <div>
+          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+          <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+          <div>{openRoom && openRoom.map((elm)=>{
+            if(obj[elm.room]){
+               obj[elm.room]+=1
+            }else{
+              obj[elm.room]=1
+              return (
+              <div>
+                <div>{elm.username} {elm.room}</div>
+                <button onClick={()=>joinRoom(elm.room)}>Join Room</button>
+                 
+                <Chat username="admin" roomname={elm.room} socket={socket}></Chat>
+        
+                </div>
+                )
+            }
+          
+          })}
+          </div>
+          
+          </div>
+
           ) : (
             <>
               <div className="Main-Create-Blood">

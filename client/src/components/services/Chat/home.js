@@ -8,12 +8,11 @@ function Home({ socket }) {
   let roomname = localStorage.getItem("CurrentUserId");
   const [show, setShow] = useState();
   const sendData = () => {
-    if (username !== "" && roomname !== "") {
+    if (username  && roomname) {
       socket.emit("joinRoom", { username, roomname });
       setShow(!show);
     } else {
-      alert("username and roomname are must !");
-      window.location.reload();
+      alert("Please login to use the chat");
     }
   };
 
