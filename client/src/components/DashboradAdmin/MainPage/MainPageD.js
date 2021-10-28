@@ -44,7 +44,7 @@ function MainPageD({socket}) {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`
+        `/fundraiser/admin/dashbord/get/getallfundreiser`
       )
       .then((result) => {
         setFundraiser(result.data.allData.length);
@@ -54,7 +54,7 @@ function MainPageD({socket}) {
       });
 
     axios
-      .get(`http://localhost:5000/admin/users`)
+      .get(`/admin/users`)
       .then((result) => {
         setUser(result.data.result.length);
       })
@@ -63,7 +63,7 @@ function MainPageD({socket}) {
       });
 
     axios
-      .get(`http://localhost:5000/admin/pending`)
+      .get(`/admin/pending`)
       .then((result) => {
         setPendingpost(result.data.Fundraiser.length);
       })
@@ -73,7 +73,7 @@ function MainPageD({socket}) {
 
     axios
       .get(
-        `http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`
+        `/fundraiser/admin/dashbord/get/getallfundreiser`
       )
       .then((result) => {
         setGetfundraiser(result.data.allData);
@@ -83,7 +83,7 @@ function MainPageD({socket}) {
         throw error;
       });
     axios
-      .get(`http://localhost:5000/admin/users`)
+      .get(`/admin/users`)
       .then((result) => {
         setUsers(result.data.result);
       })
@@ -121,7 +121,7 @@ function MainPageD({socket}) {
       descriptionn,
     };
     axios
-      .post(`http://localhost:5000/admin/story`, newStory)
+      .post(`/admin/story`, newStory)
       .then((result) => {
         console.log("result", result);
       })
@@ -133,7 +133,7 @@ function MainPageD({socket}) {
   const getallpost = () => {
     axios
       .get(
-        `http://localhost:5000/fundraiser/admin/dashbord/get/getallfundreiser`
+        `/fundraiser/admin/dashbord/get/getallfundreiser`
       )
       .then((result) => {
         setGetfundraiser(result.data.allData);
@@ -146,7 +146,7 @@ function MainPageD({socket}) {
 
   const Accsept = (id) => {
     axios
-      .put(`http://localhost:5000/admin/accept/${id}`)
+      .put(`/admin/accept/${id}`)
       .then((result) => {
         getallpost();
       })
@@ -158,8 +158,7 @@ function MainPageD({socket}) {
   const reject = (id) => {
     axios
       .put(
-        `
-        http://localhost:5000/admin/rejected/${id}`
+        `/admin/rejected/${id}`
       )
       .then((result) => {
         getallpost();
@@ -172,8 +171,7 @@ function MainPageD({socket}) {
   const pending = (id) => {
     axios
       .put(
-        `
-        http://localhost:5000/admin/batataa/batata/pending/${id}`
+        `/admin/batataa/batata/pending/${id}`
       )
       .then((result) => {
         getallpost();
