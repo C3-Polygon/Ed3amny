@@ -32,7 +32,7 @@ const createNewFundraiser = (req, res) => {
       });
     }
     if (err) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         err: err,
@@ -46,7 +46,7 @@ const getAllFundraiser = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY id ASC LIMIT 12 `;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,
@@ -69,7 +69,7 @@ const updateFundRaiserById = (req, res) => {
       const data = [title, descriptionn, img, country];
       const query1 = `UPDATE campaigns SET title=? , descriptionn=? , img=?  , country=? WHERE id = ${id}`;
       if (error) {
-        return res.status(200).json({
+        res.status(200).json({
           success: false,
           message: `Error happened during query for the fundraiser`,
           error: error,
@@ -83,13 +83,13 @@ const updateFundRaiserById = (req, res) => {
             result: result,
           });
         } else {
-          return res.status(404).json({
+          res.status(404).json({
             success: false,
             message: `Fundraiser Not Found => ${id}`,
           });
         }
         if (error) {
-          return res.status(500).json({
+          res.status(500).json({
             success: false,
             message: `Server error`,
           });
@@ -105,7 +105,7 @@ const getAllFundRaiserByUser = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE userid = ${userid} AND is_deleted=1`;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,
@@ -126,7 +126,7 @@ const getFundRaiserById = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE id = ${id} AND is_deleted=1`;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,
@@ -159,7 +159,7 @@ const deleteFundraiserByUser = (req, res) => {
         });
       });
     } else {
-      return res.status(404).json({
+      res.status(404).json({
         success: false,
         message: `The campaign with id ==> ${id} not found`,
       });
@@ -173,7 +173,7 @@ const getAllFundraiserByType = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE typee = ${typee} AND is_deleted=1`;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,
@@ -193,7 +193,7 @@ const getTopFundraiserByCurrentTarget = (req, res) => {
   const query = `SELECT * FROM campaigns where is_deleted=1  ORDER BY current_target DESC LIMIT 3`;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,
@@ -211,7 +211,7 @@ const getThreeRandomFundraisers = (req, res) => {
   const query = `SELECT * FROM campaigns WHERE is_deleted=1 ORDER BY RAND() LIMIT 6`;
   connection.query(query, (error, result) => {
     if (error) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         error: error,
@@ -228,7 +228,7 @@ const getAllCategories = (req, res) => {
   const allStory = `SELECT * FROM categories LIMIT 3`;
   connection.query(allStory, (err, response) => {
     if (err) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: "SERVER ERROR",
       });
@@ -253,7 +253,7 @@ const getTotalsCategories = (req, res) => {
       });
     }
     if (response) {
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: "All Data",
         allData: response,
@@ -267,7 +267,7 @@ const getCategorybyId = (req, res) => {
   const category = `SELECT * FROM categories where id = ${id}`;
   connection.query(category, (err, result) => {
     if (err) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: "Server Error",
         error: err,
@@ -287,7 +287,7 @@ const getTotalsFundreiser = (req, res) => {
   const allStory = `SELECT * FROM campaigns`;
   connection.query(allStory, (err, response) => {
     if (err) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: "SERVER ERROR",
       });
@@ -312,19 +312,13 @@ const deleteFundraiserByid = (req, res) => {
     if (result) {
       const query1 = `UPDATE campaigns SET is_deleted = 2 WHERE id = ${id}`;
       if (error) {
-        return res.status(200).json({
+        res.status(200).json({
           success: false,
           message: `Error happened during query for the fundraiser`,
           error: error,
         });
       }
       connection.query(query1, (error, result) => {
-        if (error) {
-          return res.status(500).json({
-            success: false,
-            message: `Server error`,
-          });
-        }
         if (result) {
           res.status(200).json({
             success: true,
@@ -332,9 +326,15 @@ const deleteFundraiserByid = (req, res) => {
             result: result,
           });
         } else {
-          return res.status(404).json({
+          res.status(404).json({
             success: false,
             message: `Fundraiser Not Found => ${id}`,
+          });
+        }
+        if (error) {
+          res.status(500).json({
+            success: false,
+            message: `Server error`,
           });
         }
       });
@@ -354,19 +354,13 @@ const updateOverView = (req, res) => {
       const data = [title, phoneNumber, targett, country];
       const query1 = `UPDATE campaigns SET title=? , phoneNumber=? , targett=?  , country=? WHERE id = ${id}`;
       if (error) {
-        return res.status(500).json({
+        res.status(500).json({
           success: false,
           message: `Error happened during query for the fundraiser`,
           error: error,
         });
       }
       connection.query(query1, data, (error, result) => {
-        if (error) {
-          return res.status(500).json({
-            success: false,
-            message: `Server error`,
-          });
-        }
         if (result) {
           res.status(200).json({
             success: true,
@@ -374,9 +368,15 @@ const updateOverView = (req, res) => {
             result: result,
           });
         } else {
-          return res.status(404).json({
+          res.status(404).json({
             success: false,
             message: `Fundraiser Not Found => ${id}`,
+          });
+        }
+        if (error) {
+          res.status(500).json({
+            success: false,
+            message: `Server error`,
           });
         }
       });
@@ -396,19 +396,13 @@ const updatestory = (req, res) => {
       const data = [descriptionn];
       const query1 = `UPDATE campaigns SET descriptionn=? WHERE id = ${id}`;
       if (error) {
-        return res.status(500).json({
+        res.status(500).json({
           success: false,
           message: `Error happened during query for the fundraiser`,
           error: error,
         });
       }
       connection.query(query1, data, (error, result) => {
-        if (error) {
-          return res.status(500).json({
-            success: false,
-            message: `Server error`,
-          });
-        }
         if (result) {
           res.status(200).json({
             success: true,
@@ -416,9 +410,15 @@ const updatestory = (req, res) => {
             result: result,
           });
         } else {
-          return res.status(404).json({
+          res.status(404).json({
             success: false,
             message: `Fundraiser Not Found => ${id}`,
+          });
+        }
+        if (error) {
+          res.status(500).json({
+            success: false,
+            message: `Server error`,
           });
         }
       });
@@ -436,19 +436,13 @@ const updateYourFundraiserImage = (req, res) => {
       const data = [img];
       const query1 = `UPDATE campaigns SET img=? WHERE id = ${id}`;
       if (error) {
-        return res.status(500).json({
+        res.status(500).json({
           success: false,
           message: `Error happened during query for the fundraiser`,
           error: error,
         });
       }
       connection.query(query1, data, (error, result) => {
-        if (error) {
-          return res.status(500).json({
-            success: false,
-            message: `Server error`,
-          });
-        }
         if (result) {
           res.status(200).json({
             success: true,
@@ -456,9 +450,15 @@ const updateYourFundraiserImage = (req, res) => {
             result: result,
           });
         } else {
-          return res.status(404).json({
+          res.status(404).json({
             success: false,
             message: `Fundraiser Not Found => ${id}`,
+          });
+        }
+        if (error) {
+          res.status(500).json({
+            success: false,
+            message: `Server error`,
           });
         }
       });

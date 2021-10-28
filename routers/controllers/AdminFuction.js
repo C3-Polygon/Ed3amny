@@ -13,7 +13,7 @@ const GetAllUser = (req, res) => {
         message: "Somthing Error Try Again",
         err: err,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result) {
       const success = {
@@ -36,7 +36,7 @@ const GetAllFundraiser = (req, res) => {
         success: false,
         message: err,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result) {
       const success = {
@@ -58,7 +58,7 @@ const GetAllPendingPost = (req, res) => {
         success: false,
         message: "There's no Fundraiser is pending",
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result) {
       const success = {
@@ -82,13 +82,13 @@ const deleteFundraisers = (req, res) => {
         success: false,
         message: `your ${id} is not Found`,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result.length) {
       const deleteid = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
       connection.query(deleteid, (err, response) => {
         if (err) {
-          return res.status(404).json(err);
+          res.status(404).json(err);
         }
         if (response) {
           const success = {
@@ -99,7 +99,7 @@ const deleteFundraisers = (req, res) => {
         }
       });
     } else {
-      return res.json(`Your ${id} is not Found`);
+      res.json(`Your ${id} is not Found`);
     }
   });
 };
@@ -114,13 +114,13 @@ const AcceptFundraisers = (req, res) => {
         success: false,
         message: `Your id ===> ${id} is not Found`,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result.length) {
       const updateRow = `UPDATE campaigns SET is_deleted = 1  WHERE id = ${id}`;
       connection.query(updateRow, (err, response) => {
         if (err) {
-          return res.status(500).json({
+          res.status(500).json({
             success: false,
             message: "Server Error",
           });
@@ -133,7 +133,7 @@ const AcceptFundraisers = (req, res) => {
         }
       });
     } else {
-      return res.json(`Your ${id} is not Found`);
+      res.json(`Your ${id} is not Found`);
     }
   });
 };
@@ -149,14 +149,14 @@ const rejectedTheFunders = (req, res) => {
         success: false,
         message: "Server Error",
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (response.length) {
       const reject = `UPDATE campaigns SET is_deleted = 2  WHERE id = ${id}`;
       connection.query(reject, (err, response) => {
 
         if (err) {
-          return res.status(500).modulejson({
+          res.status(500).modulejson({
             success: false,
             message: "Server Error",
           });
@@ -169,7 +169,7 @@ const rejectedTheFunders = (req, res) => {
         }
       });
     } else {
-      return res.json(`your ${id} is not found`);
+      res.json(`your ${id} is not found`);
     }
   });
 };
@@ -187,7 +187,7 @@ const createNewStory = (req, res) => {
         message: "something error",
         erorr: err,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (response) {
       const success = {
@@ -205,7 +205,7 @@ const getAllStroy = (req, res) => {
   const allStory = `SELECT * FROM story`;
   connection.query(allStory, (err, response) => {
     if (err) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: "SERVER ERROR",
       });
@@ -228,7 +228,7 @@ const updateStroy = (req, res) => {
   const selectQuery = `SELECT * from story WHERE id = ${id}`;
   connection.query(selectQuery, (err, response) => {
     if (err) {
-      return res.status(404).json({
+      res.status(404).json({
         success: false,
         message: "Server Error",
       });
@@ -248,7 +248,7 @@ const updateStroy = (req, res) => {
         success: false,
         message: `the id ${id} is not Found`,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
   });
 };
@@ -260,7 +260,7 @@ const deleteStroy = (req, res) => {
   const deleteRow = `SELECT * From story where id = ${id}`;
   connection.query(deleteRow, (err, response) => {
     if (err) {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `Server Error`,
       });
@@ -274,7 +274,7 @@ const deleteStroy = (req, res) => {
         });
       });
     } else {
-      return res.status(500).json({
+      res.status(500).json({
         success: false,
         message: `id ${id} is not Found`,
       });
@@ -293,13 +293,13 @@ const ConvertToPending = (req, res) => {
         success: false,
         message: `Your id ===> ${id} is not Found`,
       };
-      return res.status(500).json(error);
+      res.status(500).json(error);
     }
     if (result.length) {
       const updateRow = `UPDATE campaigns SET is_deleted = 0  WHERE id = ${id}`;
       connection.query(updateRow, (err, response) => {
         if (err) {
-          return res.status(500).json({
+          res.status(500).json({
             success: false,
             message: "Server Error",
           });
@@ -312,7 +312,7 @@ const ConvertToPending = (req, res) => {
         }
       });
     } else {
-      return res.json(`Your ${id} is not Found`);
+      res.json(`Your ${id} is not Found`);
     }
   });
 };

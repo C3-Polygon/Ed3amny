@@ -5,13 +5,12 @@ const socket = require('socket.io')
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({ extended: true }))
 const path = require('path');
 app.use(express.static(path.resolve(__dirname, './client/build')));
-
-
 
 // import Routers
 const signupRouter = require("./routers/routes/auth/signup")
@@ -23,7 +22,7 @@ const searchRouter = require('./routers/routes/Services/search')
 const contributionRouter = require('./routers/routes/Contribution')
 const stripeRouter = require('./routers/routes/Services/stripe')
 const helpSpecificRouter = require('./routers/routes/helpSpecific')
-const { join_User, get_Current_User, user_Disconnect, c_users} = require('./routers/controllers/Services/chat');
+const { join_User, get_Current_User, user_Disconnect, } = require('./routers/controllers/Services/chat');
 const forgetPasswordRouter = require('./routers/routes/Services/forgotPassword')
 // const { isTypedArray } = require("util/types");
 
@@ -58,7 +57,6 @@ io.on("connection", (socket) => {
         //* create user
         const p_user = join_User(socket.id, username, roomname);
         console.log(socket.id, "=id");
-        console.log("admin",c_users)
         socket.join(p_user.room);
 
         //display a welcome message to the user who have joined a room
@@ -68,17 +66,12 @@ io.on("connection", (socket) => {
             text: `Welcome ${p_user.username}`,
         });
 
-        
-
         //displays a joined room message to all other room users except that particular user
         socket.broadcast.to(p_user.room).emit("message", {
             userId: p_user.id,
             username: p_user.username,
             text: `${p_user.username} has joined the chat`,
         });
-
-        io.emit("admin",{allusers:c_users})
-       
     });
 
     //user sending message
@@ -94,11 +87,9 @@ io.on("connection", (socket) => {
     });
 
     //when the user exits the room
-    socket.on("disconnectOne", (room) => {
+    socket.on("disconnect", () => {
         //the user is deleted from array of users and a left room message displayed
         const p_user = user_Disconnect(socket.id);
-        socket.leave(p_user.room)
-        
 
         if (p_user) {
             io.to(p_user.room).emit("message", {
@@ -108,8 +99,6 @@ io.on("connection", (socket) => {
             });
         }
     });
-    
-     
 
 }); //end socket
 module.exports = {io}
