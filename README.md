@@ -1,14 +1,5 @@
 <div id="top"></div>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -57,9 +48,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[https://imgur.com/XYnBDyC]
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+(https://ed3amny.herokuapp.com/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -69,7 +61,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 
 * [React.js](https://reactjs.org/)
-* [Bootstrap](https://getbootstrap.com)
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+* [Socket-io](https://socket.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -84,57 +77,128 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Installing : Please run NPM I before you execute the run commands
-NPM i to install the required libraries
+There are no special prerequisites, I only need to note that you MAY need to manually install react-toastify package in the client/ path. 
 
 Executing program
 
-Open a terminal on the path ...\MERAKI_Academy_Project_5\backend
-Open a terminal on the path ...\MERAKI_Academy_Project_5\frontend
+Open a terminal on the path ...\MERAKI_Academy_Project_5\              ---> npm run dev
+Open a terminal on the path ...\MERAKI_Academy_Project_5\client        ---> npm run start
 
 Excecute the commands bellow and wait for the project to run...
 
-npm run dev in the backend folder.
-npm start in the frontend folder.
+npm run dev in the main folder.
+npm start in the client folder.
+
 
 ### Installation
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/C3-Polygon/MERAKI_Academy_Project_5.git
    ```
 3. Install NPM packages
    ```sh
-   npm install
+   npm install :
+    "@ckeditor/ckeditor5-build-classic": "^30.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@sendgrid/mail": "^7.5.0",
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.19.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "aes256": "^1.1.0",
+    "axios": "^0.22.0",
+    "bootstrap": "^5.1.1",
+    "firebase": "^9.1.3",
+    "jsonwebtoken": "^8.5.1",
+    "mdb-ui-kit": "^3.9.0",
+    "moment": "^2.29.1",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-dom": "^17.0.2",
+    "react-facebook-login": "^4.1.1",
+    "react-icons": "^4.3.1",
+    "react-journey": "^1.1.7",
+    "react-moment": "^1.1.1",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "react-share": "^4.4.0",
+    "react-shepherd": "^3.3.3",
+    "react-toastify": "^8.0.3",
+    "redux": "^4.1.1",
+    "redux-persist": "^6.0.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
+    "shepherd.js": "^8.3.1",
+    "socket.io-client": "^4.2.0",
+    "toastify": "^2.0.1",
+    "web-vitals": "^1.1.2"
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+5. Or simpley:
+   ```
+  Run NPM I in the terminal before you execute the run commands
+  NPM i to install the required libraries in both the client and the server respected folders.
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+You can use this app to create fundraisers, set goals and share them on social media platforms to fulfill your dreams!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+- [Login] Feature 1
+    - [Login with Facebook] Nested Feature
+- [Signup] Feature 2
+- [Search] Feature 3
+- [DropDown] Feature 4
+    - [AccountSettings] Nested Feature
+       - [Edit user avatar] Nested of a nested Feature
+       - [Edit user firstName] Nested of a nested Feature
+       - [Edit user lastName] Nested of a nested Feature
+       - [Edit user age] Nested of a nested Feature
+       - [Edit user country] Nested of a nested Feature
+       - [Edit user phonenumber] Nested of a nested Feature
+    - [Donations You've Made] Nested Feature
+    - [View Your Fundraisers] Nested Feature
+       - [Manage Fundraiser] Nested of a nested Feature
+            - [Edit Title] Nested of a nested Feature       
+            - [Edit Phone Number] Nested of a nested Feature
+            - [Edit Country] Nested of a nested Feature
+            - [Edit Goal] Nested of a nested Feature
+            - [Edit Photo] Nested of a nested Feature
+            - [Edit Story] Nested of a nested Feature
+            - [Delete Fundraiser] Nested of a nested Feature
+    - [Donations You've Made] Nested Feature
+    - [Start a Fundraiser] Nested Feature
+        - [Share Fundraiser on social media] Nested of a nested Feature
+        - [Donate for a fundraiser via stripe] Nested of a nested Feature
+        - [View Donnors] Nested of a nested Feature
+    - [Ask for a Blood Donation] Nested Feature
+    - [Logout] Nested Feature
+- [Categories] Feature 5
+    - [Education] Nested Feature
+    - [Family] Nested Feature
+    - [Sport] Nested Feature
+    - [Travel] Nested Feature
+    - [See All] Nested Feature
+- [How the website works(video)] Feature 6
+- [View Top 3 Fundraisers] Feature 7
+- [View Blood Posts] Feature 8
+- [View Success Stories] Feature 9
+- [View Random Fundraisers] Feature 10
+- [Chat-Technical Support] Feature 11
+- [View Success Stories] Feature 12
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
