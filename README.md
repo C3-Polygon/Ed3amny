@@ -81,9 +81,8 @@ There are no special prerequisites, I only need to note that you MAY need to man
 
 Executing program
 
-Open a terminal on the path ...\MERAKI_Academy_Project_5\              ---> npm run dev
-Open a terminal on the path ...\MERAKI_Academy_Project_5\client        ---> npm run start
-
+Open a terminal on the path ...\MERAKI_Academy_Project_5\
+Open a terminal on the path ...\MERAKI_Academy_Project_5\client
 Excecute the commands bellow and wait for the project to run...
 
 npm run dev in the main folder.
@@ -92,14 +91,13 @@ npm start in the client folder.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/C3-Polygon/MERAKI_Academy_Project_5.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
-   npm install :
+   npm install : "Client/Frontend"
     "@ckeditor/ckeditor5-build-classic": "^30.0.0",
     "@ckeditor/ckeditor5-react": "^3.0.3",
     "@sendgrid/mail": "^7.5.0",
@@ -137,21 +135,37 @@ npm start in the client folder.
     "socket.io-client": "^4.2.0",
     "toastify": "^2.0.1",
     "web-vitals": "^1.1.2"
+    
+    
+   npm install server/backend:
+    "@ckeditor/ckeditor5-build-classic": "^30.0.0",
+    "@ckeditor/ckeditor5-react": "^3.0.3",
+    "@sendgrid/mail": "^7.5.0",
+    "@socket.io/admin-ui": "^0.2.0",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.0",
+    "node": "^16.10.0",
+    "nodemon": "^2.0.13",
+    "socket.io": "^4.2.0",
+    "stripe": "^8.179.0"
    ```
+   
+   ```sh
 5. Or simpley:
-   ```
+   
   Run NPM I in the terminal before you execute the run commands
-  NPM i to install the required libraries in both the client and the server respected folders.
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
+  NPM i to install the required libraries in both the client and the server respected folders
+  
+  <p align="right">(<a href="#top">back to top</a>)</p>
+ 
 ## Usage
 
 You can use this app to create fundraisers, set goals and share them on social media platforms to fulfill your dreams!
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- ROADMAP -->
@@ -200,12 +214,6 @@ You can use this app to create fundraisers, set goals and share them on social m
 - [Chat-Technical Support] Feature 11
 - [View Success Stories] Feature 12
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -223,11 +231,10 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Open Source.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -236,9 +243,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Your Name - [https://github.com/AhmadMraish](https://github.com/AhmadMraish) - ahmadmraish59@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/C3-Polygon/MERAKI_Academy_Project_5](https://github.com/C3-Polygon/MERAKI_Academy_Project_5)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -247,9 +254,14 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Ayman M.Hariri](https://github.com/engaymanh)
+* [Batool Maali](https://github.com/batoolmaali)
+* [Mohammed Farhan](https://github.com/Mohamad-Farhan)
+* [Mai Al-Shagarin](https://github.com/maialshagarin)
+* [Mohammad Jouza](https://github.com/MohammadJouza)
+* [MERAKI_Academy](https://github.com/MERAKI-Academy)
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
