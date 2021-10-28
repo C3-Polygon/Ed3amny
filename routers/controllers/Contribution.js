@@ -13,7 +13,7 @@ const createNewContribution = (req, res) => {
                 message: "Server Error",
                 err: err,
             };
-            return res.status(500).json(error);
+            res.status(500).json(error);
         }
         if (result) {
             const success = {
@@ -31,7 +31,7 @@ const getOwnUserContributionsById = (req, res) => {
 
     connection.query(query, (err, result) => {
         if (result) {
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 message: `User with the following id => ${userId} has the following contributions`,
                 result: result,
@@ -58,7 +58,7 @@ const getContributorsByCampaignId = (req, res) => {
 
     connection.query(query, (err, result) => {
         if (result) {
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 message: `Users that contributed for this campaign => ${campaign_id}`,
                 result: result,
@@ -86,7 +86,7 @@ const getAllContributorsByCampaignId = (req, res) => {
 
     connection.query(query, (err, result) => {
         if (result) {
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 message: `Users that contributed for this campaign => ${campaign_id}`,
                 result: result,
@@ -99,7 +99,7 @@ const getAllContributorsByCampaignId = (req, res) => {
                 err: err,
             });
         } else {
-            return res.status(500).json({
+            res.status(500).json({
                 success: false,
                 message: `Server Error`,
             });
