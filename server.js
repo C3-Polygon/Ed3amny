@@ -46,6 +46,8 @@ const server = app.listen(PORT, () => {
 
 const io = socket(server, { cors: { origin: "*" } })
 
+const path = require('path');
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
 app.set('socketio', io);   // exporting socket io to all files - global ussage in all app files
 
