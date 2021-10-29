@@ -46,7 +46,7 @@ function BloodPostView() {
       <>
      
         
-        < MdBloodtype className = "Flafelbtn"variant="success" onClick={handleShow}/>
+        < MdBloodtype id="breathing-button" className = "Flafelbtn"variant="success" onClick={handleShow}/>
         
 
         <Offcanvas show={show} onHide={handleClose}>
