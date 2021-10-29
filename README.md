@@ -117,11 +117,6 @@ npm start in the client folder.
    ```
 2. Install NPM packages
   
-   ```
-   
-   ```sh
-5. Or simpley:
-   
   Run NPM I in the terminal before you execute the run commands
   NPM i to install the required libraries in both the client and the server respected folders
   
