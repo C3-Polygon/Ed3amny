@@ -16,14 +16,13 @@ export const SearchResults = () => {
     return { text1: state.text1.text1 };
   });
 
-  useEffect(() => {
-    const loadTitle = async () => {
+  useEffect(async () => {
+      
       const response = await axios.get(
         `/search?name=${state.text1}`
       );
       setSearch(response.data.search);
-    };
-    loadTitle();
+    
   }, [state.text1]);
 
   const ViewFundRaiser = (data) => {

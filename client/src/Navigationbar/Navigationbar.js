@@ -84,7 +84,9 @@ const Navigationbar = () => {
     //   setSuggestions([]);
     // };
   
-    const onChangeHandler = (text) => {
+    const onChangeHandler = (e) => {
+      e.preventDefault()
+      let text = e.target.value
       setText(text);
       let matches = [];
       if (text.length > 0) {
@@ -94,9 +96,10 @@ const Navigationbar = () => {
         });
       }
       setSuggestions(matches);
+      searchResult(text)
     };
   
-    const searchResult = () =>{
+    const searchResult = (text) =>{
       // e.preventDefault();
       dispatch(setText1(text))
       history.push('/search')
@@ -123,20 +126,16 @@ const Navigationbar = () => {
       </Nav>
       <Form className="d-flex">
         <FormControl
-        onChange={(e) => {
-            onChangeHandler(e.target.value);
-          }}
+        onChange={onChangeHandler}
           value={text}
-          onBlur={() => {
-            setTimeout(() => {
-              setSuggestions([]);
-            }, 100);
-          }} 
-        onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              searchResult();
-            }
-          }}
+          
+        // onKeyPress={(e) => {
+        //   // e.preventDefault()
+        //     if (e.key === "Enter") {
+              
+        //       searchResult();
+        //     }
+        //   }}
           type="search"
           placeholder="Search"
           className="me-2"
