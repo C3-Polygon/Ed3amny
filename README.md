@@ -46,7 +46,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Images
 
 [https://imgur.com/XYnBDyC]
 
@@ -62,18 +62,32 @@
 
 * [React.js](https://reactjs.org/)
 * [React-Bootstrap](https://react-bootstrap.github.io/)
+* [React-Redux](https://react-redux.js.org/)
+* [Socket-io](https://socket.io/)
+* [Microsoft Visual Studio Code](https://code.visualstudio.com/)
+* [NodeJS](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [MySQL](https://www.mysql.com/)
+* [Stripe](https://stripe.com/en-gb-us)
+* [Firebase](https://firebase.google.com/)
+* [Heroku](https://dashboard.heroku.com/)
 * [Socket-io](https://socket.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- GETTING STARTED -->
+
 ## Getting Started
 
 The project was built using VS Code ver 1.60.1, ran and tested on Chrome Version 93.0.4577.82.
 The project was built on Windows 10 64bit.
 To get a local copy up and running follow these simple example steps.
+
+### The problem and the Solution
+
+We live in a closed-minded society where asking for help is considered to be begging so that we have decided to develop Ed3amny to eliminate the fear of asking for help because everybody needs help. Ed3amny is here to help people in need, starter companies, students, families, the sick, and the poor.
+
 
 ### Prerequisites
 
