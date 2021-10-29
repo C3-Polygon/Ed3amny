@@ -8,7 +8,7 @@
 }
 
 .mainViewfundraiser {
-    height: 800px;
+    height: 900px;
     overflow: hidden;
 }
 
@@ -30,12 +30,15 @@
 }
 
 .TitleDev {
-    height: 65px;
+    height: 70px !important;
 }
 
 .DescriptionDev {
-    margin-bottom: 25px;
-    height: 200px;
+    height: 220px !important;
+}
+
+.raisedlastdev {
+    height: 0px;
 }
 
 .mainViewfundraiser h5 {
@@ -64,7 +67,20 @@
     .progressbar {
         margin-top: 100px
     }
+    .TitleDev {
+        height: 90px !important;
+    }
     .DescriptionDev {
         margin-top: 20px;
+        height: 280px !important;
     }
-} 
+}
+
+@media only screen and (min-width: 772px) {
+    .TitleDev {
+        height: 90px !important;
+    }
+    .DescriptionDev {
+        height: 280px !important;
+    }
+}

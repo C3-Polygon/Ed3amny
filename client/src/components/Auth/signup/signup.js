@@ -10,7 +10,7 @@ const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState("https://www.gofundme.com/static/media/DefaultAvatar.4bb188e1d41df75419450a820a958679.svg");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [passwordd, setPasswordd] = useState("");
@@ -33,6 +33,7 @@ const Signup = () => {
       email,
       country,
       passwordd,
+      img,
     };
     axios
       .post("/signup", theUsers)

@@ -48,6 +48,7 @@
     cursor: pointer;
     padding: 5px;
     font-size: 50px;
+    border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -92,8 +93,6 @@
 }
 
 @media only screen and (max-width: 772px) {
-   
-
     .video-section {
         margin: 10px 0px;
     }
@@ -101,6 +100,7 @@
         margin-top: 25px;
     }
 }
+
 
 /* 
  .Main-section {

@@ -15,10 +15,10 @@ const ForgotMainPage = () => {
     console.log("showEmailCheck", showEmailCheck);
   };
 
-  const smsCheckForSend = () => {
-    setShowSmsCheck(true);
-    console.log("showSmsCheck", showSmsCheck);
-  };
+  // const smsCheckForSend = () => {
+  //   setShowSmsCheck(true);
+  //   console.log("showSmsCheck", showSmsCheck);
+  // };
   const sendEmail = (e) => {
     console.log("i am here");
     e.preventDefault();
@@ -39,33 +39,20 @@ const ForgotMainPage = () => {
 
   return (
     <>
-      {showEmailCheck ? (
+        <div className='Main-forgetPass'>
         <div className="errorMessage">
-          <br />{" "}
-          <h1>
-            {" "}
-            We will send you a new password <br /> on this email " {
-              emailCheck
-            } "{" "}
-          </h1>
-          <input
-            placeholder="Enter Your Email"
-            onChange={(e) => {     
-              setEmailCheck(e.target.value);
-            }}
-          />
+         
+          <h2>
+            We will send you a new <br></br> password on this email
+          </h2>
+          <input type="email"
+            placeholder="Enter Your Email"/>
           <button onClick={sendEmail} type="submit">
-            {" "}
-            Send{" "}
-          </button>{" "}
+            Send
+          </button>
         </div>
-      ) : (
-        <div>
-          <button onClick={emailCheckForSend}> By E-mail</button>
-          <button onClick={smsCheckForSend}> By SMS</button>
         </div>
-      )}
-    </>
+        </>    
   );
       }
 

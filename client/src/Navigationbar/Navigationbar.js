@@ -108,7 +108,7 @@ const Navigationbar = () => {
 
 
     return (
-        <Navbar bg="light" expand="lg" className='Main-nav'>
+        <Navbar expand="lg" className='Main-nav'>
   <Container>
     
     <Navbar.Brand className='Navlogo' onClick={()=> history.push('/')}>Ed3amny</Navbar.Brand>
@@ -124,7 +124,9 @@ const Navigationbar = () => {
         
 
       </Nav>
-      <Form className="d-flex">
+      <Form className="Main-Form-Nav">
+      <div className="search-wrapper">
+        <span class="las la-search"></span>
         <FormControl
         onChange={onChangeHandler}
           value={text}
@@ -138,10 +140,11 @@ const Navigationbar = () => {
         //   }}
           type="search"
           placeholder="Search"
-          className="me-2"
+          className="me-2 search-input"
           aria-label="Search"
           
         />
+        </div>
          <Categories/>
         {/* {suggestions &&
               suggestions.map((elm, i) => {

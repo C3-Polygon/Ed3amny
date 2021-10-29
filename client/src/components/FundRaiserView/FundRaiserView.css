@@ -178,7 +178,7 @@
 
 .Main-title-contributors {
     height: 600px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .title-contribut {

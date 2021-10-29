@@ -38,10 +38,10 @@
 }
 
 .TitleDev {
-    height: 65px;
+    height: 65px !important;
 }
 
 .DescriptionDev {
     margin-bottom: 25px;
-    height: 200px;
+    height: 230px !important;
 }

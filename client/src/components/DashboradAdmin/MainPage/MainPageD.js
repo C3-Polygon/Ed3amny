@@ -18,6 +18,7 @@ import { setToken } from "../../../reducers/login/token";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Chat from '../../services/Chat/chat'
+import Table from 'react-bootstrap/Table';
 
 function MainPageD({socket}) {
   console.log("mainpage D");
@@ -460,31 +461,48 @@ function MainPageD({socket}) {
                 {/** End users recientes*/}
               </div>
             </>
-          ) : showRoom ?(<div>
-            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
-            <div>{openRoom && openRoom.map((elm)=>{
+          ) : showRoom ?(
+          <>  
+          {/** Start Table */}
+          <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Room Number</th>
+      <th>Join Room</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      {openRoom && openRoom.map((elm)=>{
               if(obj[elm.room]){
                  obj[elm.room]+=1
               }else{
                 obj[elm.room]=1
                 return (
-                <div>
-                  <div>{elm.username} {elm.room}</div>
-                  <button onClick={()=>joinRoom(elm.room)}>Join Room</button>
-  
+                <>
+                  <td>
+                    {elm.username} 
+                    </td>
+                    <td>{elm.room}</td>
+                    <td><button onClick={()=>joinRoom(elm.room)}>Join Room</button></td>
                   <Chat username="admin" roomname={elm.room} socket={socket}></Chat>
   
-                  </div>
+                  </>
                   )
               }
   
             })}
-            </div>
+    </tr>
+  </tbody>
+</Table>
+
+
+          {/** End Table  */}
+            
   
-            </div>):( 
+            </>):( 
             <>
               <div className="Main-Create-Blood">
                 <div className="container">
