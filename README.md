@@ -47,8 +47,15 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Images and links
-<img src="https://imgur.com/XYnBDyC" alt="Logo" width="80" height="80">
+
 (https://ed3amny.herokuapp.com/)
+(https://imgur.com/a/9044ePL)
+
+<img src="ed/screencapture-localhost-3000-2021-10-28-16_13_34.png" alt="MainPage" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-Contributions-Contributions-Contributions-Contributions-2021-10-28-19_50_33.png" alt="Contributions" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-Drop-Blood-BloodPost-Create-2021-10-28-19_52_55.png" alt="Bloodpost" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-Drop-YourFundraisers-2021-10-28-19_50_57.png" alt="YourFundraisers" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-fundraiser-2021-10-28-19_51_38.png" alt="CreateAnewFundraiser" width="80" height="80">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -73,18 +80,19 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### The problem and the Solution
 
+We live in a closed-minded society where asking for help is considered to be begging so that we have decided to develop Ed3amny to eliminate the fear of asking for help because everybody needs help. Ed3amny is here to help people in need, starter companies, students, families, the sick, and the poor.
 
+## Usage
+
+You can use this app to create fundraisers, set goals and share them on social media platforms to fulfill your dreams!
 
 ## Getting Started
 
 The project was built using VS Code ver 1.60.1, ran and tested on Chrome Version 93.0.4577.82.
 The project was built on Windows 10 64bit.
 To get a local copy up and running follow these simple example steps.
-
-### The problem and the Solution
-
-We live in a closed-minded society where asking for help is considered to be begging so that we have decided to develop Ed3amny to eliminate the fear of asking for help because everybody needs help. Ed3amny is here to help people in need, starter companies, students, families, the sick, and the poor.
 
 
 ### Prerequisites
@@ -172,11 +180,6 @@ npm start in the client folder.
   
   <p align="right">(<a href="#top">back to top</a>)</p>
  
-## Usage
-
-You can use this app to create fundraisers, set goals and share them on social media platforms to fulfill your dreams!
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
