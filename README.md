@@ -256,7 +256,10 @@ Open Source.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [https://github.com/AhmadMraish](https://github.com/AhmadMraish) - ahmadmraish59@gmail.com
+[Ahmad Mraish]        -   [https://github.com/AhmadMraish](https://github.com/AhmadMraish)               - ahmadmraish59@gmail.com
+[Omar hushki]         -   [https://github.com/hushki94](https://github.com/hushki94)                     - Omarhushki94@gmail.com
+[Maamoun Al-Ksiwani]  -   [https://github.com/MaamounAksiwani](https://github.com/MaamounAksiwani)       - Omarhushki94@gmail.com
+[Obada Amarneh]       -   [https://github.com/ObadaAmarneh](https://github.com/ObadaAmarneh)             - obada.amarneh20@gmial.com
 
 Project Link: [https://github.com/C3-Polygon/MERAKI_Academy_Project_5](https://github.com/C3-Polygon/MERAKI_Academy_Project_5)
 
