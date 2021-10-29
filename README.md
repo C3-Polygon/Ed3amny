@@ -185,40 +185,40 @@ npm start in the client folder.
 ## Roadmap
 
 - [Login] Feature 1
-    - [Login with Facebook] Nested Feature
+    - [Login with Facebook] 
 - [Signup] Feature 2
 - [Search] Feature 3
 - [DropDown] Feature 4
-    - [AccountSettings] Nested Feature
-       - [Edit user avatar] Nested of a nested Feature
-       - [Edit user firstName] Nested of a nested Feature
-       - [Edit user lastName] Nested of a nested Feature
-       - [Edit user age] Nested of a nested Feature
-       - [Edit user country] Nested of a nested Feature
-       - [Edit user phonenumber] Nested of a nested Feature
-    - [Donations You've Made] Nested Feature
-    - [View Your Fundraisers] Nested Feature
-       - [Manage Fundraiser] Nested of a nested Feature
-            - [Edit Title] Nested of a nested Feature       
-            - [Edit Phone Number] Nested of a nested Feature
-            - [Edit Country] Nested of a nested Feature
-            - [Edit Goal] Nested of a nested Feature
-            - [Edit Photo] Nested of a nested Feature
-            - [Edit Story] Nested of a nested Feature
-            - [Delete Fundraiser] Nested of a nested Feature
-    - [Donations You've Made] Nested Feature
-    - [Start a Fundraiser] Nested Feature
-        - [Share Fundraiser on social media] Nested of a nested Feature
-        - [Donate for a fundraiser via stripe] Nested of a nested Feature
-        - [View Donnors] Nested of a nested Feature
-    - [Ask for a Blood Donation] Nested Feature
-    - [Logout] Nested Feature
+    - [AccountSettings] 
+       - [Edit user avatar] 
+       - [Edit user firstName] 
+       - [Edit user lastName] 
+       - [Edit user age] 
+       - [Edit user country] 
+       - [Edit user phonenumber] 
+    - [Donations You've Made] 
+    - [View Your Fundraisers] 
+       - [Manage Fundraiser] 
+            - [Edit Title]      
+            - [Edit Phone Number] 
+            - [Edit Country] 
+            - [Edit Goal] 
+            - [Edit Photo] 
+            - [Edit Story] 
+            - [Delete Fundraiser] 
+    - [Donations You've Made] 
+    - [Start a Fundraiser] 
+        - [Share Fundraiser on social media]
+        - [Donate for a fundraiser via stripe] 
+        - [View Donnors] 
+    - [Ask for a Blood Donation] 
+    - [Logout] 
 - [Categories] Feature 5
-    - [Education] Nested Feature
-    - [Family] Nested Feature
-    - [Sport] Nested Feature
-    - [Travel] Nested Feature
-    - [See All] Nested Feature
+    - [Education] 
+    - [Family] 
+    - [Sport] 
+    - [Travel] 
+    - [See All] 
 - [How the website works(video)] Feature 6
 - [View Top 3 Fundraisers] Feature 7
 - [View Blood Posts] Feature 8
