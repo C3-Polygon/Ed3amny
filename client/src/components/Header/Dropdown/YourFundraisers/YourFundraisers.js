@@ -27,7 +27,7 @@ const GetAllFundraiserByUser = () => {
         setUsersFundraisers(result.data.result);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [usersFundraisers.length]);
 
   const EditFundraiser = (id) => {
     history.push(`/edityourfundraiser/${id}`);
@@ -50,7 +50,16 @@ const GetAllFundraiserByUser = () => {
           </div>
 
           <div className="row">
-            {usersFundraisers &&
+            {usersFundraisers.length === 0 ?  (
+              <>
+              <div className="empty-fundraiser"> 
+              <h4>There's no fundraiser to show or , please wait admin approval if you have just created a fundraiser.
+              </h4>
+              </div>
+              </>
+            ):(
+              <>
+                       {usersFundraisers &&
               usersFundraisers.map((post, index) => {
                 return (
                   <div key={index} className="col-lg-4">
@@ -68,8 +77,13 @@ const GetAllFundraiserByUser = () => {
                       </div>
                     </div>
                   </div>
+
+                  
                 );
-              })}
+              })}</>
+            ) }
+
+
           </div>
         </div>
       </div>

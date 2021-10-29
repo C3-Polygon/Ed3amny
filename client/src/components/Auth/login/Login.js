@@ -202,6 +202,8 @@ export const Login = () => {
     <Form.Control type="password" placeholder="Password"  onChange={(e) => setPasswordd(e.target.value)} required/>
   </Form.Group>
   <input type="submit" className="sgin-btn" value='Sign in to Ed3amny'/>
+
+  <button onClick={()=>{history.push('/signup')}} className="sgin-btn"> or Sign up </button>
 </Form>
 <hr></hr>
 <div className='forget-password'>

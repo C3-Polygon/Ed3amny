@@ -118,7 +118,7 @@ const CreatefundRaiser = (e) => {
       </JourneyStep>
     </Form.Group>
 
-    <Form.Group as={Col} controlId="formGridPassword">
+    <Form.Group as={Col} controlId="formGridPassword" className='goal'>
      <Form.Label>Set your fundraiser goal</Form.Label>
      <JourneyStep message="Set your target here and make sure that it is within reason">
       <Form.Control type="number" placeholder="Here ... " onChange={(e)=>{setTarget(e.target.value)}} />

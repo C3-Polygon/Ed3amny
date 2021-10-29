@@ -63,15 +63,17 @@
 }
 
 .about .button {
-    border-radius: 10px;
-    background-color: #02A95C;
+    margin-top: 20px;
+    background-color: #02a95c;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
     border: none;
-    color: #FFFFFF;
-    padding: 13px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 180px;
-    font-weight: 800;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
 }
 
 section {

@@ -30,6 +30,7 @@ function Categories() {
         id={`dropdown-button-drop-${idx}`}
         variant="none"
         title="Categories"
+        className="dropdown-NavBar"
       >
         {cate&&cate.map((ele,index)=>{
             return(
