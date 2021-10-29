@@ -2,11 +2,11 @@ import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainPageD from './MainPage/MainPageD';
 
-const MainPage = ()=> {
+const MainPage = ({socket})=> {
     console.log("mainpage")
     return (
         <div className="Main-app-admin">      
-        <MainPageD/>
+        <MainPageD socket={socket}/>
         </div>
         
     )

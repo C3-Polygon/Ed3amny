@@ -22,7 +22,7 @@ const searchRouter = require('./routers/routes/Services/search')
 const contributionRouter = require('./routers/routes/Contribution')
 const stripeRouter = require('./routers/routes/Services/stripe')
 const helpSpecificRouter = require('./routers/routes/helpSpecific')
-const { join_User, get_Current_User, user_Disconnect, } = require('./routers/controllers/Services/chat');
+const { join_User, get_Current_User, user_Disconnect, c_users } = require('./routers/controllers/Services/chat');
 const forgetPasswordRouter = require('./routers/routes/Services/forgotPassword')
 // const { isTypedArray } = require("util/types");
 
@@ -72,6 +72,7 @@ io.on("connection", (socket) => {
             username: p_user.username,
             text: `${p_user.username} has joined the chat`,
         });
+        io.emit("admin",{allusers:c_users})
     });
 
     //user sending message
@@ -87,10 +88,10 @@ io.on("connection", (socket) => {
     });
 
     //when the user exits the room
-    socket.on("disconnect", () => {
+    socket.on("disconnectOne", (room) => {
         //the user is deleted from array of users and a left room message displayed
         const p_user = user_Disconnect(socket.id);
-
+        socket.leave(p_user.room)
         if (p_user) {
             io.to(p_user.room).emit("message", {
                 userId: p_user.id,
