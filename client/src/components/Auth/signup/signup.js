@@ -53,6 +53,7 @@ const Signup = () => {
           <Form onSubmit={insertNewUser}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
+              required
                 type="text"
                 placeholder="First Name"
                 onChange={(e) => {
@@ -63,6 +64,7 @@ const Signup = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Control
+              required
                 type="text"
                 placeholder="E-mail"
                 onChange={(e) => {
@@ -73,6 +75,7 @@ const Signup = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Control
+              required
                 type="text"
                 placeholder="Country"
                 onChange={(e) => {
@@ -83,6 +86,7 @@ const Signup = () => {
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Control
+              required
                 type="password"
                 placeholder="Password"
                 onChange={(e) => {

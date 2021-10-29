@@ -16,7 +16,10 @@ import { setUserId } from "../../../reducers/login/userId";
 import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import { setToken } from "../../../reducers/login/token";
 import { useDispatch } from "react-redux";
-function MainPageD() {
+import { useSelector } from "react-redux";
+import Chat from '../../services/Chat/chat'
+
+function MainPageD({socket}) {
   console.log("mainpage D");
   const dispatch = useDispatch();
   const [url, setUrl] = useState("");
@@ -29,6 +32,11 @@ function MainPageD() {
   const [getfundraiser, setGetfundraiser] = useState([]);
   const [homePage, setHomePage] = useState(true);
   const [users, setUsers] = useState();
+  const [showRoom, setShowRoom] = useState(false);
+  const [showRoom1, setShowRoom1] = useState(false);
+  const [openRoom ,setOpenRoom ] = useState([])
+  let obj = {}
+
   useEffect(() => {
     axios
       .get(
@@ -188,6 +196,20 @@ function MainPageD() {
     dispatch(setIsLoggedIn(false));
     dispatch(setUserId(0));
   };
+
+  useEffect(() => {
+    socket.on("admin", (data) => {
+      setOpenRoom(data.allusers);
+    });
+  }, [socket]);
+
+  const joinRoom = (room) =>{
+    let roomname = room
+    let username = "admin"
+     socket.emit("joinRoom", { username , roomname });
+  }
+
+
   return (
     <>
       {/** Start Navbar */}
@@ -240,6 +262,16 @@ function MainPageD() {
             >
               <span class="las la-user"></span> Add story
             </li>
+
+            <li
+              onClick={() => {
+                setShowRoom(!showRoom);
+                setHomePage(false)
+              }}
+            >
+              <span class="las la-user"></span> Show Open Rooms
+            </li>
+
           </ul>
         </div>
       </div>
@@ -428,7 +460,31 @@ function MainPageD() {
                 {/** End users recientes*/}
               </div>
             </>
-          ) : (
+          ) : showRoom ?(<div>
+            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div>usajdnasjkkokokokokdnasjkdnkjsankjasndjknaskjdnjaskndjksakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div>{openRoom && openRoom.map((elm)=>{
+              if(obj[elm.room]){
+                 obj[elm.room]+=1
+              }else{
+                obj[elm.room]=1
+                return (
+                <div>
+                  <div>{elm.username} {elm.room}</div>
+                  <button onClick={()=>joinRoom(elm.room)}>Join Room</button>
+  
+                  <Chat username="admin" roomname={elm.room} socket={socket}></Chat>
+  
+                  </div>
+                  )
+              }
+  
+            })}
+            </div>
+  
+            </div>):( 
             <>
               <div className="Main-Create-Blood">
                 <div className="container">
