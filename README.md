@@ -46,10 +46,8 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## Images
-
-[https://imgur.com/XYnBDyC]
-
+## Images and links
+<img src="https://imgur.com/XYnBDyC" alt="Logo" width="80" height="80">
 (https://ed3amny.herokuapp.com/)
 
 
