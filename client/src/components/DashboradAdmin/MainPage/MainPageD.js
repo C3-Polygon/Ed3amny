@@ -17,10 +17,10 @@ import { setIsLoggedIn } from "../../../reducers/login/isLoggedIn";
 import { setToken } from "../../../reducers/login/token";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import Chat from '../../services/Chat/chat'
-import Table from 'react-bootstrap/Table';
+import Chat from "../../services/Chat/chat";
+import Table from "react-bootstrap/Table";
 
-function MainPageD({socket}) {
+function MainPageD({ socket }) {
   console.log("mainpage D");
   const dispatch = useDispatch();
   const [url, setUrl] = useState("");
@@ -35,14 +35,13 @@ function MainPageD({socket}) {
   const [users, setUsers] = useState();
   const [showRoom, setShowRoom] = useState(false);
   const [showRoom1, setShowRoom1] = useState(false);
-  const [openRoom ,setOpenRoom ] = useState([])
-  let obj = {}
+  const [showChat, setShowChat] = useState(false);
+  const [openRoom, setOpenRoom] = useState([]);
+  let obj = {};
 
   useEffect(() => {
     axios
-      .get(
-        `/fundraiser/admin/dashbord/get/getallfundreiser`
-      )
+      .get(`/fundraiser/admin/dashbord/get/getallfundreiser`)
       .then((result) => {
         setFundraiser(result.data.allData.length);
       })
@@ -69,9 +68,7 @@ function MainPageD({socket}) {
       });
 
     axios
-      .get(
-        `/fundraiser/admin/dashbord/get/getallfundreiser`
-      )
+      .get(`/fundraiser/admin/dashbord/get/getallfundreiser`)
       .then((result) => {
         setGetfundraiser(result.data.allData);
         return;
@@ -129,9 +126,7 @@ function MainPageD({socket}) {
 
   const getallpost = () => {
     axios
-      .get(
-        `/fundraiser/admin/dashbord/get/getallfundreiser`
-      )
+      .get(`/fundraiser/admin/dashbord/get/getallfundreiser`)
       .then((result) => {
         setGetfundraiser(result.data.allData);
         return;
@@ -204,16 +199,17 @@ function MainPageD({socket}) {
     });
   }, [socket]);
 
-  const joinRoom = (room) =>{
-    let roomname = room
-    let username = "admin"
-     socket.emit("joinRoom", { username , roomname });
-  }
 
+  const joinRoom = (room) => {
+    let roomname = room;
+    let username = "admin";
+    socket.emit("joinRoom", { username, roomname });
+    setShowChat(!showChat);
+  };
+  
   const viewPostByid = (id)=>{
-    history.push(`/admin/viewPost/${id}`);
+  history.push(`/admin/viewPost/${id}`);
   }
-
 
   return (
     <>
@@ -273,12 +269,11 @@ function MainPageD({socket}) {
             className="active"
               onClick={() => {
                 setShowRoom(!showRoom);
-                setHomePage(false)
+                setHomePage(false);
               }}
             >
               <span class="las la-user"></span> Show Open Rooms
             </li>
-
           </ul>
         </div>
       </div>
@@ -470,48 +465,64 @@ function MainPageD({socket}) {
                 {/** End users recientes*/}
               </div>
             </>
-          ) : showRoom ?(
-          <>  
-          {/** Start Table */}
-          <Table striped bordered hover>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Room Number</th>
-      <th>Join Room</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      
-      {openRoom && openRoom.map((elm)=>{
-              if(obj[elm.room]){
-                 obj[elm.room]+=1
-              }else{
-                obj[elm.room]=1
-                return (
-                <>
-                  <td>
-                    {elm.username} 
-                    </td>
-                    <td>{elm.room}</td>
-                    <td><button onClick={()=>joinRoom(elm.room)}>Join Room</button></td>
-                  <Chat username="admin" roomname={elm.room} socket={socket}></Chat>
-  
-                  </>
-                  )
-              }
-  
-            })}
-    </tr>
-  </tbody>
-</Table>
-
-
-          {/** End Table  */}
-            
-  
-            </>):( 
+          ) : showRoom ? (
+            <>
+              {/** Start Table */}
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Room Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {openRoom &&
+                      openRoom.map((elm) => {
+                        if (elm.username === "admin") {
+                          return;
+                        }
+                        if (showChat) {
+                          if (obj[elm.room]) {
+                            obj[elm.room] += 1;
+                          } else {
+                            obj[elm.room] = 1;
+                            return (
+                              <>
+                                <td>{elm.username}</td>
+                                <td onClick={() => joinRoom(elm.room)}>{elm.room}</td>
+                                
+                                <div>
+                                <Chat
+                                  username="admin"
+                                  roomname={elm.room}
+                                  socket={socket}
+                                ></Chat>
+                                </div>
+                              </>
+                            );
+                          }
+                        }
+                        if (!showChat) {
+                            if (obj[elm.room]) {
+                              obj[elm.room] += 1;
+                            } else {
+                              obj[elm.room] = 1;
+                              return (
+                                <>
+                                  <td>{elm.username}</td>
+                                  <td onClick={() => joinRoom(elm.room)}>{elm.room}</td>   
+                                </>
+                              );
+                            }
+                          }
+                      })}
+                  </tr>
+                </tbody>
+              </Table>
+              {/** End Table  */}
+            </>
+          ) : (
             <>
               <div className="Main-Create-Blood">
                 <div className="container">
