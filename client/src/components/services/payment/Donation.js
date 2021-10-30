@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState }from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Donation.css";
 import { AiFillCaretLeft, AiFillDollarCircle } from "react-icons/ai";
@@ -7,10 +7,10 @@ import { useHistory } from "react-router";
 import Stripe from "../../services/payment/Stripe";
 import {setAmount } from "../../../reducers/Donation/AmountReducer"
 // import { Label } from "semantic-ui-react";
-
 const Donation = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const [errmessage, setErrmessage] = useState('')
   
   const state = useSelector((state) => {
     return { img: state.img.img };
@@ -41,7 +41,7 @@ const Donation = () => {
             </div>
             <h6>Enter your donation</h6>
             <div className="dollar-right">
-              <input
+              <input required
                 type="number"
                 dir="rtl"
                 onChange={(e) => {
@@ -51,6 +51,7 @@ const Donation = () => {
               <AiFillDollarCircle className="dollar-icon" />
             </div>
             <hr></hr>
+     
             <Stripe />
             <p>
               Tip Ed3amny Services

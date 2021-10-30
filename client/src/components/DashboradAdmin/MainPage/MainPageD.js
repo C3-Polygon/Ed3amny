@@ -210,6 +210,10 @@ function MainPageD({socket}) {
      socket.emit("joinRoom", { username , roomname });
   }
 
+  const viewPostByid = (id)=>{
+    history.push(`/admin/viewPost/${id}`);
+  }
+
 
   return (
     <>
@@ -257,6 +261,7 @@ function MainPageD({socket}) {
               <span class="las la-home"></span> home
             </li>
             <li
+            className="active"
               onClick={() => {
                 setHomePage(!homePage);
               }}
@@ -265,6 +270,7 @@ function MainPageD({socket}) {
             </li>
 
             <li
+            className="active"
               onClick={() => {
                 setShowRoom(!showRoom);
                 setHomePage(false)
@@ -360,6 +366,7 @@ function MainPageD({socket}) {
                               <td> #id </td>
                               <td> Fundraiser Title </td>
                               <td> Status </td>
+                              <td>Show Post</td>
                             </tr>
                           </thead>
                           <tbody>
@@ -401,6 +408,8 @@ function MainPageD({socket}) {
                                         console.log("UnKnown")
                                       )}
                                     </td>{" "}
+                                    <td> <button type="button" className="view-post" onClick={() => {viewPostByid(post.id)}}>View</button></td>
+                                    
                                   </tr>
                                 );
                               })}

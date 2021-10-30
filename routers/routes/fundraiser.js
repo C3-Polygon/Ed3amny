@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories, getTotalsCategories, getCategorybyId, getTotalsFundreiser, deleteFundraiserByid, updateOverView, updatestory,updateYourFundraiserImage } = require("../controllers/fundraiser");
+const { createNewFundraiser, getAllFundraiser, getFundRaiserById, updateFundRaiserById, getAllFundRaiserByUser, deleteFundraiserByUser, getAllFundraiserByType, getTopFundraiserByCurrentTarget, getThreeRandomFundraisers, getAllCategories, getTotalsCategories, getCategorybyId, getTotalsFundreiser, deleteFundraiserByid, updateOverView, updatestory, updateYourFundraiserImage, getAllFundraiserInDashbord } = require("../controllers/fundraiser");
 
 
 // define router
@@ -65,13 +65,14 @@ fundraiserRouter.get("/typee/:typee", getAllFundraiserByType);
 
 fundraiserRouter.get("/admin/dashbord/get/getallfundreiser", getTotalsFundreiser)
 
-fundraiserRouter.put("/soft/delete/fundreiser/:id" ,authentication,deleteFundraiserByid)
+fundraiserRouter.put("/soft/delete/fundreiser/:id", authentication, deleteFundraiserByid)
 
-fundraiserRouter.put("/update/fundraiser/overview/:id", authentication,updateOverView)
+fundraiserRouter.put("/update/fundraiser/overview/:id", authentication, updateOverView)
 
-fundraiserRouter.put("/update/fundraiser/story/:id", authentication,updatestory);
+fundraiserRouter.put("/update/fundraiser/story/:id", authentication, updatestory);
 
-fundraiserRouter.put("/update/fundraiser/image/:id",authentication, updateYourFundraiserImage);
+fundraiserRouter.put("/update/fundraiser/image/:id", authentication, updateYourFundraiserImage);
+
 
 
 

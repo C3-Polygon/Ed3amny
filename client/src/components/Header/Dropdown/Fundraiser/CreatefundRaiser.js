@@ -105,6 +105,10 @@ const CreatefundRaiser = (e) => {
     setType(e.target.value);
   };
 
+  const handler2 = (e) => {
+    setCountry(e.target.value);
+  };
+
   return (
     <div className="Create-fundraiser-form">
     <div className="container">
@@ -142,12 +146,24 @@ const CreatefundRaiser = (e) => {
   </Form.Group>
 
   <Row className="mb-3">
-    <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>Country</Form.Label>
-      <JourneyStep message="Where are you from ?">
-      <Form.Control placeholder="Here ..." type='text' onChange={(e)=>{setCountry(e.target.value)}}/>
+
+  <Form.Group as={Col} controlId="formGridState">
+      <Form.Label>Choose Your Country</Form.Label>
+      <JourneyStep message="Choose a correct category that reflects on the type of this fundraiser">
+      <Form.Select aria-label="Default select example"
+ onChange={handler2}> 
+      <option hidden value='0'>Choose Your Country </option>
+            <option value='Jordan'>Jordan</option>
+            <option value='China'>China</option>
+            <option value='Denmark'>Denmark</option>
+            <option value='Egypt'>Egypt</option>
+            <option value='Russia'>Russia</option>
+            <option value='Canada'>Canada</option>
+            <option value='Spain'>Spain</option>
+      </Form.Select>
       </JourneyStep>
     </Form.Group>
+
 
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>Category</Form.Label>

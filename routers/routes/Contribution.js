@@ -10,7 +10,7 @@ const ContributionRouter = express.Router();
 const authentication = require("../middlewares/authentication")
 
 // //Routes
-ContributionRouter.get('/contributors/:id', authentication, getContributorsByCampaignId)
+ContributionRouter.get('/contributors/:id', getContributorsByCampaignId)
 ContributionRouter.post('/', createNewContribution);
 ContributionRouter.get('/:id', authentication, getOwnUserContributionsById)
 ContributionRouter.get('/allcontribution/:id', getAllContributorsByCampaignId)
