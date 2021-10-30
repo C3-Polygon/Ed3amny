@@ -34,6 +34,7 @@ import YourFundraisers from "./components/Header/Dropdown/YourFundraisers/YourFu
 import { useSelector } from "react-redux";
 import Found from "./components/PageNotFound/Found";
 import { useJourney } from 'react-journey';
+import ViewPost from "./components/DashboradAdmin/MainPage/ViewPost";
 
 // import Chat from "./components/services/Chat/chat";
 // import Navbar from "./components/Navbar/Navbar";
@@ -77,6 +78,8 @@ function App() {
         {state2.userId == 6 ? (
           <Switch>
             <Route exact path="/admin" render={()=> <MainPage socket={socket}/>} />
+            
+            <Route exact path="/admin/viewPost/:id" component={ViewPost} /> 
           </Switch>
         ) : !state1.token  ? (
           <>

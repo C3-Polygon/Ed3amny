@@ -13,13 +13,14 @@ body {
     color: #198754;
 }
 
-
 ::-webkit-scrollbar {
     width: 15px;
 }
+
 ::-webkit-scrollbar-track {
     background-color: #000;
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: #198754;
     border-radius: 20px;
@@ -27,4 +28,8 @@ body {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+}
+
+.osososososooso {
+    background-color: red;
 }

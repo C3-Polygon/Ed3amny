@@ -3,7 +3,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import './Donation.css';
+import Alert from 'react-bootstrap/Alert';
+import Container from 'react-bootstrap/Container';
 
+
+import {AiOutlineExclamation} from 'react-icons/ai';
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -28,6 +32,7 @@ const CARD_OPTIONS = {
 export const StripeForm = () => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
+  const [errmessage, setErrmessage] = useState('');
   const elements = useElements();
   const user_id = localStorage.getItem("CurrentUserId")
   
@@ -47,6 +52,7 @@ const state1 = useSelector((state) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -74,7 +80,10 @@ const state1 = useSelector((state) => {
         console.log("Error", error);
       }
     } else {
-      console.log("outer error", error);
+      if(error.code == 'incomplete_number'){
+        console.log("Erro" , error);
+        setErrmessage("Your card number is incorrect");
+      }
     }
   };
 
@@ -89,6 +98,20 @@ const state1 = useSelector((state) => {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
+                 {/** */}
+                 <Container className="main-Error">
+                {errmessage && errmessage.length > 0 ? [
+                'danger'
+                ].map((variant, idx) => (
+                <Alert key={idx} variant={variant} className='Alert-login'>
+
+                <AiOutlineExclamation className='Error-Login'/> {errmessage}
+                </Alert>
+                )) : ""}
+
+          </Container>
+
+            {/** */}
           <button className='donate'>DONATE NOW</button>
         </form>
       ) : (

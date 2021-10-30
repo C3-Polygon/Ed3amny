@@ -35,20 +35,6 @@ export const Login = () => {
   const goToForgetMain = () =>{
     history.push('/ForgotMainPage')
   }
-
-  // const state = useSelector((state) => {
-  //   return { isLoggedIn: state.isLoggedIn.isLoggedIn };
-  // });
-
-  // const state1 = useSelector((state) => {
-  //   return { token: state.token_1.token };
-  // });
-  
-  // const state2 = useSelector((state)=>{
-  //  return {userAvatar: state.userAvatar.userAvatar}
-  // })
-
-
   const loginSender = async (e) => {
     e.preventDefault();
     try {

@@ -274,14 +274,13 @@ export const EditFundraiser = () => {
                 return (
                   <div key={i} className="update-post-story">
                     <div>
-                      {/* <CKEditor editor={ClassicEditor} /> */}
-                      <input
-                        onChange={(e) => {
+                      
+                      <textarea className="form-control" type="text" id="exampleFormControlTextarea1" placeholder={elm.descriptionn}rows="3"   onChange={(e) => {
                           setDescriptionn(e.target.value);
-                        }}
-                        placeholder={elm.descriptionn}
-                      />
-                      <br></br>
+                        }} maxLength="245" >
+                          
+                        </textarea>
+
 
                       <button
                         className="Save-update"
