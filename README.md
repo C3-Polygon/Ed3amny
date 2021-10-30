@@ -51,11 +51,11 @@
 (https://ed3amny.herokuapp.com/)
 (https://imgur.com/a/9044ePL)
 
-<img src="ed/screencapture-localhost-3000-2021-10-28-16_13_34.png" alt="MainPage" width="543px" height="80">
-<img src="ed/screencapture-localhost-3000-Contributions-Contributions-Contributions-Contributions-2021-10-28-19_50_33.png" alt="Contributions" width="543px" height="80">
-<img src="ed/screencapture-localhost-3000-Drop-Blood-BloodPost-Create-2021-10-28-19_52_55.png" alt="Bloodpost" width="543px" height="80">
-<img src="ed/screencapture-localhost-3000-Drop-YourFundraisers-2021-10-28-19_50_57.png" alt="YourFundraisers" width="543px" height="80">
-<img src="ed/screencapture-localhost-3000-fundraiser-2021-10-28-19_51_38.png" alt="CreateAnewFundraiser" width="543px" height="80">
+<img src="ed/screencapture-localhost-3000-2021-10-28-16_13_34.png" alt="MainPage" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-Contributions-Contributions-Contributions-Contributions-2021-10-28-19_50_33.png" alt="Contributions" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-Drop-Blood-BloodPost-Create-2021-10-28-19_52_55.png" alt="Bloodpost" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-Drop-YourFundraisers-2021-10-28-19_50_57.png" alt="YourFundraisers" width="80" height="80">
+<img src="ed/screencapture-localhost-3000-fundraiser-2021-10-28-19_51_38.png" alt="CreateAnewFundraiser" width="80" height="80">
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
