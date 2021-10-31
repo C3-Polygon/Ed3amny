@@ -203,7 +203,7 @@ Open Source.
 * Omar hushki         -   [https://github.com/hushki94](https://github.com/hushki94)
   - Email: Omarhushki94@gmail.com
 * Maamoun Al-Ksiwani  -   [https://github.com/MaamounAksiwani](https://github.com/MaamounAksiwani)
-  - Email: Omarhushki94@gmail.com
+  - Email: maamoun.malkiswani@gmail.com
 * Obada Amarneh       -   [https://github.com/ObadaAmarneh](https://github.com/ObadaAmarneh)
   - Email: obada.amarneh20@gmial.com
 
